@@ -1,0 +1,566 @@
+[
+  {
+    "id": "ls-01",
+    "type": "dialogue",
+    "title": "Booking a Table",
+    "text": "W: Excuse me, could I book a table for four on Saturday evening?\nM: I'm afraid we're full after six o'clock. What about five thirty?\nW: That sounds fine. Could we sit near the window?\nM: Of course. May I have your name, please?\nW: Lin. My number is 68927412.\nM: Thank you, Ms Lin. See you on Saturday.",
+    "question": "What time will the woman arrive on Saturday?",
+    "options": [
+      "A. At five thirty",
+      "B. At six o'clock",
+      "C. At seven o'clock"
+    ],
+    "answer": 0,
+    "pointType": "number",
+    "keywords": [
+      "five thirty",
+      "after six"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "ls-02",
+    "type": "dialogue",
+    "title": "The Lost Homework",
+    "text": "M: Where is your maths homework, Lily?\nW: Oh no. I left it at home.\nM: What will you do now?\nW: I'll call my mother and ask her to bring it here.\nM: The lesson starts in five minutes.\nW: Then I will ask the teacher for a few more minutes.",
+    "question": "What will the girl do first?",
+    "options": [
+      "A. Copy the homework from a classmate",
+      "B. Call her mother",
+      "C. Ask the teacher for more time"
+    ],
+    "answer": 1,
+    "pointType": "detail",
+    "keywords": [
+      "left it at home",
+      "call my mother"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "ls-03",
+    "type": "dialogue",
+    "title": "Looking at the Sky",
+    "text": "W: It looks like rain. Shall we take an umbrella?\nM: Look at those black clouds. But the sun is still out.\nW: True. Still, it is always better to be ready.\nM: All right. I'll take the big one in the car.",
+    "question": "What will the speakers probably do?",
+    "options": [
+      "A. Stay at home and watch TV",
+      "B. Go out without an umbrella",
+      "C. Take an umbrella with them"
+    ],
+    "answer": 2,
+    "pointType": "inference",
+    "keywords": [
+      "black clouds",
+      "better to be ready"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-04",
+    "type": "dialogue",
+    "title": "In the Library",
+    "text": "M: Welcome to the school library. Are you a new student?\nW: Yes, I am. May I take any book I like?\nM: Not any. You must write your name and class in the book first.\nW: I see. And how long may I keep it?\nM: Two weeks. Please return it on time.",
+    "question": "What must the girl do before she takes a book?",
+    "options": [
+      "A. Pay a small amount of money",
+      "B. Ask the teacher for permission",
+      "C. Write her name and class in the book"
+    ],
+    "answer": 2,
+    "pointType": "detail",
+    "keywords": [
+      "write your name and class"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-05",
+    "type": "dialogue",
+    "title": "A Present for Tom",
+    "text": "M: Have you bought a present for Tom's birthday?\nW: Yes, a new football. He plays it after school every day.\nM: That's kind of you. Does he have sports shoes?\nW: He has some, but his are too small now. His feet grow so fast.\nM: Then perhaps you should have a look at the sports shop.",
+    "question": "What will the woman probably do next?",
+    "options": [
+      "A. Buy a pair of sports shoes",
+      "B. Buy him a story book",
+      "C. Give him the football only"
+    ],
+    "answer": 0,
+    "pointType": "inference",
+    "keywords": [
+      "too small",
+      "sports shop"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-06",
+    "type": "dialogue",
+    "title": "On Sale Today",
+    "text": "W: How much is this schoolbag?\nM: It was ninety-nine yuan, but today it is sixty-nine yuan.\nW: Sixty-nine? That is a good price. Can I pay by phone?\nM: Certainly. Just scan this code with your phone.\nW: Done. Thank you very much.",
+    "question": "How much will the woman pay for the schoolbag?",
+    "options": [
+      "A. Sixty-nine yuan",
+      "B. Ninety-nine yuan",
+      "C. Ninety yuan"
+    ],
+    "answer": 0,
+    "pointType": "number",
+    "keywords": [
+      "sixty-nine yuan",
+      "on sale"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "ls-07",
+    "type": "dialogue",
+    "title": "Before the Lesson",
+    "text": "M: You look worried. What's the matter?\nW: I left my homework on the bus this morning.\nM: Don't worry. Our teacher usually gives us ten minutes at the start of the lesson.\nW: Really? That makes me feel much better.\nM: Just tell her the truth at the beginning.",
+    "question": "What can we learn about the teacher?",
+    "options": [
+      "A. He never accepts excuses",
+      "B. He is often late for class",
+      "C. He is patient and helpful"
+    ],
+    "answer": 2,
+    "pointType": "inference",
+    "keywords": [
+      "ten minutes",
+      "feel much better"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-08",
+    "type": "dialogue",
+    "title": "Joining a Club",
+    "text": "W: I can't decide which club to join. Can you play chess, Jack?\nM: No, I can't. But I can draw cartoons quite well.\nW: That is useful for our school show. What about the science club?\nM: I joined it last term. We do interesting experiments.",
+    "question": "What can the boy do well?",
+    "options": [
+      "A. Play chess",
+      "B. Draw cartoons",
+      "C. Play football"
+    ],
+    "answer": 1,
+    "pointType": "detail",
+    "keywords": [
+      "draw cartoons",
+      "quite well"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "ls-09",
+    "type": "dialogue",
+    "title": "A Pair of Running Shoes",
+    "text": "M: Mum, these running shoes are on sale. They are thirty percent off today.\nW: Nice, but your brother needs a new pair as well.\nM: I only have fifty yuan. Will that be enough?\nW: The shoes cost eighty yuan. I will give you thirty more.\nM: Thanks, Mum. Then I can buy them this afternoon.",
+    "question": "How much more money does the boy need?",
+    "options": [
+      "A. Twenty yuan",
+      "B. Thirty yuan",
+      "C. Fifty yuan"
+    ],
+    "answer": 1,
+    "pointType": "number",
+    "keywords": [
+      "eighty yuan",
+      "thirty more"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-10",
+    "type": "dialogue",
+    "title": "An Empty Seat",
+    "text": "W: Excuse me, is this seat free?\nM: I'm sorry, I'm reading here. But I am leaving at four o'clock.\nW: Then I can sit here for a few hours.\nM: Of course. Just keep your bag on the chair beside you.\nW: I will. Thank you very much.",
+    "question": "Can the woman sit in the seat now?",
+    "options": [
+      "A. Yes, but the boy will leave at four",
+      "B. No, the seat is taken",
+      "C. Only at lunchtime"
+    ],
+    "answer": 0,
+    "pointType": "inference",
+    "keywords": [
+      "leaving at four",
+      "sit here"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-11",
+    "type": "dialogue",
+    "title": "Looking for a Page",
+    "text": "W: Excuse me, can you help me find a story in this book?\nM: Let me see. It is on page forty-two.\nW: Forty-two? Is that after the letter?\nM: Yes, just after the letter from the writer.\nW: Thank you. You are so helpful.",
+    "question": "On which page is the story?",
+    "options": [
+      "A. Page twenty-four",
+      "B. Page forty-two",
+      "C. Page thirty-two"
+    ],
+    "answer": 1,
+    "pointType": "number",
+    "keywords": [
+      "page forty-two",
+      "after the letter"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-12",
+    "type": "dialogue",
+    "title": "A Weekend Plan",
+    "text": "M: What are you doing this weekend, Lucy?\nW: I am going to the museum with my parents on Saturday.\nM: Sounds great. Can I go with you?\nW: Sure you can. We meet at the school gate at eight thirty.\nM: See you then. What will you see at the museum?",
+    "question": "What will the girl do on Saturday?",
+    "options": [
+      "A. Visit the museum with her parents",
+      "B. Stay at home and rest",
+      "C. Meet Jack at the school gate"
+    ],
+    "answer": 0,
+    "pointType": "detail",
+    "keywords": [
+      "museum",
+      "with my parents"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "ls-13",
+    "type": "dialogue",
+    "title": "Borrowing a Bike",
+    "text": "M: Good afternoon. I'd like to borrow a bike for an hour.\nW: I'm afraid our bikes are free for club members only.\nM: How much is the membership?\nW: Thirty yuan a month. Many students have joined.\nM: Then I may join today. Do I need a student card?",
+    "question": "What will the man probably do?",
+    "options": [
+      "A. Buy a new bike",
+      "B. Join the club",
+      "C. Walk to the park"
+    ],
+    "answer": 1,
+    "pointType": "inference",
+    "keywords": [
+      "club members",
+      "join today"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-14",
+    "type": "dialogue",
+    "title": "Cleaning the Classroom",
+    "text": "W: Our classroom is rather dirty this afternoon.\nM: Let's clean it after lunch. I can clean the windows.\nW: I'll clean the desks. Could you water the flowers?\nM: Sure. And then we can carry the rubbish outside.\nW: Good idea. Our classroom will be clean for the new term.",
+    "question": "What will the man clean?",
+    "options": [
+      "A. The windows",
+      "B. The desks",
+      "C. The flowers"
+    ],
+    "answer": 0,
+    "pointType": "detail",
+    "keywords": [
+      "I can clean the windows"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "ls-15",
+    "type": "dialogue",
+    "title": "The Open Day",
+    "text": "M: When is the school open day, Lily?\nW: It is on the tenth of April, from nine to twelve.\nM: How long does it last?\nW: Three hours. There are talks in the hall and classes in the rooms.\nM: Can anyone come, or only our parents?\nW: Anyone is welcome. Students can bring their little brothers.",
+    "question": "How long does the open day last?",
+    "options": [
+      "A. Two hours",
+      "B. Three hours",
+      "C. Four hours"
+    ],
+    "answer": 1,
+    "pointType": "number",
+    "keywords": [
+      "from nine to twelve",
+      "Three hours"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-16",
+    "type": "passage",
+    "title": "English Morning",
+    "text": "Next Monday is a special day for our school. It is English Morning. Students from Grades Seven and Eight will meet in the playground at 8:15. First, our head teacher will talk about the plan. Then we will play English games and sing English songs together. In the afternoon, three classes will open their doors, and students can walk in and talk to the teachers. Please bring your own notebook and a pair of clean shoes. If you win a game, you will get a small gift.",
+    "question": "What will the students do in the afternoon?",
+    "options": [
+      "A. Play games in the playground",
+      "B. Visit the classes that are open",
+      "C. Meet the head teacher"
+    ],
+    "answer": 1,
+    "pointType": "detail",
+    "keywords": [
+      "three classes will open their doors",
+      "in the afternoon"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-17",
+    "type": "passage",
+    "title": "The Lost and Found Room",
+    "text": "Our lost and found room is next to the school office. It opens from 8:00 to 17:00 every weekday. If you lose something, you must write down your name, its colour and where you lost it. Lost items are kept for one month. Last week, a student found a blue schoolbag in the room. There was a maths book and a key inside it. He wrote a note and put it in the box by the door. Two days later, the owner came and took the bag back. He was very happy.",
+    "question": "Why did the student write a note?",
+    "options": [
+      "A. To say thank you to the office",
+      "B. To find the owner of the schoolbag",
+      "C. To ask for a new schoolbag"
+    ],
+    "answer": 1,
+    "pointType": "inference",
+    "keywords": [
+      "wrote a note",
+      "the owner came"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "ls-18",
+    "type": "passage",
+    "title": "A Trip to the Science Museum",
+    "text": "Our school trip to the science museum took a long day. We left school at 7:30 and got there at 9:00. A guide showed us five rooms. In the last room, we watched a show about space. We had lunch there at 12:00. On the way back, the rain was heavy, so the bus moved slowly and stopped twice. We got back to school at half past four. It was a tiring but happy day, and everyone agreed that the space show was the best part of it.",
+    "question": "How long did the trip take?",
+    "options": [
+      "A. Seven hours",
+      "B. Eight hours",
+      "C. Nine hours"
+    ],
+    "answer": 2,
+    "pointType": "number",
+    "keywords": [
+      "7:30",
+      "half past four"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "ls-19",
+    "type": "passage",
+    "title": "Our Sports Meeting",
+    "text": "Our school sports meeting is in October. It lasts two days. The first day is for races, and the second day is for team games. Each class can enter no more than three running events. Students who want to take part must sign up with the PE teacher before Friday. There is a special prize for the class with the best team spirit. Our class won it last year, not because we were the fastest, but because everyone tried. Taking part matters more than winning.",
+    "question": "When should students sign up for the events?",
+    "options": [
+      "A. Before Friday",
+      "B. On the first day",
+      "C. In the middle of October"
+    ],
+    "answer": 0,
+    "pointType": "detail",
+    "keywords": [
+      "sign up with the PE teacher",
+      "before Friday"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-20",
+    "type": "passage",
+    "title": "A Green Team",
+    "text": "About twenty students in our school joined a green team this term. They meet every other Saturday morning. Their job is simple: they pick up rubbish in the park near the school and put it into the right bins. Some people laughed at them at first. But after three months, the park is much cleaner, and a few shops have changed their bins as well. Now other students want to join them. A small action can change a place, and a place can change people.",
+    "question": "What do we learn about the students in the green team?",
+    "options": [
+      "A. They want to win a prize",
+      "B. They keep going even when others laugh",
+      "C. They only work inside the school"
+    ],
+    "answer": 1,
+    "pointType": "inference",
+    "keywords": [
+      "Some people laughed",
+      "after three months"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "ls-21",
+    "type": "passage",
+    "title": "The Speech Contest",
+    "text": "The school speech contest will be held on Friday afternoon in the school hall. Any student in Grades Seven to Nine can enter. Each speaker has three minutes and cannot read from a paper. The topics this year are my dream, my hometown and technology in my life. Please sign up with your English teacher by Wednesday. The first prize is a dictionary, and there are ten small prizes. Last year nearly sixty students joined, so please speak slowly and clearly.",
+    "question": "How long can each speaker talk?",
+    "options": [
+      "A. Two minutes",
+      "B. Three minutes",
+      "C. Ten minutes"
+    ],
+    "answer": 1,
+    "pointType": "number",
+    "keywords": [
+      "three minutes",
+      "cannot read from a paper"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-22",
+    "type": "passage",
+    "title": "New Rules in the Library",
+    "text": "Our library has new rules this term. Students can keep a book for three weeks. If you return it late, you must tell the librarian. Eating and drinking are not allowed inside, because they make the books dirty and attract insects. The reading room is open from 7:30 to 18:00. There is a new corner for magazines and newspapers. Please keep quiet there. Our librarian told us that a quiet room is the best gift you can give the next reader.",
+    "question": "What should readers do in the reading room?",
+    "options": [
+      "A. Eat and drink quietly",
+      "B. Read quietly and keep the room clean",
+      "C. Play games together"
+    ],
+    "answer": 1,
+    "pointType": "detail",
+    "keywords": [
+      "keep quiet",
+      "not allowed inside"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-23",
+    "type": "passage",
+    "title": "Robots for Young Pupils",
+    "text": "Last month our class received an email from a primary school. Thirty pupils there had never seen a robot. They asked us to visit them on Friday afternoon. Six of us wrote a short programme. We explained how a robot works, and then we let the children play with a small one. We also sang an English song together. At first the children were shy, but soon they asked us a hundred questions. Before we left, one girl gave us a card she had made herself.",
+    "question": "What can we learn about the children?",
+    "options": [
+      "A. They were not interested in robots",
+      "B. They were shy at first but soon became active",
+      "C. They had already learned English songs"
+    ],
+    "answer": 1,
+    "pointType": "inference",
+    "keywords": [
+      "At first the children were shy",
+      "a hundred questions"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "ls-24",
+    "type": "passage",
+    "title": "The School Bus",
+    "text": "The school bus service starts at 7:10 every morning. The first bus leaves from the East Gate and stops at six places. The last bus returns to school at 17:30. If you miss the 7:10 bus, the next one comes at 7:25 and arrives about eight minutes late. There is no bus after 18:00, because the drivers finish work then. If you miss the last bus, you should call your parents at once.",
+    "question": "What time does the next bus come after students miss the 7:10 one?",
+    "options": [
+      "A. At 7:15",
+      "B. At 7:25",
+      "C. At 7:30"
+    ],
+    "answer": 1,
+    "pointType": "number",
+    "keywords": [
+      "the next one comes at 7:25"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-25",
+    "type": "passage",
+    "title": "The Health Room",
+    "text": "Our school has a health room on the second floor. A school doctor comes there every Wednesday afternoon. Students can talk to her about health problems in private. Last term she gave a talk about sleep. She said most students sleep less than eight hours, and this makes them slow in class. She also talked about breakfast and eye exercises. Now our class has a health corner on the wall, and we write down tips there. Small changes can bring big results.",
+    "question": "When does the school doctor come to the health room?",
+    "options": [
+      "A. Every Tuesday",
+      "B. Every Wednesday afternoon",
+      "C. Every Monday morning"
+    ],
+    "answer": 1,
+    "pointType": "detail",
+    "keywords": [
+      "every Wednesday afternoon"
+    ],
+    "difficulty": 1
+  },
+  {
+    "id": "ls-26",
+    "type": "passage",
+    "title": "A Dog Lost Near Our Community",
+    "text": "Over the weekend, a small brown dog was lost near our community. On Monday morning, our class made posters for the neighbourhood. We wrote the dog's name, the place where it was seen and our phone number. By Tuesday evening, nine people had called us. On Wednesday, a boy brought the dog back. His grandmother had kept one of our posters, which she found on a tree. The dog was thin and tired, but it wagged its tail when it saw us. Nine calls show that people are ready to help.",
+    "question": "How did the boy's grandmother know about the lost dog?",
+    "options": [
+      "A. She saw the dog on the street",
+      "B. She kept one of the posters",
+      "C. She read about it in a newspaper"
+    ],
+    "answer": 1,
+    "pointType": "inference",
+    "keywords": [
+      "kept one of our posters",
+      "found on a tree"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "ls-27",
+    "type": "passage",
+    "title": "Reading Week",
+    "text": "Our school will hold a reading week in April. On the first day, every class will bring ten books and make a small library in its own classroom. During the week, students can borrow books from any class. On Friday, the best readers will share their favourite books in the hall, and everyone can vote for the most popular one. Last year ninety students took part, and four hundred books were read. Our teacher says that a book you finish is worth three books you only start.",
+    "question": "How many books can each class bring at least?",
+    "options": [
+      "A. Five",
+      "B. Ten",
+      "C. Twenty"
+    ],
+    "answer": 1,
+    "pointType": "number",
+    "keywords": [
+      "every class will bring ten books"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-28",
+    "type": "passage",
+    "title": "A Competition for Clean Water",
+    "text": "Last month our class entered a science competition. The topic was clean water. Our group designed a simple filter with sand, stones and old cotton. It cost only twelve yuan. We tested it three times, and the water became much cleaner, though it was not drinkable. We wrote down every step, because the judges asked us many questions. We did not win the first prize, but we won the teamwork prize. Our teacher told us that careful records matter as much as a good idea.",
+    "question": "What did the students win in the competition?",
+    "options": [
+      "A. The first prize",
+      "B. The teamwork prize",
+      "C. Nothing at all"
+    ],
+    "answer": 1,
+    "pointType": "detail",
+    "keywords": [
+      "we won the teamwork prize"
+    ],
+    "difficulty": 2
+  },
+  {
+    "id": "ls-29",
+    "type": "passage",
+    "title": "Phones in Class",
+    "text": "This term our school asked parents to keep phones away during class time. Some students were unhappy, because they liked playing games at break. But after a month, many of them said they felt calmer. Teachers can get their attention back, and lessons became quieter. Some students still keep phones in their bags for emergencies, and the office can call them at any time. A small rule can change a habit, and a new habit can change a life.",
+    "question": "What do we learn about the phone rule?",
+    "options": [
+      "A. All the students are happy with it",
+      "B. It changes the way students study",
+      "C. The school will keep phones forever"
+    ],
+    "answer": 1,
+    "pointType": "inference",
+    "keywords": [
+      "they felt calmer",
+      "lessons became quieter"
+    ],
+    "difficulty": 3
+  },
+  {
+    "id": "ls-30",
+    "type": "passage",
+    "title": "Volunteer Hours",
+    "text": "Last summer our school encouraged students to do volunteer work. We counted hours, not money. The school asked students to give at least ten hours of help in their community. I joined a book club and read stories to younger children twice a week. My friend cleaned a park every Sunday. One girl visited an old people's home and taught them to use mobile phones. When the term began, we had a short meeting. Sixty students took part, and together they gave 520 hours.",
+    "question": "How many volunteer hours did the students give in all?",
+    "options": [
+      "A. 520",
+      "B. 620",
+      "C. 600"
+    ],
+    "answer": 0,
+    "pointType": "number",
+    "keywords": [
+      "520 hours",
+      "sixty students"
+    ],
+    "difficulty": 3
+  }
+]

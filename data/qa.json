@@ -1,0 +1,314 @@
+[
+  {
+    "id": "qa-01",
+    "category": "校园生活",
+    "scenario": "上课铃刚响，老师看见你和同学在教室里追跑打闹。",
+    "question": "What were you doing just now? What will you do in class?",
+    "keyPoints": [
+      "说明刚才在做什么（追跑打闹）并道歉",
+      "说明课上应该做什么（安静听讲）",
+      "承诺以后不再犯"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 1
+  },
+  {
+    "id": "qa-02",
+    "category": "家庭与邻里",
+    "scenario": "邻居家的小孩踢球时踢到了你家的窗户，你正在写作业。",
+    "question": "What happened? What will you do about it?",
+    "keyPoints": [
+      "说明发生的事情（球踢坏了窗户）",
+      "表达生气但不失礼",
+      "提出解决办法（告诉家长、请对方修好）"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-03",
+    "category": "健康",
+    "scenario": "同桌发现你最近早上不吃饭，直接去上课了。",
+    "question": "Why don't you have breakfast? What will you change?",
+    "keyPoints": [
+      "说明不吃早饭的原因（没时间/不饿）",
+      "指出不吃早饭的危害（没精力、易生病）",
+      "说明改进办法（早起准备牛奶和鸡蛋）"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-04",
+    "category": "交通出行",
+    "scenario": "你要去马路对面的书店，路口没有红绿灯。",
+    "question": "How can you cross the road safely?",
+    "keyPoints": [
+      "先左右观察",
+      "走斑马线/人行道",
+      "过马路时不要看手机、专心走"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 1
+  },
+  {
+    "id": "qa-05",
+    "category": "购物消费",
+    "scenario": "你上周买的台灯用三天就坏了，商店说概不退货。",
+    "question": "What's wrong with the lamp? What would you like to do?",
+    "keyPoints": [
+      "说明台灯出现的问题（灯不亮/接触不良）",
+      "说明已找过商店但被拒绝",
+      "提出要求（换一台或退钱，保留小票）"
+    ],
+    "suggestedSentences": 4,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-06",
+    "category": "休闲活动",
+    "scenario": "朋友约你周末看电影，但下周有英语考试。",
+    "question": "What will you do? Can you give a reason?",
+    "keyPoints": [
+      "说明自己的选择（先复习/答应考试后去）",
+      "给出理由（考试重要、需要准备）",
+      "表达对朋友的歉意或提出改期"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-07",
+    "category": "环境保护",
+    "scenario": "你看见一位同学把饮料瓶扔进河里。",
+    "question": "What should he do? What can we do together?",
+    "keyPoints": [
+      "指出乱扔垃圾会污染河水",
+      "建议把垃圾扔进垃圾桶或先带走",
+      "提出可行的集体行动（捡拾垃圾、宣传环保）"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-08",
+    "category": "规则与安全",
+    "scenario": "放学后同学想翻墙进操场打球。",
+    "question": "What will you say to him? Why?",
+    "keyPoints": [
+      "劝阻翻墙行为",
+      "说明理由（危险、违反校规）",
+      "给出替代建议（走门、约时间打球）"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-09",
+    "category": "科技与学习",
+    "scenario": "你的同桌上课时一直在手机上查答案。",
+    "question": "What is he doing? What will you tell him?",
+    "keyPoints": [
+      "指出上课玩手机、查答案的行为",
+      "说明影响（听不进、自己也学不会）",
+      "建议课后请教老师或同学"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-10",
+    "category": "节日与文化",
+    "scenario": "外国朋友问你春节时中国家庭做什么。",
+    "question": "What do you usually do at the Spring Festival? How do people celebrate it abroad?",
+    "keyPoints": [
+      "说出自己家春节的活动（贴春联、吃年夜饭、放鞭炮/拜年）",
+      "介绍节日意义（团圆、辞旧迎新）",
+      "简单介绍海外庆祝方式（唐人街、舞龙舞狮）"
+    ],
+    "suggestedSentences": 4,
+    "difficulty": 3
+  },
+  {
+    "id": "qa-11",
+    "category": "请求与帮助",
+    "scenario": "你的英语作文还没写完，明早就要交。",
+    "question": "Can you have one more day? What will you do after that?",
+    "keyPoints": [
+      "礼貌提出延期请求并说明原因",
+      "承诺按时交，并保证质量",
+      "提出补救办法（今晚先写出提纲/请老师看草稿）"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-12",
+    "category": "观点表达",
+    "scenario": "班会讨论：学生能不能带手机进校。",
+    "question": "Do you think students can use phones at school? Why?",
+    "keyPoints": [
+      "明确表达立场（同意或反对）",
+      "给出两条理由（方便联系/影响学习）",
+      "补充可行的折中办法（只在指定时间用）"
+    ],
+    "suggestedSentences": 4,
+    "difficulty": 3
+  },
+  {
+    "id": "qa-13",
+    "category": "校园生活",
+    "scenario": "学校招募学生志愿者，为社区老人教使用智能手机。",
+    "question": "What will you do? How can you help them?",
+    "keyPoints": [
+      "说明愿意参加志愿服务",
+      "说明自己能做的事（教基础操作、耐心解释）",
+      "提到时间和注意事项（周末有空、不泄露隐私）"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-14",
+    "category": "家庭与邻里",
+    "scenario": "奶奶七十岁了，不会用手机视频通话，你想教她。",
+    "question": "How will you help her? What will you teach her first?",
+    "keyPoints": [
+      "说明会耐心一步一步教",
+      "说明先教最常用的功能（接听、挂断、找联系人）",
+      "强调鼓励与陪伴（多练习、不嫌烦）"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-15",
+    "category": "健康",
+    "scenario": "最近你为了多做两道题，每天晚上十二点才睡。",
+    "question": "Is it good to stay up late? What will you do?",
+    "keyPoints": [
+      "说明熬夜对身体的伤害",
+      "说明学习与睡眠需要平衡",
+      "提出改进（按时睡觉、 提高效率）"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-16",
+    "category": "交通出行",
+    "scenario": "你坐公交车去学校，车上有一位抱小孩的阿姨。",
+    "question": "What will you do? What will other people think?",
+    "keyPoints": [
+      "主动让座并说明理由",
+      "注意安全（扶好、提醒阿姨坐稳）",
+      "说明这是帮助他人的正确做法"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 1
+  },
+  {
+    "id": "qa-17",
+    "category": "购物消费",
+    "scenario": "你在网上买的运动鞋与图片差别很大。",
+    "question": "What is wrong with the shoes? What can you do?",
+    "keyPoints": [
+      "说明实物与图片不符（颜色、大小不同）",
+      "说明可以退换或申请退款",
+      "提醒以后要选正规店、看评价"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-18",
+    "category": "休闲活动",
+    "scenario": "周六社区举办运动会，班里在组织学生报名。",
+    "question": "What will you take part in? Why?",
+    "keyPoints": [
+      "说明参加的项目（跑步、跳远、拔河）",
+      "说明理由（喜欢运动、想为班级出力）",
+      "提到会提前准备/练习"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 1
+  },
+  {
+    "id": "qa-19",
+    "category": "环境保护",
+    "scenario": "学校要求学生自备水杯，不再提供一次性纸杯。",
+    "question": "What do you think of this rule? What will you do?",
+    "keyPoints": [
+      "支持该规定并说明理由（节约水、减少垃圾）",
+      "说明自己会带水杯",
+      "补充注意事项（选择安全材质、及时清洗）"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-20",
+    "category": "规则与安全",
+    "scenario": "下雨天，你看到有人骑电动车没有戴头盔。",
+    "question": "What is wrong with him? What will you say?",
+    "keyPoints": [
+      "指出不戴头盔违反交通规则且危险",
+      "提醒他下雨路滑、事故后果严重",
+      "说明安全对他自己和家人重要"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-21",
+    "category": "科技与学习",
+    "scenario": "同学用翻译软件完成英语口语作业，直接照读译文。",
+    "question": "What do you think of his way? What is the better way?",
+    "keyPoints": [
+      "指出照读译文学不到真正的表达",
+      "建议先自己说、写，再对照修改",
+      "鼓励多开口练习、录音回听"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 3
+  },
+  {
+    "id": "qa-22",
+    "category": "节日与文化",
+    "scenario": "端午节临近，班级要出黑板报。",
+    "question": "What will you put on the blackboard? What will you say about the festival?",
+    "keyPoints": [
+      "写出板报内容（节日名称、日期、由来、习俗）",
+      "介绍习俗（吃粽子、赛龙舟、挂艾草）",
+      "说明节日意义（纪念、团结合家）"
+    ],
+    "suggestedSentences": 4,
+    "difficulty": 3
+  },
+  {
+    "id": "qa-23",
+    "category": "请求与帮助",
+    "scenario": "明天你要参加市里的演讲比赛，需要请一天假。",
+    "question": "Who will you ask for help? What will you say?",
+    "keyPoints": [
+      "说明向谁请假（班主任或家长）",
+      "说明原因和比赛时间",
+      "承诺提前完成作业、保证不缺课"
+    ],
+    "suggestedSentences": 3,
+    "difficulty": 2
+  },
+  {
+    "id": "qa-24",
+    "category": "观点表达",
+    "scenario": "学校是否应该减少书面作业，增加实践活动。",
+    "question": "What is your opinion? Can you give two reasons?",
+    "keyPoints": [
+      "明确立场（支持或部分支持）",
+      "给出理由（动手能力、兴趣、减负）",
+      "提出建议（每周一次实践活动、保留基础作业）"
+    ],
+    "suggestedSentences": 4,
+    "difficulty": 3
+  }
+]

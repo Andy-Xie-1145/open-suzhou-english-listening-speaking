@@ -1,0 +1,799 @@
+[
+  {
+    "name": "my favourite sport",
+    "hint": "我最喜欢的运动",
+    "keywords": [
+      "sport",
+      "play",
+      "like",
+      "love",
+      "team",
+      "exercise",
+      "healthy",
+      "weekend",
+      "school",
+      "good",
+      "fun",
+      "train",
+      "member"
+    ],
+    "bonusPhrases": [
+      "play with my friends",
+      "after school",
+      "every weekend",
+      "keep fit"
+    ],
+    "keyExpressions": [
+      {
+        "group": "表达喜好",
+        "items": [
+          "My favourite sport is ...",
+          "I am fond of ...",
+          "I like playing ... very much",
+          "I am a member of the ... team"
+        ]
+      },
+      {
+        "group": "说明原因与好处",
+        "items": [
+          "It is good exercise, so it helps me keep fit.",
+          "Playing ... makes me happy.",
+          "It also teaches me to work together with my teammates.",
+          "I can ... with my friends after school."
+        ]
+      },
+      {
+        "group": "转折与克服困难",
+        "items": [
+          "However, ... is hard when we lose a game.",
+          "It is not easy for me, but I keep training every weekend.",
+          "Sometimes I want to give up, but I don't."
+        ]
+      },
+      {
+        "group": "总结观点",
+        "items": [
+          "In my opinion, sport makes our school life more fun.",
+          "I think exercise is the best way to stay healthy."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "My favourite sport is playing basketball.",
+      "I am a member of our school basketball team.",
+      "I play it with my friends after school every Wednesday.",
+      "I also play with them every weekend when we have time.",
+      "Basketball is good exercise, so it helps me keep fit and healthy.",
+      "It also teaches me to work together with my teammates.",
+      "However, training is hard when we lose a game.",
+      "In my opinion, sport makes our school life more fun and happy."
+    ]
+  },
+  {
+    "name": "teenage problems",
+    "hint": "青春期问题",
+    "keywords": [
+      "problem",
+      "study",
+      "stress",
+      "pressure",
+      "friend",
+      "family",
+      "parent",
+      "communicate",
+      "help",
+      "solve",
+      "grow",
+      "important",
+      "plan",
+      "advice"
+    ],
+    "bonusPhrases": [
+      "talk with",
+      "make a plan",
+      "ask for help"
+    ],
+    "keyExpressions": [
+      {
+        "group": "提出问题",
+        "items": [
+          "The biggest problem for me is ...",
+          "Many students have the same problem.",
+          "Teenage problems are common, but they can be solved."
+        ]
+      },
+      {
+        "group": "描述感受",
+        "items": [
+          "I sometimes feel stressed before an exam.",
+          "I am afraid of falling behind my classmates.",
+          "I don't know how to communicate with my parents."
+        ]
+      },
+      {
+        "group": "寻求帮助",
+        "items": [
+          "I talk with a good friend about it.",
+          "My parents gave me useful advice.",
+          "I learn to ask for help when I feel low."
+        ]
+      },
+      {
+        "group": "解决与成长",
+        "items": [
+          "Now I make a study plan every week.",
+          "It is important to grow up and learn to solve problems by ourselves.",
+          "Things look better now."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "Teenage problems are common, but they can be solved.",
+      "The biggest problem for me is study pressure.",
+      "Sometimes I feel very stressed before an exam.",
+      "My parents care too much about my marks, so I find it hard to communicate with them.",
+      "Last term a good friend helped me calm down.",
+      "My family also gave me useful advice about time.",
+      "Now I make a study plan every week.",
+      "It is important to grow up and learn to solve problems by ourselves."
+    ]
+  },
+  {
+    "name": "my school life",
+    "hint": "我的校园生活",
+    "keywords": [
+      "school",
+      "class",
+      "study",
+      "teacher",
+      "friend",
+      "subject",
+      "homework",
+      "club",
+      "activity",
+      "learn",
+      "happy",
+      "busy",
+      "after class"
+    ],
+    "bonusPhrases": [
+      "take part in",
+      "after class",
+      "learn a lot"
+    ],
+    "keyExpressions": [
+      {
+        "group": "描述学校生活",
+        "items": [
+          "Our school life is busy but happy.",
+          "I go to school at seven every morning.",
+          "I have six classes a day."
+        ]
+      },
+      {
+        "group": "学科与学习",
+        "items": [
+          "My favourite subject is English.",
+          "I study hard for my teachers.",
+          "I learn something new every day."
+        ]
+      },
+      {
+        "group": "课外活动",
+        "items": [
+          "After class, I take part in the photography club.",
+          "Our club has many activities, such as film shows.",
+          "I often join the school sports meeting."
+        ]
+      },
+      {
+        "group": "同伴与感受",
+        "items": [
+          "My friends in my class help me with my homework.",
+          "I am happy to study with them.",
+          "A busy school life is a happy school life."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "Our school life is busy but happy.",
+      "I go to school at seven every morning.",
+      "I have six classes a day, and my favourite subject is English.",
+      "I study hard for my teachers.",
+      "After class, I take part in the photography club.",
+      "Our club has many activities, such as film shows and book talks.",
+      "My friends in my class often help me with my maths homework.",
+      "I learn a lot at school, so a busy school life is a happy school life for me."
+    ]
+  },
+  {
+    "name": "my family",
+    "hint": "我的家庭",
+    "keywords": [
+      "family",
+      "father",
+      "mother",
+      "parent",
+      "brother",
+      "sister",
+      "grandparent",
+      "love",
+      "together",
+      "home",
+      "happy",
+      "support",
+      "weekend"
+    ],
+    "bonusPhrases": [
+      "spend time with",
+      "look after",
+      "my parents"
+    ],
+    "keyExpressions": [
+      {
+        "group": "介绍成员",
+        "items": [
+          "There are four people in my family.",
+          "My father is a doctor and my mother is a teacher.",
+          "My grandmother often tells us old stories."
+        ]
+      },
+      {
+        "group": "表达感情",
+        "items": [
+          "We love to stay together at home on weekends.",
+          "My family is small but warm.",
+          "I am happy to have such a loving family."
+        ]
+      },
+      {
+        "group": "家庭互助",
+        "items": [
+          "When I have a problem, my parents always support me.",
+          "My sister and I share the housework.",
+          "I look after my grandparents after school."
+        ]
+      },
+      {
+        "group": "让步与总结",
+        "items": [
+          "Although we are busy, we eat dinner together every evening.",
+          "My family is my safe place."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "My family is small but warm.",
+      "There are four people in my family: my father, my mother, my sister and me.",
+      "My father is a doctor and my mother is a teacher.",
+      "My grandmother often tells us old stories.",
+      "We love to spend time together at home every weekend.",
+      "When I have a problem, my parents always support me.",
+      "Although we are busy, we eat dinner together every evening.",
+      "I am happy to have such a loving family."
+    ]
+  },
+  {
+    "name": "learning english",
+    "hint": "学习英语",
+    "keywords": [
+      "english",
+      "learn",
+      "study",
+      "word",
+      "grammar",
+      "listen",
+      "speak",
+      "read",
+      "practice",
+      "interesting",
+      "useful",
+      "improve",
+      "every day"
+    ],
+    "bonusPhrases": [
+      "every day",
+      "watch english videos",
+      "speak more"
+    ],
+    "keyExpressions": [
+      {
+        "group": "说明学多久",
+        "items": [
+          "I have learned English for six years.",
+          "I started to learn English when I was seven."
+        ]
+      },
+      {
+        "group": "具体方法",
+        "items": [
+          "I read an English text aloud every morning.",
+          "I listen to English songs and watch English videos.",
+          "I study ten new words with my phone every day."
+        ]
+      },
+      {
+        "group": "面对困难",
+        "items": [
+          "Grammar is difficult, but I write the rules in my notebook.",
+          "I am afraid of making mistakes, but practice makes progress."
+        ]
+      },
+      {
+        "group": "说明价值与目标",
+        "items": [
+          "English is useful for my future.",
+          "I believe I will improve step by step."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "Learning English is interesting and useful.",
+      "I have learned English for six years.",
+      "Every morning I read an English text aloud for ten minutes.",
+      "I also listen to English songs and watch English videos.",
+      "At night I study ten new words with my phone.",
+      "Grammar is difficult, but I write the rules in my notebook.",
+      "My favourite way to practise is to talk with my classmates in English.",
+      "I believe I will improve step by step and speak more freely."
+    ]
+  },
+  {
+    "name": "my favourite book",
+    "hint": "我最喜欢的书",
+    "keywords": [
+      "book",
+      "read",
+      "story",
+      "author",
+      "interesting",
+      "learn",
+      "life",
+      "adventure",
+      "character",
+      "recommend",
+      "love",
+      "page",
+      "brave"
+    ],
+    "bonusPhrases": [
+      "teach me",
+      "read it twice",
+      "a lot of"
+    ],
+    "keyExpressions": [
+      {
+        "group": "介绍书名与作者",
+        "items": [
+          "My favourite book is a story about ...",
+          "The author writes about ...",
+          "I first read it in the school library."
+        ]
+      },
+      {
+        "group": "描述内容",
+        "items": [
+          "Every page is full of adventure.",
+          "The main character is kind and brave.",
+          "I have read it three times."
+        ]
+      },
+      {
+        "group": "谈收获",
+        "items": [
+          "I love the story because it teaches me to be brave.",
+          "From this book, I learn that a dream comes true with hard work."
+        ]
+      },
+      {
+        "group": "推荐给他人",
+        "items": [
+          "I recommend it to every student who likes a warm story.",
+          "If you want a good story, read this book."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "My favourite book is a story about a young pilot.",
+      "I first read it in the school library two years ago.",
+      "The author writes about life on a small island.",
+      "Every page is full of adventure, so I could not stop reading.",
+      "The main character is kind and brave, and I love him.",
+      "From this book, I learn that a dream comes true with hard work.",
+      "I have read it three times, and it is still interesting.",
+      "I recommend it to every student who likes a warm story."
+    ]
+  },
+  {
+    "name": "environmental protection",
+    "hint": "环境保护",
+    "keywords": [
+      "environment",
+      "protect",
+      "pollution",
+      "rubbish",
+      "recycle",
+      "save",
+      "energy",
+      "waste",
+      "nature",
+      "important",
+      "together",
+      "action",
+      "city"
+    ],
+    "bonusPhrases": [
+      "throw away",
+      "plant trees",
+      "pick up"
+    ],
+    "keyExpressions": [
+      {
+        "group": "指出问题",
+        "items": [
+          "Environmental protection is important to all of us.",
+          "Air pollution and rubbish are two big problems in our city.",
+          "Many people waste water and energy at home."
+        ]
+      },
+      {
+        "group": "提出做法",
+        "items": [
+          "We should save energy by turning off the lights.",
+          "We can recycle paper and bottles instead of throwing them away.",
+          "We should plant trees and pick up rubbish in the park."
+        ]
+      },
+      {
+        "group": "强调合作",
+        "items": [
+          "One person cannot do much, but we can act together.",
+          "Small actions really make a difference."
+        ]
+      },
+      {
+        "group": "呼吁行动",
+        "items": [
+          "Let's protect nature and make our city cleaner.",
+          "I will start from my own school."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "Environmental protection is important to all of us.",
+      "In our city, air pollution and rubbish are two big problems.",
+      "Many people waste water and energy every day at home.",
+      "We should save energy by turning off the lights when we leave a room.",
+      "We can also recycle paper and bottles instead of throwing them away.",
+      "At school, my classmates and I pick up rubbish in the park every month.",
+      "However, one person cannot do much, so we must act together.",
+      "Small actions really make a difference, and we can protect nature."
+    ]
+  },
+  {
+    "name": "my dream",
+    "hint": "我的梦想",
+    "keywords": [
+      "dream",
+      "want",
+      "become",
+      "future",
+      "hope",
+      "job",
+      "study",
+      "hard",
+      "achieve",
+      "goal",
+      "believe",
+      "try",
+      "university"
+    ],
+    "bonusPhrases": [
+      "in the future",
+      "work hard",
+      "make my dream come true"
+    ],
+    "keyExpressions": [
+      {
+        "group": "说出梦想",
+        "items": [
+          "My dream is to become a science teacher.",
+          "When I was a child, I wanted to be a doctor.",
+          "I hope to go to a good university in the future."
+        ]
+      },
+      {
+        "group": "为什么想",
+        "items": [
+          "I want to help young students love science.",
+          "I like working with children, so I want this job."
+        ]
+      },
+      {
+        "group": "遇到的困难",
+        "items": [
+          "I know it is not easy to achieve this goal.",
+          "Sometimes I feel tired, but I never want to give up."
+        ]
+      },
+      {
+        "group": "表达决心",
+        "items": [
+          "I believe that a dream comes true with hard work.",
+          "So I try my best in every class."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "My dream is to become a science teacher.",
+      "When I was a child, I wanted to be a doctor.",
+      "Now I study hard because I hope to go to a good university.",
+      "In the future, I want to work with young students and help them love science.",
+      "I know it is not easy to achieve this goal.",
+      "Sometimes I feel tired, but I never want to give up.",
+      "I believe that a dream comes true with hard work.",
+      "So I try my best in every class to make my dream come true."
+    ]
+  },
+  {
+    "name": "my hometown",
+    "hint": "我的家乡",
+    "keywords": [
+      "hometown",
+      "city",
+      "river",
+      "bridge",
+      "park",
+      "street",
+      "market",
+      "friendly",
+      "famous",
+      "food",
+      "change",
+      "love",
+      "beautiful"
+    ],
+    "bonusPhrases": [
+      "near my home",
+      "in the morning",
+      "people are friendly"
+    ],
+    "keyExpressions": [
+      {
+        "group": "介绍位置与样子",
+        "items": [
+          "My hometown is a water city in east China.",
+          "There are many small rivers and old bridges.",
+          "The streets are narrow, but they are clean."
+        ]
+      },
+      {
+        "group": "写生活与食物",
+        "items": [
+          "In the morning, people go to the market.",
+          "My city is famous for its gardens and silk.",
+          "The food here is fresh and delicious."
+        ]
+      },
+      {
+        "group": "写人与变化",
+        "items": [
+          "People here are warm and friendly to visitors.",
+          "However, my hometown is changing fast, with new roads and tall buildings."
+        ]
+      },
+      {
+        "group": "表达喜爱",
+        "items": [
+          "I love my hometown, and I hope it will stay beautiful.",
+          "It is the place where I grow up."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "My hometown is a water city in east China.",
+      "There are many small rivers and old bridges in my hometown.",
+      "The streets are narrow, but they are clean and busy.",
+      "In the morning, people go to the market to buy fresh food.",
+      "My city is famous for its gardens and its silk.",
+      "Near my home there is a small park, and I often play there with my friends.",
+      "However, my hometown is changing fast, with new roads and tall buildings.",
+      "I love my hometown, and I hope it will always be beautiful."
+    ]
+  },
+  {
+    "name": "my favourite festival",
+    "hint": "我最喜欢的节日",
+    "keywords": [
+      "festival",
+      "celebrate",
+      "family",
+      "dinner",
+      "holiday",
+      "moon",
+      "dumplings",
+      "happy",
+      "tradition",
+      "remember",
+      "together",
+      "visit"
+    ],
+    "bonusPhrases": [
+      "every year",
+      "get together",
+      "a happy new year"
+    ],
+    "keyExpressions": [
+      {
+        "group": "点明节日",
+        "items": [
+          "My favourite festival is the Spring Festival.",
+          "It is the most important traditional festival in China.",
+          "The Mid-Autumn Festival comes in September or October."
+        ]
+      },
+      {
+        "group": "写习俗",
+        "items": [
+          "Before the festival, my family clean the house and put up red couplets.",
+          "On New Year's Eve, we have a big dinner together.",
+          "My grandmother always makes dumplings, and I help her."
+        ]
+      },
+      {
+        "group": "写回忆",
+        "items": [
+          "I remember that my grandmother always gave me a red packet.",
+          "We visit our relatives and say happy new year."
+        ]
+      },
+      {
+        "group": "写意义",
+        "items": [
+          "The festival brings our family together.",
+          "It is a warm and happy time for me."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "My favourite festival is the Spring Festival.",
+      "It is the most important traditional festival in China.",
+      "Before the festival, my family clean the house and put up red couplets.",
+      "On New Year's Eve, we have a big dinner together, and my grandmother tells us old stories.",
+      "My grandmother always makes dumplings, and I help her in the kitchen.",
+      "Then we watch the Spring Festival Gala on TV.",
+      "On the first morning, we visit our relatives and say happy new year.",
+      "I remember that my grandmother always gave me a red packet, so I am always happy then."
+    ]
+  },
+  {
+    "name": "how to stay healthy",
+    "hint": "如何保持健康",
+    "keywords": [
+      "healthy",
+      "exercise",
+      "sleep",
+      "breakfast",
+      "vegetable",
+      "water",
+      "habit",
+      "rest",
+      "diet",
+      "strong",
+      "avoid",
+      "early"
+    ],
+    "bonusPhrases": [
+      "keep fit",
+      "go to bed early",
+      "every day"
+    ],
+    "keyExpressions": [
+      {
+        "group": "提出观点",
+        "items": [
+          "Staying healthy is important for students.",
+          "Good habits help us keep fit.",
+          "I try to keep three good habits."
+        ]
+      },
+      {
+        "group": "具体做法",
+        "items": [
+          "First, I exercise for half an hour every day.",
+          "Second, I go to bed early and get up at six, so I have enough sleep.",
+          "I never skip breakfast; I eat bread, an egg and a glass of milk."
+        ]
+      },
+      {
+        "group": "饮食建议",
+        "items": [
+          "I drink enough water and eat more vegetables than meat.",
+          "I avoid junk food, because it does more harm than good."
+        ]
+      },
+      {
+        "group": "总结",
+        "items": [
+          "If we eat well and rest well, we will be strong and happy.",
+          "A healthy diet and enough rest make me strong."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "Staying healthy is important for students.",
+      "I try to keep three good habits.",
+      "First, I exercise for half an hour every day.",
+      "Second, I go to bed early and get up at six, so I have enough sleep for study.",
+      "I never skip breakfast; I eat bread, an egg and a glass of milk.",
+      "I also drink enough water and eat more vegetables than meat.",
+      "I used to stay up late and drink cola, but now I avoid junk food.",
+      "If we eat well and rest well, we will be strong and happy."
+    ]
+  },
+  {
+    "name": "technology in my life",
+    "hint": "科技与我生活",
+    "keywords": [
+      "technology",
+      "phone",
+      "computer",
+      "internet",
+      "online",
+      "message",
+      "study",
+      "convenient",
+      "problem",
+      "careful",
+      "information",
+      "future",
+      "screen"
+    ],
+    "bonusPhrases": [
+      "every day",
+      "in the future",
+      "use it carefully"
+    ],
+    "keyExpressions": [
+      {
+        "group": "说明用途",
+        "items": [
+          "I use my phone to check words and read English news.",
+          "My father uses a computer for his work.",
+          "With the internet, I can talk with my grandparents for free."
+        ]
+      },
+      {
+        "group": "说明好处",
+        "items": [
+          "It makes my study more convenient.",
+          "I can search for information in a few seconds."
+        ]
+      },
+      {
+        "group": "指出问题",
+        "items": [
+          "However, too much screen time is bad for my eyes.",
+          "Sometimes I play with my phone when I should do my homework."
+        ]
+      },
+      {
+        "group": "表达态度",
+        "items": [
+          "So I put my phone in another room after nine o'clock.",
+          "In the future, technology will bring more changes, so we must use it carefully."
+        ]
+      }
+    ],
+    "sampleAnswer": [
+      "Technology has changed my life in many ways.",
+      "I use my phone to check words and read English news every day.",
+      "My father uses a computer for his work, and my mother likes watching videos online.",
+      "With the internet, I can talk with my grandparents far away for free.",
+      "It also makes my study more convenient, because I can search for information in a few seconds.",
+      "However, too much screen time is bad for my eyes.",
+      "Sometimes I use my phone when I should be doing my homework, so I put it away after nine o'clock.",
+      "In the future, technology will bring us more changes, so we must use it carefully."
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+  src/ui/index.html —— 界面模板（ui 组维护）
+
+  注意：根 index.html 由 Lead 独占维护，用于 Vite 构建入口。
+  本文件是同一套界面的独立模板，便于本地直接预览 src/ui 下的实现。
+-->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="开源自托管的英语听力口语练习：纯浏览器运行，音频不出浏览器，反馈是能力诊断而非考场估分。" />
+    <title>英语听力口语 · 模拟考场</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- createApp() 会把界面渲染进这个容器；#app 不存在时会自动创建 -->
+    <div id="app"></div>
+
+    <noscript>
+      <div style="padding: 24px; font-family: system-ui, sans-serif; line-height: 1.7">
+        <h1>需要启用 JavaScript</h1>
+        <p>本产品的录音、发音分析与反馈全部在你的浏览器里完成，必须启用 JavaScript 才能运行。</p>
+        <p>我们不使用任何后端服务，也不需要你注册账号。</p>
+      </div>
+    </noscript>
+
+    <script type="module">
+      // 界面自举：未注入分析引擎时自动回退到规则诊断（L0），页面不会白屏。
+      import { boot, loadTheme, applyTheme } from './app.ts';
+
+      // 先恢复上次选择的主题（浅色 / 深色 / 跟随系统）
+      applyTheme(loadTheme());
+
+      const app = boot({});
+      // 暴露到 window，方便 Lead 在 src/main.ts 里替换为 createApp(mount, { engine })
+      window.__OELS_APP__ = app;
+    </script>
+  </body>
+</html>

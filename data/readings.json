@@ -1,0 +1,746 @@
+[
+  {
+    "id": "rd-01",
+    "textbook": "七上 U2 Reading",
+    "book": "七上",
+    "unitTheme": "Let's play sports! · 运动与球类",
+    "positionSource": "教材对标建议",
+    "title": "A Football Match",
+    "text": "Last Sunday our class played football against Class Two. It was my first match, so I felt a little nervous. Our teacher told us to play as a team and not to be afraid. In the first half, we got one goal. In the second half, the other team played hard, but we did not give up. At last we won the match two to one. I was tired, yet I felt very happy. Football is not only about winning. It also teaches us to work together and never lose heart.",
+    "wordCount": 91,
+    "difficulty": 1,
+    "tags": [
+      "运动",
+      "校园",
+      "合作"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "play as a team",
+        "note": "连读：play-as-a-team，重音落在 team"
+      },
+      {
+        "phrase": "did not",
+        "note": "失去爆破：/dɪd ə/，not 轻读"
+      },
+      {
+        "phrase": "two to one",
+        "note": "意群停顿：two to / one"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-02",
+    "textbook": "七上 U3 Task",
+    "book": "七上",
+    "unitTheme": "Welcome to our school! · 校园与学习生活",
+    "positionSource": "2026 省通知",
+    "title": "Welcome to Our New School",
+    "text": "Our new school is not far from my home. It has eight floors and a big playground in front. On the first floor there is a reading room with thousands of books. Our classrooms are bright and clean, and every desk has a small bookshelf. There is also a computer room and a music room on the third floor. I like our new school best because I can learn a lot here. Our teachers are young and kind. We all feel happy in this building.",
+    "wordCount": 85,
+    "difficulty": 1,
+    "tags": [
+      "校园",
+      "学校介绍",
+      "学习生活"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "not far from",
+        "note": "连读：/nɒt fɑː frəm/，from 弱读"
+      },
+      {
+        "phrase": "a reading room",
+        "note": "连读：a-read-ing-room"
+      },
+      {
+        "phrase": "feel happy in this building",
+        "note": "意群停顿：feel happy / in this building"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-03",
+    "textbook": "七上 U4 Task",
+    "book": "七上",
+    "unitTheme": "My day · 校园日常作息",
+    "positionSource": "教材对标建议",
+    "title": "My School Day",
+    "text": "I get up at six every morning. After breakfast, I walk to school with my friend Lily. Classes begin at eight. We have four lessons in the morning and two in the afternoon. I like English and history best, but maths is difficult for me. After school, I often play basketball for half an hour. Then I do my homework and read for ten minutes before bed. A busy day makes me feel tired, but I never feel bored.",
+    "wordCount": 79,
+    "difficulty": 1,
+    "tags": [
+      "作息",
+      "校园",
+      "日常生活"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "get up at six",
+        "note": "连读：get-up-at-six，介词 at 弱读"
+      },
+      {
+        "phrase": "play basketball",
+        "note": "连读：play-basket-ball"
+      },
+      {
+        "phrase": "feel tired, but",
+        "note": "意群停顿：tired / but"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-04",
+    "textbook": "七上 U5 Reading",
+    "book": "七上",
+    "unitTheme": "Let's celebrate! · 节日与庆祝",
+    "positionSource": "教材对标建议",
+    "title": "A Happy Mid-Autumn Festival",
+    "text": "The Mid-Autumn Festival is an important festival in China. It comes in September or October. On that day, my family often sits together and eats mooncakes while we look at the bright moon. My grandma always tells us the story of Chang'e. Last year my parents came home early, and we made twenty mooncakes in the kitchen. My little brother wanted to eat them all, but my mother stopped him. We sent some to our neighbours, too. That night we all felt warm and happy.",
+    "wordCount": 85,
+    "difficulty": 2,
+    "tags": [
+      "节日",
+      "家庭",
+      "传统"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "an important festival",
+        "note": "连读：an-im-por-tant-fes-ti-val"
+      },
+      {
+        "phrase": "look at the bright moon",
+        "note": "意群停顿：look at / the bright moon"
+      },
+      {
+        "phrase": "wanted to eat them all",
+        "note": "连读：wanted-to-eat-them-all"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-05",
+    "textbook": "七上 U6 Task",
+    "book": "七上",
+    "unitTheme": "Food and lifestyle · 健康饮食与生活方式",
+    "positionSource": "教材对标建议",
+    "title": "A Healthy Breakfast",
+    "text": "Good food keeps us healthy. I have a simple breakfast every morning: an egg, a glass of milk and a small piece of bread. I also eat fruit after lunch. My grandmother used to give me chips and cola, but our doctor said they were not good for us. Now I drink water instead. I think a healthy lifestyle is not only about food. We should also do sports and go to bed early. If we take care of our body, we can study better.",
+    "wordCount": 85,
+    "difficulty": 2,
+    "tags": [
+      "健康",
+      "饮食",
+      "生活方式"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "a glass of milk",
+        "note": "连读：a-glass-of-milk，of 弱读"
+      },
+      {
+        "phrase": "used to give me",
+        "note": "连读：used-to / give-me"
+      },
+      {
+        "phrase": "go to bed early",
+        "note": "意群停顿：go to bed / early"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-06",
+    "textbook": "七上 U8 Reading",
+    "book": "七上",
+    "unitTheme": "Fashion · 服装与时尚",
+    "positionSource": "教材对标建议",
+    "title": "Our School Fashion Show",
+    "text": "Last month our school held a fashion show. Twenty students showed their own clothes. Tom made a coat out of old jeans. Sara wore a long dress made of cotton. I wore a white shirt and a pair of shorts that my mother sewed for me. We walked onto the stage to light music. The judges looked at our clothes and asked us questions. Tom's coat won the first prize because it was creative and cheap. I did not win, but I still felt proud of my clothes.",
+    "wordCount": 88,
+    "difficulty": 2,
+    "tags": [
+      "服装",
+      "校园活动",
+      "创意"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "out of old jeans",
+        "note": "连读：out-of / old-jeans"
+      },
+      {
+        "phrase": "walked onto the stage",
+        "note": "意群停顿：walked onto / the stage"
+      },
+      {
+        "phrase": "cheap",
+        "note": "弱读：连读结尾 /tʃiːp/ 与后面的词连起来"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-07",
+    "textbook": "七下 U1 Reading",
+    "book": "七下",
+    "unitTheme": "Home · 家与家庭生活",
+    "positionSource": "教材对标建议",
+    "title": "A Small but Warm Home",
+    "text": "My home is small, but it is very warm. It is a two-bedroom flat on the fifth floor. My grandparents live with us, so our family has six people. There is a small balcony, and my grandma grows tomatoes and green beans there. My desk is under the window. Every evening the whole family sits there and talks about the day. We often argue about small things, but nobody is angry for long. Home is not about size. It is about the people inside it.",
+    "wordCount": 85,
+    "difficulty": 2,
+    "tags": [
+      "家庭",
+      "家",
+      "祖辈"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "a two-bedroom flat",
+        "note": "连读：two-bed-room-flat"
+      },
+      {
+        "phrase": "lives with us",
+        "note": "连读：lives-with / us"
+      },
+      {
+        "phrase": "nobody is angry for long",
+        "note": "意群停顿：nobody is angry / for long"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-08",
+    "textbook": "七下 U3 Reading",
+    "book": "七下",
+    "unitTheme": "My hometown · 家乡",
+    "positionSource": "教材对标建议",
+    "title": "My Hometown",
+    "text": "My hometown is a beautiful water city in east China. There are many small bridges over the rivers. In the early morning, boats carry fresh vegetables to the market. People here are friendly and they often say hello to strangers. The old town is famous for its stone streets and garden houses. My favourite place is a small park near the river, where I read books and watch boats. My hometown is changing fast, with new roads and tall buildings, but I still love its quiet streets.",
+    "wordCount": 87,
+    "difficulty": 2,
+    "tags": [
+      "家乡",
+      "苏州",
+      "城市"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "a beautiful water city",
+        "note": "连读：beau-ti-ful，词尾元音连到 water"
+      },
+      {
+        "phrase": "say hello to strangers",
+        "note": "意群停顿：say hello / to strangers"
+      },
+      {
+        "phrase": "changing fast, with new roads",
+        "note": "失去爆破：fast 后不爆破"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-09",
+    "textbook": "七下 U4 Task",
+    "book": "七下",
+    "unitTheme": "Chinese folk art · 中国民间艺术",
+    "positionSource": "教材对标建议",
+    "title": "Paper Cutting",
+    "text": "Paper cutting is an old Chinese folk art. My grandmother started learning it when she was young. Every winter she sits by the window and cuts red paper. She does not draw first. She folds the paper and cuts it with her small scissors. In a few minutes, a fish or a flower appears. People put these works on their windows before the Spring Festival. Last year our school asked her to show us how to cut a paper horse. She was happy, and so were we.",
+    "wordCount": 87,
+    "difficulty": 2,
+    "tags": [
+      "民间艺术",
+      "剪纸",
+      "祖辈"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "an old Chinese folk art",
+        "note": "连读：old-Chi-nese，连读处重音后移"
+      },
+      {
+        "phrase": "cuts red paper",
+        "note": "意群停顿：cuts / red paper"
+      },
+      {
+        "phrase": "a paper horse",
+        "note": "连读：pa-per-horse"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-10",
+    "textbook": "七下 U5 Reading",
+    "book": "七下",
+    "unitTheme": "Animal friends · 动物朋友",
+    "positionSource": "教材对标建议",
+    "title": "My Dog Doudou",
+    "text": "My dog is called Doudou. He is two years old and white with black ears. He is not a big dog, but he is very strong. Every morning he runs with me in the park. After dinner, he waits by the door and looks at my shoes. If I put on my running shoes, he becomes wild with joy. Once I fell down on the road, and Doudou stayed beside me until my mother came. Dogs cannot speak, but they can understand our feelings.",
+    "wordCount": 84,
+    "difficulty": 2,
+    "tags": [
+      "动物",
+      "宠物",
+      "情感"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "white with black ears",
+        "note": "连读：white-with，连读处不爆破"
+      },
+      {
+        "phrase": "wild with joy",
+        "note": "意群停顿：wild / with joy"
+      },
+      {
+        "phrase": "stayed beside me",
+        "note": "连读：stayed-be-side"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-11",
+    "textbook": "七下 U6 Task",
+    "book": "七下",
+    "unitTheme": "Beautiful landscapes · 美丽风景",
+    "positionSource": "2026 省通知",
+    "title": "A Morning by the Lake",
+    "text": "The lake is only ten minutes' walk from my village. I go there with my father almost every weekend. We leave home before sunrise, so the sky is still grey and quiet. Soon the sun comes up behind the hills, and the water turns gold. Mist floats over the water like soft white cloth. Birds call in the reeds, and a small boat moves slowly across the lake. We sit on the bank, drink hot tea and say nothing. Such a morning makes me calm and free.",
+    "wordCount": 87,
+    "difficulty": 3,
+    "tags": [
+      "自然",
+      "风景",
+      "亲子"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "ten minutes' walk",
+        "note": "名词所有格连读：minutes' walk"
+      },
+      {
+        "phrase": "before sunrise",
+        "note": "连读：be-fore-sun-rise"
+      },
+      {
+        "phrase": "Mist floats over the water",
+        "note": "意群停顿：Mist floats / over the water"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-12",
+    "textbook": "七下 U7 Reading",
+    "book": "七下",
+    "unitTheme": "Outdoor fun · 户外活动",
+    "positionSource": "教材对标建议",
+    "title": "Camping in the Forest",
+    "text": "Last summer our class had a two-day camping trip in the forest. We put up six tents in a clearing. It took us almost an hour. In the afternoon we made a fire and cooked noodles. The wind was strong, so we worked in teams. At night we sat around the fire and told stories. The sky was full of stars, and nobody wanted to sleep. In the morning, birds woke us up early. We cleaned the site and left no rubbish behind. It was the best trip of the year.",
+    "wordCount": 91,
+    "difficulty": 3,
+    "tags": [
+      "户外",
+      "野营",
+      "团队"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "put up six tents",
+        "note": "连读：put-up / six-tents"
+      },
+      {
+        "phrase": "made a fire",
+        "note": "意群停顿：made / a fire"
+      },
+      {
+        "phrase": "left no rubbish behind",
+        "note": "意群停顿：left no rubbish / behind"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-13",
+    "textbook": "八上 U1 Reading",
+    "book": "八上",
+    "unitTheme": "Friends · 朋友与友谊",
+    "positionSource": "教材对标建议",
+    "title": "A Friend in Need",
+    "text": "Jack and I have been friends since Grade 7. He is quiet and careful, while I am noisy and careless. Last term I was ill for a week. When I came back, Jack gave me his notes and explained the new lessons to me every afternoon. He did not ask for thanks. Later, I helped him with maths, because he was not good at numbers. A good friend is not the one who talks most. It is the one who stays when things get difficult.",
+    "wordCount": 85,
+    "difficulty": 2,
+    "tags": [
+      "朋友",
+      "校园",
+      "互助"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "been friends since",
+        "note": "连读：friends-since"
+      },
+      {
+        "phrase": "explained the new lessons to me",
+        "note": "意群停顿：explained the lessons / to me"
+      },
+      {
+        "phrase": "asks for thanks",
+        "note": "连读：thanks 后不爆破"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-14",
+    "textbook": "八上 U2 Task",
+    "book": "八上",
+    "unitTheme": "School life · 校园生活",
+    "positionSource": "教材对标建议",
+    "title": "Our School Life Has Changed",
+    "text": "Our school life has changed a lot in the past two years. There are more subject choices now, and every student can join two clubs. We have more computers in the classroom, so lessons are more interesting. We also have a new reading room and a bigger playground. However, our homework is heavier than before, and we have less free time. Some students feel tired after school. Our head teacher says we should learn better, not just work longer.",
+    "wordCount": 79,
+    "difficulty": 3,
+    "tags": [
+      "校园生活",
+      "变化",
+      "学习压力"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "has changed a lot",
+        "note": "连读：changed-a / lot"
+      },
+      {
+        "phrase": "more interesting",
+        "note": "意群停顿：more / interesting"
+      },
+      {
+        "phrase": "learn better, not just work longer",
+        "note": "意群停顿：learn better / not just work longer"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-15",
+    "textbook": "八上 U6 Reading",
+    "book": "八上",
+    "unitTheme": "Birdwatching · 观鸟与自然保护",
+    "positionSource": "教材对标建议",
+    "title": "Birds in the Wetland",
+    "text": "There is a wetland park near my home. About one hundred kinds of birds live there. Last Sunday my father and I took our binoculars and walked along the wood path. We saw white egrets standing in the water and grey herons flying slowly over the trees. A kingfisher sat on a branch like a small blue stone. We kept quiet, because loud noise frightens birds. We did not feed them, either. Birdwatching needs only a pair of eyes, but it teaches us to be gentle with nature.",
+    "wordCount": 88,
+    "difficulty": 3,
+    "tags": [
+      "观鸟",
+      "湿地",
+      "环保"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "took our binoculars",
+        "note": "连读：took-our / bi-no-cu-lars"
+      },
+      {
+        "phrase": "flying slowly over",
+        "note": "连读：fly-ing-slow-ly"
+      },
+      {
+        "phrase": "be gentle with nature",
+        "note": "意群停顿：be gentle / with nature"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-16",
+    "textbook": "八上 U8 Task",
+    "book": "八上",
+    "unitTheme": "Natural disasters · 自然灾害",
+    "positionSource": "教材对标建议",
+    "title": "The Night of the Big Storm",
+    "text": "A big storm hit our town one summer night. The wind broke a tree near our building, and the power went out at once. Our family sat by the windows and listened to the rain. My mother found a candle and put it on the table. Soon we heard someone outside shouting for help. An old man had fallen in the dark. My father and two neighbours carried him home and called a doctor. Nobody was hurt. The next morning the sun came out and the streets were full of fallen branches.",
+    "wordCount": 92,
+    "difficulty": 3,
+    "tags": [
+      "自然灾害",
+      "邻里互助",
+      "安全"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "hit our town one summer night",
+        "note": "意群停顿：hit our town / one summer night"
+      },
+      {
+        "phrase": "went out at once",
+        "note": "连读：went-out-a / once"
+      },
+      {
+        "phrase": "shouting for help",
+        "note": "连读：shout-ing-for / help"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-17",
+    "textbook": "八下 U2 Reading",
+    "book": "八下",
+    "unitTheme": "Travelling · 旅行与名胜",
+    "positionSource": "教材对标建议",
+    "title": "A Weekend in a Water Town",
+    "text": "Last October my parents and I visited an old water town near our city. We walked along narrow stone streets and crossed a dozen small bridges. A boat took us under the big stone bridge, and the boatman sang a local song. We ate green dumplings in a restaurant by the river. In the afternoon we visited an old silk factory and learned how silk is made. The town was quiet in the evening, and the lights came on above the water. I took a lot of photos that day.",
+    "wordCount": 90,
+    "difficulty": 3,
+    "tags": [
+      "旅行",
+      "古镇",
+      "文化"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "a dozen small bridges",
+        "note": "连读：do-zen-small"
+      },
+      {
+        "phrase": "in a restaurant by the river",
+        "note": "意群停顿：in a restaurant / by the river"
+      },
+      {
+        "phrase": "how silk is made",
+        "note": "弱读：how / is"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-18",
+    "textbook": "八下 U6 Reading",
+    "book": "八下",
+    "unitTheme": "Sunshine for all · 关爱他人与志愿服务",
+    "positionSource": "教材对标建议",
+    "title": "Helping the Community",
+    "text": "Every Sunday a group of students comes to our community centre. We are all volunteers. Some of us teach old people how to use mobile phones. Others clean the reading room or help children with their homework. Mr Li, a man in his seventies, cannot read well, but he can repair clocks. Now he teaches us, and we teach him. A teacher once told us that helping others is also a way of helping ourselves. Now our free Saturdays have a new meaning.",
+    "wordCount": 83,
+    "difficulty": 3,
+    "tags": [
+      "志愿服务",
+      "关爱",
+      "社区"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "comes to our community centre",
+        "note": "连读：comes-to / comm-u-ni-ty"
+      },
+      {
+        "phrase": "cannot read well",
+        "note": "意群停顿：cannot / read well"
+      },
+      {
+        "phrase": "a way of helping ourselves",
+        "note": "连读：help-ing our-selves"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-19",
+    "textbook": "八下 U7 Task",
+    "book": "八下",
+    "unitTheme": "International charities · 国际慈善与公益",
+    "positionSource": "2026 省通知",
+    "title": "A Doctor Who Helps the World",
+    "text": "Charities help people in many countries. Some collect money. Others send doctors and medicine. In one charity hospital, doctors from many countries work together. A young doctor from China went there for two years. He learned to work in a language that was not his own. He also taught local nurses new skills. Every weekend he joined a charity walk in the city, and many strangers gave money for free eye surgery. A small team can do great things when people work together.",
+    "wordCount": 83,
+    "difficulty": 3,
+    "tags": [
+      "慈善",
+      "公益",
+      "国际合作"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "collect money",
+        "note": "连读：col-lect 重音前移"
+      },
+      {
+        "phrase": "work in a language",
+        "note": "意群停顿：work in / a language"
+      },
+      {
+        "phrase": "give money for free eye surgery",
+        "note": "意群停顿：give money / for free eye surgery"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-20",
+    "textbook": "八下 U8 Task",
+    "book": "八下",
+    "unitTheme": "A green world · 绿色生活",
+    "positionSource": "教材对标建议",
+    "title": "Small Green Actions",
+    "text": "A green life does not need big money. In our class, we turn off the lights when we leave a room. We use both sides of our paper. Our school sorts rubbish into different bins, and we put bottles in the right one. Last spring we planted twenty young trees along the road. Some of them grew well, but two died. Now we water them twice a week. A teacher said that a green habit is like a small seed. It grows quietly, and one day it becomes a tree.",
+    "wordCount": 90,
+    "difficulty": 3,
+    "tags": [
+      "环保",
+      "绿色生活",
+      "校园行动"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "does not need",
+        "note": "连读：does-not / need"
+      },
+      {
+        "phrase": "into different bins",
+        "note": "意群停顿：into / different bins"
+      },
+      {
+        "phrase": "a green habit is like a small seed",
+        "note": "意群停顿：a green habit / is like a small seed"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-21",
+    "textbook": "九上 U3 Reading",
+    "book": "九上",
+    "unitTheme": "Teenage problems · 青春期烦恼",
+    "positionSource": "教材对标建议",
+    "title": "Too Many Choices",
+    "text": "Being a teenager is not always easy. I have faced many problems this year. The hardest one is choosing a good study plan. There are many courses, and I am afraid of falling behind my classmates. Sometimes I feel tired and want to give up. My parents only care about my scores, so I do not like talking with them. Last month my friend told me to tell my parents how I felt. We talked for an hour, and they helped me make a simple plan. Things look better now.",
+    "wordCount": 90,
+    "difficulty": 3,
+    "tags": [
+      "青春期",
+      "压力",
+      "沟通"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "not always easy",
+        "note": "连读：not-al-ways-ea-sy"
+      },
+      {
+        "phrase": "want to give up",
+        "note": "意群停顿：want to / give up"
+      },
+      {
+        "phrase": "care about my scores",
+        "note": "连读：scores 后轻微不爆破"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-22",
+    "textbook": "九上 U7 Reading",
+    "book": "九上",
+    "unitTheme": "Films · 电影",
+    "positionSource": "2026 省通知",
+    "title": "A Film I Will Never Forget",
+    "text": "My school showed an English film last Friday. It was about a young doctor who worked in a small village. At first I was not interested, because I had seen many films like this. Half an hour later, however, I could not stop crying. The story was simple, but the music and the faces made it real. After the film, three students stayed to talk about it. A film can teach us more than a long book, because we see it with our own eyes and our heart.",
+    "wordCount": 88,
+    "difficulty": 3,
+    "tags": [
+      "电影",
+      "校园活动",
+      "感受"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "showed an English film",
+        "note": "连读：showed-an / Eng-lish-film"
+      },
+      {
+        "phrase": "not interested, because",
+        "note": "意群停顿：not interested / because"
+      },
+      {
+        "phrase": "with our own eyes and our heart",
+        "note": "意群停顿：with our own eyes / and our heart"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-23",
+    "textbook": "九下 U2 Reading",
+    "book": "九下",
+    "unitTheme": "Great people · 伟人与榜样",
+    "positionSource": "2026 省通知",
+    "title": "The Doctor in the Mountains",
+    "text": "Dr Wang worked in a small village high in the mountains. For twenty years, he walked two hours every morning to see his patients. Some were very old, and some were too poor to go to hospital. He never asked them for money. Last winter the road was covered with snow, and Dr Wang still went to a far family. People say he is a great man, but he simply smiles and says that caring for others is his work. Great people are often the quietest ones.",
+    "wordCount": 87,
+    "difficulty": 3,
+    "tags": [
+      "伟人",
+      "奉献",
+      "乡村"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "walked two hours every morning",
+        "note": "意群停顿：two hours / every morning"
+      },
+      {
+        "phrase": "too poor to go to hospital",
+        "note": "连读：too-poor-to-go"
+      },
+      {
+        "phrase": "he simply smiles and says",
+        "note": "弱读：simply-s-miles"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  },
+  {
+    "id": "rd-24",
+    "textbook": "九下 U4 Reading",
+    "book": "九下",
+    "unitTheme": "Life on Mars · 火星生活与未来",
+    "positionSource": "2026 省通知",
+    "title": "A Day on Mars",
+    "text": "Imagine living on Mars. The sky there is orange, and the air is thin, so people must wear special clothes. There is no rain, but robots collect ice from deep under the ground. In our town, houses are built half under the ground to keep cool. Students learn in a big hall, and they walk to school with small flying bikes. Food comes from greenhouses, so we still eat rice and vegetables. Life on Mars is hard, but it is not boring at all.",
+    "wordCount": 84,
+    "difficulty": 3,
+    "tags": [
+      "科幻",
+      "火星",
+      "未来生活"
+    ],
+    "phonicsCues": [
+      {
+        "phrase": "wear special clothes",
+        "note": "连读：wear-spe-cial"
+      },
+      {
+        "phrase": "collect ice from deep",
+        "note": "意群停顿：collect ice / from deep under the ground"
+      },
+      {
+        "phrase": "hard, but it is not boring",
+        "note": "意群停顿：hard / but it is not boring"
+      }
+    ],
+    "note": "等效练习材料，非教材原文；教材位置用于命题对标，朗读训练用"
+  }
+]

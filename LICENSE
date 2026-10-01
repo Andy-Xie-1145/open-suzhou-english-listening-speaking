@@ -1,0 +1,30 @@
+GNU AFFERO GENERAL PUBLIC LICENSE
+Version 3, 19 November 2007
+
+Copyright (C) 2026 Open English Listening and Speaking contributors
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+---
+
+关于选择 AGPL-3.0-only 的理由：
+
+本项目采用零服务端架构，浏览器端直接调用用户自己的模型 API key。
+AGPL 覆盖网络交互场景，因此：
+- 允许 espeak-ng (GPL-3.0)、espeak-phonemizer (GPL-3.0-only) 直接并入，无许可障碍
+- 唯一的义务是开源 —— 而本项目本来就是开源的
+- 未来若增加自建后端或接入付费 API，许可证不构成任何限制
+- 对面向未成年人的产品，音频不出浏览器是重要合规优势
+
+完整协议文本见 https://www.gnu.org/licenses/agpl-3.0.txt
