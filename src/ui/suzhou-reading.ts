@@ -19,38 +19,30 @@ import { scoreReading, toReadingTask, type ReadingTask, type ReadingApproxResult
 import { disclaimerBlock, DIMENSION_LABELS } from '../suzhou/disclaimer.ts';
 import { EXAM_SPEC } from '../suzhou/spec-config.ts';
 import type { RawReading } from '../suzhou/reading-section.ts';
-
-export interface RecordingLike {
-  start(): Promise<void>;
-  stop(): Promise<Float32Array>;
-  durationMs(): number;
-}
-
-export interface EngineLike2 {
-  /** 能否自动转写；false 时界面显示手动输入框 */
-  canTranscribe(): boolean;
-  transcribe(samples: Float32Array, sampleRate: number): Promise<string>;
-}
+import type { RecorderPort, AsrPort } from '../suzhou/recorder-bridge.ts';
+import { ASR_OPTIONS } from '../suzhou/recorder-bridge.ts';
 
 export interface SuzhouReadingDeps {
   recordings: readonly RawReading[];
-  recorder?: RecordingLike | null;
-  engine?: EngineLike2 | null;
+  /** 真实录音器；null 或 canRecord() 为 false 时退化为手动输入 */
+  recorder?: RecorderPort | null;
+  /** 真实 ASR；null 时只保留手动输入 */
+  asr?: AsrPort | null;
   /** 指定题号；不传则第一篇 */
   taskId?: string;
 }
-
 /* ------------------------------------------------------------------ *
  * 一、纯逻辑：状态机（可单测，不碰 DOM）
  * ------------------------------------------------------------------ */
 
 export type ReadingPhase =
-  | 'idle'        // 未开始
-  | 'recording'   // 录音中
-  | 'transcribing'// 转写中
-  | 'manual'      // 等待手动输入（ASR 未就绪）
-  | 'scored'      // 已出分
-  | 'error';      // 出错
+  | 'idle'          // 未开始
+  | 'loading-asr'   // 正在加载语音转写模型
+  | 'recording'     // 录音中
+  | 'transcribing'  // 转写中
+  | 'manual'        // 等待手动输入（降级路径）
+  | 'scored'        // 已出分
+  | 'error';        // 出错
 
 export interface ReadingState {
   phase: ReadingPhase;
@@ -360,6 +352,8 @@ export interface SuzhouReadingApp {
   view(): Element | null;
   /** 直接用文本评分，不录音。用于测试与手动输入路径。 */
   submitText(text: string, durationMs?: number): ReadingApproxResult | null;
+  /** 加载语音转写模型。返回是否成功；失败不抛异常，界面据状态降级 */
+  loadAsr(modelKey?: string): Promise<boolean>;
   /** 开始录音 */
   start(): Promise<void>;
   /** 停止录音并跑完转写+评分 */
@@ -372,6 +366,38 @@ export function mountSuzhouReading(
   deps: SuzhouReadingDeps,
 ): SuzhouReadingApp {
   const doc = resolveDoc(mount);
+
+  // ---- 能力判断：集中在这里，降级逻辑只有一处真相 ----
+  function canRecordNow(): boolean {
+    const r = deps.recorder;
+    if (!r) return false;
+    try {
+      return r.canRecord();
+    } catch {
+      // canRecord 抛错视为不可用，宁可降级也不要崩
+      return false;
+    }
+  }
+
+  function asrReady(): boolean {
+    const a = deps.asr;
+    if (!a) return false;
+    try {
+      return a.ready();
+    } catch {
+      return false;
+    }
+  }
+
+  function asrStatus() {
+    const a = deps.asr;
+    if (!a) return null;
+    try {
+      return a.status();
+    } catch {
+      return null;
+    }
+  }
 
   let state = initialState(deps.recordings, deps.taskId);
   let viewEl: Element | null = null;
@@ -395,13 +421,14 @@ export function mountSuzhouReading(
     const ctrl = doc.createElement('div');
     ctrl.className = 'sz-controls';
 
-    const canRecord = !!(deps.recorder && state.task);
+    const recordable = canRecordNow();
+
     const btnStart = doc.createElement('button');
     btnStart.type = 'button';
     btnStart.className = 'sz-btn';
     btnStart.textContent = state.phase === 'recording' ? '录音中…' : '开始录音';
-    btnStart.disabled = !canRecord || state.phase === 'recording';
-    if (canRecord) {
+    btnStart.disabled = !recordable || state.phase === 'recording' || state.phase === 'loading-asr' || state.phase === 'transcribing';
+    if (recordable) {
       btnStart.addEventListener('click', function () { void app.start(); });
     }
     ctrl.appendChild(btnStart);
@@ -411,21 +438,77 @@ export function mountSuzhouReading(
     btnStop.className = 'sz-btn';
     btnStop.textContent = '结束并评分';
     btnStop.disabled = state.phase !== 'recording';
-    if (canRecord) {
+    if (recordable) {
       btnStop.addEventListener('click', function () { void app.stop(); });
     }
     ctrl.appendChild(btnStop);
 
-    if (!canRecord) {
+    if (!recordable) {
       const hint = doc.createElement('span');
       hint.className = 'sz-hint';
-      hint.textContent = deps.recorder ? '' : '未检测到可用麦克风，请在下方手动输入你朗读的内容。';
+      hint.textContent = deps.recorder
+        ? '未检测到可用麦克风，请在下方手动输入。'
+        : '当前环境不支持录音（需 HTTPS 或 localhost + 支持 MediaRecorder 的浏览器），请在下方手动输入。';
       ctrl.appendChild(hint);
     }
     mount.appendChild(ctrl);
 
-    // 手动输入：ASR 未就绪或录音不可用时的兜底
-    const needManual = state.phase === 'manual' || !canRecord;
+    // ---- 语音转写模型区（只在能录音且 ASR 可用时出现）----
+    if (recordable && deps.asr) {
+      const asrBox = doc.createElement('div');
+      asrBox.className = 'sz-asr';
+
+      const st = asrStatus();
+      const line = doc.createElement('p');
+      line.className = 'sz-asr-msg';
+      line.textContent = st ? st.message : '语音转写不可用。';
+      asrBox.appendChild(line);
+
+      const loading = state.phase === 'loading-asr';
+      const readyNow = asrReady();
+
+      if (!readyNow) {
+        // 模型选择 + 加载按钮
+        const sel = doc.createElement('select');
+        sel.className = 'sz-select';
+        for (const o of ASR_OPTIONS) {
+          const opt = doc.createElement('option');
+          opt.value = o.key;
+          opt.textContent = o.label;
+          if (o.key === 'base') opt.selected = true;
+          sel.appendChild(opt);
+        }
+        asrBox.appendChild(sel);
+
+        const btn = doc.createElement('button');
+        btn.type = 'button';
+        btn.className = 'sz-btn sz-btn-sm';
+        btn.textContent = loading ? '加载中…' : '加载语音转写模型';
+        btn.disabled = loading;
+        btn.addEventListener('click', function () { void app.loadAsr(sel.value); });
+        asrBox.appendChild(btn);
+
+        if (loading && st) {
+          const bar = doc.createElement('div');
+          bar.className = 'sz-bar';
+          const fill = doc.createElement('div');
+          fill.className = 'sz-bar-fill';
+          fill.style.width = String(st.percent) + '%';
+          bar.appendChild(fill);
+          asrBox.appendChild(bar);
+        }
+
+        const alt = doc.createElement('p');
+        alt.className = 'sz-hint';
+        alt.textContent = '不加载也可以：直接在下方手动输入，评估结果完全相同。';
+        asrBox.appendChild(alt);
+      }
+
+      mount.appendChild(asrBox);
+    }
+
+    // ---- 手动输入：所有降级路径的最终兜底 ----
+    const needManual = state.phase === 'manual' || !recordable;
     if (needManual && state.task) {
       const wrap = doc.createElement('div');
       wrap.className = 'sz-manual';
@@ -481,54 +564,102 @@ export function mountSuzhouReading(
       return state.result;
     },
 
+    loadAsr: async function (modelKey?: string): Promise<boolean> {
+      const a = deps.asr;
+      if (!a) return false;
+      state.error = null;
+      state.phase = 'loading-asr';
+      render();
+      let ok = false;
+      try {
+        ok = await a.load((modelKey as never) ?? undefined);
+      } catch (e) {
+        // load 约定不抛，但万一抛了也要拦住
+        ok = false;
+        state.error = '模型加载异常：' + (e instanceof Error ? e.message : String(e));
+      }
+      if (!ok) {
+        state.phase = 'idle';
+        const st = asrStatus();
+        if (!state.error && st) state.error = st.message;
+        render();
+        return false;
+      }
+      state.phase = 'idle';
+      render();
+      return true;
+    },
+
     start: async function () {
-      if (!deps.recorder || !state.task) return;
+      if (!state.task) return;
+      // 三种可能：能录+能转写 / 能录不能转写 / 不能录
+      if (!canRecordNow()) {
+        state.phase = 'manual';
+        state.error = '未检测到可用麦克风。请在下方手动输入你朗读的内容，完整度与准确度评估不受影响。';
+        render();
+        return;
+      }
       state.error = null;
       state.phase = 'recording';
       render();
       try {
-        await deps.recorder.start();
+        await deps.recorder!.start();
       } catch (e) {
         state.phase = 'manual';
-        state.error = '无法开始录音：' + (e instanceof Error ? e.message : String(e)) + '。请改用下方手动输入。';
+        const m = e instanceof Error ? e.message : String(e);
+        state.error = '无法开始录音：' + m + '　可直接在下方手动输入，评估流程完全相同。';
         render();
       }
     },
 
     stop: async function () {
-      if (!deps.recorder || !state.task) return;
+      if (!canRecordNow() || !state.task) return;
+
+      let decoded: { samples: Float32Array; sampleRate: number; durationMs: number };
       try {
-        const samples = await deps.recorder.stop();
-        const durationMs = deps.recorder.durationMs();
-        pendingAudio = samples;
-
-        // 转写：ASR 未就绪则直接进手动输入
-        if (!deps.engine || !deps.engine.canTranscribe()) {
-          state.phase = 'manual';
-          state.error = '自动转写未就绪（需在设置里加载语音模型），请在下方手动输入你朗读的内容。';
-          render();
-          return;
-        }
-
-        state.phase = 'transcribing';
-        render();
-        let text = '';
-        try {
-          text = await deps.engine.transcribe(samples, 16000);
-        } catch (e) {
-          state.phase = 'manual';
-          state.error = '转写失败：' + (e instanceof Error ? e.message : String(e)) + '。请在下方手动输入。';
-          render();
-          return;
-        }
-        app.submitText(text, durationMs);
+        decoded = await deps.recorder!.stop();
       } catch (e) {
         state.phase = 'manual';
-        state.error = '录音结束失败：' + (e instanceof Error ? e.message : String(e));
+        const m = e instanceof Error ? e.message : String(e);
+        state.error = '录音结束失败：' + m + '　请在下方手动输入。';
         render();
+        return;
       }
-    },
 
+      const durationMs = decoded.durationMs > 0 ? decoded.durationMs : deps.recorder!.elapsedMs();
+
+      // 录音成功但无音频数据：告诉用户，别让空数组去评分
+      if (!decoded.samples || decoded.samples.length === 0) {
+        state.phase = 'manual';
+        state.error = '没有采集到音频，可能是麦克风被占用或权限异常。请手动输入朗读内容。';
+        render();
+        return;
+      }
+
+      // ASR 未就绪 —— 这是正常的降级路径，不是错误
+      if (!asrReady()) {
+        state.phase = 'manual';
+        state.error = '录音已完成，但语音转写未加载，无法自动识别文字。请在下方手动输入你朗读的内容。';
+        render();
+        return;
+      }
+
+      state.phase = 'transcribing';
+      render();
+      let text = '';
+      try {
+        text = await deps.asr!.transcribe(decoded.samples, decoded.sampleRate);
+      } catch (e) {
+        // 转写失败（模型崩了、内存不足、音频格式不支持）——一律降级，绝不抛出
+        state.phase = 'manual';
+        const m = e instanceof Error ? e.message : String(e);
+        state.error = '自动转写失败：' + m + '　请在下方手动输入，评估流程完全相同。';
+        render();
+        return;
+      }
+
+      app.submitText(text, durationMs);
+    },
     destroy: function () {
       while (mount.firstChild) mount.removeChild(mount.firstChild);
       viewEl = null;

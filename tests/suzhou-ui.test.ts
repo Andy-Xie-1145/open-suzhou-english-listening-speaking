@@ -80,7 +80,7 @@ function allText(n: FakeNode): string { let s = n.textContent || ''; for (const 
 /* ---------------- 6. 极端降级：无录音无引擎 ---------------- */
 console.log('\n[5] 极端降级（无麦克风、无 ASR）');
 const mount: any = newMount();
-const app = mountSuzhouReading(mount as any, { recordings: RAW, taskId: 'rd-01', recorder: null, engine: null });
+const app = mountSuzhouReading(mount as any, { recordings: RAW, taskId: 'rd-01', recorder: null, asr: null });
 check('极端降级下挂载不崩', app.view() !== null);
 check('初始为 idle', app.state().phase === 'idle');
 const rendered = allText(mount);
@@ -118,16 +118,68 @@ console.log('\n[6] 录音 + ASR 链路（桩实现）');
 const mount2: any = newMount();
 let started: boolean = false;
 let stopped: boolean = false;
-const fakeRecorder: any = {
-  start: async function () { started = true; },
-  stop: async function () { stopped = true; return new Float32Array([0.1, 0.2, 0.3]); },
-  durationMs: function () { return 42000; },
-};
-const fakeEngine: any = {
-  canTranscribe: function () { return true; },
-  transcribe: async function () { return refText; },
-};
-const app2 = mountSuzhouReading(mount2 as any, { recordings: RAW, taskId: 'rd-01', recorder: fakeRecorder, engine: fakeEngine });
+/** 符合 RecorderPort 契约的录音桩。opts.canRecord=false 模拟无麦克风。 */
+function makeRecorder(opts: { canRecord?: boolean; failStart?: boolean; failStop?: boolean; emptyAudio?: boolean } = {}): any {
+  let running = false;
+  let cancelled = false;
+  return {
+    canRecord: function () { return opts.canRecord !== false; },
+    start: async function () {
+      if (opts.failStart) throw new Error('麦克风被占用');
+      started = true;
+      running = true;
+    },
+    stop: async function () {
+      if (opts.failStop) { running = false; throw new Error('解码失败'); }
+      stopped = true;
+      running = false;
+      const samples = opts.emptyAudio ? new Float32Array(0) : new Float32Array([0.1, 0.2, 0.3]);
+      return { samples: samples, sampleRate: 16000, durationMs: 42000 };
+    },
+    elapsedMs: function () { return running ? 42000 : 0; },
+    cancel: function () { cancelled = true; running = false; },
+    isCancelled: function () { return cancelled; },
+  };
+}
+const fakeRecorder: any = makeRecorder();
+/**
+ * 符合 AsrPort 契约的转写桩。
+ *  opts.ready  —— 初始是否就绪
+ *  opts.fail   —— transcribe 是否抛错（模拟模型崩溃）
+ *  opts.loadFails —— load 是否失败（模拟断网/存储不可用）
+ */
+function makeAsr(opts: { ready?: boolean; fail?: boolean; loadFails?: boolean } = {}): any {
+  let ready = opts.ready === true;
+  let st = {
+    status: ready ? 'ready' : 'idle',
+    percent: ready ? 100 : 0,
+    message: ready ? '语音转写已就绪。' : '语音转写未加载。',
+  };
+  let loadCalls = 0;
+  return {
+    ready: function () { return ready; },
+    status: function () { return st; },
+    loadCalls: function () { return loadCalls; },
+    load: async function () {
+      loadCalls++;
+      if (opts.loadFails) {
+        st = { status: 'failed', percent: 0, message: '模型加载失败：网络中断' };
+        return false;
+      }
+      ready = true;
+      st = { status: 'ready', percent: 100, message: '语音转写已就绪，录音后会自动转写。' };
+      return true;
+    },
+    transcribe: async function () {
+      if (opts.fail) throw new Error('模型未加载');
+      if (!ready) throw new Error('语音转写模型未加载');
+      return refText;
+    },
+    unload: function () { ready = false; st = { status: 'idle', percent: 0, message: '语音转写已卸载。' }; },
+  };
+}
+const fakeEngine: any = makeAsr({ ready: true });
+const app2 = mountSuzhouReading(mount2 as any, { recordings: RAW, taskId: 'rd-01', recorder: fakeRecorder, asr: fakeEngine });
 await app2.start();
 check('录音已开始', Boolean(started));
 check('进入 recording 状态', app2.state().phase === 'recording');
@@ -140,11 +192,8 @@ check('满分转写得 100', app2.state().result?.approximateScore === 100, Stri
 /* ---------------- 8. ASR 失败降级 ---------------- */
 console.log('\n[7] ASR 失败降级');
 const mount3: any = newMount();
-const failEngine: any = {
-  canTranscribe: function () { return true; },
-  transcribe: async function () { throw new Error('模型未加载'); },
-};
-const app3 = mountSuzhouReading(mount3 as any, { recordings: RAW, taskId: 'rd-01', recorder: fakeRecorder, engine: failEngine });
+const failEngine: any = makeAsr({ ready: true, fail: true });
+const app3 = mountSuzhouReading(mount3 as any, { recordings: RAW, taskId: 'rd-01', recorder: fakeRecorder, asr: failEngine });
 await app3.start();
 await app3.stop();
 check('ASR 失败后进入 manual', app3.state().phase === 'manual', app3.state().phase);
@@ -154,20 +203,113 @@ check('降级后仍可手动评分', (function () { const x = app3.submitText(re
 /* ---------------- 9. 无 ASR 引擎 ---------------- */
 console.log('\n[8] 无 ASR 引擎');
 const mount4: any = newMount();
-const app4 = mountSuzhouReading(mount4 as any, { recordings: RAW, taskId: 'rd-01', recorder: fakeRecorder, engine: null });
+const app4 = mountSuzhouReading(mount4 as any, { recordings: RAW, taskId: 'rd-01', recorder: fakeRecorder, asr: null });
 await app4.start();
 await app4.stop();
 check('无 ASR 时进 manual', app4.state().phase === 'manual', app4.state().phase);
-check('提示需加载语音模型', (app4.state().error ?? '').includes('语音模型'));
+check('提示需加载语音转写模型', (app4.state().error ?? '').includes('语音转写未加载'), app4.state().error ?? '');
 
 /* ---------------- 10. 空语料不白屏 ---------------- */
 console.log('\n[9] 空语料');
 const mount5: any = newMount();
-const app5 = mountSuzhouReading(mount5 as any, { recordings: [], recorder: null, engine: null });
+const app5 = mountSuzhouReading(mount5 as any, { recordings: [], recorder: null, asr: null });
 check('空语料挂载成功', app5.view() !== null);
 check('空语料给出提示', allText(mount5).includes('语料未加载'));
 check('空语料时提交返回 null', app5.submitText('anything') === null);
 check('空语料仍显示近似横幅', allText(mount5).includes('近似模拟'));
+
+/* ---------------- 11. ASR 模型加载与断网降级 ---------------- */
+console.log('\n[10] ASR 模型加载');
+
+// 11.1 初始未加载时，界面应出现加载入口与替代方案说明
+const m1: any = newMount();
+const idleAsr: any = makeAsr({ ready: false });
+const rec1: any = makeRecorder();
+const app1 = mountSuzhouReading(m1 as any, { recordings: RAW, taskId: 'rd-01', recorder: rec1, asr: idleAsr });
+let txt1 = allText(m1);
+check('未加载时显示转写说明', txt1.includes('语音转写'), txt1.slice(0, 80));
+check('提供模型加载按钮', txt1.includes('加载语音转写模型'));
+check('明确告知不加载也能用', txt1.includes('不加载也可以'));
+check('未就绪时不显示录音按钮? (应可用但会降级)', txt1.includes('开始录音'));
+
+// 11.2 加载成功后，录音可自动转写出分
+const ok = await app1.loadAsr('base');
+check('加载返回 true', ok === true);
+check('模型实际被调用过', idleAsr.loadCalls() === 1, String(idleAsr.loadCalls()));
+check('就绪后状态为 ready', idleAsr.status().status === 'ready', idleAsr.status().status);
+await app1.start();
+await app1.stop();
+check('加载后录音可自动出分', app1.state().phase === 'scored', app1.state().phase);
+check('自动转写得分满分', app1.state().result?.approximateScore === 100, String(app1.state().result?.approximateScore));
+
+// 11.3 加载失败（断网 / 无痕模式存储不可用）
+console.log('\n[11] 模型加载失败（断网）');
+const m2: any = newMount();
+const badAsr: any = makeAsr({ ready: false, loadFails: true });
+const app2f = mountSuzhouReading(m2 as any, { recordings: RAW, taskId: 'rd-01', recorder: makeRecorder(), asr: badAsr });
+const ok2 = await app2f.loadAsr('base');
+check('加载失败返回 false', ok2 === false);
+check('状态标记为 failed', badAsr.status().status === 'failed', badAsr.status().status);
+check('界面提示加载失败原因', (app2f.state().error ?? '').includes('加载失败'), app2f.state().error ?? '');
+check('失败后回到 idle 而非卡死', app2f.state().phase === 'idle', app2f.state().phase);
+check('失败后仍可手动输入出分', (function () { const r = app2f.submitText(app2f.state().task!.text, 40000); return r !== null && r.approximateScore === 100; })());
+check('失败后页面未崩，题目仍在', allText(m2).includes('朗读短文'));
+
+/* ---------------- 12. 录音异常降级 ---------------- */
+console.log('\n[12] 录音异常');
+
+// 12.1 无麦克风
+const m3: any = newMount();
+const noMic: any = makeRecorder({ canRecord: false });
+const app3f = mountSuzhouReading(m3 as any, { recordings: RAW, taskId: 'rd-01', recorder: noMic, asr: makeAsr({ ready: true }) });
+await app3f.start();
+check('无麦克风进 manual', app3f.state().phase === 'manual', app3f.state().phase);
+check('提示未检测到麦克风', (app3f.state().error ?? '').includes('麦克风'), app3f.state().error ?? '');
+check('仍可手动出分', (function () { const r = app3f.submitText(app3f.state().task!.text, 40000); return r !== null; })());
+
+// 12.2 录音启动失败（设备被占用）
+const m4: any = newMount();
+const busy: any = makeRecorder({ failStart: true });
+const app4f = mountSuzhouReading(m4 as any, { recordings: RAW, taskId: 'rd-01', recorder: busy, asr: makeAsr({ ready: true }) });
+await app4f.start();
+check('启动失败进 manual', app4f.state().phase === 'manual', app4f.state().phase);
+check('给出具体原因', (app4f.state().error ?? '').includes('麦克风被占用'), app4f.state().error ?? '');
+check('明确告知可手动输入', (app4f.state().error ?? '').includes('手动输入'));
+
+// 12.3 录音结束/解码失败
+const m5: any = newMount();
+const badStop: any = makeRecorder({ failStop: true });
+const app5f = mountSuzhouReading(m5 as any, { recordings: RAW, taskId: 'rd-01', recorder: badStop, asr: makeAsr({ ready: true }) });
+await app5f.start();
+await app5f.stop();
+check('解码失败进 manual', app5f.state().phase === 'manual', app5f.state().phase);
+check('提示解码失败', (app5f.state().error ?? '').includes('解码失败'), app5f.state().error ?? '');
+
+// 12.4 采集到空音频（设备被静音/权限异常）
+const m6: any = newMount();
+const silent: any = makeRecorder({ emptyAudio: true });
+const app6f = mountSuzhouReading(m6 as any, { recordings: RAW, taskId: 'rd-01', recorder: silent, asr: makeAsr({ ready: true }) });
+await app6f.start();
+await app6f.stop();
+check('空音频不进转写', app6f.state().phase === 'manual', app6f.state().phase);
+check('空音频给出提示', (app6f.state().error ?? '').includes('没有采集到音频'), app6f.state().error ?? '');
+
+// 12.5 ASR 已就绪但转写时崩溃（内存不足 / 格式不支持）
+const m7: any = newMount();
+const crashAsr: any = makeAsr({ ready: true, fail: true });
+const app7f = mountSuzhouReading(m7 as any, { recordings: RAW, taskId: 'rd-01', recorder: makeRecorder(), asr: crashAsr });
+await app7f.start();
+await app7f.stop();
+check('转写崩溃进 manual', app7f.state().phase === 'manual', app7f.state().phase);
+check('提示自动转写失败', (app7f.state().error ?? '').includes('自动转写失败'), app7f.state().error ?? '');
+check('崩溃后仍可手动出分', (function () { const r = app7f.submitText(app7f.state().task!.text, 40000); return r !== null && r.approximateScore === 100; })());
+
+// 12.6 每一个降级场景都必须保留近似声明
+console.log('\n[13] 降级不丢红线');
+for (const [name, node] of [['无麦克风', m3], ['启动失败', m4], ['解码失败', m5], ['空音频', m6], ['转写崩溃', m7]] as Array<[string, any]>) {
+  const t = allText(node);
+  check(name + '：横幅仍在', t.includes('近似模拟'));
+}
 
 console.log('\n=== 结果: ' + pass + ' passed, ' + fail + ' failed ===');
 if (fail > 0) process.exit(1);

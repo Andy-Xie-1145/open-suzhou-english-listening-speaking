@@ -16,6 +16,7 @@
 
 import { loadTheme, applyTheme } from './ui/app.ts';
 import { mountSuzhouReading } from './ui/suzhou-reading.ts';
+import { createEngineRecorder, createEngineAsr } from './suzhou/recorder-bridge.ts';
 import readingsJson from '../data/readings.json' with { type: 'json' };
 
 function bootstrap() {
@@ -28,13 +29,13 @@ function bootstrap() {
   applyTheme(loadTheme());
 
   // ---- 朗读短文（苏州中考题型 · 近似模拟）----
-  // 当前唯一完整实现的地基：取题 → 录音 → 转写 → 近似评分 → 逐词反馈。
-  // recorder/engine 传 null 表示未接线，用户可手动输入，闭环照常跑通。
+  // 取题 → 录音 → 转写 → 近似评分 → 逐词反馈。
+  // recorder / asr 由桥接层构造，任一不可用都会自动降级到手动输入。
   const rawReadings: any[] = (readingsJson as any).readings ?? [];
   mountSuzhouReading(mount, {
     recordings: rawReadings,
-    recorder: null,
-    engine: null,
+    recorder: createEngineRecorder(),
+    asr: createEngineAsr(),
   });
 }
 
