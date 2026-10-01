@@ -1,47 +1,22 @@
 /**
- * 应用入口 —— 装配引擎、语料库、界面
+ * 应用入口
  *
  * 许可：AGPL-3.0-only
  *
- * 架构约束（ARCHITECTURE.md 第 1 节）：
- *  - 零服务端：本文件不发起任何业务网络请求
- *  - 音频不出浏览器：录音数据仅在内存中流转
- *  - 优雅降级：引擎或语料任一不可用，应用仍可启动
+ * 当前入口挂载的是**朗读短文（苏州中考题型 · 近似模拟）**，
+ * 这是目前唯一完整实现的地基题型：取题 → 录音 → 转写 → 近似评分 → 逐词反馈。
  *
- * 集成说明：
- *  src/ui/app.ts 刻意不静态 import src/engine（避免引擎缺失导致构建失败），
- *  由本文件在运行时注入。若引擎构造失败，界面会自动回退到 L0 纯规则评估。
+ * ⚠️ 输出的所有数字都是近似模拟，不是考场评分。见 spec/suzhou-listening-speaking.spec.md。
+ *
+ * 架构约束（ARCHITECTURE.md 第 1 节）：
+ *  - 零服务端：不发起任何业务网络请求
+ *  - 音频不出浏览器：录音数据仅在内存流转
+ *  - 优雅降级：无麦克风或无 ASR 时退化为手动输入，闭环照常
  */
 
-import { createApp, loadTheme, applyTheme } from './ui/app.ts';
-import type { AppDeps, EngineLike } from './ui/app.ts';
-import { MATERIALS, createRng } from './materials/index.ts';
-import type { ExamPaper } from './materials/loader.ts';
-import { toPaperSource } from './adapter.ts';
-
-/** 引擎按需加载：失败时返回 null，界面据此降级 */
-async function loadEngine(): Promise<EngineLike | null> {
-  try {
-    const mod = await import('./engine/index.ts');
-    const engine = mod.createEngine();
-    return engine as unknown as EngineLike;
-  } catch (e) {
-    console.warn('引擎不可用，已降级为 L0 纯规则评估：', e);
-    return null;
-  }
-}
-
-/** 每次组一套新卷：随机卷，走 Materials.buildPaper */
-function dealPaper(): ReturnType<typeof toPaperSource> {
-  try {
-    const rng = createRng(Math.floor(Math.random() * 0x7fffffff));
-    const paper: ExamPaper = MATERIALS.buildPaper({ seed: rng.next() });
-    return toPaperSource(paper);
-  } catch (e) {
-    console.warn('组卷失败，使用占位题：', e);
-    return {};
-  }
-}
+import { loadTheme, applyTheme } from './ui/app.ts';
+import { mountSuzhouReading } from './ui/suzhou-reading.ts';
+import readingsJson from '../data/readings.json' with { type: 'json' };
 
 function bootstrap() {
   const mount = document.getElementById('app');
@@ -52,17 +27,14 @@ function bootstrap() {
 
   applyTheme(loadTheme());
 
-  const deps: AppDeps = {
+  // ---- 朗读短文（苏州中考题型 · 近似模拟）----
+  // 当前唯一完整实现的地基：取题 → 录音 → 转写 → 近似评分 → 逐词反馈。
+  // recorder/engine 传 null 表示未接线，用户可手动输入，闭环照常跑通。
+  const rawReadings: any[] = (readingsJson as any).readings ?? [];
+  mountSuzhouReading(mount, {
+    recordings: rawReadings,
+    recorder: null,
     engine: null,
-    loadPaper: function () { return dealPaper(); },
-    onEngineUnavailable: function (reason) {
-      console.info('引擎降级：' + reason);
-    },
-  };
-
-  void loadEngine().then(function (engine) {
-    deps.engine = engine;
-    createApp(mount, deps);
   });
 }
 
