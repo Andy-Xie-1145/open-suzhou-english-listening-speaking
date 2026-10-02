@@ -17,6 +17,7 @@ import {
   QA_COUNT,
   type PaperBank,
 } from '../src/suzhou/paper.ts';
+import { createListeningBank } from '../src/suzhou/listening-bank.ts';
 
 let pass = 0;
 let fail = 0;
@@ -61,7 +62,31 @@ function makeBank(nRead: number, nQa: number, nTopic: number): PaperBank {
       keyExpressions: [{ group: 'g', items: ['x', 'y'] }],
     });
   }
-  return { readings: readings, qa: qa, topics: topics };
+  // 听力材料：组卷现在包含两个听力大题，夹具必须提供，否则出卷会抛错。
+  // 规模按 LISTENING_LAYOUT 最小可用量：1 题池 10 段，2/3/5 题池各 2 段（留换卷余量）。
+  const listeningMaterials = [];
+  for (let i = 0; i < 10; i++) {
+    listeningMaterials.push({
+      id: 'ls-d' + (i + 1), kind: 'dialogue', title: '对话 ' + (i + 1),
+      script: [{ speaker: 'W', text: 'Question number ' + (i + 1) + ', please listen.' }, { speaker: 'M', text: 'Sure, here it is.' }],
+      questions: [{ id: 'ls-d' + (i + 1) + '-q1', skill: 'detail', prompt: 'What does the man say?', options: ['A. He agrees.', 'B. He refuses.', 'C. He asks again.'], answer: 0, keywords: [] }],
+      difficulty: 1,
+    });
+  }
+  for (const size of [2, 3, 5]) {
+    for (let k = 0; k < 2; k++) {
+      const qs = [];
+      for (let q = 0; q < size; q++) {
+        qs.push({ id: 'ls-p' + size + k + '-q' + (q + 1), skill: 'detail', prompt: 'Question ' + (q + 1) + '?', options: ['A. Yes.', 'B. No.'], answer: 0, keywords: [] });
+      }
+      listeningMaterials.push({
+        id: 'ls-p' + size + '-' + k, kind: 'passage', title: size + ' 题材料 ' + k,
+        script: [{ speaker: 'N', text: 'This is a listening passage for testing purposes only.' }],
+        questions: qs, difficulty: 2,
+      });
+    }
+  }
+  return { readings: readings, qa: qa, topics: topics, listening: createListeningBank(listeningMaterials) };
 }
 
 const BANK = makeBank(24, 24, 12);
@@ -152,6 +177,7 @@ const realReadings = JSON.parse(readFileSync('data/readings.json', 'utf8'));
 const realQa = JSON.parse(readFileSync('data/qa.json', 'utf8'));
 const realKw = JSON.parse(readFileSync('data/qa-keywords.json', 'utf8'));
 const realTopics = JSON.parse(readFileSync('data/topics.json', 'utf8'));
+const realListening = JSON.parse(readFileSync('data/listening-materials.json', 'utf8'));
 const R = (v: any) => Array.isArray(v) ? v : (v.readings || v.qa || v.topics || []);
 const REAL: PaperBank = {
   readings: R(realReadings).map(function (r: any) {
@@ -161,10 +187,15 @@ const REAL: PaperBank = {
     return { id: r.id, category: r.category, question: r.question, keyPoints: r.keyPoints, enKeywords: realKw[r.id] || [], difficulty: r.difficulty };
   }),
   topics: R(realTopics),
+  listening: createListeningBank(realListening),
 };
 const rp = dealPaper(REAL, { seed: 20260101 });
 console.log('  真实题库 → 朗读 ' + rp.ids.reading + '，问答 [' + rp.ids.qa.join(', ') + ']，话题 ' + rp.ids.topic);
 check('真实题库可组卷', rp.qa.length === 2 && !!rp.reading.task.id && !!rp.topic.task.id);
+check('真实题库听力出 13 段', rp.listening.dialogue.length + rp.listening.passage.length === 13,
+  String(rp.listening.dialogue.length + rp.listening.passage.length));
+check('真实题库听力 20 小题', rp.listening.dialogue.reduce(function (a, g) { return a + g.questions.length; }, 0)
+  + rp.listening.passage.reduce(function (a, g) { return a + g.questions.length; }, 0) === 20);
 check('真实题库问答类别不重复', rp.qa[0].task.category !== rp.qa[1].task.category);
 check('真实题库朗读 id 存在于材料中', REAL.readings.some(function (r) { return r.id === rp.ids.reading; }));
 check('真实题库话题 id 存在', REAL.topics.some(function (t) { return t.id === rp.ids.topic; }), rp.ids.topic);
