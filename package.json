@@ -6,7 +6,10 @@
   "type": "module",
   "scripts": {
     "test:asr-provider": "node --experimental-strip-types tests/asr-provider.test.ts",
+    "test:suzhou-listening-audio": "node --experimental-strip-types tests/suzhou-listening-audio.test.ts",
     "dev": "vite",
+    "audio:check": "node --experimental-strip-types scripts/build-listening-audio.ts --check",
+    "audio:build": "node --experimental-strip-types scripts/build-listening-audio.ts",
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit && tsc -p tsconfig.functions.json --noEmit",

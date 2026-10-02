@@ -26,12 +26,14 @@ import readingsJson from '../data/readings.json' with { type: 'json' };
 import qaJson from '../data/qa.json' with { type: 'json' };
 import qaKwJson from '../data/qa-keywords.json' with { type: 'json' };
 import topicsJson from '../data/topics.json' with { type: 'json' };
+import listeningJson from '../data/listening-materials.json' with { type: 'json' };
+import { createListeningBank } from './suzhou/listening-bank.ts';
 function arr(v: any, key: string): any[] {
   if (Array.isArray(v)) return v;
   return (v && Array.isArray(v[key]) ? v[key] : []) as any[];
 }
 
-/** 装配题库：把四份 JSON 转成出卷器要的形状 */
+/** 装配题库：把五份 JSON 转成出卷器要的形状 */
 function buildBank(): PaperBank {
   const readings = arr(readingsJson, 'readings').map(function (r: any) {
     return {
@@ -64,7 +66,9 @@ function buildBank(): PaperBank {
       keyExpressions: t.keyExpressions ?? [],
     };
   });
-  return { readings: readings, qa: qa, topics: topics };
+  // 听力题库走自己的 schema（按组大小分池），校验失败在这里就抛，不留到考场上
+  const listening = createListeningBank(listeningJson);
+  return { readings: readings, qa: qa, topics: topics, listening: listening };
 }
 function bootstrap() {
   const mount = document.getElementById('app');
