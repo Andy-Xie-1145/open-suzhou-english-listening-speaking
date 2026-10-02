@@ -19,8 +19,13 @@
 
 import { dealPaper, dealNextPaper, type PaperBank, type SuzhouPaper } from '../suzhou/paper.ts';
 import { disclaimerBlock } from '../suzhou/disclaimer.ts';
-import { SPEAKING_WEIGHTS, SPEAKING_MINUTES, QA_COUNT } from '../suzhou/paper.ts';
+import { SPEAKING_WEIGHTS, SPEAKING_MINUTES, LISTENING_MINUTES, QA_COUNT } from '../suzhou/paper.ts';
+import { mountSuzhouListening, type SuzhouListeningApp } from './suzhou-listening.ts';
+import { totalPoints, type ListeningOutcome } from '../suzhou/listening-session.ts';
 import type { RecorderPort, AsrPort } from '../suzhou/recorder-bridge.ts';
+
+/** 试卷的两个大部分：先听力后口语，与真实考场顺序一致 */
+export type ExamPart = 'listening' | 'speaking';
 
 export type SectionKind = 'reading' | 'qa' | 'topic';
 
@@ -45,6 +50,10 @@ export interface ExamDeps {
 
 export interface ExamState {
   paper: SuzhouPaper | null;
+  /** 当前处于哪个大部分。听力必须先做完才进口语，与真实考场一致 */
+  part: ExamPart;
+  /** 听力结算结果；交卷前先出，供卷面显示 */
+  listeningOutcome: ListeningOutcome | null;
   answers: Record<SectionKind, SectionAnswer>;
   active: SectionKind;
   /** 当前题在 qa 两题中的次序（0/1）；朗读与话题恒为 0 */
@@ -75,6 +84,8 @@ export function initialExamState(deps: ExamDeps): ExamState {
   }
   return {
     paper: paper,
+    part: paper ? 'listening' : 'speaking',
+    listeningOutcome: null,
     answers: { reading: emptyAnswer(), qa: emptyAnswer(), topic: emptyAnswer() },
     active: 'reading',
     qaOrder: 0,
@@ -149,6 +160,13 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
   const doc = resolveDoc(mount);
   let state = initialExamState(deps);
   let viewEl: Element | null = null;
+  // 听力界面自带内部状态（当前第几段、选了哪些选项），
+  // 不能跟着 render() 一起重建，否则学生选的答案会被冲掉。
+  let lzApp: SuzhouListeningApp | null = null;
+  let lzSeed = -1;
+  // 口语总倒计时；听力部分不计入
+  let timer: ReturnType<typeof setInterval> | null = null;
+  let examEndsAt = 0;
 
   function canRecord(): boolean {
     const r = deps.recorder;
@@ -195,12 +213,12 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
     mount.appendChild(renderBanner());
 
     const h = doc.createElement('h2');
-    h.textContent = '苏州中考英语听力口语 · 口语部分模考（近似模拟）';
+    h.textContent = '苏州中考英语听力口语 · 全卷模考（近似模拟）';
     mount.appendChild(h);
 
     const lead = doc.createElement('p');
     lead.className = 'sz-sc-lead';
-    lead.textContent = '打开即出一份完整口试卷。考生实际作答 22 分钟，本页只含口语 10 分钟部分（听力因音频不可得暂缺）。';
+    lead.textContent = '打开即出一份完整卷。考生实际作答 22 分钟 = 听力 ' + LISTENING_MINUTES + ' 分钟 + 口语 ' + SPEAKING_MINUTES + ' 分钟，先听力后口语。';
     mount.appendChild(lead);
 
     if (state.error || !state.paper) {
@@ -216,6 +234,7 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
     const info = doc.createElement('p');
     info.className = 'sz-paper-meta';
     info.textContent = '试卷编号 seed=' + paper.seed
+      + '　|　听力 ' + LISTENING_MINUTES + ' 分钟'
       + '　|　口语 ' + SPEAKING_MINUTES + ' 分钟'
       + '　|　朗读 ' + fmtMs(paper.reading.budgetMs)
       + ' / 问答 ' + fmtMs(Math.floor(paper.speakingMs * SPEAKING_WEIGHTS.qa / Math.max(1, paper.qa.length)))
@@ -229,6 +248,47 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
     nextBtn.textContent = '换一套卷';
     nextBtn.addEventListener('click', function () { app.nextPaper(); });
     mount.appendChild(nextBtn);
+
+    // ---- 听力部分：独立界面，渲染在口语之前 ----
+    if (state.part === 'listening') {
+      if (lzSeed !== paper.seed) {
+        if (lzApp) lzApp.destroy();
+        lzApp = null;
+        lzSeed = paper.seed;
+        const host = doc.createElement('div');
+        host.className = 'sz-task';
+        mount.appendChild(host);
+        lzApp = mountSuzhouListening(host, {
+          listening: paper.listening,
+          onFinish: function (o) {
+            state.listeningOutcome = o;
+            state.part = 'speaking';
+            render();
+          },
+        });
+        void lzApp.start();
+      } else if (lzApp) {
+        // 重绘把挂载点清空了，把听力根元素接回去，内部状态不丢
+        mount.appendChild(lzApp.el());
+      }
+      viewEl = mount;
+      return;
+    }
+
+    // 听力已结束：显示得分，然后才是口语三个题型
+    if (state.listeningOutcome && lzApp) {
+      const ls = doc.createElement('p');
+      ls.className = 'sz-score-inline';
+      const ln = doc.createElement('strong');
+      ln.textContent = String(totalPoints(state.listeningOutcome));
+      ls.appendChild(ln);
+      ls.appendChild(doc.createTextNode(' / 20 听力　'));
+      const lb = doc.createElement('span');
+      lb.className = 'sz-badge';
+      lb.textContent = disclaimerBlock().badge;
+      ls.appendChild(lb);
+      mount.appendChild(ls);
+    }
 
     // 三个题型的进度与跳转
     const tabs = doc.createElement('div');
@@ -363,6 +423,9 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
       try {
         state.paper = dealNextPaper(deps.bank, state.paper);
         state.error = null;
+        if (lzApp) { lzApp.destroy(); lzApp = null; lzSeed = -1; }
+        state.part = 'listening';
+        state.listeningOutcome = null;
         state.answers = { reading: emptyAnswer(), qa: emptyAnswer(), topic: emptyAnswer() };
         state.active = 'reading';
         state.qaOrder = 0;
@@ -452,6 +515,8 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
     },
 
     destroy: function () {
+      if (lzApp) { lzApp.destroy(); lzApp = null; }
+      if (timer) clearInterval(timer);
       while (mount.firstChild) mount.removeChild(mount.firstChild);
       viewEl = null;
     },

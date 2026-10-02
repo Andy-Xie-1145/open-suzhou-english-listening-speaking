@@ -242,6 +242,8 @@ function fmt(ms: number): string {
 }
 
 export interface SuzhouListeningApp {
+  /** 根元素。主界面重绘会清空挂载点，需要时用这个把它接回去 */
+  el(): HTMLElement;
   view(): ListeningView;
   outcome(): ListeningView | null;
   start(): Promise<void>;
@@ -420,6 +422,7 @@ export function mountSuzhouListening(
   render();
 
   return {
+    el: function () { return root; },
     view: view,
     outcome: function () { return finished; },
     start: start,

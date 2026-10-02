@@ -25,6 +25,20 @@ import {
 import { createListeningBank } from '../src/suzhou/listening-bank.ts';
 import { dealPaper, type PaperBank } from '../src/suzhou/paper.ts';
 import { BADGE, BANNER } from '../src/suzhou/disclaimer.ts';
+import { initialExamState } from '../src/ui/suzhou-exam.ts';
+import { totalPoints } from '../src/suzhou/listening-session.ts';
+
+function examBank() {
+  return {
+    readings: [{ id: 'rd-1', textbook: '九上', text: 'A passage. '.repeat(6), wordCount: 90, difficulty: 1, positionSource: '2026 省通知' }],
+    qa: [
+      { id: 'qa-1', category: '购物消费', question: 'Q1?', keyPoints: ['a'], enKeywords: [['want']], difficulty: 1 },
+      { id: 'qa-2', category: '交通出行', question: 'Q2?', keyPoints: ['b'], enKeywords: [['where']], difficulty: 1 },
+    ],
+    topics: [{ id: 'tp-1', name: 'T', hint: '', keywords: [], sampleAnswer: [], keyExpressions: [] }],
+    listening: bank,
+  } as PaperBank;
+}
 
 let pass = 0;
 let fail = 0;
@@ -151,6 +165,22 @@ for (const b of BANNED) {
 }
 check('含近似标识', allText.indexOf(BADGE) >= 0 || BANNER.indexOf('近似') >= 0);
 
-console.log('\n[8] 汇总');
+/* ---------- 8. 模考主流程：先听力后口语 ---------- */
+console.log('\n[8] 模考主流程');
+const examState = initialExamState({ bank: examBank() });
+check('组卷成功', examState.paper !== null, examState.error ?? '');
+check('初始处于听力部分', examState.part === 'listening', examState.part);
+check('听力尚未结算', examState.listeningOutcome === null);
+check('卷子里带着听力两节', examState.paper!.listening.dialogue.length === 10
+  && examState.paper!.listening.passage.length === 3);
+
+const brokeState = initialExamState({ bank: { readings: [], qa: [], topics: [] } });
+check('组卷失败时直接进口语并报错（不给一个空听力界面）',
+  brokeState.part === 'speaking' && !!brokeState.error, JSON.stringify([brokeState.part, brokeState.error]));
+
+const afterListen = { ...examState, part: 'speaking' as const, listeningOutcome: settle(perfect) };
+check('听力结算后才放行口语', afterListen.part === 'speaking' && totalPoints(afterListen.listeningOutcome!) === 20);
+
+/* ---------- 9. 汇总 ---------- */
 console.log('  通过 ' + pass + ' / 失败 ' + fail);
 if (fail > 0) process.exit(1);
