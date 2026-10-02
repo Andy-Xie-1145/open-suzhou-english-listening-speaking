@@ -17,6 +17,9 @@
 import { loadTheme, applyTheme } from './ui/app.ts';
 import { mountSuzhouReading } from './ui/suzhou-reading.ts';
 import { createEngineRecorder, createEngineAsr } from './suzhou/recorder-bridge.ts';
+import { mountSelfCheck } from './ui/selfcheck-ui.ts';
+import { mountSuzhouTopic } from './ui/suzhou-topic.ts';
+import topicsJson from '../data/topics.json' with { type: 'json' };
 import readingsJson from '../data/readings.json' with { type: 'json' };
 
 function bootstrap() {
@@ -32,11 +35,23 @@ function bootstrap() {
   // 取题 → 录音 → 转写 → 近似评分 → 逐词反馈。
   // recorder / asr 由桥接层构造，任一不可用都会自动降级到手动输入。
   const rawReadings: any[] = (readingsJson as any).readings ?? [];
+  const recorder = createEngineRecorder();
+  const asr = createEngineAsr();
+
   mountSuzhouReading(mount, {
     recordings: rawReadings,
-    recorder: createEngineRecorder(),
-    asr: createEngineAsr(),
+    recorder: recorder,
+    asr: asr,
   });
+
+  // 真机自检：让任何人点一次就知道麦克风与浏览器端转写通不通。
+  mount.appendChild(mountSelfCheck(document, { recorder: recorder, asr: asr }));
+
+  // 话题简述（Q5）：取题 → 录音 → 转写 → 近似评分 → 7 句硬门槛判定。
+  const rawTopics: any[] = (topicsJson as any).topics ?? [];
+  const topicHost = document.createElement('div');
+  mount.appendChild(topicHost);
+  mountSuzhouTopic(topicHost, { topics: rawTopics, recorder: recorder, asr: asr });
 }
 
 /** 只在浏览器环境启动；Node 下 import 本文件应无副作用 */
