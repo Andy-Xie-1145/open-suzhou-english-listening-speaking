@@ -12,24 +12,30 @@
  *
  * | 模型 | 参数 | Elo | 量化后体积 | 音色 | 许可 |
  * |---|---|---|---|---|---|
- * | **Kokoro-82M** | 82M | **1060** | 88MB (quantized) | **54** | Apache-2.0 |
+ * | **Kokoro-82M** | 82M | **≈1063** | 86–92MB | **54** | Apache-2.0 |
  * | Piper | ~63M | 未入主榜 | 63MB | 100+ | MIT |
  * | Supertonic 3 | 99M | 中上 | 92MB (int8) | 较少 | MIT |
  *
  * **选 Kokoro-82M**，理由：
- *  1. Elo 1060，在小模型里明显领先（2026-01 曾登顶 TTS Arena）
+ *  1. Elo≈1063（Artificial Analysis 现行值，数值随评测波动），小模型里性价比最高
  *  2. **54 个音色** —— 听力材料是 W:/M: 双人对话，需要两个能区分开的音色，这是硬需求
- *  3. 量化后 88MB，比 fp16 的 310MB 小 3.5 倍，音色文件另计 27MB
+ *  3. 量化后 86–92MB，比 fp32 的 325MB 小 3.5 倍；音色每选一个下 0.5MB（无需全下）
  *  4. Apache-2.0，onnx-community 有现成 ONNX，多档量化可选
+ *  5. 2025 年初在 HF Arena 登顶（模型卡 EVAL.md 截图日期 2025-02-26），
+ *     截至 2026-10 仍处前列，但已非第一（榜首为 Sonic 3.6 等商用模型）
  *
  * Piper 体积更小、纯 WASM 最稳，但 22kHz 档位自然度不如 Kokoro，作为降级备选。
- * Supertonic 3 之前是按「排行榜前列」选的，方向错了——它 Elo 和音色数都不占优。
+ * Supertonic 3/2 卡在**体积**不是许可：Open RAIL-M 允许非商用，第 4 条不违反。
+ * 但官方 ONNX 是 379.63MB（Supertonic 3）/ 250.65MB（Supertonic 2），**从未发量化版**；
+ * 网上 97MB 的 INT8 全是社区量化（仅 45 次下载）。
+ * 另：Open RAIL-M §4.a 强制要求把使用限制写进你自己的许可协议 —— 非阻断，但要落地的法务义务。
  *
  * 文件实测（onnx-community/Kokoro-82M-v1.0-ONNX）：
- *   model_quantized.onnx   88.1 MB   ← 选这个
- *   model_fp16.onnx       155.7 MB
- *   model.onnx            310.5 MB   ← 默认，太大
- *   voices/ 目录下的 bin   27.4 MB / 55 个（af 女声、am 男声、bf/bm 英音）
+ *   model_q8f16.onnx        86.0 MB   ← 最小可用
+ *   model_quantized.onnx    92.4 MB
+ *   model_fp16.onnx        163.0 MB
+ *   model.onnx (fp32)       325.5 MB   ← 默认，太大，别用
+ *   voices/<name>.bin        0.5 MB 每个 —— **只下要用的 2 个**，不用下全部 54 个
  *
  * ## 架构约束
  *
@@ -38,6 +44,20 @@
  * - **可降级**：WebGPU 不可用时自动退回 WASM/CPU
  * - **不绑定运行时**：具体 ONNX 推理库（sherpa-onnx / onnxruntime-web）
  *   通过适配器注入，本模块只定义契约与调度
+ *
+ * ## 接入前必须解决的两个坑（2026-09 核实）
+ *
+ * 1. **kokoro-js 依赖 `@huggingface/transformers@^3.5.1`，本项目用的是 4.3.0。**
+ *    `^3.5.1` 不匹配 4.x，直接装会装出两份 transformers（体积翻倍且可能冲突）。
+ *    选项：(a) 不用 kokoro-js，自己写 ONNX Runtime 调用；
+ *    (b) 降级 transformers 到 3.x；
+ *    (c) fork kokoro-js 改依赖范围。**建议 (a)**，避免为省代码引入版本冲突。
+ *    注意 kokoro-js 自带 phonemizer（WASM），unpacked 约 29.7MB，需一并评估。
+ *
+ * 2. **音色需单独下载**：`voices/*.bin` 共 27.4MB / 55 个。
+ *    听力只需 2 个音色（1 女 1 男），**只拉这 2 个**即可，
+ *    不要把 55 个全下——那是 27MB 的无谓流量。
+ *    推荐 W 用 af_bella（或 af_heart，官方默认），M 用 am_michael 或 am_adam。
  */
 /* ------------------------------------------------------------------ *
  * 一、文本分段
