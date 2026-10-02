@@ -5,24 +5,31 @@
  *
  * ## 模型选型（2026-09 核实）
  *
- * 按 Speech Arena Elo 排名靠前的模型，在**浏览器端**都跑不动。
+ * 约束：**浏览器端 + 小模型**。搜「TTS 排行榜前列」只会搜到巨兽
+ * （Fish Audio S2 Pro 权重实测 10.26 GB、ZONOS2 8B MoE、Qwen3-TTS 1.7B 但
+ * transformers.js 未支持 issue #1565），对网页毫无意义。
+ * 所以下面只比**浏览器可跑的小模型**。
  *
- * 注意：排除理由是**技术可行性**，不是许可。
- * 本项目是非商业开源教育项目，各模型的 Research/非商用条款都不构成障碍。
+ * | 模型 | 参数 | Elo | 量化后体积 | 音色 | 许可 |
+ * |---|---|---|---|---|---|
+ * | **Kokoro-82M** | 82M | **1060** | 88MB (quantized) | **54** | Apache-2.0 |
+ * | Piper | ~63M | 未入主榜 | 63MB | 100+ | MIT |
+ * | Supertonic 3 | 99M | 中上 | 92MB (int8) | 较少 | MIT |
  *
- * | 模型 | Elo | 实际不可用的原因 |
- * |---|---|---|
- * | Fish Audio S2 Pro | 1129（开源最高） | 权重实测 10.26 GB，仅 .safetensors，无 ONNX，无 JS 绑定 |
- * | ZONOS2 8B | 1320 | 8B MoE，浏览器无显存可用 |
- * | Qwen3-TTS-12Hz-1.7B | 榜单前列 | transformers.js 尚未支持（issue #1565） |
- * | **Supertonic 3** | 中上 | ✅ 92MB int8 / ONNX 原生 / CPU 实测 596 字符每秒 |
- * | Kokoro-82M | 中 | ✅ Apache-2.0，备选 |
+ * **选 Kokoro-82M**，理由：
+ *  1. Elo 1060，在小模型里明显领先（2026-01 曾登顶 TTS Arena）
+ *  2. **54 个音色** —— 听力材料是 W:/M: 双人对话，需要两个能区分开的音色，这是硬需求
+ *  3. 量化后 88MB，比 fp16 的 310MB 小 3.5 倍，音色文件另计 27MB
+ *  4. Apache-2.0，onnx-community 有现成 ONNX，多档量化可选
  *
- * **选 Supertonic 3**：唯一同时满足「浏览器可跑 + 体积可接受 + 有 ONNX」的模型。
- * 官方实测 M4 CPU 上 596–850 字符/秒，一段听力材料秒级合成完毕，无需 GPU。
+ * Piper 体积更小、纯 WASM 最稳，但 22kHz 档位自然度不如 Kokoro，作为降级备选。
+ * Supertonic 3 之前是按「排行榜前列」选的，方向错了——它 Elo 和音色数都不占优。
  *
- * ⚠️ 若日后出现 Fish Audio 的 ONNX 转换版，质量上限会高一档
- * （Elo 1129 对中上不是小差距），值得重新评估。
+ * 文件实测（onnx-community/Kokoro-82M-v1.0-ONNX）：
+ *   model_quantized.onnx   88.1 MB   ← 选这个
+ *   model_fp16.onnx       155.7 MB
+ *   model.onnx            310.5 MB   ← 默认，太大
+ *   voices/ 目录下的 bin   27.4 MB / 55 个（af 女声、am 男声、bf/bm 英音）
  *
  * ## 架构约束
  *
