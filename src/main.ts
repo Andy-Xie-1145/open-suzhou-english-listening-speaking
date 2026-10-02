@@ -20,6 +20,9 @@ import { createEngineRecorder, createEngineAsr } from './suzhou/recorder-bridge.
 import { mountSelfCheck } from './ui/selfcheck-ui.ts';
 import { mountSuzhouTopic } from './ui/suzhou-topic.ts';
 import topicsJson from '../data/topics.json' with { type: 'json' };
+import { mountSuzhouQa } from './ui/suzhou-qa.ts';
+import qaJson from '../data/qa.json' with { type: 'json' };
+import qaKwJson from '../data/qa-keywords.json' with { type: 'json' };
 import readingsJson from '../data/readings.json' with { type: 'json' };
 
 function bootstrap() {
@@ -52,6 +55,17 @@ function bootstrap() {
   const topicHost = document.createElement('div');
   mount.appendChild(topicHost);
   mountSuzhouTopic(topicHost, { topics: rawTopics, recorder: recorder, asr: asr });
+
+  // 情景问答（Q4）：2 题、情境类别配平，每题单独出分。
+  const rawQa: any[] = (qaJson as any).qa ?? [];
+  const qaHost = document.createElement('div');
+  mount.appendChild(qaHost);
+  mountSuzhouQa(qaHost, {
+    questions: rawQa,
+    enKeywords: qaKwJson as unknown as Record<string, string[][]>,
+    recorder: recorder,
+    asr: asr,
+  });
 }
 
 /** 只在浏览器环境启动；Node 下 import 本文件应无副作用 */

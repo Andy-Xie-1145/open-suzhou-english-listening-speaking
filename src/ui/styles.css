@@ -791,3 +791,20 @@ button, input, select, textarea {
 .sz-gate { font-weight: 600; padding: 8px 12px; border-radius: 6px; margin: 8px 0; }
 .sz-gate.ok { background: #eaf7ee; color: #0a7a3d; }
 .sz-gate.bad { background: #fdecec; color: #a12a2a; }
+
+/* 情景问答（Q4） */
+.sz-qa-item { border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px; margin: 16px 0; }
+.sz-qa-item h3 { margin: 0 0 8px; font-size: 15px; color: #666; }
+.sz-qa-q { font-size: 17px; font-weight: 600; margin: 6px 0; line-height: 1.6; }
+.sz-qa-cat { font-size: 12px; color: #888; margin: 0 0 10px; }
+.sz-qa-cov { font-size: 14px; margin: 8px 0; font-weight: 600; }
+.sz-kp { margin: 12px 0; }
+.sz-kp-row { padding: 8px 10px; margin-bottom: 6px; border-radius: 5px; border-left: 3px solid #ccc; background: #fafafa; }
+.sz-kp-row.ok { border-left-color: #0a7a3d; background: #f7fbf8; }
+.sz-kp-row.bad { border-left-color: #a12a2a; background: #fdf7f7; }
+.sz-kp-head { display: flex; gap: 6px; align-items: baseline; font-size: 13px; }
+.sz-kp-mark { font-weight: 700; }
+.sz-kp-row.ok .sz-kp-mark { color: #0a7a3d; }
+.sz-kp-row.bad .sz-kp-mark { color: #a12a2a; }
+.sz-kp-label { font-weight: 600; }
+.sz-kp-detail { font-size: 12px; color: #666; margin-top: 4px; line-height: 1.7; }
