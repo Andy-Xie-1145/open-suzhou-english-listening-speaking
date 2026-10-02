@@ -38,7 +38,7 @@ check('分数标签为近似分', view.label === '近似分', view.label);
 check('徽标为近似模拟', view.badge === '近似模拟', view.badge);
 check('带三条声明', view.disclaimer.length === 3, String(view.disclaimer.length));
 check('带已知局限清单', view.limits.length >= 5, String(view.limits.length));
-check('三个分项', view.dimensions.length === 3);
+check('四个分项', view.dimensions.length === 4, String(view.dimensions.length));
 check('分项权重标注为假设值', view.dimensions.every(d => d.weightText.includes('假设值')));
 check('逐词明细完整', view.rows.length === result.alignment.total, view.rows.length + '/' + result.alignment.total);
 check('元信息含来源标记', view.meta.sourceOfficial === task.source.official);
@@ -93,7 +93,7 @@ const refText = app.state().task!.text;
 const r = app.submitText(refText, 40000);
 check('手动提交返回结果', r !== null);
 check('提交后进入 scored', app.state().phase === 'scored');
-check('满分朗读得 100 近似分', r?.approximateScore === 100, String(r?.approximateScore));
+check('满分朗读得 98（韵律性未实现）', r?.approximateScore === 98, String(r?.approximateScore));
 
 const scored = allText(mount);
 check('分数区出现「近似分」标签', scored.includes('近似分'));
@@ -187,7 +187,7 @@ await app2.stop();
 check('录音已停止', Boolean(stopped));
 check('ASR 转写后进入 scored', app2.state().phase === 'scored', app2.state().phase);
 check('转写内容参与评分', app2.state().result !== null);
-check('满分转写得 100', app2.state().result?.approximateScore === 100, String(app2.state().result?.approximateScore));
+check('满分转写得 98', app2.state().result?.approximateScore === 98, String(app2.state().result?.approximateScore));
 
 /* ---------------- 8. ASR 失败降级 ---------------- */
 console.log('\n[7] ASR 失败降级');
@@ -198,7 +198,7 @@ await app3.start();
 await app3.stop();
 check('ASR 失败后进入 manual', app3.state().phase === 'manual', app3.state().phase);
 check('给出失败原因', (app3.state().error ?? '').includes('转写失败'));
-check('降级后仍可手动评分', (function () { const x = app3.submitText(refText, 40000); return x !== null && x.approximateScore === 100; })());
+check('降级后仍可手动评分', (function () { const x = app3.submitText(refText, 40000); return x !== null && x.approximateScore === 98; })());
 
 /* ---------------- 9. 无 ASR 引擎 ---------------- */
 console.log('\n[8] 无 ASR 引擎');
@@ -240,7 +240,7 @@ check('就绪后状态为 ready', idleAsr.status().status === 'ready', idleAsr.s
 await app1.start();
 await app1.stop();
 check('加载后录音可自动出分', app1.state().phase === 'scored', app1.state().phase);
-check('自动转写得分满分', app1.state().result?.approximateScore === 100, String(app1.state().result?.approximateScore));
+check('自动转写得分 98', app1.state().result?.approximateScore === 98, String(app1.state().result?.approximateScore));
 
 // 11.3 加载失败（断网 / 无痕模式存储不可用）
 console.log('\n[11] 模型加载失败（断网）');
@@ -252,7 +252,7 @@ check('加载失败返回 false', ok2 === false);
 check('状态标记为 failed', badAsr.status().status === 'failed', badAsr.status().status);
 check('界面提示加载失败原因', (app2f.state().error ?? '').includes('加载失败'), app2f.state().error ?? '');
 check('失败后回到 idle 而非卡死', app2f.state().phase === 'idle', app2f.state().phase);
-check('失败后仍可手动输入出分', (function () { const r = app2f.submitText(app2f.state().task!.text, 40000); return r !== null && r.approximateScore === 100; })());
+check('失败后仍可手动输入出分', (function () { const r = app2f.submitText(app2f.state().task!.text, 40000); return r !== null && r.approximateScore === 98; })());
 check('失败后页面未崩，题目仍在', allText(m2).includes('朗读短文'));
 
 /* ---------------- 12. 录音异常降级 ---------------- */
@@ -302,7 +302,7 @@ await app7f.start();
 await app7f.stop();
 check('转写崩溃进 manual', app7f.state().phase === 'manual', app7f.state().phase);
 check('提示自动转写失败', (app7f.state().error ?? '').includes('自动转写失败'), app7f.state().error ?? '');
-check('崩溃后仍可手动出分', (function () { const r = app7f.submitText(app7f.state().task!.text, 40000); return r !== null && r.approximateScore === 100; })());
+check('崩溃后仍可手动出分', (function () { const r = app7f.submitText(app7f.state().task!.text, 40000); return r !== null && r.approximateScore === 98; })());
 
 // 12.6 每一个降级场景都必须保留近似声明
 console.log('\n[13] 降级不丢红线');

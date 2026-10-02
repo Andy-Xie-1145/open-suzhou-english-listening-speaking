@@ -50,8 +50,9 @@ check('长词容差为 2', toleranceFor('basketball') === 2);
 console.log('\n[2] 近似评分');
 const s1 = scoreReading({ reference: ref, spoken: ref, durationMs: ref.split(/\s+/).length * 500 });
 console.log('  完美朗读 → 近似分 ' + s1.approximateScore);
-check('完美朗读得满分', s1.approximateScore === 100, String(s1.approximateScore));
-check('三个维度齐全', s1.dimensions.length === 3);
+// 韵律性未实现、恒取中性分 0.5，故完美朗读的上限是 95*0.5 + 5*0.5 = 100 中的 97.5→98
+check('完美朗读得 98（韵律性未实现拉低 2 分）', s1.approximateScore === 98, String(s1.approximateScore));
+check('四个维度齐全（含未实现的韵律性）', s1.dimensions.length === 4, String(s1.dimensions.length));
 check('维度标签带解释', s1.dimensions.every(d => d.label.length > 0));
 
 const words = ref.split(/\s+/);
@@ -80,7 +81,7 @@ console.log('\n[3] 权重配置');
 check('权重和为 1', WEIGHTS_SUM_IS_ONE === true);
 check('完整度权重 0.70', READING_WEIGHTS.completeness === 0.70);
 check('准确度权重 0.20', READING_WEIGHTS.accuracy === 0.20);
-check('流利度权重 0.10', READING_WEIGHTS.fluency === 0.10);
+check('流利度权重 0.05（机构图解口径）', READING_WEIGHTS.fluency === 0.05, String(READING_WEIGHTS.fluency));
 
 check('官方来源标记为 official', describeSource(SOURCE_OFFICIAL).official === true);
 check('推定来源标记为非 official', describeSource(SOURCE_INFERRED).official === false);
@@ -164,7 +165,7 @@ check('官方篇来源标记为官方', toReadingTask(official[0]).source.offici
 
 // 端到端：语料原文 → 近似评分
 const e2e = scoreReading({ reference: task.text, spoken: task.text, durationMs: task.wordCount * 480 });
-check('语料原文可获满分近似分', e2e.approximateScore === 100, String(e2e.approximateScore));
+check('语料原文得 98（韵律性未实现）', e2e.approximateScore === 98, String(e2e.approximateScore));
 
 console.log('\n=== 结果: ' + pass + ' passed, ' + fail + ' failed ===');
 if (fail > 0) process.exit(1);

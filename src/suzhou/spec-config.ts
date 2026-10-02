@@ -27,15 +27,36 @@
  *    没有任何公开依据支持这个具体比例。
  *  - 换一个比例会让同一段录音得到不同的近似分，这是本方法的固有不确定性。
  */
+/**
+ * 朗读短文的四维权重。
+ *
+ * 来源与不确定性：
+ *  - 机构整理的机评原理图解给出四维：完整性 70% / 准确性 20% / 流利性 5% / 韵律性 5%。
+ *    该图解为**二手转载**（🟡），未找到官方权重表原文。
+ *  - 新东方另有「完整度占了七成」的同口径表述，两条二手互相一致。
+ *  - 韵律性（意群停顿、重读弱读、语气语调）**本项目尚未实现**，
+ *    权重先占位以保证四项之和为 1，实际计算时该维度恒为中性分。
+ *
+ * 见 research/suzhou-grade9-exam-paper-composition.md 第六节。
+ */
 export const READING_WEIGHTS = {
+  /** 完整性：是否顺利读完全文 */
   completeness: 0.70,
+  /** 准确性：单词级，元音/辅音/重音 */
   accuracy: 0.20,
-  fluency: 0.10,
+  /** 流利性：语速、停顿、插入、连贯 */
+  fluency: 0.05,
+  /** 韵律性：意群停顿、重读弱读、语气语调 —— **未实现** */
+  prosody: 0.05,
 } as const;
+
+/** 尚未实现、恒取中性分的维度 */
+export const UNIMPLEMENTED_DIMENSIONS = ['prosody'] as const;
 
 /** 三项权重之和必须为 1，否则近似分失去意义 */
 const _wsum: number =
-  READING_WEIGHTS.completeness + READING_WEIGHTS.accuracy + READING_WEIGHTS.fluency;
+  READING_WEIGHTS.completeness + READING_WEIGHTS.accuracy
+  + READING_WEIGHTS.fluency + READING_WEIGHTS.prosody;
 export const WEIGHTS_SUM_IS_ONE: boolean = Math.abs(_wsum - 1) < 1e-9;
 
 /* ------------------------------------------------------------------ *

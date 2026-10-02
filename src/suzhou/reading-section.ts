@@ -121,7 +121,7 @@ export interface ReadingTask {
 }
 
 export interface DimensionResult {
-  key: 'completeness' | 'accuracy' | 'fluency';
+  key: 'completeness' | 'accuracy' | 'fluency' | 'prosody';
   label: string;
   /** 0-1 */
   value: number;
@@ -223,6 +223,15 @@ export function scoreReading(input: ScoreInput): ReadingApproxResult {
         : (pace >= PACE_RANGE.slow && pace <= PACE_RANGE.fast)
           ? '语速 ' + pace.toFixed(2) + ' 词/秒，在合理区间'
           : '语速 ' + pace.toFixed(2) + ' 词/秒，超出 ' + PACE_RANGE.slow + '–' + PACE_RANGE.fast + ' 区间',
+    },
+    {
+      key: 'prosody',
+      label: DIMENSION_LABELS.prosody,
+      // 未实现：固定取中性分，不奖不罚
+      value: 0.5,
+      weight: READING_WEIGHTS.prosody,
+      weighted: 0.5 * READING_WEIGHTS.prosody * 100,
+      note: '本维度（意群停顿/重读弱读/语气语调）尚未实现，此处按中性分计',
     },
   ];
 

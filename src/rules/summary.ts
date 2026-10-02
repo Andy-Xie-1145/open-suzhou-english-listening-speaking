@@ -34,15 +34,43 @@ export interface SectionScore {
  * 依据「听力 12 分钟 / 口语 10 分钟」的时间配比做近似分配。
  * 接入生产前应向苏州市教育考试院核实官方分值表。
  */
-export const DEFAULT_WEIGHTS: Record<SectionKind, number> = {
-  'listening-dialogue': 0.15,
-  'listening-passage': 0.15,
-  reading: 0.25,
-  qa: 0.20,
-  topic: 0.25,
-};
+/**
+ * 题型分值权重。
+ *
+ * ✅ 这些是**官方文件明文规定**的，不是假设值。
+ * 来源：苏州市教育局《关于做好2026年苏州市初中英语听力口语自动化考试工作的通知》
+ *       （苏州教基〔2026〕4 号）原文：
+ *   「"听对话回答问题"和"听对话和短文答题"各赋分 10 分，"朗读短文"赋分 3 分，
+ *     "情景问答"赋分 2 分，"话题简述"赋分 5 分，全卷满分 30 分。」
+ *
+ * 该分值段落自苏教基〔2021〕4 号起逐字未变（2021/2024/2025/2026 连续四份文件一致）。
+ *
+ * 注意：**分值不等于权重公式里的系数**。这里存的是「该题型在 30 分制中占几分」，
+ * 供成绩汇总折算用；单题内部的维度权重是另一回事，见 SPEC 第 3 节。
+ *
+ * ⚠️ 题量（每型几小题）官方**从未公布**。此处的分值不构成对题量的约束。
+ */
+export const OFFICIAL_POINTS = {
+  'listening-dialogue': 10,
+  'listening-passage': 10,
+  reading: 3,
+  qa: 2,
+  topic: 5,
+} as const;
 
+/**
+ * 折算成占比（仅用于加权求和，不是分值本身）。
+ * 由 OFFICIAL_POINTS 除以总分导出，避免两处各写一份导致漂移。
+ */
 export const TOTAL_POINTS = 30;
+
+export const DEFAULT_WEIGHTS: Record<SectionKind, number> = {
+  'listening-dialogue': OFFICIAL_POINTS['listening-dialogue'] / TOTAL_POINTS,
+  'listening-passage': OFFICIAL_POINTS['listening-passage'] / TOTAL_POINTS,
+  reading: OFFICIAL_POINTS.reading / TOTAL_POINTS,
+  qa: OFFICIAL_POINTS.qa / TOTAL_POINTS,
+  topic: OFFICIAL_POINTS.topic / TOTAL_POINTS,
+};
 
 export const SECTION_TITLES: Record<SectionKind, string> = {
   'listening-dialogue': '听对话回答问题',
