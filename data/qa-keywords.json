@@ -1,0 +1,753 @@
+{
+  "qa-01": [
+    [
+      "play",
+      "chase",
+      "run around",
+      "ran",
+      "running",
+      "push",
+      "shout",
+      "laugh"
+    ],
+    [
+      "listen",
+      "pay attention",
+      "quiet",
+      "quietly",
+      "sit down",
+      "be quiet",
+      "listen to the teacher",
+      "teacher"
+    ],
+    [
+      "sorry",
+      "apologize",
+      "apologise",
+      "won't do it again",
+      "not again",
+      "never again",
+      "promise",
+      "promise not"
+    ]
+  ],
+  "qa-02": [
+    [
+      "ball",
+      "window",
+      "broke",
+      "broken",
+      "break",
+      "kicked",
+      "kick",
+      "hit"
+    ],
+    [
+      "angry",
+      "upset",
+      "unhappy",
+      "sorry",
+      "annoyed",
+      "but",
+      "polite",
+      "not angry",
+      "understand"
+    ],
+    [
+      "tell my parents",
+      "tell my parents",
+      "parents",
+      "ask him",
+      "ask them",
+      "fix it",
+      "repair",
+      "replace",
+      "replace it",
+      "mum",
+      "dad"
+    ]
+  ],
+  "qa-03": [
+    [
+      "no time",
+      "not enough time",
+      "too late",
+      "busy",
+      "not hungry",
+      "hungry",
+      "hurry",
+      "rush"
+    ],
+    [
+      "tired",
+      "sick",
+      "ill",
+      "illness",
+      "energy",
+      "no energy",
+      "weak",
+      "health",
+      "unhealthy",
+      "bad for"
+    ],
+    [
+      "wake up earlier",
+      "get up early",
+      "early",
+      "prepare",
+      "milk",
+      "egg",
+      "eggs",
+      "bread",
+      "breakfast",
+      "change"
+    ]
+  ],
+  "qa-04": [
+    [
+      "look",
+      "look both ways",
+      "left and right",
+      "both sides",
+      "watch",
+      "check",
+      "see the cars"
+    ],
+    [
+      "zebra crossing",
+      "crosswalk",
+      "pedestrian",
+      "sidewalk",
+      "pavement",
+      "cross here",
+      "crossing"
+    ],
+    [
+      "phone",
+      "mobile",
+      "cell phone",
+      "not use phone",
+      "look ahead",
+      "focus",
+      "careful",
+      "pay attention"
+    ]
+  ],
+  "qa-05": [
+    [
+      "not work",
+      "doesn't work",
+      "not on",
+      "broken",
+      "no light",
+      "loose",
+      "contact",
+      "flicker",
+      "bad"
+    ],
+    [
+      "shop",
+      "store",
+      "went to",
+      "asked",
+      "refused",
+      "refuse",
+      "no refund",
+      "they said no",
+      "tried"
+    ],
+    [
+      "change",
+      "exchange",
+      "refund",
+      "money back",
+      "receipt",
+      "keep the receipt",
+      "replace it",
+      "new one"
+    ]
+  ],
+  "qa-06": [
+    [
+      "study",
+      "review",
+      "revise",
+      "prepare for the exam",
+      "exam first",
+      "after the exam",
+      "stay in",
+      "rather"
+    ],
+    [
+      "exam",
+      "important",
+      "prepare",
+      "need to prepare",
+      "busy with",
+      "test",
+      "marks"
+    ],
+    [
+      "sorry",
+      "apologize",
+      "apologise",
+      "another time",
+      "reschedule",
+      "postpone",
+      "later",
+      "change the plan"
+    ]
+  ],
+  "qa-07": [
+    [
+      "pollute",
+      "pollution",
+      "dirty",
+      "river",
+      "water",
+      "harmful",
+      "bad for",
+      "environment"
+    ],
+    [
+      "bin",
+      "trash can",
+      "garbage can",
+      "dustbin",
+      "rubbish bin",
+      "take it away",
+      "pick it up",
+      "put it in"
+    ],
+    [
+      "pick up",
+      "clean",
+      "together",
+      "all of us",
+      "tell others",
+      "tell people",
+      "protect"
+    ]
+  ],
+  "qa-08": [
+    [
+      "don't climb",
+      "not climb",
+      "stop climbing",
+      "don't",
+      "stop",
+      "not allowed",
+      "bad idea"
+    ],
+    [
+      "danger",
+      "dangerous",
+      "unsafe",
+      "hurt",
+      "accident",
+      "rule",
+      "against the rules",
+      "not allowed"
+    ],
+    [
+      "use the door",
+      "the gate",
+      "go through the door",
+      "arrange",
+      "another time",
+      "later",
+      "play basketball"
+    ]
+  ],
+  "qa-09": [
+    [
+      "phone",
+      "mobile",
+      "playing",
+      "look at answers",
+      "copy",
+      "cheat",
+      "cheating",
+      "search for answers",
+      "looking at his phone"
+    ],
+    [
+      "can't listen",
+      "not listen",
+      "concentrate",
+      "pay no attention",
+      "don't understand",
+      "learn nothing",
+      "affect",
+      "bad for"
+    ],
+    [
+      "ask the teacher",
+      "ask your teacher",
+      "ask him",
+      "ask a classmate",
+      "after class",
+      "talk to",
+      "advice",
+      "help"
+    ]
+  ],
+  "qa-10": [
+    [
+      "spring festival",
+      "chinese new year",
+      "dumplings",
+      "couplets",
+      "fireworks",
+      "visit relatives",
+      "lunar new year",
+      "stay at home"
+    ],
+    [
+      "family",
+      "reunion",
+      "together",
+      "get together",
+      "say goodbye",
+      "welcome the new year",
+      "old year"
+    ],
+    [
+      "chinatown",
+      "overseas",
+      "abroad",
+      "dragon",
+      "dance",
+      "drum",
+      "lion",
+      "parade",
+      "fireworks abroad"
+    ]
+  ],
+  "qa-11": [
+    [
+      "could i",
+      "may i",
+      "can i",
+      "please",
+      "sorry",
+      "one more day",
+      "extra day",
+      "delay",
+      "extend",
+      "because",
+      "reason"
+    ],
+    [
+      "on time",
+      "hand in",
+      "submit",
+      "in time",
+      "good quality",
+      "carefully",
+      "promise",
+      "make sure"
+    ],
+    [
+      "tonight",
+      "outline",
+      "draft",
+      "show you",
+      "show the teacher",
+      "check",
+      "prepare"
+    ]
+  ],
+  "qa-12": [
+    [
+      "yes",
+      "no",
+      "agree",
+      "disagree",
+      "i think",
+      "in my opinion",
+      "i don't think",
+      "i support"
+    ],
+    [
+      "convenient",
+      "contact",
+      "call",
+      "study",
+      "learn",
+      "affect",
+      "distract",
+      "focus",
+      "not concentrate"
+    ],
+    [
+      "only",
+      "certain",
+      "specific",
+      "limited time",
+      "after class",
+      "not allowed in class",
+      "compromise"
+    ]
+  ],
+  "qa-13": [
+    [
+      "yes",
+      "willing",
+      "glad",
+      "i'd like to",
+      "happy to",
+      "sure",
+      "of course"
+    ],
+    [
+      "teach",
+      "show",
+      "explain",
+      "basics",
+      "basic",
+      "patient",
+      "step by step",
+      "help them"
+    ],
+    [
+      "weekend",
+      "free time",
+      "time",
+      "no secret",
+      "privacy",
+      "keep it",
+      "careful",
+      "don't tell anyone"
+    ]
+  ],
+  "qa-14": [
+    [
+      "patient",
+      "step by step",
+      "slowly",
+      "one by one",
+      "carefully",
+      "won't be angry",
+      "not angry",
+      "not bother"
+    ],
+    [
+      "answer",
+      "hang up",
+      "call back",
+      "contact",
+      "find",
+      "first",
+      "basic"
+    ],
+    [
+      "encourage",
+      "practice",
+      "more practice",
+      "together",
+      "not tired",
+      "don't mind",
+      "happy to help"
+    ]
+  ],
+  "qa-15": [
+    [
+      "bad",
+      "harmful",
+      "health",
+      "sleep",
+      "body",
+      "eyes",
+      "tired",
+      "not good",
+      "damage"
+    ],
+    [
+      "balance",
+      "both",
+      "study and sleep",
+      "enough sleep",
+      "rest",
+      "work"
+    ],
+    [
+      "go to bed early",
+      "sleep early",
+      "earlier",
+      "plan",
+      "manage time",
+      "more efficient",
+      "efficiency"
+    ]
+  ],
+  "qa-16": [
+    [
+      "give",
+      "offer",
+      "my seat",
+      "stand up",
+      "get up",
+      "let her sit",
+      "please sit",
+      "because"
+    ],
+    [
+      "hold",
+      "safe",
+      "firm",
+      "careful",
+      "sit down",
+      "steady",
+      "hold the bar"
+    ],
+    [
+      "help",
+      "helping",
+      "good",
+      "right",
+      "polite",
+      "kind",
+      "should"
+    ]
+  ],
+  "qa-17": [
+    [
+      "different",
+      "not the same",
+      "colour",
+      "color",
+      "size",
+      "bigger",
+      "smaller",
+      "not like the picture",
+      "wrong"
+    ],
+    [
+      "return",
+      "exchange",
+      "refund",
+      "money back",
+      "go back to the shop",
+      "change them"
+    ],
+    [
+      "real shop",
+      "official",
+      "reviews",
+      "reputation",
+      "careful",
+      "next time",
+      "choose carefully"
+    ]
+  ],
+  "qa-18": [
+    [
+      "running",
+      "long jump",
+      "tug of war",
+      "relay",
+      "race",
+      "jump",
+      "sports"
+    ],
+    [
+      "like",
+      "love",
+      "enjoy",
+      "good at",
+      "for my class",
+      "help my class",
+      "team",
+      "health"
+    ],
+    [
+      "prepare",
+      "practice",
+      "train",
+      "early",
+      "in advance",
+      "ready"
+    ]
+  ],
+  "qa-19": [
+    [
+      "agree",
+      "support",
+      "good",
+      "sensible",
+      "right",
+      "save water",
+      "less rubbish",
+      "less trash",
+      "reduce"
+    ],
+    [
+      "bottle",
+      "my bottle",
+      "bring",
+      "take",
+      "own bottle",
+      "cup"
+    ],
+    [
+      "safe",
+      "material",
+      "clean",
+      "wash",
+      "wash it",
+      "hygiene",
+      "careful"
+    ]
+  ],
+  "qa-20": [
+    [
+      "helmet",
+      "no helmet",
+      "not wearing",
+      "rule",
+      "against the law",
+      "illegal",
+      "dangerous"
+    ],
+    [
+      "slippery",
+      "rain",
+      "wet",
+      "accident",
+      "injury",
+      "hurt",
+      "serious"
+    ],
+    [
+      "safety",
+      "safe",
+      "yourself",
+      "your family",
+      "your parents",
+      "protect",
+      "important"
+    ]
+  ],
+  "qa-21": [
+    [
+      "read",
+      "reading",
+      "copy",
+      "translate",
+      "not understand",
+      "can't speak",
+      "not real",
+      "mechanical",
+      "just read"
+    ],
+    [
+      "speak",
+      "say",
+      "write",
+      "first",
+      "your own",
+      "then compare",
+      "check",
+      "correct"
+    ],
+    [
+      "practice",
+      "speak more",
+      "record",
+      "listen back",
+      "talk out loud",
+      "confident"
+    ]
+  ],
+  "qa-22": [
+    [
+      "dragon boat",
+      "festival",
+      "name",
+      "date",
+      "origin",
+      "custom",
+      "tradition",
+      "blackboard"
+    ],
+    [
+      "zongzi",
+      "rice dumpling",
+      "dumplings",
+      "boat race",
+      "dragon boat race",
+      "mugwort",
+      "hang"
+    ],
+    [
+      "commemorate",
+      "remember",
+      "family",
+      "together",
+      "reunion",
+      "honour",
+      "honor"
+    ]
+  ],
+  "qa-23": [
+    [
+      "teacher",
+      "head teacher",
+      "class teacher",
+      "my parents",
+      "my mother",
+      "my father",
+      "ask"
+    ],
+    [
+      "because",
+      "reason",
+      "competition",
+      "match",
+      "the game",
+      "time",
+      "at"
+    ],
+    [
+      "finish",
+      "in advance",
+      "miss",
+      "not miss",
+      "homework",
+      "promise",
+      "make sure"
+    ]
+  ],
+  "qa-24": [
+    [
+      "agree",
+      "support",
+      "partly",
+      "partially",
+      "yes",
+      "no",
+      "i think",
+      "in my opinion"
+    ],
+    [
+      "hands-on",
+      "practical",
+      "ability",
+      "interest",
+      "interested",
+      "less homework",
+      "reduce pressure",
+      "useful"
+    ],
+    [
+      "once a week",
+      "practical activity",
+      "activity",
+      "keep",
+      "basic",
+      "ordinary",
+      "maintain"
+    ]
+  ]
+}
