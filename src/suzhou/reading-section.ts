@@ -21,6 +21,7 @@ import {
   type SourceInfo,
 } from './spec-config.ts';
 import { DIMENSION_LABELS } from './disclaimer.ts';
+import { evaluateProsody, type ProsodyInput, type ProsodyResult } from './prosody.ts';
 
 /* ------------------------------------------------------------------ *
  * 一、词级对齐
@@ -156,6 +157,11 @@ export interface ScoreInput {
   spoken: string;
   /** 作答时长（毫秒） */
   durationMs?: number;
+  /**
+   * 韵律性所需的音频特征。不提供时该维度退化为中性分 0.5（不奖不罚）。
+   * 由调用方（引擎层）从 PCM 计算后传入。
+   */
+  prosody?: ProsodyInput;
 }
 
 function pct(x: number): string {
@@ -191,6 +197,19 @@ export function scoreReading(input: ScoreInput): ReadingApproxResult {
   }
 
   // ---- 加权合成 ----
+  // ---- 韵律性 ----
+  // 有音频特征就真算，没有就退化为中性分。
+  const prosodyResult: ProsodyResult = input.prosody
+    ? evaluateProsody(input.prosody)
+    : {
+        score: 0.5,
+        stress: { stressed: [], stressRatio: 0, placementScore: 0.5, functionWordStressed: 0 },
+        phrasing: { boundaryHit: [], boundaryRate: 0, missingBreak: 0, falseBreak: 0, score: 0.5 },
+        intonation: { voicedRatio: 0, finalSlope: 0, expressiveRatio: 0, score: 0.5 },
+        notes: [],
+      };
+
+
   const dims: DimensionResult[] = [
     {
       key: 'completeness',
@@ -227,11 +246,14 @@ export function scoreReading(input: ScoreInput): ReadingApproxResult {
     {
       key: 'prosody',
       label: DIMENSION_LABELS.prosody,
-      // 未实现：固定取中性分，不奖不罚
-      value: 0.5,
+      value: prosodyResult.score,
       weight: READING_WEIGHTS.prosody,
-      weighted: 0.5 * READING_WEIGHTS.prosody * 100,
-      note: '本维度（意群停顿/重读弱读/语气语调）尚未实现，此处按中性分计',
+      weighted: prosodyResult.score * READING_WEIGHTS.prosody * 100,
+      note: input.prosody
+        ? ('重读位置 ' + Math.round(prosodyResult.stress.placementScore * 100)
+           + '%、断句 ' + Math.round(prosodyResult.phrasing.score * 100)
+           + '%、语调 ' + Math.round(prosodyResult.intonation.score * 100) + '%')
+        : '未提供音频特征，按中性分计',
     },
   ];
 
