@@ -103,50 +103,14 @@ check('局限含「转写会掩盖错读」', KNOWN_LIMITS.some(l => l.includes(
 check('局限含「不折算中考 30 分」', KNOWN_LIMITS.some(l => l.includes('30 分')));
 check('局限含语料非教材原文', KNOWN_LIMITS.some(l => l.includes('非教材原文')));
 
+const READING_SRC = await import('node:fs/promises').then(function (m) { return m.readFile('src/suzhou/reading-section.ts', 'utf8'); });
+
 /* ---------------- 5. 全局禁用表述扫描 ---------------- */
 console.log('\n[5] 全局禁用表述扫描');
-
-// 这些表述一旦出现，就是把近似说成真实。红线由测试强制，不靠自觉。
-const BANNED = [
-  '对标讯飞',
-  '等同正考',
-  '等同官方',
-  '与考场一致',
-  '与正考一致',
-  '准确预测分数',
-  '预测你的分数',
-  '估分',
-  '官方评分算法',
-  '超过多少人',
-  '排名',
-];
-
-interface FileRef { path: string; text: string; }
-const filesToScan: FileRef[] = [
-  { path: 'src/suzhou/reading-section.ts', text: await import('node:fs/promises').then(m => m.readFile('src/suzhou/reading-section.ts', 'utf8')) },
-  { path: 'src/suzhou/spec-config.ts', text: await import('node:fs/promises').then(m => m.readFile('src/suzhou/spec-config.ts', 'utf8')) },
-  { path: 'src/suzhou/disclaimer.ts', text: await import('node:fs/promises').then(m => m.readFile('src/suzhou/disclaimer.ts', 'utf8')) },
-  { path: 'spec/suzhou-listening-speaking.spec.md', text: await import('node:fs/promises').then(m => m.readFile('spec/suzhou-listening-speaking.spec.md', 'utf8')) },
-];
-
-let bannedHits = 0;
-for (const f of filesToScan) {
-  for (const phrase of BANNED) {
-    if (f.text.includes(phrase)) {
-      // spec 里允许出现在「禁止」条款的描述中
-      const isSpecRedline = f.path.startsWith('spec/')
-        && (f.text.includes('禁止') || f.text.includes('不得') || f.text.includes('红线'));
-      if (!isSpecRedline) {
-        console.log('      违规: ' + f.path + ' 含「' + phrase + '」');
-        bannedHits++;
-      }
-    }
-  }
-}
-check('源码与界面文案无禁用表述', bannedHits === 0, bannedHits + ' 处');
+// 扫描已上移到 tests/wording.test.ts：范围从 4 个文件扩到 src 全部 + 对外文档。
 
 // 近似分必须命名为 approximateScore，不允许叫 score
-const src = filesToScan[0].text;
+const src = READING_SRC;
 check('分数字段名为 approximateScore', src.includes('approximateScore'));
 check('不使用裸 score 作为结果字段', !/\bscore:\s*number/.test(src));
 

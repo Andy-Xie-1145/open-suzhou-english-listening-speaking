@@ -8,7 +8,7 @@
  *
  * 职责：
  *  1. 从 24 篇中取一题，显示原文与材料来源（官方公布 vs 本项目推定）
- *  2. 录音（浏览器 MediaRecorder，音频只在内存，不上传）
+ *  2. 录音（浏览器 MediaRecorder，音频默认只在内存，不上传）
  *  3. 转写：优先用引擎的 Whisper，未就绪时退化为手动输入
  *  4. 跑近似评分，逐词反馈
  *
@@ -344,7 +344,7 @@ function renderScorePane(doc: Document, view: ScoreView): HTMLElement {
  *  - 转写失败 → 捕获并提示，手动输入兜底
  *  - 语料为空 → 显示错误，不白屏
  *
- * 音频只在内存，不上传、不落盘。
+ * 音频默认只在内存，不上传、不落盘（云端转写为用户显式可选路径）。
  */
 export interface SuzhouReadingApp {
   state(): ReadingState;

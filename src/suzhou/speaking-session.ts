@@ -44,7 +44,7 @@ export interface RecordedClip {
 
 export interface SpeakingSession {
   phase: Record<SpeakingKind, SpeakPhase>;
-  /** 考试中录到的原始音频。只在内存，用完即弃，不上传、不落盘 */
+  /** 考试中录到的原始音频。只在内存，用完即弃，不落盘；转写若走云端则例外（用户显式开启） */
   clips: Partial<Record<SpeakingKind, RecordedClip>>;
   /** 手写内容（手动路径或转写后回填） */
   text: Record<SpeakingKind, string>;

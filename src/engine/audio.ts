@@ -3,7 +3,7 @@
  *
  * 许可：AGPL-3.0-only
  *
- * ARCHITECTURE.md 第 1.2 条：音频不出浏览器。
+ * ARCHITECTURE.md 第 1.2 条：音频默认不出浏览器（云端 ASR 为用户显式可选，见 asr-provider.ts）。
  * 本模块是唯一的音频入口，所有解码都发生在内存里，返回的 Float32Array 用完即弃，
  * 全文件没有任何 fetch/XHR/文件写入。
  *

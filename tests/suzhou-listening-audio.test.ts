@@ -104,6 +104,8 @@ const totalBytes = plans.reduce(function (a, p) { return a + p.estimatedBytes; }
 console.log('  估算：' + (totalMs / 1000).toFixed(1) + ' 秒音频，' + (totalBytes / 1048576).toFixed(2) + ' MB（mp3@128k）');
 check('音频总时长在 2–6 分钟量级（听力段 12 分钟，材料播 2 遍）',
   totalMs > 120000 && totalMs < 360000, String(totalMs));
+console.log('  对照真实渲染：实际 193.2s（13 段 8.84 MB，24kHz 单声道）');
+check('估算与实测差在 25% 以内', Math.abs(totalMs - 193200) / 193200 < 0.25, String(totalMs));
 check('音频总体积远小于任何模型（对比音素模型 303 MB）', totalBytes < 5 * 1048576, String(totalBytes));
 
 /* ---------- 6. manifest 与失效判定 ---------- */

@@ -4,7 +4,7 @@
  * 许可：AGPL-3.0-only
  *
  * 定位（ARCHITECTURE 第 3.1 节 + 硬性要求）：本模块输出的是**能力诊断**，
- * 不是考场估分。界面必须始终显式声明这一点，避免学生把诊断分当成分数。
+ * 不是考场分数。界面必须始终显式声明这一点，避免学生把诊断分当成分数。
  *
  * 降级：本文件所有转换函数都是纯函数，输入缺字段不抛错、返回空结构而非崩溃。
  * 由 resolveDegradation(capabilities) 驱动 UI 隐藏/替换相应区块。
@@ -622,7 +622,7 @@ export function buildDiagnosticCards(diagnostics: Diagnostic[] | null | undefine
 
 export interface FeedbackView {
   level: FeedbackLevel;
-  /** 能力诊断分（非考场估分） */
+  /** 能力诊断分（不是考场分数） */
   score: number;
   headline: string;
   /** 必须在界面上可见的免责说明 */
@@ -647,7 +647,7 @@ export interface FeedbackView {
   degradation: DegradationState;
 }
 
-const DISCLAIMER = '这是能力诊断，不是考场估分。它告诉你「哪里没练到」，不预测考试得分。';
+const DISCLAIMER = '这是能力诊断，不是考场分数。它告诉你「哪里没练到」，不预测考试得分。';
 
 /** 纯函数：引擎分析结果 + 能力 → 视图模型。缺字段一律降级，不抛错。 */
 export function toFeedbackView(

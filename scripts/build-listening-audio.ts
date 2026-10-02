@@ -112,11 +112,17 @@ function concatWithGaps(
 
 /* ---------- 运行时（kokoro-js，装在 scripts/ 侧） ---------- */
 
+/**
+ * kokoro-js 的 generate() 返回 transformers.js 的 `RawAudio`。
+ * 实测这个类型只有 `.audio`（Float32Array）、`.sampling_rate`、`toWav()`、`toBlob()`，
+ * **没有 `toRaw()`** —— 之前写错就是这个报错。
+ */
+interface RawAudioLike {
+  audio: Float32Array;
+  sampling_rate: number;
+}
 interface KokoroTTS {
-  generate(text: string, opts: { voice: string }): Promise<{
-    toRaw(): Float32Array;
-    sampling_rate: number;
-  }>;
+  generate(text: string, opts: { voice: string }): Promise<RawAudioLike>;
 }
 interface KokoroModule {
   KokoroTTS: { from_pretrained(id: string, opts: { dtype: string }): Promise<KokoroTTS> };
@@ -124,7 +130,31 @@ interface KokoroModule {
 
 const KOKORO_ID = 'onnx-community/Kokoro-82M-v1.0-ONNX';
 
+/**
+ * 把模型远端切到 ModelScope。
+ *
+ * 与浏览器侧是同一个理由：huggingface.co 在大陆被 DNS 投毒到
+ * 199.16.156.7（Twitter 网段），TCP 443 不通。
+ * kokoro-js 内部用 @huggingface/transformers 的默认 remoteHost，
+ * 这里在加载之前改掉 —— scripts/ 只有一份 transformers，改了 kokoro-js 也吃到。
+ */
+async function useDomesticModelSource(): Promise<string> {
+  try {
+    const spec = '@huggingface/transformers';
+    const tf = (await import(spec)) as unknown as {
+      env: { remoteHost: string; remotePathTemplate: string };
+    };
+    tf.env.remoteHost = 'https://www.modelscope.cn/';
+    tf.env.remotePathTemplate = 'models/{model}/resolve/master/';
+    return 'ModelScope（modelscope.cn）';
+  } catch {
+    return '未切换，沿用默认远端';
+  }
+}
+
 async function loadKokoro(): Promise<KokoroTTS> {
+  const source = await useDomesticModelSource();
+  console.log('  模型源：' + source);
   try {
     const spec = 'kokoro-js';
     const mod = (await import(spec)) as unknown as KokoroModule;
@@ -205,7 +235,7 @@ async function main(): Promise<void> {
     for (const seg of plan.segments) {
       const audio = await tts.generate(seg.text, { voice: seg.voiceId });
       sampleRate = audio.sampling_rate || sampleRate;
-      parts.push({ samples: audio.toRaw(), speaker: seg.speaker });
+      parts.push({ samples: audio.audio, speaker: seg.speaker });
     }
     const merged = concatWithGaps(parts, sampleRate);
     const wavPath = join(OUT_DIR, plan.materialId + '.wav');

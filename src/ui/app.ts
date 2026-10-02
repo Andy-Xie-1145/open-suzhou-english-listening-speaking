@@ -232,7 +232,7 @@ export function createApp(mount: HTMLElement, deps: AppDeps = {}): AppController
   const header = el('header', 'app__header');
   const brand = el('div', 'app__brand');
   brand.appendChild(el('h1', 'app__title', '英语听力口语 · 模拟考场'));
-  brand.appendChild(el('p', 'app__tagline', '按江苏中考听说考试的真实流程练习，反馈是「能力诊断」不是考场估分。'));
+  brand.appendChild(el('p', 'app__tagline', '按江苏中考听说考试的真实流程练习，反馈是「能力诊断」，不是考场分数。'));
   header.appendChild(brand);
 
   const modeSel = el('select', 'app__mode');
@@ -482,7 +482,7 @@ export function createApp(mount: HTMLElement, deps: AppDeps = {}): AppController
       );
       // 仍然展示静态的降级说明，让学生知道当前可用能力
       const dg = resolveDegradation(caps);
-      feedbackPane.appendChild(el('p', 'feedback__disclaimer', '这是能力诊断，不是考场估分。'));
+      feedbackPane.appendChild(el('p', 'feedback__disclaimer', '这是能力诊断，不是考场分数。'));
       feedbackPane.appendChild(el('p', 'notice notice--info', dg.summary));
       return;
     }

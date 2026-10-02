@@ -1,0 +1,13 @@
+{
+  "name": "openels-build-scripts",
+  "private": true,
+  "version": "0.0.0",
+  "description": "构建期脚本的独立依赖树。刻意与浏览器产物分开：kokoro-js 锁 @huggingface/transformers ^3.5.1，而本项目浏览器侧用的是 4.3.0，装在一起会出两份 transformers。",
+  "type": "module",
+  "scripts": {
+    "build:listening": "node --experimental-strip-types ../scripts/build-listening-audio.ts"
+  },
+  "dependencies": {
+    "kokoro-js": "^1.2.1"
+  }
+}

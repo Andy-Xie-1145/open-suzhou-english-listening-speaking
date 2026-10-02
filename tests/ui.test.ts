@@ -553,7 +553,7 @@ const fullView = toFeedbackView(
   2000,
 );
 check('全能力视图 level=full', fullView.level === 'full');
-check('免责声明强调能力诊断', fullView.disclaimer.includes('能力诊断') && fullView.disclaimer.includes('不是考场估分'));
+check('免责声明强调能力诊断', fullView.disclaimer.includes('能力诊断') && fullView.disclaimer.includes('不是考场分数'));
 check('转写来源标记为 asr', fullView.transcriptSource === 'asr');
 check('音素区可用', fullView.phoneme?.available === true);
 check('双轨已生成', !!fullView.tracks && fullView.tracks!.pitch.length > 0);
@@ -687,7 +687,7 @@ const e2eView = toFeedbackView({ rules: e2e }, emptyCapabilities());
 check('无引擎无模型仍产出完整 L0 反馈', e2eView.bars.length === 5 && e2eView.cards.length > 0);
 check('L0 诊断分合理', e2eView.score >= 0 && e2eView.score <= 100, String(e2eView.score));
 check('句数门槛引用正确', e2eView.bars[0].threshold === MIN_SENTENCES, String(e2eView.bars[0].threshold));
-check('降级路径仍标注「不是考场估分」', hasChinese(e2eView.disclaimer) && e2eView.disclaimer.includes('能力诊断'));
+check('降级路径仍标注「不是考场分数」', hasChinese(e2eView.disclaimer) && e2eView.disclaimer.includes('能力诊断'));
 
 /* ------------------------------------------------------------------ */
 

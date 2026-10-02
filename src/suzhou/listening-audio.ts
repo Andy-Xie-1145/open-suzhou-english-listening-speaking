@@ -52,8 +52,17 @@ export const DEFAULT_VOICES: Record<ListeningSpeaker, string> = {
  * 估算参数
  * ------------------------------------------------------------------ */
 
-/** 正常语速。Kokoro 偏快，取 2.8 词/秒偏保守（宁可估长不估短） */
-export const WORDS_PER_SECOND = 2.8;
+/**
+ * 语速，用于**估算**音频时长（显示「还要下多久 / 要播多久」）。
+ *
+ * 由 13 段真实渲染校准，不是拍脑袋：
+ *   旧值 2.8 词/秒 → 估算总时长 224.2s，实际 193.2s（估长了 16%）
+ *   新值 3.25 词/秒 → 与实测吻合
+ *
+ * 注意：**播放阶段的真实时长不靠这个估算**，用的是 audio 元素自己的 duration。
+ * 这个数字只影响进度提示，不影响流程判定。
+ */
+export const WORDS_PER_SECOND = 3.25;
 
 /** 说话人切换处插入的静音，与 src/engine/tts.ts 的 SPEAKER_GAP_MS 保持一致 */
 export const AUDIO_SEGMENT_GAP_MS = 250;
