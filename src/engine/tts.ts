@@ -5,18 +5,24 @@
  *
  * ## 模型选型（2026-09 核实）
  *
- * 按 Speech Arena Elo 排名靠前的模型，在本项目场景下都不可用：
+ * 按 Speech Arena Elo 排名靠前的模型，在**浏览器端**都跑不动。
  *
- * | 模型 | Elo | 问题 |
+ * 注意：排除理由是**技术可行性**，不是许可。
+ * 本项目是非商业开源教育项目，各模型的 Research/非商用条款都不构成障碍。
+ *
+ * | 模型 | Elo | 实际不可用的原因 |
  * |---|---|---|
- * | Fish Audio S2 Pro | 1129（开源最高） | Research 许可，不得商用；4.4B 参数 |
+ * | Fish Audio S2 Pro | 1129（开源最高） | 权重实测 10.26 GB，仅 .safetensors，无 ONNX，无 JS 绑定 |
  * | ZONOS2 8B | 1320 | 8B MoE，浏览器无显存可用 |
  * | Qwen3-TTS-12Hz-1.7B | 榜单前列 | transformers.js 尚未支持（issue #1565） |
- * | **Supertonic 3** | 中上 | ✅ MIT 许可 / 99M / ONNX 原生 / int8 后 92MB |
+ * | **Supertonic 3** | 中上 | ✅ 92MB int8 / ONNX 原生 / CPU 实测 596 字符每秒 |
  * | Kokoro-82M | 中 | ✅ Apache-2.0，备选 |
  *
- * **选 Supertonic 3**：唯一同时满足「可商用 + 浏览器可跑 + 体积可接受」的模型。
+ * **选 Supertonic 3**：唯一同时满足「浏览器可跑 + 体积可接受 + 有 ONNX」的模型。
  * 官方实测 M4 CPU 上 596–850 字符/秒，一段听力材料秒级合成完毕，无需 GPU。
+ *
+ * ⚠️ 若日后出现 Fish Audio 的 ONNX 转换版，质量上限会高一档
+ * （Elo 1129 对中上不是小差距），值得重新评估。
  *
  * ## 架构约束
  *
