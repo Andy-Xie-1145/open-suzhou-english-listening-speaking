@@ -15,6 +15,7 @@ import { loadTheme, applyTheme } from './ui/app.ts';
 import { mountSuzhouExam } from './ui/suzhou-exam.ts';
 import { mountSelfCheck } from './ui/selfcheck-ui.ts';
 import { createEngineRecorder, createEngineAsr } from './suzhou/recorder-bridge.ts';
+import { initModelSource, activeSource } from './engine/model-source.ts';
 import { scoreReading } from './suzhou/reading-section.ts';
 import { scoreQa } from './suzhou/qa-section.ts';
 import { scoreTopic } from './suzhou/topic-section.ts';
@@ -72,6 +73,11 @@ function bootstrap() {
     return;
   }
   applyTheme(loadTheme());
+
+  // 模型源切到国内可达地址。huggingface.co 的 DNS 在大陆被投毒，
+  // 默认配置会直接失败，必须在加载任何模型之前改掉。
+  const src = initModelSource();
+  console.info('模型源：' + src.name + '（' + src.host + '）');
 
   const bank = buildBank();
   const recorder = createEngineRecorder();
