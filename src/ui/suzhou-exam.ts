@@ -22,20 +22,29 @@ import { disclaimerBlock } from '../suzhou/disclaimer.ts';
 import { SPEAKING_WEIGHTS, SPEAKING_MINUTES, LISTENING_MINUTES, QA_COUNT } from '../suzhou/paper.ts';
 import { mountSuzhouListening, type SuzhouListeningApp } from './suzhou-listening.ts';
 import { totalPoints, type ListeningOutcome } from '../suzhou/listening-session.ts';
+import {
+  initialSpeaking,
+  startRecording as speakStart,
+  cancelRecording as speakCancel,
+  putClip,
+  setText as speakSetText,
+  setScore as speakSetScore,
+  processAll,
+  releaseAllClips,
+  summarize as speakSummarize,
+  pendingKinds as speakPending,
+  SPEAKING_KINDS,
+  type SpeakingSession,
+  type SpeakingKind,
+  type RecordedClip,
+} from '../suzhou/speaking-session.ts';
 import type { RecorderPort, AsrPort } from '../suzhou/recorder-bridge.ts';
 
 /** 试卷的两个大部分：先听力后口语，与真实考场顺序一致 */
 export type ExamPart = 'listening' | 'speaking';
 
-export type SectionKind = 'reading' | 'qa' | 'topic';
+export type SectionKind = SpeakingKind;
 
-export interface SectionAnswer {
-  /** 学生作答内容（转写或手动输入） */
-  text: string;
-  durationMs?: number;
-  /** 该题近似分；未作答为 null */
-  approximateScore: number | null;
-}
 export interface ExamDeps {
   bank: PaperBank;
   recorder?: RecorderPort | null;
@@ -54,17 +63,15 @@ export interface ExamState {
   part: ExamPart;
   /** 听力结算结果；交卷前先出，供卷面显示 */
   listeningOutcome: ListeningOutcome | null;
-  answers: Record<SectionKind, SectionAnswer>;
+  /** 口语三题的作答状态。考试中只录音，交卷后一次性转写评分 */
+  speaking: SpeakingSession;
   active: SectionKind;
   /** 当前题在 qa 两题中的次序（0/1）；朗读与话题恒为 0 */
   qaOrder: number;
   /** 组卷失败原因 */
   error: string | null;
-  /** 各题状态，供 UI 决定按钮可用性 */
-  phase: Record<SectionKind, 'idle' | 'recording' | 'transcribing' | 'manual' | 'scored'>;
-}
-function emptyAnswer(): SectionAnswer {
-  return { text: '', approximateScore: null };
+  /** 交卷处理中 */
+  submitting: boolean;
 }
 
 /** 默认 seed：同一天内保持稳定，换天自动换卷 */
@@ -86,11 +93,11 @@ export function initialExamState(deps: ExamDeps): ExamState {
     paper: paper,
     part: paper ? 'listening' : 'speaking',
     listeningOutcome: null,
-    answers: { reading: emptyAnswer(), qa: emptyAnswer(), topic: emptyAnswer() },
+    speaking: initialSpeaking(),
     active: 'reading',
     qaOrder: 0,
     error: error,
-    phase: { reading: 'idle', qa: 'idle', topic: 'idle' },
+    submitting: false,
   };
 }
 
@@ -154,6 +161,10 @@ export interface ExamApp {
   stop(): Promise<void>;
   /** 手动输入作答并评分 */
   submitText(text: string, durationMs?: number): number | null;
+  /** 交卷：一次性把录音转写并评分 */
+  submit(): Promise<void>;
+  /** 当前作答汇总 */
+  summary(): ReturnType<typeof speakSummarize>;
   destroy(): void;
 }
 export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
@@ -174,6 +185,15 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
     try { return r.canRecord(); } catch { return false; }
   }
 
+  /** 按题型分发评分回调 */
+  function scoreOf(kind: SectionKind, text: string, durationMs: number): number | null {
+    const cur = activeTask(state);
+    const raw = cur && cur.kind === kind ? cur.raw : null;
+    if (kind === 'reading') return deps.scoreReading ? deps.scoreReading(text, raw, durationMs) : null;
+    if (kind === 'qa') return deps.scoreQa ? deps.scoreQa(text, raw, durationMs) : null;
+    return deps.scoreTopic ? deps.scoreTopic(text, raw, durationMs) : null;
+  }
+
   function asrReady(): boolean {
     const a = deps.asr;
     if (!a) return false;
@@ -189,14 +209,14 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
 
   /** 分数展示：标签 + 徽标 + 声明，缺一不可 */
   function renderScore(kind: SectionKind): HTMLElement | null {
-    const ans = state.answers[kind];
-    if (ans.approximateScore === null) return null;
+    const sc = state.speaking.score[kind];
+    if (sc === null) return null;
     const d = disclaimerBlock();
     const box = doc.createElement('div');
     box.className = 'sz-score-inline';
     const num = doc.createElement('strong');
     num.className = 'sz-score-num';
-    num.textContent = String(ans.approximateScore);
+    num.textContent = String(sc);
     const lab = doc.createElement('span');
     lab.className = 'sz-score-label';
     lab.textContent = d.scoreLabel;
@@ -208,6 +228,42 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
     box.appendChild(badge);
     return box;
   }
+  /** 交卷栏：待处理几题 + 交卷按钮 + 交卷后的汇总 */
+  function renderSubmitBar(): HTMLElement {
+    const box = doc.createElement('div');
+    box.className = 'sz-submitbar';
+
+    const pending = speakPending(state.speaking);
+    const sum = speakSummarize(state.speaking);
+
+    if (pending.length > 0) {
+      const h = doc.createElement('p');
+      h.className = 'sz-hint';
+      h.textContent = '还有 ' + pending.length + ' 题的录音待处理。交卷后会一次性转写并评分，考试过程中不做这件事。';
+      box.appendChild(h);
+    } else if (SPEAKING_KINDS.some(function (k) { return state.speaking.score[k] !== null; })) {
+      const h = doc.createElement('p');
+      h.className = 'sz-hint';
+      h.textContent = '口语近似分合计 ' + sum.total + ' 分（满分 10）　' + disclaimerBlock().badge;
+      box.appendChild(h);
+      if (sum.needsManual.length > 0) {
+        const w = doc.createElement('p');
+        w.className = 'sz-hint';
+        w.textContent = '这 ' + sum.needsManual.length + ' 题没能自动处理，可点开对应题型手动补写内容再评分。';
+        box.appendChild(w);
+      }
+    }
+
+    const btn = doc.createElement('button');
+    btn.type = 'button';
+    btn.className = 'sz-btn';
+    btn.textContent = state.submitting ? '正在处理…' : '交卷并统一评分';
+    btn.disabled = state.submitting;
+    btn.addEventListener('click', function () { void app.submit(); });
+    box.appendChild(btn);
+    return box;
+  }
+
   function render(): void {
     while (mount.firstChild) mount.removeChild(mount.firstChild);
     mount.appendChild(renderBanner());
@@ -296,11 +352,11 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
     const kinds: SectionKind[] = ['reading', 'qa', 'topic'];
     const names: Record<SectionKind, string> = { reading: '朗读短文', qa: '情景问答', topic: '话题简述' };
     for (const k of kinds) {
-      const ans = state.answers[k];
       const b = doc.createElement('button');
       b.type = 'button';
       b.className = 'sz-tab' + (state.active === k ? ' active' : '');
-      b.textContent = names[k] + (ans.approximateScore !== null ? ' ✓' : '');
+      const ph = state.speaking.phase[k];
+      b.textContent = names[k] + (ph === 'recorded' ? ' ●' : state.speaking.score[k] !== null ? ' ✓' : '');
       b.addEventListener('click', function () { app.focus(k); });
       tabs.appendChild(b);
     }
@@ -355,7 +411,7 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
       const ctrl = doc.createElement('div');
       ctrl.className = 'sz-controls';
       const recordable = canRecord();
-      const st = state.phase[cur.kind];
+      const st = state.speaking.phase[cur.kind];
 
       const b1 = doc.createElement('button');
       b1.type = 'button';
@@ -370,7 +426,7 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
       const b2 = doc.createElement('button');
       b2.type = 'button';
       b2.className = 'sz-btn';
-      b2.textContent = '结束并评分';
+      b2.textContent = '结束录音';
       b2.disabled = st !== 'recording';
       if (recordable) {
         b2.addEventListener('click', function () { void app.stop(); });
@@ -390,12 +446,14 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
       const wrap = doc.createElement('div');
       wrap.className = 'sz-manual';
       const lab = doc.createElement('label');
-      lab.textContent = '写下你说的内容（录音后会自动填入，也可直接手写）：';
+      lab.textContent = st === 'recorded'
+        ? '录音已保存在内存里，交卷后统一转写评分。也可以直接手写：'
+        : '写下你说的内容（也可以直接手写）：';
       const ta = doc.createElement('textarea');
       ta.className = 'sz-textarea';
       ta.rows = 5;
-      ta.value = state.answers[cur.kind].text;
-      ta.addEventListener('input', function () { state.answers[cur.kind].text = ta.value; });
+      ta.value = state.speaking.text[cur.kind];
+      ta.addEventListener('input', function () { state.speaking = speakSetText(state.speaking, cur.kind, ta.value); });
       const go = doc.createElement('button');
       go.type = 'button';
       go.className = 'sz-btn';
@@ -409,7 +467,17 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
       const sc = renderScore(cur.kind);
       if (sc) pane.appendChild(sc);
 
+      // 该题转写失败时给出可执行提示
+      const err = state.speaking.errors[cur.kind];
+      if (err) {
+        const ep = doc.createElement('p');
+        ep.className = 'sz-error';
+        ep.textContent = err;
+        pane.appendChild(ep);
+      }
+
       mount.appendChild(pane);
+      mount.appendChild(renderSubmitBar());
     }
 
     viewEl = mount;
@@ -426,10 +494,10 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
         if (lzApp) { lzApp.destroy(); lzApp = null; lzSeed = -1; }
         state.part = 'listening';
         state.listeningOutcome = null;
-        state.answers = { reading: emptyAnswer(), qa: emptyAnswer(), topic: emptyAnswer() };
+        releaseAllClips(state.speaking);
+        state.speaking = initialSpeaking();
         state.active = 'reading';
         state.qaOrder = 0;
-        state.phase = { reading: 'idle', qa: 'idle', topic: 'idle' };
       } catch (e) {
         state.error = e instanceof Error ? e.message : String(e);
       }
@@ -446,19 +514,25 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
       const cur = activeTask(state);
       if (!cur) return;
       if (!canRecord()) {
-        state.phase[cur.kind] = 'manual';
+        state.speaking = { ...state.speaking, phase: { ...state.speaking.phase, [cur.kind]: 'manual' } };
         render();
         return;
       }
-      state.phase[cur.kind] = 'recording';
+      state.speaking = speakStart(state.speaking, cur.kind);
       render();
       try {
         await deps.recorder!.start();
       } catch {
-        state.phase[cur.kind] = 'manual';
+        state.speaking = speakCancel(state.speaking, cur.kind);
         render();
       }
     },
+    /**
+     * 结束录音：**只存音频，当场不转写、不评分。**
+     *
+     * 第一次作答时就要下模型，这一下卡顿落在考试时间里是最糟的。
+     * 转写与评分全部推迟到交卷后由 submit() 一次性做。
+     */
     stop: async function () {
       const cur = activeTask(state);
       if (!cur || !canRecord()) return;
@@ -466,50 +540,59 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
       try {
         decoded = await deps.recorder!.stop();
       } catch {
-        state.phase[cur.kind] = 'manual';
+        state.speaking = { ...state.speaking, phase: { ...state.speaking.phase, [cur.kind]: 'manual' } };
         render();
         return;
       }
       const durationMs = decoded.durationMs > 0 ? decoded.durationMs : deps.recorder!.elapsedMs();
-      if (!decoded.samples || decoded.samples.length === 0) {
-        state.phase[cur.kind] = 'manual';
-        render();
-        return;
-      }
-      if (!asrReady()) {
-        state.phase[cur.kind] = 'manual';
-        render();
-        return;
-      }
-      state.phase[cur.kind] = 'transcribing';
+      const clip: RecordedClip = {
+        samples: decoded.samples,
+        sampleRate: decoded.sampleRate,
+        durationMs: durationMs,
+      };
+      state.speaking = putClip(state.speaking, cur.kind, clip);
       render();
-      let text = '';
-      try {
-        text = await deps.asr!.transcribe(decoded.samples, decoded.sampleRate);
-      } catch {
-        state.phase[cur.kind] = 'manual';
+    },
+
+    /** 交卷：一次性把录到的音频全部转写并评分 */
+    submit: async function () {
+      if (!asrReady() && speakPending(state.speaking).length > 0) {
+        // 没有 ASR 就别硬跑，交卷会把手写题正常评分，录音题转人工
+        for (const k of speakPending(state.speaking)) {
+          state.speaking = {
+            ...state.speaking,
+            phase: { ...state.speaking.phase, [k]: 'manual' },
+            errors: { ...state.speaking.errors, [k]: '未加载语音转写模型，无法自动转写。可在下方手动补写内容。' },
+          };
+        }
         render();
         return;
       }
-      app.submitText(text, durationMs);
+      state.submitting = true;
+      render();
+      state.speaking = await processAll(state.speaking, {
+        transcribe: async function (samples, sampleRate) {
+          return deps.asr!.transcribe(samples, sampleRate);
+        },
+        score: function (kind, text, durationMs) {
+          return scoreOf(kind, text, durationMs);
+        },
+      });
+      state.submitting = false;
+      render();
+    },
+
+    /** 汇总当前全部作答（含未交卷时的预览） */
+    summary: function () {
+      return speakSummarize(state.speaking);
     },
 
     submitText: function (text: string, durationMs?: number): number | null {
       const cur = activeTask(state);
       if (!cur) return null;
-      const ans = state.answers[cur.kind];
-      ans.text = text;
-      ans.durationMs = durationMs;
-      let score: number | null = null;
-      if (cur.kind === 'reading') {
-        score = deps.scoreReading ? deps.scoreReading(text, cur.raw, durationMs) : null;
-      } else if (cur.kind === 'qa') {
-        score = deps.scoreQa ? deps.scoreQa(text, cur.raw, durationMs) : null;
-      } else {
-        score = deps.scoreTopic ? deps.scoreTopic(text, cur.raw, durationMs) : null;
-      }
-      ans.approximateScore = score;
-      state.phase[cur.kind] = 'scored';
+      state.speaking = speakSetText(state.speaking, cur.kind, text);
+      const score = scoreOf(cur.kind, text, durationMs ?? 0);
+      state.speaking = speakSetScore(state.speaking, cur.kind, score);
       render();
       return score;
     },

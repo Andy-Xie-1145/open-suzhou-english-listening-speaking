@@ -839,3 +839,6 @@ button, input, select, textarea {
 .lz__nav { display: flex; justify-content: flex-end; }
 .lz__next { padding: 8px 20px; font-size: 14px; border: 1px solid var(--primary); border-radius: 6px; background: var(--primary); color: var(--primary-fg); cursor: pointer; }
 .lz__score { margin: 10px 0 0; padding: 10px 14px; font-size: 16px; font-weight: 700; background: var(--bg-sunken); border-radius: 6px; }
+.sz-submitbar { margin: 14px 0 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; background: var(--bg-sunken); border-radius: 8px; }
+.sz-submitbar .sz-btn { align-self: flex-start; }
+.sz-tab.is-recorded { border-color: var(--warn-border); background: var(--warn-bg); color: var(--warn-fg); }
