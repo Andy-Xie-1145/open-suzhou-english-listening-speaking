@@ -1,0 +1,569 @@
+{
+  "note": "种子题库，非用户出题。来源：由子代理依据公开的苏州市中考英语听力口语题型语体仿写（research/suzhou-grade9-practice-items.md）。子结构「第一节 10 段各 1 题 / 第二节 2+3+5」来自未经证实的记忆版本，官方从未公开。整套题目应替换为教师自编题。出处标签与缺口见 research/suzhou-grade9-practice-items.md 第五节。",
+  "materials": [
+    {
+      "id": "lsq-01",
+      "kind": "dialogue",
+      "title": "Finding the Reading Room",
+      "difficulty": 1,
+      "script": [
+        {
+          "speaker": "W",
+          "text": "Excuse me, where is the reading room?"
+        },
+        {
+          "speaker": "M",
+          "text": "It is on the second floor, next to the library."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-01-q1",
+          "skill": "detail",
+          "prompt": "Where is the reading room?",
+          "options": [
+            "On the first floor.",
+            "On the second floor.",
+            "Next to the playground."
+          ],
+          "answer": 1,
+          "keywords": [
+            "second floor",
+            "next to the library"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-02",
+      "kind": "dialogue",
+      "title": "The Schoolbag",
+      "difficulty": 1,
+      "script": [
+        {
+          "speaker": "W",
+          "text": "How much is this schoolbag?"
+        },
+        {
+          "speaker": "M",
+          "text": "It is ninety-nine yuan. The blue one over there is only sixty-five."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-02-q1",
+          "skill": "number",
+          "prompt": "How much is the blue schoolbag?",
+          "options": [
+            "99 yuan.",
+            "65 yuan.",
+            "199 yuan."
+          ],
+          "answer": 1,
+          "keywords": [
+            "only sixty-five"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-03",
+      "kind": "dialogue",
+      "title": "The Film",
+      "difficulty": 2,
+      "script": [
+        {
+          "speaker": "M",
+          "text": "What time does the film start?"
+        },
+        {
+          "speaker": "W",
+          "text": "It was supposed to start at seven, but it is already half past seven and the lights are still off."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-03-q1",
+          "skill": "inference",
+          "prompt": "Has the film started?",
+          "options": [
+            "Yes, it has.",
+            "No, it has not.",
+            "Yes, ten minutes ago."
+          ],
+          "answer": 1,
+          "keywords": [
+            "half past seven",
+            "lights are still off"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-04",
+      "kind": "dialogue",
+      "title": "Not Feeling Well",
+      "difficulty": 1,
+      "script": [
+        {
+          "speaker": "W",
+          "text": "You look tired, Jim. Are you feeling all right?"
+        },
+        {
+          "speaker": "M",
+          "text": "Not really. I have a bad headache."
+        },
+        {
+          "speaker": "W",
+          "text": "You should see the doctor after school."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-04-q1",
+          "skill": "detail",
+          "prompt": "What is wrong with Jim?",
+          "options": [
+            "He has a headache.",
+            "He has a bad cold.",
+            "He hurt his leg."
+          ],
+          "answer": 0,
+          "keywords": [
+            "bad headache"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-05",
+      "kind": "dialogue",
+      "title": "Going to the Supermarket",
+      "difficulty": 1,
+      "script": [
+        {
+          "speaker": "W",
+          "text": "I am going to the supermarket. Do you need anything?"
+        },
+        {
+          "speaker": "M",
+          "text": "Yes, please. Get some milk and a loaf of bread."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-05-q1",
+          "skill": "detail",
+          "prompt": "What does the man want the woman to buy?",
+          "options": [
+            "Some milk and bread.",
+            "Some rice and eggs.",
+            "Some orange juice."
+          ],
+          "answer": 0,
+          "keywords": [
+            "milk",
+            "a loaf of bread"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-06",
+      "kind": "dialogue",
+      "title": "The Broken Cup",
+      "difficulty": 2,
+      "script": [
+        {
+          "speaker": "M",
+          "text": "I am sorry, Kate. I broke your cup."
+        },
+        {
+          "speaker": "W",
+          "text": "It is all right. Just please be more careful next time."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-06-q1",
+          "skill": "detail",
+          "prompt": "How does Kate react?",
+          "options": [
+            "She asks Ben to buy a new cup.",
+            "She says it does not matter.",
+            "She is terribly angry."
+          ],
+          "answer": 1,
+          "keywords": [
+            "It is all right"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-07",
+      "kind": "dialogue",
+      "title": "How to Go to School",
+      "difficulty": 2,
+      "script": [
+        {
+          "speaker": "W",
+          "text": "How do you go to school every day?"
+        },
+        {
+          "speaker": "M",
+          "text": "I used to ride a bike, but now I take the bus because my new school is much farther away."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-07-q1",
+          "skill": "detail",
+          "prompt": "How does Tom go to school now?",
+          "options": [
+            "By bike.",
+            "By bus.",
+            "On foot."
+          ],
+          "answer": 1,
+          "keywords": [
+            "now I take the bus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-08",
+      "kind": "dialogue",
+      "title": "The Picnic",
+      "difficulty": 2,
+      "script": [
+        {
+          "speaker": "W",
+          "text": "Would you like to join us for a picnic on Saturday?"
+        },
+        {
+          "speaker": "M",
+          "text": "I would love to, but I am afraid I will be busy then."
+        },
+        {
+          "speaker": "W",
+          "text": "How about Sunday morning?"
+        },
+        {
+          "speaker": "M",
+          "text": "That works perfectly for me."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-08-q1",
+          "skill": "detail",
+          "prompt": "When will the picnic take place?",
+          "options": [
+            "On Saturday.",
+            "On Sunday morning.",
+            "It has not been decided."
+          ],
+          "answer": 1,
+          "keywords": [
+            "Sunday morning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-09",
+      "kind": "dialogue",
+      "title": "The New English Teacher",
+      "difficulty": 2,
+      "script": [
+        {
+          "speaker": "M",
+          "text": "How is your new English teacher getting on?"
+        },
+        {
+          "speaker": "W",
+          "text": "Pretty well. At first I was afraid to speak in class, but she often asks us simple questions and never laughs when we make mistakes."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-09-q1",
+          "skill": "inference",
+          "prompt": "How does Peter feel about the new teacher now?",
+          "options": [
+            "Pleased.",
+            "Worried.",
+            "Bored."
+          ],
+          "answer": 0,
+          "keywords": [
+            "Pretty well",
+            "never laughs when we make mistakes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-10",
+      "kind": "dialogue",
+      "title": "Which Bus",
+      "difficulty": 1,
+      "script": [
+        {
+          "speaker": "W",
+          "text": "Excuse me, does this bus go to the Railway Station?"
+        },
+        {
+          "speaker": "M",
+          "text": "No, it goes to the Railway Station North. You want the number 15."
+        },
+        {
+          "speaker": "W",
+          "text": "Thank you very much."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-10-q1",
+          "skill": "detail",
+          "prompt": "Which bus should the girl take?",
+          "options": [
+            "This one.",
+            "Number 15.",
+            "Number 50."
+          ],
+          "answer": 1,
+          "keywords": [
+            "number 15"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-11",
+      "kind": "passage",
+      "title": "Choosing a Club",
+      "difficulty": 2,
+      "script": [
+        {
+          "speaker": "W",
+          "text": "Hi, Ben. Have you decided which club to join this term?"
+        },
+        {
+          "speaker": "M",
+          "text": "Not yet. I looked at the list just now."
+        },
+        {
+          "speaker": "W",
+          "text": "What are you interested in?"
+        },
+        {
+          "speaker": "M",
+          "text": "I used to play the guitar, but now I spend most of my free time taking photos. The Photography Club sounds right."
+        },
+        {
+          "speaker": "W",
+          "text": "It meets only on Wednesday afternoons, and I am free then."
+        },
+        {
+          "speaker": "M",
+          "text": "Then why do not we join it together?"
+        },
+        {
+          "speaker": "W",
+          "text": "Good idea. Wait, does it need anything special?"
+        },
+        {
+          "speaker": "M",
+          "text": "I am afraid so. Members have to bring their own camera. Mine is quite old."
+        },
+        {
+          "speaker": "W",
+          "text": "Mine is new. I can bring it when we meet."
+        },
+        {
+          "speaker": "M",
+          "text": "That would be great. By the way, did you see the Science Club? They had a trip to the museum last term."
+        },
+        {
+          "speaker": "W",
+          "text": "Yes, my cousin went on it. She said it was really interesting."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-11-q1",
+          "skill": "detail",
+          "prompt": "Which club has Ben decided to join?",
+          "options": [
+            "The Guitar Club.",
+            "The Photography Club.",
+            "The Science Club."
+          ],
+          "answer": 1,
+          "keywords": [
+            "Photography Club"
+          ]
+        },
+        {
+          "id": "lsq-11-q2",
+          "skill": "detail",
+          "prompt": "What problem do they mention about the Photography Club?",
+          "options": [
+            "It is too expensive to join.",
+            "Members need to bring their own cameras.",
+            "It rarely has new members."
+          ],
+          "answer": 1,
+          "keywords": [
+            "bring their own camera"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-12",
+      "kind": "passage",
+      "title": "The Green Corner",
+      "difficulty": 2,
+      "script": [
+        {
+          "speaker": "N",
+          "text": "Last spring, our school started a Green Corner project. Students collect used bottles and old paper at the school gate every Friday afternoon. The bottles are sold to a recycling centre, and the money is used to buy books for the school library. Last year the project collected one thousand two hundred bottles and raised four hundred and eighty yuan. This year more students have joined, and the school has already bought over sixty new books. Our maths teacher, Ms. Wang, says she hopes the project will continue long after she retires. It teaches children that small actions can make a big difference, she said."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-12-q1",
+          "skill": "detail",
+          "prompt": "When do students collect the bottles?",
+          "options": [
+            "Every Monday morning.",
+            "Every Friday afternoon.",
+            "Every Friday morning."
+          ],
+          "answer": 1,
+          "keywords": [
+            "every Friday afternoon"
+          ]
+        },
+        {
+          "id": "lsq-12-q2",
+          "skill": "number",
+          "prompt": "How much money did the project raise last year?",
+          "options": [
+            "1,200 yuan.",
+            "480 yuan.",
+            "60 yuan."
+          ],
+          "answer": 1,
+          "keywords": [
+            "four hundred and eighty yuan"
+          ]
+        },
+        {
+          "id": "lsq-12-q3",
+          "skill": "inference",
+          "prompt": "What does Ms. Wang think of the project?",
+          "options": [
+            "It should stop when she retires.",
+            "It teaches children that small actions matter.",
+            "It wastes students' time."
+          ],
+          "answer": 1,
+          "keywords": [
+            "small actions can make a big difference"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lsq-13",
+      "kind": "passage",
+      "title": "The City Parks Project",
+      "difficulty": 3,
+      "script": [
+        {
+          "speaker": "N",
+          "text": "The city has more than three hundred small parks. Last year, students from a middle school in the city visited all of them in one week as part of a school project. They took photos, counted the trees and talked to the park keepers. Their report surprised everyone. Twenty of the parks had no drinking fountains, and forty-three had no lights after dark. The students then wrote to the city council and asked for help. Three months later, the council agreed to put in twelve fountains and ninety new lamps. A teacher, Ms. Chen, was pleased. Students often think small problems are useless to report, she said, but they wrote to the government, and the government answered. The school has now decided to publish the project in its school newspaper."
+        }
+      ],
+      "questions": [
+        {
+          "id": "lsq-13-q1",
+          "skill": "number",
+          "prompt": "How many small parks are there in the city?",
+          "options": [
+            "More than three hundred.",
+            "About thirty.",
+            "About three thousand."
+          ],
+          "answer": 0,
+          "keywords": [
+            "more than three hundred small parks"
+          ]
+        },
+        {
+          "id": "lsq-13-q2",
+          "skill": "detail",
+          "prompt": "What did the students do during the project?",
+          "options": [
+            "They cleaned the parks.",
+            "They collected information about the parks.",
+            "They planted trees."
+          ],
+          "answer": 1,
+          "keywords": [
+            "counted the trees",
+            "talked to the park keepers"
+          ]
+        },
+        {
+          "id": "lsq-13-q3",
+          "skill": "inference",
+          "prompt": "What surprised everyone in the report?",
+          "options": [
+            "Many parks were too small.",
+            "Few people visited the parks.",
+            "Many parks lacked facilities."
+          ],
+          "answer": 2,
+          "keywords": [
+            "no drinking fountains",
+            "no lights after dark"
+          ]
+        },
+        {
+          "id": "lsq-13-q4",
+          "skill": "detail",
+          "prompt": "What did the city council agree to do?",
+          "options": [
+            "To close some parks.",
+            "To build new parks.",
+            "To add fountains and lights."
+          ],
+          "answer": 2,
+          "keywords": [
+            "twelve fountains and ninety new lamps"
+          ]
+        },
+        {
+          "id": "lsq-13-q5",
+          "skill": "detail",
+          "prompt": "What has the school decided to do?",
+          "options": [
+            "To publish the project in its school newspaper.",
+            "To stop the project.",
+            "To visit more parks next year."
+          ],
+          "answer": 0,
+          "keywords": [
+            "publish the project in its school newspaper"
+          ]
+        }
+      ]
+    }
+  ]
+}

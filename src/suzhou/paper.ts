@@ -24,8 +24,11 @@
  *   Q5 话题简述            口语 10 分钟 · 1 题 · 开放 · 必须说满 7 句
  *
  * 考生实际作答 22 分钟 = 听力 12 + 口语 10。
- * **Q1/Q2 因音频不可得暂缺**（见 SPEC 第 5.3 节），
- * 本出卷器只编排已实现的口语三节，但预留了听力位置。
+ *
+ * 听力两节（Q1/Q2）已编排进来，材料来自 data/listening-materials.json，
+ * 音频由 scripts/build-listening-audio.ts 在**构建期**离线渲染，
+ * 学生端不加载任何 TTS 模型。
+ * 听力小题的子结构假设集中在 src/suzhou/listening-spec.ts 一处，改结构不动本文件。
  */
 /* ------------------------------------------------------------------ *
  * 一、可复现随机数
@@ -137,17 +140,36 @@ export interface PaperTopic {
   task: TopicInput;
 }
 
+/** 一个听力材料 + 它承载的小题 + 这段该给多少时间 */
+export interface PaperListeningGroup {
+  material: ListeningMaterial;
+  questions: ListeningQuestion[];
+  budgetMs: number;
+}
+
+export interface PaperListening {
+  /** 第一节「听对话回答问题」：一段一题 */
+  dialogue: PaperListeningGroup[];
+  /** 第二节「听对话和短文答题」：一段多题，题数按布局顺序 */
+  passage: PaperListeningGroup[];
+  /** 听力段总时长（毫秒） */
+  totalMs: number;
+  /** 两个大题的时长 */
+  sectionMs: { dialogue: number; passage: number };
+}
+
 export interface SuzhouPaper {
   seed: number;
   reading: PaperReading;
   qa: PaperQa[];
   topic: PaperTopic;
+  listening: PaperListening;
   /** 口语段总时长（毫秒） */
   speakingMs: number;
   /** 各题用时合计，应等于 speakingMs */
   allocatedMs: number;
   /** 题号（便于「换一套卷」时排除重复） */
-  ids: { reading: string; qa: string[]; topic: string };
+  ids: { reading: string; qa: string[]; topic: string; listening: string[] };
 }
 /* ------------------------------------------------------------------ *
  * 五、组卷
@@ -157,47 +179,34 @@ export interface PaperBank {
   readings: readonly ReadingInput[];
   qa: readonly QaInput[];
   topics: readonly TopicInput[];
+  /** 听力材料库。缺省时 dealPaper 抛错，绝不出半张卷 */
+  listening?: ListeningBank;
 }
 
 export interface DealOptions {
   seed: number;
   /** 排除的题目 id，用于「换一套卷」避免重复 */
-  exclude?: { readingIds?: string[]; qaIds?: string[]; topicIds?: string[] };
+  exclude?: { readingIds?: string[]; qaIds?: string[]; topicIds?: string[]; listeningIds?: string[] };
 }
 
-/** 最大余数法分配时长，保证合计严格等于 total */
-export function allocate<T extends string>(
-  weights: Record<T, number>,
-  total: number,
-): Record<T, number> {
-  const keys = Object.keys(weights) as T[];
-  const sum = keys.reduce(function (a, k) { return a + Math.max(0, weights[k]); }, 0);
-  const out = {} as Record<T, number>;
-  if (sum <= 0) {
-    for (const k of keys) out[k] = 0;
-    return out;
-  }
-  const exact = keys.map(function (k) {
-    return { k: k, v: (Math.max(0, weights[k]) / sum) * total };
-  });
-  let acc = 0;
-  for (const e of exact) {
-    const v = Math.floor(e.v);
-    out[e.k] = v;
-    acc += v;
-  }
-  const rest = exact
-    .map(function (e) { return { k: e.k, frac: e.v - Math.floor(e.v), i: keys.indexOf(e.k) }; })
-    .sort(function (a, b) { return b.frac - a.frac || a.i - b.i; });
-  let i = 0;
-  let leftover = Math.round(total) - acc;
-  while (leftover > 0 && rest.length > 0) {
-    out[rest[i % rest.length].k] += 1;
-    i++;
-    leftover--;
-  }
-  return out;
-}
+import { allocate, allocateList } from './allocate.ts';
+export { allocate } from './allocate.ts';
+import {
+  LISTENING_LAYOUT,
+  flattenRules,
+  allocateListeningMs,
+  allocateGroupMs,
+  isListeningLayoutUsable,
+  type ListeningLayout,
+  type ListeningGroupRule,
+} from './listening-spec.ts';
+import {
+  poolOf,
+  type ListeningBank,
+  type ListeningKind,
+  type ListeningMaterial,
+  type ListeningQuestion,
+} from './listening-bank.ts';
 function filterOut<T extends { id: string }>(items: readonly T[], exclude?: readonly string[]): T[] {
   if (!exclude || exclude.length === 0) return items.slice();
   const bad = new Set(exclude);
@@ -213,13 +222,109 @@ function pickOne<T extends { id: string }>(
 }
 
 /**
+ * 按组规则从题库抽材料。
+ *
+ * 编排逻辑就这么点：每个「size × count」规则，就去对应的组大小池里抽 count 段。
+ * 抽到的材料**整段用**，不截题 —— 所以题目和材料永远对得上。
+ *
+ * 编排的复杂度全在题库里：想让某套卷好，就得把题库按 1/2/3/4/5 题分池备齐。
+ * 代码这边只有 13 次独立抽样，没有配平、没有平衡、没有难度调度。
+ */
+function pickGroups(
+  rules: readonly ListeningGroupRule[],
+  kind: ListeningKind,
+  bank: ListeningBank,
+  rng: Rng,
+  prefer: Set<string>,
+): PaperListeningGroup[] | null {
+  const out: PaperListeningGroup[] = [];
+  const used = new Set<string>();
+
+  for (const rule of flattenRules(rules)) {
+    const pool = poolOf(bank, kind, rule.size).filter(function (m) { return !used.has(m.id); });
+    // prefer 是**软偏好**不是硬约束：优先避开上一份卷抽过的，
+    // 但池不够时必须放宽 —— 宁可重复，也要把卷出出来。
+    // 池刚好等于一份卷用量时（如单题池正好 10 段），排除必然落空，属正常。
+    const fresh = pool.filter(function (m) { return !prefer.has(m.id); });
+    const candidates = fresh.length >= rule.count ? fresh : pool;
+    if (candidates.length < rule.count) return null;
+
+    const picked: ListeningMaterial[] = [];
+    const rest = candidates.slice();
+    for (let i = 0; i < rule.count; i++) {
+      const m = rest.splice(Math.floor(rng.next() * rest.length), 1)[0];
+      if (!m) return null;
+      used.add(m.id);
+      picked.push(m);
+    }
+    for (const m of picked) {
+      out.push({ material: m, questions: m.questions.slice(), budgetMs: 0 });
+    }
+  }
+  return out;
+}
+
+/** 题库现状描述，用于「题库不足」报错时说清楚缺什么 */
+function describePools(bank: ListeningBank, kind: ListeningKind): string {
+  const all = bank.byKind[kind] ?? [];
+  const sizes = Array.from(new Set(all.map(function (m) { return m.groupSize; }))).sort();
+  if (sizes.length === 0) return '无任何材料';
+  return sizes
+    .map(function (n) { return n + ' 题池 ' + poolOf(bank, kind, n).length + ' 段'; })
+    .join('，');
+}
+
+function describeNeed(rules: readonly ListeningGroupRule[]): string {
+  return flattenRules(rules)
+    .map(function (r) { return r.size + ' 题池需 ' + r.count + ' 段'; })
+    .join('，');
+}
+
+function dealListening(
+  bank: ListeningBank | undefined,
+  rng: Rng,
+  layout: ListeningLayout,
+  exclude?: readonly string[],
+): { part: PaperListening; ids: string[] } | { missing: string } {
+  if (!isListeningLayoutUsable(layout)) {
+    return { missing: '听力子结构与官方两个大题各 10 分不符' };
+  }
+  if (!bank) return { missing: '听力题库' };
+
+  const bad = new Set(exclude ?? []);
+  const dialogue = pickGroups(layout.dialogue, 'dialogue', bank, rng, bad);
+  const passage = pickGroups(layout.passage, 'passage', bank, rng, bad);
+
+  if (!dialogue) {
+    return { missing: '听对话回答问题材料：' + describePools(bank, 'dialogue') + '，无法满足' + describeNeed(layout.dialogue) };
+  }
+  if (!passage) {
+    return { missing: '听对话和短文答题材料：' + describePools(bank, 'passage') + '，无法满足' + describeNeed(layout.passage) };
+  }
+
+  const totalMs = LISTENING_MINUTES * 60_000;
+  const sectionMs = allocateListeningMs(totalMs, layout);
+  const dBudget = allocateGroupMs(layout.dialogue, sectionMs.dialogue);
+  const pBudget = allocateGroupMs(layout.passage, sectionMs.passage);
+  for (let i = 0; i < dialogue.length; i++) dialogue[i].budgetMs = dBudget[i] ?? 0;
+  for (let i = 0; i < passage.length; i++) passage[i].budgetMs = pBudget[i] ?? 0;
+
+  const all = dialogue.concat(passage);
+  return {
+    part: { dialogue: dialogue, passage: passage, totalMs: totalMs, sectionMs: sectionMs },
+    ids: all.map(function (g) { return g.material.id; }),
+  };
+}
+
+/**
  * 组一份卷。
  *
  * 组卷规则（对应真实考法）：
+ *  - 听力两个大题：按组大小从对应的池里抽，见 pickGroups
  *  - 朗读 1 篇：随机
- *  - 情景问答 2 题：**情境类别不重复**（梅花卷要求）
+ *  - 情景问答 2 题：**情境类别不重复**
  *  - 话题简述 1 题：随机
- *  - 各题用时按 SPEAKING_WEIGHTS 归一化分配，合计严格等于口语段总时长
+ *  - 各题用时按权重归一化分配，合计严格等于本段总时长
  *
  * 同一 seed + 同一题库 → 同一份卷；换 seed 或传 exclude → 换卷。
  */
@@ -233,6 +338,7 @@ export function dealPaper(bank: PaperBank, opts: DealOptions): SuzhouPaper {
   // ---- 话题简述：1 题 ----
   const topicPool = filterOut(bank.topics, opts.exclude?.topicIds);
   const topicTask = pickOne(topicPool, rng);
+
   // ---- 情景问答：2 题，情境类别不重复 ----
   const qaPool = filterOut(bank.qa, opts.exclude?.qaIds);
   const shuffled = rng.shuffle(qaPool);
@@ -249,6 +355,12 @@ export function dealPaper(bank: PaperBank, opts: DealOptions): SuzhouPaper {
     if (qaPicked.length >= QA_COUNT) break;
     if (qaPicked.indexOf(q) >= 0) continue;
     qaPicked.push(q);
+  }
+
+  // ---- 听力：两个大题，按组大小分池抽 ----
+  const listeningResult = dealListening(bank.listening, rng, LISTENING_LAYOUT, opts.exclude?.listeningIds);
+  if ('missing' in listeningResult) {
+    throw new Error('题库不足，无法组卷：缺少 ' + listeningResult.missing);
   }
 
   // ---- 时长分配 ----
@@ -278,12 +390,14 @@ export function dealPaper(bank: PaperBank, opts: DealOptions): SuzhouPaper {
     reading: { task: readingTask, budgetMs: budgets.reading },
     qa: qaItems,
     topic: { task: topicTask },
+    listening: listeningResult.part,
     speakingMs: speakingMs,
     allocatedMs: allocatedMs,
     ids: {
       reading: readingTask.id,
       qa: qaItems.map(function (x) { return x.task.id; }),
       topic: topicTask.id,
+      listening: listeningResult.ids,
     },
   };
 }
@@ -305,6 +419,7 @@ export function dealNextPaper(bank: PaperBank, prev: SuzhouPaper): SuzhouPaper {
       readingIds: prev.ids.reading ? [prev.ids.reading] : undefined,
       qaIds: prev.ids.qa,
       topicIds: prev.ids.topic ? [prev.ids.topic] : undefined,
+      listeningIds: prev.ids.listening,
     },
   });
 }
