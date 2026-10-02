@@ -808,3 +808,12 @@ button, input, select, textarea {
 .sz-kp-row.bad .sz-kp-mark { color: #a12a2a; }
 .sz-kp-label { font-weight: 600; }
 .sz-kp-detail { font-size: 12px; color: #666; margin-top: 4px; line-height: 1.7; }
+
+/* 模考主界面 */
+.sz-paper-meta { font-size: 12px; color: #888; margin: 4px 0 10px; }
+.sz-tabs { display: flex; gap: 6px; margin: 10px 0; flex-wrap: wrap; }
+.sz-tab { padding: 6px 14px; font-size: 13px; border: 1px solid #ccc; border-radius: 14px; background: #fff; cursor: pointer; }
+.sz-tab.active { background: #4a90d9; color: #fff; border-color: #4a90d9; }
+.sz-btn-sm { padding: 4px 10px; font-size: 12px; }
+.sz-score-inline { display: flex; align-items: baseline; gap: 8px; margin-top: 12px; padding: 10px 12px; background: #f7f8fa; border-radius: 6px; }
+.sz-task h3 { margin: 0 0 4px; font-size: 16px; }
