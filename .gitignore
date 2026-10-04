@@ -15,3 +15,17 @@ scripts/node_modules/
 
 # 题库流水线的中间产物
 .d5_parsed.json
+
+# topic-guard 的语义查重索引（约 5.1 MB，派生数据）：
+# 由 scripts/topic-guard.py L38 定位（data/item-bank/.topic-index.json），
+# 每次 `topic-guard build` 都会整体重写 → 入库会产生每次 5 MB 的假 diff。
+# 且它依赖 .models/ 里的 EmbeddingGemma 模型（1.2 GB，本就不入库），
+# 离开模型就没有任何人能用它 —— 派生数据不进版本库。
+# ⚠️ 这**不是漏加**：题库正文（*.md）与全部审阅记录照常入库，只有这个索引文件被排除。
+data/item-bank/.topic-index.json
+
+# 代理执行一次性修补时留下的 scratch 脚本（_tmp_ 前缀）：
+# 例：scripts/_tmp_patch_common.py / _tmp_patch_jies.py ——
+# 它们的时间戳正好卡在别的代理改 _COMMON.md / JIES-IMPLEMENTATION-RULES.md 的前后，
+# 是一次性草稿，不是产物。给 scratch 盖永久戳等于说它是项目的一部分。
+_tmp_*.py
