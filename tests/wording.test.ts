@@ -43,10 +43,24 @@ function check(name: string, cond: boolean, detail: string = ''): void {
   else { fail++; console.log('  FAIL  ' + name + (detail ? '  -> ' + detail : '')); }
 }
 
+/**
+ * 递归收集文件。**目录不存在时返回空数组，不抛。**
+ *
+ * 一个会因为「目录被删了」而崩掉的扫描器，比没有扫描器更糟 ——
+ * 它会让人误以为红线已经检查过了。
+ */
 function walk(dir: string, out: string[] = []): string[] {
-  for (const name of readdirSync(dir)) {
+  let names: string[];
+  try {
+    names = readdirSync(dir);
+  } catch {
+    return out;
+  }
+  for (const name of names) {
     const p = join(dir, name);
-    if (statSync(p).isDirectory()) walk(p, out);
+    let isDir = false;
+    try { isDir = statSync(p).isDirectory(); } catch { continue; }
+    if (isDir) walk(p, out);
     else if (p.endsWith('.ts') || p.endsWith('.css') || p.endsWith('.html')) out.push(p);
   }
   return out;
@@ -106,6 +120,7 @@ check('src / 对外文档 无禁用表述', hits.length === 0, hits.length + ' �
 const sample = { path: 'x.md', text: '这不是估分' };
 check('扫描器对违规样例确实报警', BANNED.some(function (p) { return sample.text.includes(p); }));
 check('扫描器对正常文本不误报', !BANNED.some(function (p) { return '能力诊断，不是分数预测'.includes(p); }));
+check('目录不存在时扫描器不崩（不存在的路径应被静默跳过）', walk('这个目录不存在').length === 0);
 
 console.log('\n  通过 ' + pass + ' / 失败 ' + fail);
 if (fail > 0) process.exit(1);

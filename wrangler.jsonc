@@ -1,42 +1,30 @@
 /**
- * Cloudflare Pages + R2 配置
+ * Cloudflare Pages 配置
  *
  * 许可：AGPL-3.0-only
  *
  * ## 部署形态
  *
- * ```
- *   openels.bbroot.com            ← Cloudflare Pages 静态站（本工具）
- *   openels.bbroot.com/models/*   ← Pages Function 挂 R2 binding，同源吐模型权重
- * ```
+ *     openels.bbroot.com                        ← Pages 静态站（本工具）
+ *     openels.bbroot.com/audio/listening/*.mp3  ← 构建期渲染的听力音频
  *
- * 模型和应用在**同一个 origin**（scheme + host + port 全同），
- * 所以 COEP require-corp 下同源资源无条件放行，不需要 CORP 头，
- * 也就不会被第三方源（ModelScope / HF）的响应头卡住。
+ * 全部是静态文件：没有函数，没有后端，没有 R2。
  *
- * ## 为什么不自己托管（再确认一次）
+ * ## 为什么没有 R2
  *
- * dist 里没有任何 onnx/bin，权重全部运行时拉。
- * R2 绑定访问走 Cloudflare 内部网络，**不需要任何公网域名**，
- * 因此 `bbroot.com` 的 NS 指向不指向 Cloudflare 都不影响本方案。
- * （受影响的只有「把 bucket 暴露成独立公共网址」，即 R2 自定义域名，那条路我们不用。）
+ * 原计划用 Pages Functions + R2 binding 做同源模型代理，
+ * 以便开 COEP（require-corp）拿 SharedArrayBuffer 做多线程推理。已放弃：
  *
- * @see https://developers.cloudflare.com/pages/functions/bindings/#r2-buckets
+ *   1. R2 必须绑支付方式才能开通，免费额度也要绑
+ *   2. iOS 的 WKWebView 只能跑 WASM，开多线程反而有 OOM 风险
+ *      （ONNX issue #26827），而学生大多在微信内置浏览器里用
+ *
+ * 模型走 ModelScope 跨源拉取，听力音频是构建期离线渲染的静态文件，
+ * 两者都不需要同源。详见 ARCHITECTURE.md 第 1.2 条。
  */
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "openels",
   "compatibility_date": "2026-10-01",
-  "compatibility_flags": ["nodejs_compat"],
-
-  // Pages 项目的静态产物目录；functions/ 由 wrangler 自动打包
-  "pages_build_output_dir": "dist",
-
-  // 同源模型代理用的桶。R2 桶名在账号内唯一即可，不需要全局唯一。
-  "r2_buckets": [
-    {
-      "binding": "MODELS",
-      "bucket_name": "openels-models"
-    }
-  ]
+  "pages_build_output_dir": "dist"
 }

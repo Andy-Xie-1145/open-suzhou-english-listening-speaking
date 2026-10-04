@@ -8,9 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit && tsc -p tsconfig.functions.json --noEmit",
+    "typecheck": "tsc --noEmit",
     "typecheck:app": "tsc --noEmit",
-    "typecheck:fn": "tsc -p tsconfig.functions.json --noEmit",
     "test": "node scripts/run-tests.mjs rules",
     "test:all": "node scripts/run-tests.mjs",
     "test:suzhou": "node scripts/run-tests.mjs suzhou-",
@@ -32,10 +31,10 @@
     "test:suzhou-speaking": "node --experimental-strip-types tests/suzhou-speaking.test.ts",
     "audio:check": "node --experimental-strip-types scripts/build-listening-audio.ts --check",
     "audio:build": "node --experimental-strip-types scripts/build-listening-audio.ts",
-    "release": "npm run audio:build && npm run build"
+    "release": "npm run audio:build && npm run build",
+    "deploy": "npm run build && wrangler pages deploy dist --project-name openels --branch master"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^5.20261002.1",
     "@types/node": "^26.6.3",
     "typescript": "^7.0.2",
     "vite": "^8.3.2"
