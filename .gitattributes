@@ -1,0 +1,7 @@
+# 强制 LF：题库的锚链机制依赖逐字节 MD5，
+# 若 checkout 时按 CRLF 落盘，每个文件的 MD5 都会变，check-integrity 会全库报 MISMATCH。
+* text=auto eol=lf
+*.ps1 text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
