@@ -5,4 +5,8 @@ dist/
 *.tsbuildinfo
 release-dist/
 scripts/node_modules/
-public/audio/listening/
+
+# 听力音频产物**要**进仓库：
+# 项目的目标是「学生不装任何东西就能用」，
+# 让新克隆必须先跑 audio:build（需要 npm + 下 88MB 模型）与该目标直接冲突。
+# 重新渲染用：npm run audio:build

@@ -8,6 +8,8 @@
 
 import { readFileSync } from 'node:fs';
 import {
+  AUDIO_EXT,
+  MP3_BYTES_PER_SECOND,
   planSegments,
   planMaterial,
   planAll,
@@ -101,7 +103,7 @@ check('空台词会抛错', (() => {
 
 const totalMs = plans.reduce(function (a, p) { return a + p.estimatedMs; }, 0);
 const totalBytes = plans.reduce(function (a, p) { return a + p.estimatedBytes; }, 0);
-console.log('  估算：' + (totalMs / 1000).toFixed(1) + ' 秒音频，' + (totalBytes / 1048576).toFixed(2) + ' MB（mp3@128k）');
+console.log('  估算：' + (totalMs / 1000).toFixed(1) + ' 秒音频，' + (totalBytes / 1048576).toFixed(2) + ' MB（mp3@64k）');
 check('音频总时长在 2–6 分钟量级（听力段 12 分钟，材料播 2 遍）',
   totalMs > 120000 && totalMs < 360000, String(totalMs));
 console.log('  对照真实渲染：实际 193.2s（13 段 8.84 MB，24kHz 单声道）');
@@ -137,6 +139,17 @@ check('只改选项不重渲（指纹只取台词与音色）', (() => {
   const p2 = planAll(b2.all, { ext: 'mp3' });
   return staleEntries(p2, manifest, fresh).length === 0;
 })());
+
+/* ---------- 6.5 扩展名必须对齐（真实踩过的坑） ---------- */
+console.log('\n[6.5] 运行时与构建产物扩展名一致');
+// 曾出现过：运行时 buildSteps 默认取 .mp3，而构建脚本默认产出 .wav，
+// 结果音频全部 404。这里把两个默认值钉在一起，防止再次跑偏。
+
+check('audioUrlFor 默认 mp3', audioUrl('lsq-01') === 'audio/listening/lsq-01.mp3', audioUrl('lsq-01'));
+check('MP3 字节率与 64kbps 一致', MP3_BYTES_PER_SECOND === 8000, String(MP3_BYTES_PER_SECOND));
+check('唯一默认值 AUDIO_EXT === mp3', AUDIO_EXT === 'mp3', AUDIO_EXT);
+check('无参调用得到 mp3 路径', audioUrl('lsq-01') === 'audio/listening/lsq-01.mp3');
+check('估算体积在 2MB 内（64kbps 下 193 秒约 1.5MB）', totalBytes < 2 * 1048576, String(totalBytes));
 
 /* ---------- 7. 开考前置清单 ---------- */
 console.log('\n[7] 开考前置清单');

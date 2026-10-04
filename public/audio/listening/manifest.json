@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "voiceMap": {
+    "W": "af_heart",
+    "M": "am_michael",
+    "N": "af_heart"
+  },
+  "entries": [
+    {
+      "id": "lsq-01",
+      "url": "audio/listening/lsq-01.mp3",
+      "fingerprint": "84b9cae2",
+      "estimatedMs": 5481,
+      "estimatedBytes": 43848,
+      "bytes": 54336,
+      "actualMs": 6792
+    },
+    {
+      "id": "lsq-02",
+      "url": "audio/listening/lsq-02.mp3",
+      "fingerprint": "ed9bc81f",
+      "estimatedMs": 5481,
+      "estimatedBytes": 43848,
+      "bytes": 63360,
+      "actualMs": 7920
+    },
+    {
+      "id": "lsq-03",
+      "url": "audio/listening/lsq-03.mp3",
+      "fingerprint": "33747326",
+      "estimatedMs": 8250,
+      "estimatedBytes": 66000,
+      "bytes": 69888,
+      "actualMs": 8736
+    },
+    {
+      "id": "lsq-04",
+      "url": "audio/listening/lsq-04.mp3",
+      "fingerprint": "3b62b880",
+      "estimatedMs": 7577,
+      "estimatedBytes": 60616,
+      "bytes": 74112,
+      "actualMs": 9264
+    },
+    {
+      "id": "lsq-05",
+      "url": "audio/listening/lsq-05.mp3",
+      "fingerprint": "024e0156",
+      "estimatedMs": 6404,
+      "estimatedBytes": 51232,
+      "bytes": 62400,
+      "actualMs": 7800
+    },
+    {
+      "id": "lsq-06",
+      "url": "audio/listening/lsq-06.mp3",
+      "fingerprint": "6770c9b6",
+      "estimatedMs": 6096,
+      "estimatedBytes": 48768,
+      "bytes": 56448,
+      "actualMs": 7056
+    },
+    {
+      "id": "lsq-07",
+      "url": "audio/listening/lsq-07.mp3",
+      "fingerprint": "c85f06e1",
+      "estimatedMs": 8865,
+      "estimatedBytes": 70920,
+      "bytes": 74112,
+      "actualMs": 9264
+    },
+    {
+      "id": "lsq-08",
+      "url": "audio/listening/lsq-08.mp3",
+      "fingerprint": "2972bc37",
+      "estimatedMs": 10904,
+      "estimatedBytes": 87232,
+      "bytes": 103872,
+      "actualMs": 12984
+    },
+    {
+      "id": "lsq-09",
+      "url": "audio/listening/lsq-09.mp3",
+      "fingerprint": "6167bbfb",
+      "estimatedMs": 10404,
+      "estimatedBytes": 83232,
+      "bytes": 94848,
+      "actualMs": 11856
+    },
+    {
+      "id": "lsq-10",
+      "url": "audio/listening/lsq-10.mp3",
+      "fingerprint": "44f34ebf",
+      "estimatedMs": 8808,
+      "estimatedBytes": 70464,
+      "bytes": 89664,
+      "actualMs": 11208
+    },
+    {
+      "id": "lsq-11",
+      "url": "audio/listening/lsq-11.mp3",
+      "fingerprint": "29184ac6",
+      "estimatedMs": 43423,
+      "estimatedBytes": 347384,
+      "bytes": 406656,
+      "actualMs": 50832
+    },
+    {
+      "id": "lsq-12",
+      "url": "audio/listening/lsq-12.mp3",
+      "fingerprint": "a4e25db8",
+      "estimatedMs": 32308,
+      "estimatedBytes": 258464,
+      "bytes": 201024,
+      "actualMs": 25128
+    },
+    {
+      "id": "lsq-13",
+      "url": "audio/listening/lsq-13.mp3",
+      "fingerprint": "b0477a4b",
+      "estimatedMs": 40000,
+      "estimatedBytes": 320000,
+      "bytes": 200448,
+      "actualMs": 25056
+    }
+  ]
+}

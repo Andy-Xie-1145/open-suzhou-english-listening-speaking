@@ -67,8 +67,8 @@ export const WORDS_PER_SECOND = 3.25;
 /** 说话人切换处插入的静音，与 src/engine/tts.ts 的 SPEAKER_GAP_MS 保持一致 */
 export const AUDIO_SEGMENT_GAP_MS = 250;
 
-/** mp3 @128kbps 的字节率 */
-export const MP3_BYTES_PER_SECOND = 16_000;
+/** mp3 @64kbps 的字节率（64 kbps × 1000 ÷ 8）。与 scripts 里的 MP3_KBPS 保持一致 */
+export const MP3_BYTES_PER_SECOND = 8_000;
 
 /* ------------------------------------------------------------------ *
  * 计划
@@ -149,11 +149,20 @@ export function estimateMs(segments: readonly AudioSegment[]): number {
   return Math.round(total);
 }
 
-export function audioFileName(materialId: string, ext: string): string {
+/**
+ * 音频扩展名。**这是全项目唯一的默认值来源。**
+ *
+ * 运行时（listening-session.buildSteps）、前端（suzhou-listening）、
+ * 构建脚本（--format 默认）三处都必须与它一致，否则音频 404。
+ * 曾真实发生过：运行时按 mp3 取、构建产出 wav。
+ */
+export const AUDIO_EXT = 'mp3';
+
+export function audioFileName(materialId: string, ext: string = AUDIO_EXT): string {
   return materialId + '.' + ext;
 }
 
-export function audioUrl(materialId: string, ext: string): string {
+export function audioUrl(materialId: string, ext: string = AUDIO_EXT): string {
   return 'audio/listening/' + audioFileName(materialId, ext);
 }
 
@@ -162,7 +171,7 @@ export function planMaterial(
   material: ListeningMaterial,
   opts: PlanOptions = {},
 ): AudioPlan {
-  const ext = opts.ext ?? 'mp3';
+  const ext = opts.ext ?? AUDIO_EXT;
   const segments = planSegments(material.script, opts.voices ?? DEFAULT_VOICES);
   if (segments.length === 0) {
     throw new Error(material.id + '：台词为空，无法生成音频计划');
@@ -253,7 +262,7 @@ export function prefetchFor(
   groups: readonly PaperListeningGroup[],
   opts: PlanOptions = {},
 ): { urls: string[]; estimatedBytes: number; estimatedMs: number } {
-  const ext = opts.ext ?? 'mp3';
+  const ext = opts.ext ?? AUDIO_EXT;
   const urls: string[] = [];
   let bytes = 0;
   let ms = 0;

@@ -23,7 +23,7 @@
 
 import type { ListeningQuestion, ListeningMaterial } from './listening-bank.ts';
 import type { PaperListening, PaperListeningGroup } from './paper.ts';
-import { audioUrl } from './listening-audio.ts';
+import { audioUrl, AUDIO_EXT } from './listening-audio.ts';
 
 /* ------------------------------------------------------------------ *
  * 一、格式假设常量
@@ -85,7 +85,7 @@ export function toStep(
   };
 }
 
-export function buildSteps(listening: PaperListening, ext = 'mp3'): ListeningStep[] {
+export function buildSteps(listening: PaperListening, ext = AUDIO_EXT): ListeningStep[] {
   const out: ListeningStep[] = [];
   listening.dialogue.forEach(function (g) {
     out.push(toStep(g, out.length, 0, ext));
@@ -97,7 +97,7 @@ export function buildSteps(listening: PaperListening, ext = 'mp3'): ListeningSte
 }
 
 /** 本卷需要预取的音频清单 */
-export function audioUrlsOf(listening: PaperListening, ext = 'mp3'): string[] {
+export function audioUrlsOf(listening: PaperListening, ext = AUDIO_EXT): string[] {
   return buildSteps(listening, ext).map(function (s) { return s.audioUrl; });
 }
 

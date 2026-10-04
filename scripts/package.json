@@ -8,6 +8,7 @@
     "build:listening": "node --experimental-strip-types ../scripts/build-listening-audio.ts"
   },
   "dependencies": {
+    "@breezystack/lamejs": "^1.2.7",
     "kokoro-js": "^1.2.1"
   }
 }

@@ -37,6 +37,7 @@ import { LISTENING_SECTIONS } from '../suzhou/listening-spec.ts';
 import { BADGE, BANNER, SCORE_LABEL } from '../suzhou/disclaimer.ts';
 import type { PaperListening } from '../suzhou/paper.ts';
 import type { ListeningOption } from '../suzhou/listening-bank.ts';
+import { AUDIO_EXT } from '../suzhou/listening-audio.ts';
 
 /* ------------------------------------------------------------------ *
  * 一、纯逻辑：视图模型（可单测，不碰 DOM）
@@ -257,7 +258,7 @@ export function mountSuzhouListening(
   container: HTMLElement,
   deps: SuzhouListeningDeps,
 ): SuzhouListeningApp {
-  const ext = deps.ext ?? 'mp3';
+  const ext = deps.ext ?? AUDIO_EXT;
   const steps = buildSteps(deps.listening, ext);
   let session: ListeningSession = initialSession(steps);
   let phaseStart = 0;

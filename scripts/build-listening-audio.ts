@@ -20,8 +20,11 @@
  *     npm run audio:build -- --only lsq-01
  *     npm run audio:build -- --format mp3     # 需要 PATH 上有 ffmpeg
  *
- * 默认输出 wav（不依赖任何编码器）。mp3 体积约为 1/10，
- * 学生端下载量差别明显，所以正式发布建议用 mp3。
+ * 默认输出 mp3，用纯 JS 的 LAME 移植编码，**不需要系统装 ffmpeg**。
+ * 语音用 64 kbps 单声道足够：193 秒约 1.5 MB，WAV 是 8.84 MB。
+ *
+ * 注意运行时默认就是按 .mp3 取音频（buildSteps 的 ext 默认值），
+ * 所以 mp3 不是可选项 —— 输出 wav 会导致运行时 404。
  *
  * ## 改了题目怎么办
  *
@@ -31,7 +34,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
-import { spawnSync } from 'node:child_process';
+import lamejsPkg from '@breezystack/lamejs';
 
 import { createListeningBank, type ListeningMaterial } from '../src/suzhou/listening-bank.ts';
 import {
@@ -44,6 +47,8 @@ import {
   type AudioManifest,
 } from '../src/suzhou/listening-audio.ts';
 
+const lamejs = lamejsPkg as unknown as { Mp3Encoder: new (c: number, r: number, k: number) => { encodeBuffer(b: Float32Array): Int8Array; flush(): Int8Array } };
+
 const ROOT = process.cwd();
 const OUT_DIR = join(ROOT, 'public', 'audio', 'listening');
 const BANK_FILE = join(ROOT, 'data', 'listening-materials.json');
@@ -52,15 +57,15 @@ const MANIFEST_FILE = join(OUT_DIR, 'manifest.json');
 interface Args {
   check: boolean;
   only: string | null;
-  format: 'wav' | 'mp3';
+  format: 'mp3' | 'wav';
 }
 function parseArgs(argv: string[]): Args {
-  const out: Args = { check: false, only: null, format: 'wav' };
+  const out: Args = { check: false, only: null, format: 'mp3' };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--check') out.check = true;
     else if (a === '--only') out.only = argv[++i] ?? null;
-    else if (a === '--format') out.format = (argv[++i] === 'mp3' ? 'mp3' : 'wav');
+    else if (a === '--format') out.format = (argv[++i] === 'wav' ? 'wav' : 'mp3');
   }
   return out;
 }
@@ -88,6 +93,30 @@ function writeWav(samples: Float32Array, sampleRate: number): Buffer {
     buf.writeInt16LE(Math.round(s < 0 ? s * 0x8000 : s * 0x7fff), 44 + i * 2);
   }
   return buf;
+}
+
+/**
+ * Float32 PCM → MP3 字节。
+ *
+ * 用纯 JS 的 LAME 移植（@breezystack/lamejs），**不依赖系统 ffmpeg**。
+ * 构建期脚本，产物不进浏览器，许可无冲突。
+ *
+ * 64 kbps 单声道足够承载 TTS 语音：193 秒约 1.5 MB，
+ * 而 24kHz/16bit WAV 是 8.84 MB，差 5.8 倍。
+ */
+export const MP3_KBPS = 64;
+
+export function encodeMp3(samples: Float32Array, sampleRate: number): Buffer {
+  const enc = new lamejs.Mp3Encoder(1, sampleRate, MP3_KBPS);
+  const blocks: Buffer[] = [];
+  const BLOCK = 1152;
+  for (let i = 0; i < samples.length; i += BLOCK) {
+    const buf = enc.encodeBuffer(samples.subarray(i, i + BLOCK));
+    if (buf.length > 0) blocks.push(Buffer.from(buf));
+  }
+  const tail = enc.flush();
+  if (tail.length > 0) blocks.push(Buffer.from(tail));
+  return Buffer.concat(blocks);
 }
 
 function concatWithGaps(
@@ -238,16 +267,8 @@ async function main(): Promise<void> {
       parts.push({ samples: audio.audio, speaker: seg.speaker });
     }
     const merged = concatWithGaps(parts, sampleRate);
-    const wavPath = join(OUT_DIR, plan.materialId + '.wav');
-    writeFileSync(wavPath, writeWav(merged, sampleRate));
-
-    if (ext === 'mp3') {
-      const r = spawnSync('ffmpeg', ['-y', '-loglevel', 'error', '-i', wavPath,
-        '-codec:a', 'libmp3lame', '-b:a', '128k', join(OUT_DIR, plan.materialId + '.mp3')], { encoding: 'utf8' });
-      if (r.status !== 0) {
-        throw new Error('ffmpeg 转 mp3 失败（PATH 上没有 ffmpeg 就退回 --format wav）：\n' + (r.stderr || ''));
-      }
-    }
+    const outPath = join(OUT_DIR, plan.materialId + '.' + ext);
+    writeFileSync(outPath, ext === 'mp3' ? encodeMp3(merged, sampleRate) : writeWav(merged, sampleRate));
 
     const done = i + 1;
     process.stdout.write('  [' + done + '/' + stale.length + '] ' + plan.materialId + '  ' +
@@ -261,7 +282,7 @@ async function main(): Promise<void> {
     if (existsSync(path)) {
       const bytes = statSync(path).size;
       e.bytes = bytes;
-      e.actualMs = Math.round((bytes / (ext === 'mp3' ? 16000 : 48000)) * 1000);
+      e.actualMs = Math.round((bytes / (ext === 'mp3' ? MP3_KBPS * 125 : 48000)) * 1000);
     }
   }
   writeFileSync(MANIFEST_FILE, JSON.stringify(fresh, null, 2) + '\n');
