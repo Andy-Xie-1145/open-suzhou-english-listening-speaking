@@ -10,3 +10,8 @@ scripts/node_modules/
 # 项目的目标是「学生不装任何东西就能用」，
 # 让新克隆必须先跑 audio:build（需要 npm + 下 88MB 模型）与该目标直接冲突。
 # 重新渲染用：npm run audio:build
+# Kokoro 模型缓存（audio:build 下载），1.2 GB，绝不能进 git
+.models/
+
+# 题库流水线的中间产物
+.d5_parsed.json
