@@ -29,3 +29,16 @@ data/item-bank/.topic-index.json
 # 它们的时间戳正好卡在别的代理改 _COMMON.md / JIES-IMPLEMENTATION-RULES.md 的前后，
 # 是一次性草稿，不是产物。给 scratch 盖永久戳等于说它是项目的一部分。
 _tmp_*.py
+
+
+# 代理与脚本留下的工作区临时物，不进仓库：
+# - undefined/ ：子代理把输出目录写成 "undefined" 留下的 python 草稿
+# - voices/    ：Kokoro 音色试听参考样本（28 MB，构建链不引用）
+# - *.tmp / adv_hits.txt ：一次性扫描与基线快照
+# - scripts/_archive-tmp/ 、scripts/_tmp_* ：归档草稿（_tmp_*.py 已有，这里补上其余扩展名）
+undefined/
+voices/
+*.tmp
+adv_hits.txt
+scripts/_archive-tmp/
+scripts/_tmp_*
