@@ -153,6 +153,11 @@ export function toScoreView(task: ReadingTask, result: ReadingApproxResult): Sco
  * 三、DOM 渲染（全部 typeof 守卫，Node 下不炸）
  * ------------------------------------------------------------------ */
 
+import {
+  canRecord as canRecordWith, asrReady as asrReadyWith,
+  bannerBlock, manualBlock, scoreHead, dimsBlock,
+} from './suzhou-section-kit.ts';
+
 function getDoc(): Document | null {
   return typeof document === 'undefined' ? null : document;
 }
@@ -186,12 +191,7 @@ function el(tag: string, className: string, text: string): HTMLElement {
 
 /** 顶部横幅：近似声明，任何情况下都必须渲染 */
 export function renderBanner(doc: Document): HTMLElement {
-  const d = disclaimerBlock();
-  const box = doc.createElement('div');
-  box.className = 'sz-banner';
-  box.setAttribute('role', 'note');
-  box.textContent = d.banner;
-  return box;
+  return bannerBlock(doc);
 }
 /** 题目区：原文 + 材料来源 + 录音区 */
 function renderTaskPane(doc: Document, state: ReadingState): HTMLElement {
@@ -241,21 +241,7 @@ function renderScorePane(doc: Document, view: ScoreView): HTMLElement {
   pane.className = 'sz-score';
 
   // 分数区：标签 + 徽标 + 声明三件套，缺一不可
-  const head = doc.createElement('div');
-  head.className = 'sz-score-head';
-  const num = doc.createElement('strong');
-  num.className = 'sz-score-num';
-  num.textContent = String(view.value);
-  const lab = doc.createElement('span');
-  lab.className = 'sz-score-label';
-  lab.textContent = view.label;
-  const badge = doc.createElement('span');
-  badge.className = 'sz-badge';
-  badge.textContent = view.badge;
-  head.appendChild(num);
-  head.appendChild(lab);
-  head.appendChild(badge);
-  pane.appendChild(head);
+  pane.appendChild(scoreHead(doc, view));
 
   for (const p of view.disclaimer) {
     const d = doc.createElement('p');
@@ -265,35 +251,9 @@ function renderScorePane(doc: Document, view: ScoreView): HTMLElement {
   }
 
   // 分项
-  const dims = doc.createElement('div');
-  dims.className = 'sz-dims';
-  for (const d of view.dimensions) {
-    const row = doc.createElement('div');
-    row.className = 'sz-dim';
-    const t = doc.createElement('div');
-    t.className = 'sz-dim-top';
-    const name = doc.createElement('span');
-    name.textContent = d.label;
-    const val = doc.createElement('span');
-    val.className = 'sz-dim-val';
-    val.textContent = d.valueText;
-    t.appendChild(name);
-    t.appendChild(val);
-    const bar = doc.createElement('div');
-    bar.className = 'sz-bar';
-    const fill = doc.createElement('div');
-    fill.className = 'sz-bar-fill';
-    fill.style.width = d.percent + '%';
-    bar.appendChild(fill);
-    const wt = doc.createElement('div');
-    wt.className = 'sz-dim-note';
-    wt.textContent = d.weightText + '　—　' + d.note;
-    row.appendChild(t);
-    row.appendChild(bar);
-    row.appendChild(wt);
-    dims.appendChild(row);
-  }
-  pane.appendChild(dims);
+  pane.appendChild(dimsBlock(doc, view.dimensions.map(function (d) {
+    return { label: d.label, valueText: d.valueText, percent: d.percent, note: d.weightText + '　—　' + d.note };
+  })));
 
   // 逐词明细
   const words = doc.createElement('div');
@@ -369,24 +329,11 @@ export function mountSuzhouReading(
 
   // ---- 能力判断：集中在这里，降级逻辑只有一处真相 ----
   function canRecordNow(): boolean {
-    const r = deps.recorder;
-    if (!r) return false;
-    try {
-      return r.canRecord();
-    } catch {
-      // canRecord 抛错视为不可用，宁可降级也不要崩
-      return false;
-    }
+    return canRecordWith(deps.recorder);
   }
 
   function asrReady(): boolean {
-    const a = deps.asr;
-    if (!a) return false;
-    try {
-      return a.ready();
-    } catch {
-      return false;
-    }
+    return asrReadyWith(deps.asr);
   }
 
   function asrStatus() {
@@ -510,26 +457,14 @@ export function mountSuzhouReading(
     // ---- 手动输入：所有降级路径的最终兜底 ----
     const needManual = state.phase === 'manual' || !recordable;
     if (needManual && state.task) {
-      const wrap = doc.createElement('div');
-      wrap.className = 'sz-manual';
-      const lab = doc.createElement('label');
-      lab.textContent = '手动输入你朗读的内容：';
-      const ta = doc.createElement('textarea');
-      ta.className = 'sz-textarea';
-      ta.rows = 6;
-      ta.value = state.manualText;
-      ta.addEventListener('input', function () { state.manualText = ta.value; });
-      const go = doc.createElement('button');
-      go.type = 'button';
-      go.className = 'sz-btn';
-      go.textContent = '按我的朗读评分（近似）';
-      go.addEventListener('click', function () {
-        app.submitText(ta.value);
-      });
-      wrap.appendChild(lab);
-      wrap.appendChild(ta);
-      wrap.appendChild(go);
-      mount.appendChild(wrap);
+      mount.appendChild(manualBlock(doc, {
+        label: '手动输入你朗读的内容：',
+        submitLabel: '按我的朗读评分（近似）',
+        initial: state.manualText,
+        rows: 6,
+        onInput: function (v) { state.manualText = v; },
+        onSubmit: function (v) { app.submitText(v); },
+      }));
     }
 
     if (state.result && state.task) {

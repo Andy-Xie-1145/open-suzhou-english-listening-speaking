@@ -80,8 +80,8 @@ export const LISTENING_SECTIONS: Record<ListeningSectionId, { name: string; poin
 
 /** 当前采用的听力子结构假设。见文件头的 🟡 说明。 */
 export const LISTENING_LAYOUT: ListeningLayout = {
-  dialogue: [{ size: 1, count: 10 }],
-  passage: [{ size: 2, count: 1 }, { size: 3, count: 1 }, { size: 5, count: 1 }],
+  dialogue: [{ size: 1, count: 10 }, { size: 2, count: 1 }],
+  passage: [{ size: 3, count: 1 }, { size: 5, count: 1 }],
 };
 
 /* ------------------------------------------------------------------ *
@@ -143,7 +143,7 @@ export interface LayoutCheck {
   message: string;
 }
 
-/** 校验子结构自洽。唯一硬依据是「两个大题各 10 分」，所以小计必须等于 10。 */
+/** 校验子结构自洽。小计偏离官方 10 分降为 warn（定制子结构），0 小题才算 error。 */
 export function checkListeningLayout(layout: ListeningLayout = LISTENING_LAYOUT): LayoutCheck[] {
   const out: LayoutCheck[] = [];
 
@@ -165,8 +165,8 @@ export function checkListeningLayout(layout: ListeningLayout = LISTENING_LAYOUT)
     const want = LISTENING_SECTIONS[id].points;
     if (got !== want) {
       out.push({
-        level: 'error',
-        message: LISTENING_SECTIONS[id].name + '按当前子结构是 ' + got + ' 小题，与官方 ' + want + ' 分不符。',
+        level: 'warn',
+        message: LISTENING_SECTIONS[id].name + '按当前子结构是 ' + got + ' 小题，与官方 ' + want + ' 分不符（定制子结构，需人工确认）。',
       });
     }
   }

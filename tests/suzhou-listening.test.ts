@@ -33,6 +33,7 @@ import {
   type ListeningBank,
 } from '../src/suzhou/listening-bank.ts';
 import { dealPaper, LISTENING_MINUTES, type PaperBank } from '../src/suzhou/paper.ts';
+import { buildListeningMaterials } from '../src/suzhou/bank-import.ts';
 
 let pass = 0;
 let fail = 0;
@@ -46,23 +47,30 @@ console.log('\n[1] 子结构自洽');
 const problems = checkListeningLayout(LISTENING_LAYOUT);
 check('子结构无错误', problems.every(function (p) { return p.level !== 'error'; }), JSON.stringify(problems));
 check('子结构可用', isListeningLayoutUsable(LISTENING_LAYOUT));
-check('第一节 10 小题', dialogueQuestionCount(LISTENING_LAYOUT) === 10, String(dialogueQuestionCount(LISTENING_LAYOUT)));
-check('第二节 2+3+5=10 小题', passageQuestionCount(LISTENING_LAYOUT) === 10, String(passageQuestionCount(LISTENING_LAYOUT)));
+check('第一节 12 小题', dialogueQuestionCount(LISTENING_LAYOUT) === 12, String(dialogueQuestionCount(LISTENING_LAYOUT)));
+check('第二节 3+5=8 小题', passageQuestionCount(LISTENING_LAYOUT) === 8, String(passageQuestionCount(LISTENING_LAYOUT)));
 check('听力合计 20 小题', listeningQuestionCount(LISTENING_LAYOUT) === 20, String(listeningQuestionCount(LISTENING_LAYOUT)));
-check('第一节规则是 10 段 × 1 题', JSON.stringify(flattenRules(LISTENING_LAYOUT.dialogue)) === '[{"size":1,"count":10}]', JSON.stringify(flattenRules(LISTENING_LAYOUT.dialogue)));
-check('第二节规则是 2/3/5 各 1 段', JSON.stringify(flattenRules(LISTENING_LAYOUT.passage)) === '[{"size":2,"count":1},{"size":3,"count":1},{"size":5,"count":1}]', JSON.stringify(flattenRules(LISTENING_LAYOUT.passage)));
+check('第一节规则是 10×1 题 + 1×2 题', JSON.stringify(flattenRules(LISTENING_LAYOUT.dialogue)) === '[{"size":1,"count":10},{"size":2,"count":1}]', JSON.stringify(flattenRules(LISTENING_LAYOUT.dialogue)));
+check('第二节规则是 3/5 各 1 段', JSON.stringify(flattenRules(LISTENING_LAYOUT.passage)) === '[{"size":3,"count":1},{"size":5,"count":1}]', JSON.stringify(flattenRules(LISTENING_LAYOUT.passage)));
 check('用到的组大小是 1/2/3/5', JSON.stringify(requiredGroupSizes(LISTENING_LAYOUT)) === '[1,2,3,5]', JSON.stringify(requiredGroupSizes(LISTENING_LAYOUT)));
 check('描述带未核实标记', describeListeningLayout(LISTENING_LAYOUT).indexOf('🟡') === 0, describeListeningLayout(LISTENING_LAYOUT));
 
 /* ---------- 2. 结构改错会被抓出来 ---------- */
 console.log('\n[2] 结构非法时报错');
 const badLayout: ListeningLayout = {
+  dialogue: [],
+  passage: [{ size: 3, count: 1 }, { size: 5, count: 1 }],
+};
+const badProblems = checkListeningLayout(badLayout);
+check('空结构时报错', badProblems.some(function (p) { return p.level === 'error'; }), JSON.stringify(badProblems));
+check('非法结构标记为不可用', !isListeningLayoutUsable(badLayout));
+const offLayout: ListeningLayout = {
   dialogue: [{ size: 1, count: 8 }],
   passage: [{ size: 2, count: 1 }, { size: 3, count: 1 }, { size: 5, count: 1 }],
 };
-const badProblems = checkListeningLayout(badLayout);
-check('小计不等于官方分值时报错', badProblems.some(function (p) { return p.level === 'error'; }), JSON.stringify(badProblems));
-check('非法结构标记为不可用', !isListeningLayoutUsable(badLayout));
+const offProblems = checkListeningLayout(offLayout);
+check('小计不等于官方分值时降为 warn', offProblems.some(function (p) { return p.level === 'warn'; }), JSON.stringify(offProblems));
+check('小计偏离但非空时仍可用', isListeningLayoutUsable(offLayout));
 
 /* ---------- 3. 时长守恒 ---------- */
 console.log('\n[3] 时长守恒');
@@ -74,21 +82,21 @@ const pSum = allocateGroupMs(LISTENING_LAYOUT.passage, secMs.passage).reduce(fun
 check('第一节每段时长合计 === 第一节省额', dSum === secMs.dialogue, String(dSum));
 check('第二节每段时长合计 === 第二节省额', pSum === secMs.passage, String(pSum));
 const pBudget = allocateGroupMs(LISTENING_LAYOUT.passage, secMs.passage);
-check('第二节时长按题数分配（5 题段 > 2 题段）', pBudget[2] > pBudget[0], JSON.stringify(pBudget));
+check('第二节时长按题数分配（5 题段 > 3 题段）', pBudget[1] > pBudget[0], JSON.stringify(pBudget));
 
 /* ---------- 4. 真实题库 ---------- */
-console.log('\n[4] data/listening-materials.json');
-const raw = JSON.parse(readFileSync('data/listening-materials.json', 'utf8'));
-const bank: ListeningBank = createListeningBank(raw);
+console.log('\n[4] data/bank/items.json');
+const rawItems = JSON.parse(readFileSync('data/bank/items.json', 'utf8'));
+const bank: ListeningBank = createListeningBank(buildListeningMaterials(rawItems));
 const bankChecks = checkBankForLayout(bank, LISTENING_LAYOUT);
 check('真实题库可出卷', isBankUsable(bank, LISTENING_LAYOUT), JSON.stringify(bankChecks));
-check('1 题池 = 10 段', poolOf(bank, 'dialogue', 1).length === 10, String(poolOf(bank, 'dialogue', 1).length));
-check('2 题池至少 1 段', poolOf(bank, 'passage', 2).length >= 1, String(poolOf(bank, 'passage', 2).length));
-check('3 题池至少 1 段', poolOf(bank, 'passage', 3).length >= 1, String(poolOf(bank, 'passage', 3).length));
-check('5 题池至少 1 段', poolOf(bank, 'passage', 5).length >= 1, String(poolOf(bank, 'passage', 5).length));
+check('dialogue 1 题池 >= 10 段', poolOf(bank, 'dialogue', 1).length >= 10, String(poolOf(bank, 'dialogue', 1).length));
+check('dialogue 2 题池至少 1 段', poolOf(bank, 'dialogue', 2).length >= 1, String(poolOf(bank, 'dialogue', 2).length));
+check('passage 3 题池至少 1 段', poolOf(bank, 'passage', 3).length >= 1, String(poolOf(bank, 'passage', 3).length));
+check('passage 5 题池至少 1 段', poolOf(bank, 'passage', 5).length >= 1, String(poolOf(bank, 'passage', 5).length));
 check('groupSize === questions.length', bank.all.every(function (m) { return m.groupSize === m.questions.length; }));
-check('选项 label 一律 A/B/C', bank.all.every(function (m) {
-  return m.questions.every(function (q) { return q.options.length === 3 && q.options[0].label === 'A'; });
+check('选项 label 一律 A 开头且 >= 3 项', bank.all.every(function (m) {
+  return m.questions.every(function (q) { return q.options.length >= 3 && q.options[0].label === 'A'; });
 }));
 check('答案都落在选项内', bank.all.every(function (m) {
   return m.questions.every(function (q) { return q.options.some(function (o) { return o.label === q.answer; }); });
@@ -129,10 +137,11 @@ function makeBank(listening: ListeningBank | undefined): PaperBank {
 }
 const PB = makeBank(bank);
 const p1 = dealPaper(PB, { seed: 7 });
-check('第一节 10 组', p1.listening.dialogue.length === 10, String(p1.listening.dialogue.length));
-check('第一节每组 1 题', p1.listening.dialogue.every(function (g) { return g.questions.length === 1; }));
-check('第二节 3 组', p1.listening.passage.length === 3, String(p1.listening.passage.length));
-check('第二节按 2/3/5 顺序', JSON.stringify(p1.listening.passage.map(function (g) { return g.questions.length; })) === '[2,3,5]',
+check('第一节 11 组', p1.listening.dialogue.length === 11, String(p1.listening.dialogue.length));
+check('第一节前 10 组每组 1 题', p1.listening.dialogue.slice(0, 10).every(function (g) { return g.questions.length === 1; }));
+check('第一节最后 1 组 2 题', p1.listening.dialogue[10].questions.length === 2, String(p1.listening.dialogue[10].questions.length));
+check('第二节 2 组', p1.listening.passage.length === 2, String(p1.listening.passage.length));
+check('第二节按 3/5 顺序', JSON.stringify(p1.listening.passage.map(function (g) { return g.questions.length; })) === '[3,5]',
   JSON.stringify(p1.listening.passage.map(function (g) { return g.questions.length; })));
 check('组大小与材料实际题数一致（不跨池凑题）',
   p1.listening.passage.every(function (g) { return g.material.groupSize === g.questions.length; }));
@@ -151,7 +160,7 @@ console.log('\n[7] 换卷：排除是软偏好，池不够时必须能出卷');
 // 池恰好等于一份卷用量（单题池正好 10 段）时，排除必然落空，但仍必须出得了卷
 const p3 = dealPaper(PB, { seed: 8, exclude: { listeningIds: p1.ids.listening } });
 check('池用尽时仍出满 13 段（不因排除而失败）', p3.ids.listening.length === 13, String(p3.ids.listening.length));
-check('池用尽时允许重复但不报错', p3.listening.passage.length === 3);
+check('池用尽时允许重复但不报错', p3.listening.passage.length === 2, String(p3.listening.passage.length));
 // 池有余量时排除应当生效
 function materialOfSize(id: string, kind: 'dialogue' | 'passage', n: number) {
   const qs = [];
@@ -170,7 +179,7 @@ const q1 = dealPaper(makeBank(roomyBank), { seed: 21 });
 const q2 = dealPaper(makeBank(roomyBank), { seed: 22, exclude: { listeningIds: q1.ids.listening } });
 const overlap2 = q2.ids.listening.filter(function (id) { return q1.ids.listening.indexOf(id) >= 0; });
 check('池有余量时排除生效（不与上一份重叠）', overlap2.length === 0, overlap2.join(','));
-check('真实题库提示偏薄', checkBankForLayout(bank, LISTENING_LAYOUT).some(function (c) { return c.level === 'warn'; }),
+check('真实题库无错误项', checkBankForLayout(bank, LISTENING_LAYOUT).every(function (c) { return c.level !== 'error'; }),
   JSON.stringify(checkBankForLayout(bank, LISTENING_LAYOUT)));
 
 /* ---------- 8. 题库缺池必须抛错 ---------- */

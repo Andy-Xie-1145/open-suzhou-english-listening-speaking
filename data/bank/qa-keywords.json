@@ -1,0 +1,603 @@
+{
+  "E-01": [
+    [
+      "be going to",
+      "see my cousin",
+      "am going to"
+    ],
+    [
+      "because",
+      "want to see my cousin",
+      "am going to"
+    ]
+  ],
+  "E-02": [
+    [
+      "next to the bookstore",
+      "it's next to",
+      "where"
+    ],
+    [
+      "by bus",
+      "on foot",
+      "take a bus"
+    ]
+  ],
+  "E-03": [
+    [
+      "i'd like to buy",
+      "pair of sports shoes",
+      "sports shoes"
+    ],
+    [
+      "cheaper",
+      "this pair is cheaper",
+      "that pair is cheaper"
+    ]
+  ],
+  "E-04": [
+    [
+      "i'd love to",
+      "sorry, i can't",
+      "could"
+    ],
+    [
+      "it will start",
+      "will start at seven",
+      "at seven"
+    ]
+  ],
+  "E-05": [
+    [
+      "it will last",
+      "will last about two hours",
+      "about two hours"
+    ],
+    [
+      "i will stay at home",
+      "will stay at home and read",
+      "read"
+    ]
+  ],
+  "E-06": [
+    [
+      "i picked them up",
+      "they are tom's",
+      "tom's"
+    ],
+    [
+      "i found them next to",
+      "next to the basketball court",
+      "basketball court"
+    ]
+  ],
+  "E-07": [
+    [
+      "my umbrella is black",
+      "black with white spots",
+      "white spots"
+    ],
+    [
+      "yes, there is",
+      "no, there isn't",
+      "there is"
+    ]
+  ],
+  "E-08": [
+    [
+      "i stayed at home",
+      "stayed at home and studied",
+      "studied for the exam"
+    ],
+    [
+      "because",
+      "was preparing for the final exam",
+      "preparing for the final exam"
+    ]
+  ],
+  "E-09": [
+    [
+      "i like playing basketball",
+      "playing basketball and running",
+      "running"
+    ],
+    [
+      "summer",
+      "i like summer better",
+      "summer better"
+    ]
+  ],
+  "E-10": [
+    [
+      "twenty-five yuan",
+      "yuan",
+      "cost"
+    ],
+    [
+      "change",
+      "twenty-five yuan change",
+      "i'll get twenty-five yuan change"
+    ]
+  ],
+  "E2-01": [
+    [
+      "the most interesting thing",
+      "riding a bike along the lake",
+      "most interesting thing"
+    ],
+    [
+      "on the third floor",
+      "next to the computer room",
+      "it's on the third floor"
+    ]
+  ],
+  "E2-02": [
+    [
+      "maths is more interesting",
+      "more interesting",
+      "i think maths"
+    ],
+    [
+      "opens at eight",
+      "in the morning on weekdays",
+      "at eight"
+    ]
+  ],
+  "E2-03": [
+    [
+      "yes, there is",
+      "no, there isn't",
+      "beside the front desk"
+    ],
+    [
+      "i like story books best",
+      "story books best",
+      "like best"
+    ]
+  ],
+  "E2-04": [
+    [
+      "go to bed later",
+      "later now than",
+      "than i did last term"
+    ],
+    [
+      "yes, i must",
+      "no, i don't have to",
+      "have to"
+    ]
+  ],
+  "E2-05": [
+    [
+      "twice a week",
+      "i do sports twice a week",
+      "do sports"
+    ],
+    [
+      "swimming is better for my health",
+      "better for my health",
+      "i think swimming"
+    ]
+  ],
+  "E2-06": [
+    [
+      "yes, i can",
+      "no, i can't",
+      "i play it every weekend"
+    ],
+    [
+      "yes, there are",
+      "no, there aren't",
+      "next to the school gate"
+    ]
+  ],
+  "E2-07": [
+    [
+      "chinese is the most interesting",
+      "of all the subjects",
+      "most interesting"
+    ],
+    [
+      "twice a week",
+      "take part in them twice a week",
+      "take part in"
+    ]
+  ],
+  "E2-08": [
+    [
+      "of course you may",
+      "sorry, i'm using it now",
+      "using it now"
+    ],
+    [
+      "mine is longer than yours",
+      "yours is longer than mine",
+      "longer than"
+    ]
+  ],
+  "E2-09": [
+    [
+      "yes, there are",
+      "no, there aren't",
+      "are there"
+    ],
+    [
+      "quieter than my home",
+      "this garden is quieter",
+      "quieter"
+    ]
+  ],
+  "E2-10": [
+    [
+      "maths is the hardest",
+      "the hardest for me",
+      "hardest this term"
+    ],
+    [
+      "once a month",
+      "i usually go there once a month",
+      "usually go there"
+    ]
+  ],
+  "E3-01": [
+    [
+      "my classmates learned",
+      "two new lessons about plants",
+      "learned two new lessons"
+    ],
+    [
+      "almost every day",
+      "take notes in chinese class",
+      "take notes"
+    ]
+  ],
+  "E3-02": [
+    [
+      "i missed two lessons",
+      "missed two lessons about",
+      "the new unit and the practice exercises"
+    ],
+    [
+      "about forty minutes",
+      "takes me about forty minutes",
+      "to finish my homework"
+    ]
+  ],
+  "E3-03": [
+    [
+      "i used to play football",
+      "used to play football there",
+      "with my cousins after school"
+    ],
+    [
+      "no, i don't",
+      "i usually stay at home now",
+      "stay at home now"
+    ]
+  ],
+  "E3-04": [
+    [
+      "i came here last saturday morning",
+      "last saturday morning",
+      "came here last saturday"
+    ],
+    [
+      "i bought a chinese-english dictionary",
+      "the last time i came",
+      "bought a dictionary"
+    ]
+  ],
+  "E3-05": [
+    [
+      "it starts at eight thirty",
+      "starts at eight thirty in the morning",
+      "at eight thirty"
+    ],
+    [
+      "three times a week",
+      "i run after school three times a week",
+      "run after school"
+    ]
+  ],
+  "E3-06": [
+    [
+      "i used to play with my cousins",
+      "used to play with my cousins there",
+      "when i was little"
+    ],
+    [
+      "i usually stay there",
+      "stay there for about three hours",
+      "about three hours"
+    ]
+  ],
+  "E3-07": [
+    [
+      "i played on the school team",
+      "scored six points",
+      "played on the school team and scored"
+    ],
+    [
+      "it started at eight thirty",
+      "started at eight thirty on saturday morning",
+      "on saturday morning last weekend"
+    ]
+  ],
+  "E3-08": [
+    [
+      "i went to bed at about eleven",
+      "went to bed at about eleven last night",
+      "at about eleven"
+    ],
+    [
+      "for about nine hours",
+      "i usually sleep for about nine hours",
+      "sleep for about nine hours"
+    ]
+  ],
+  "E3-09": [
+    [
+      "i used to practice drawing",
+      "used to practice drawing at home",
+      "at home every evening"
+    ],
+    [
+      "twice a week now",
+      "i go to this class twice a week now",
+      "twice a week"
+    ]
+  ],
+  "E3-10": [
+    [
+      "for half an hour",
+      "i study english for half an hour",
+      "every morning"
+    ],
+    [
+      "at seven in the evening",
+      "begin my homework at seven",
+      "i usually begin my homework"
+    ]
+  ],
+  "E4-01": [
+    [
+      "i want to buy three magazines",
+      "three magazines",
+      "i want to buy"
+    ],
+    [
+      "at three in the afternoon",
+      "will come back to the newsstand",
+      "i will come back"
+    ]
+  ],
+  "E4-02": [
+    [
+      "three pieces of bread",
+      "i would like to buy three pieces",
+      "pieces of bread"
+    ],
+    [
+      "in a paper bag by the window",
+      "put the bread in a paper bag",
+      "you should put the bread"
+    ]
+  ],
+  "E4-03": [
+    [
+      "start at nine in the morning",
+      "the check to start at nine",
+      "at nine in the morning"
+    ],
+    [
+      "be going to",
+      "next friday morning",
+      "am going to come back"
+    ]
+  ],
+  "E4-04": [
+    [
+      "i will have to pay",
+      "pay six yuan",
+      "six yuan"
+    ],
+    [
+      "before the winter holiday",
+      "finish reading the book",
+      "i will finish reading"
+    ]
+  ],
+  "E4-05": [
+    [
+      "walk straight along this road",
+      "turn left at the second crossing",
+      "you should walk straight"
+    ],
+    [
+      "about five hundred metres",
+      "it is about five hundred metres",
+      "from here"
+    ]
+  ],
+  "E4-06": [
+    [
+      "it costs two yuan",
+      "two yuan",
+      "costs two yuan"
+    ],
+    [
+      "at half past ten",
+      "will leave from here",
+      "it will leave from here at half past ten"
+    ]
+  ],
+  "E4-07": [
+    [
+      "at seven in the evening",
+      "am going to play the piano",
+      "be going to play the piano"
+    ],
+    [
+      "i want to go to the park",
+      "the park near the river",
+      "near the river"
+    ]
+  ],
+  "E4-08": [
+    [
+      "you should pay forty yuan",
+      "pay forty yuan for the repair",
+      "forty yuan"
+    ],
+    [
+      "for my bike tomorrow afternoon",
+      "come back for my bike",
+      "i want to come back for my bike"
+    ]
+  ],
+  "E4-09": [
+    [
+      "i will have to pay eighteen yuan",
+      "eighteen yuan",
+      "pay eighteen yuan"
+    ],
+    [
+      "to shanghai",
+      "send this parcel to shanghai",
+      "i am going to send"
+    ]
+  ],
+  "E4-10": [
+    [
+      "two events",
+      "take part in two events",
+      "am going to take part in two events"
+    ],
+    [
+      "at the sports meeting office",
+      "you can hand in the form",
+      "hand in the form"
+    ]
+  ],
+  "E5-01": [
+    [
+      "because it may rain later",
+      "take it with me",
+      "i think i will take it"
+    ],
+    [
+      "let me check it on my phone",
+      "the weather app",
+      "let me check"
+    ]
+  ],
+  "E5-02": [
+    [
+      "i am writing a letter",
+      "writing a letter to my cousin",
+      "to my cousin at the moment"
+    ],
+    [
+      "because i have just read",
+      "a funny message from my cousin",
+      "because"
+    ]
+  ],
+  "E5-03": [
+    [
+      "yes, i have finished it already",
+      "have finished it",
+      "i have finished"
+    ],
+    [
+      "i have never borrowed a book",
+      "have never borrowed",
+      "without returning it on time"
+    ]
+  ],
+  "E5-04": [
+    [
+      "your teacher said that",
+      "good at acting",
+      "you were good at acting"
+    ],
+    [
+      "the first show would be in december",
+      "said that the first show",
+      "would be in december"
+    ]
+  ],
+  "E5-05": [
+    [
+      "if it does not rain tomorrow",
+      "i will go climbing with you",
+      "if it doesn't rain"
+    ],
+    [
+      "if it rains tomorrow",
+      "i will stay at home and read",
+      "if it rains"
+    ]
+  ],
+  "E5-06": [
+    [
+      "i want to join the photography club",
+      "i hope to learn",
+      "want to join",
+      "hope to learn how to take better pictures"
+    ],
+    [
+      "i enjoy taking pictures",
+      "enjoy taking pictures of the river",
+      "enjoy taking"
+    ]
+  ],
+  "E5-07": [
+    [
+      "because both books have the same blue cover",
+      "yes, it is, because",
+      "same blue cover"
+    ],
+    [
+      "so that i can exchange it",
+      "i will go to the office so that",
+      "exchange it for the right one"
+    ]
+  ],
+  "E5-08": [
+    [
+      "i hope to go back to the station with you",
+      "so that you can get your bag back",
+      "hope to go back"
+    ],
+    [
+      "i did see you put it on a bench",
+      "yes, i did see you",
+      "near the station"
+    ]
+  ],
+  "E5-09": [
+    [
+      "what an interesting place it is",
+      "how nice your library is",
+      "what an interesting place"
+    ],
+    [
+      "how spacious your reading room is",
+      "how spacious",
+      "reading room is"
+    ]
+  ],
+  "E5-10": [
+    [
+      "yes, i have to make my bed",
+      "have to make my bed every morning",
+      "every morning before breakfast"
+    ],
+    [
+      "i don't have to make my bed",
+      "don't have to",
+      "on weekends"
+    ]
+  ]
+}

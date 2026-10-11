@@ -37,6 +37,7 @@ import { join } from 'node:path';
 import lamejsPkg from '@breezystack/lamejs';
 
 import { createListeningBank, type ListeningMaterial } from '../src/suzhou/listening-bank.ts';
+import { buildListeningMaterials } from '../src/suzhou/bank-import.ts';
 import {
   planAll,
   toManifest,
@@ -51,7 +52,7 @@ const lamejs = lamejsPkg as unknown as { Mp3Encoder: new (c: number, r: number, 
 
 const ROOT = process.cwd();
 const OUT_DIR = join(ROOT, 'public', 'audio', 'listening');
-const BANK_FILE = join(ROOT, 'data', 'listening-materials.json');
+const BANK_FILE = join(ROOT, 'data', 'bank', 'items.json');
 const MANIFEST_FILE = join(OUT_DIR, 'manifest.json');
 
 interface Args {
@@ -110,8 +111,13 @@ export function encodeMp3(samples: Float32Array, sampleRate: number): Buffer {
   const enc = new lamejs.Mp3Encoder(1, sampleRate, MP3_KBPS);
   const blocks: Buffer[] = [];
   const BLOCK = 1152;
-  for (let i = 0; i < samples.length; i += BLOCK) {
-    const buf = enc.encodeBuffer(samples.subarray(i, i + BLOCK));
+  const pcm = new Int16Array(samples.length);
+  for (let i = 0; i < samples.length; i++) {
+    const s = Math.max(-1, Math.min(1, samples[i]));
+    pcm[i] = Math.round(s < 0 ? s * 0x8000 : s * 0x7fff);
+  }
+  for (let i = 0; i < pcm.length; i += BLOCK) {
+    const buf = enc.encodeBuffer(pcm.subarray(i, i + BLOCK));
     if (buf.length > 0) blocks.push(Buffer.from(buf));
   }
   const tail = enc.flush();
@@ -220,7 +226,7 @@ async function main(): Promise<void> {
   const ext = args.format;
 
   const raw = JSON.parse(readFileSync(BANK_FILE, 'utf8'));
-  const bank = createListeningBank(raw);
+  const bank = createListeningBank(buildListeningMaterials(raw));
   const plans = planAll(bank.all, { ext: ext });
   const manifest = loadManifest();
   const have = existingBytes(ext);
@@ -254,6 +260,10 @@ async function main(): Promise<void> {
   const tts = await loadKokoro();
 
   const byId = new Map<string, ListeningMaterial>(bank.all.map(function (m) { return [m.id, m]; }));
+  const freshEntries = new Map<string, import('../src/suzhou/listening-audio.ts').AudioManifestEntry>(
+    (manifest?.entries ?? []).map(function (e) { return [e.id, e]; }),
+  );
+  const freshManifest = () => toManifest(plans);
   for (let i = 0; i < stale.length; i++) {
     const plan: AudioPlan = stale[i];
     const material = byId.get(plan.materialId);
@@ -273,6 +283,21 @@ async function main(): Promise<void> {
     const done = i + 1;
     process.stdout.write('  [' + done + '/' + stale.length + '] ' + plan.materialId + '  ' +
       (merged.length / sampleRate).toFixed(1) + 's\n');
+
+    // 每完成一段就落 manifest，中断后重跑能从断点续上
+    freshEntries.set(plan.materialId, {
+      id: plan.materialId,
+      url: plan.url,
+      fingerprint: plan.fingerprint,
+      estimatedMs: plan.estimatedMs,
+      estimatedBytes: plan.estimatedBytes,
+      bytes: statSync(outPath).size,
+      actualMs: Math.round((statSync(outPath).size / (ext === 'mp3' ? MP3_KBPS * 125 : 48000)) * 1000),
+    });
+    writeFileSync(MANIFEST_FILE, JSON.stringify({
+      ...freshManifest(),
+      entries: freshManifest().entries.map(function (e) { return freshEntries.get(e.id) ?? e; }),
+    }, null, 2) + '\n');
   }
 
   // manifest 回填实际体积与实际时长

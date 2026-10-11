@@ -29,13 +29,16 @@
     "test:suzhou-listening-session": "node --experimental-strip-types tests/suzhou-listening-session.test.ts",
     "test:suzhou-listening-ui": "node --experimental-strip-types tests/suzhou-listening-ui.test.ts",
     "test:suzhou-speaking": "node --experimental-strip-types tests/suzhou-speaking.test.ts",
+    "bank:export": "node scripts/bank-export.mjs",
     "audio:check": "node --experimental-strip-types scripts/build-listening-audio.ts --check",
     "audio:build": "node --experimental-strip-types scripts/build-listening-audio.ts",
     "release": "npm run audio:build && npm run build",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name openels --branch master"
+    "deploy": "npm run build && wrangler pages deploy dist --project-name openels --branch master",
+    "bank:export": "node scripts/export-jsonl.mjs"
   },
   "devDependencies": {
     "@types/node": "^26.6.3",
+    "cf": "^1.0.0-beta.12",
     "typescript": "^7.0.2",
     "vite": "^8.3.2"
   },

@@ -18,6 +18,7 @@ import {
   type PaperBank,
 } from '../src/suzhou/paper.ts';
 import { createListeningBank } from '../src/suzhou/listening-bank.ts';
+import { buildListeningMaterials, mapQaItem, mapTopicItem } from '../src/suzhou/bank-import.ts';
 
 let pass = 0;
 let fail = 0;
@@ -63,7 +64,7 @@ function makeBank(nRead: number, nQa: number, nTopic: number): PaperBank {
     });
   }
   // 听力材料：组卷现在包含两个听力大题，夹具必须提供，否则出卷会抛错。
-  // 规模按 LISTENING_LAYOUT 最小可用量：1 题池 10 段，2/3/5 题池各 2 段（留换卷余量）。
+  // 规模按 LISTENING_LAYOUT 最小可用量：dialogue 1 题池 10 段 + 2 题池 2 段，passage 3/5 题池各 2 段。
   const listeningMaterials = [];
   for (let i = 0; i < 10; i++) {
     listeningMaterials.push({
@@ -73,7 +74,18 @@ function makeBank(nRead: number, nQa: number, nTopic: number): PaperBank {
       difficulty: 1,
     });
   }
-  for (const size of [2, 3, 5]) {
+  for (let k = 0; k < 2; k++) {
+    listeningMaterials.push({
+      id: 'ls-d2-' + k, kind: 'dialogue', title: '双题对话 ' + k,
+      script: [{ speaker: 'W', text: 'First question.' }, { speaker: 'M', text: 'Sure, here it is.' }],
+      questions: [
+        { id: 'ls-d2-' + k + '-q1', skill: 'detail', prompt: 'Question 1?', options: ['A. Yes.', 'B. No.'], answer: 0, keywords: [] },
+        { id: 'ls-d2-' + k + '-q2', skill: 'detail', prompt: 'Question 2?', options: ['A. Yes.', 'B. No.'], answer: 0, keywords: [] },
+      ],
+      difficulty: 1,
+    });
+  }
+  for (const size of [3, 5]) {
     for (let k = 0; k < 2; k++) {
       const qs = [];
       for (let q = 0; q < size; q++) {
@@ -174,20 +186,15 @@ check('无朗读材料时报错', threw2.indexOf('朗读') >= 0, threw2);
 /* ---------- 7. 真实题库 ---------- */
 console.log('\n[7] 真实题库');
 const realReadings = JSON.parse(readFileSync('data/readings.json', 'utf8'));
-const realQa = JSON.parse(readFileSync('data/qa.json', 'utf8'));
-const realKw = JSON.parse(readFileSync('data/qa-keywords.json', 'utf8'));
-const realTopics = JSON.parse(readFileSync('data/topics.json', 'utf8'));
-const realListening = JSON.parse(readFileSync('data/listening-materials.json', 'utf8'));
-const R = (v: any) => Array.isArray(v) ? v : (v.readings || v.qa || v.topics || []);
+const realItems = JSON.parse(readFileSync('data/bank/items.json', 'utf8'));
+const R = (v: any) => Array.isArray(v) ? v : (v.readings || []);
 const REAL: PaperBank = {
   readings: R(realReadings).map(function (r: any) {
     return { id: r.id, textbook: r.textbook, text: r.text, wordCount: r.wordCount, difficulty: r.difficulty, positionSource: r.positionSource };
   }),
-  qa: R(realQa).map(function (r: any) {
-    return { id: r.id, category: r.category, question: r.question, keyPoints: r.keyPoints, enKeywords: realKw[r.id] || [], difficulty: r.difficulty };
-  }),
-  topics: R(realTopics),
-  listening: createListeningBank(realListening),
+  qa: realItems.filter((it: any) => it.type === 'speaking.qa').map(mapQaItem),
+  topics: realItems.filter((it: any) => it.type === 'speaking.topic').map(mapTopicItem),
+  listening: createListeningBank(buildListeningMaterials(realItems)),
 };
 const rp = dealPaper(REAL, { seed: 20260101 });
 console.log('  真实题库 → 朗读 ' + rp.ids.reading + '，问答 [' + rp.ids.qa.join(', ') + ']，话题 ' + rp.ids.topic);

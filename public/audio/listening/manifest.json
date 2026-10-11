@@ -7,121 +7,5872 @@
   },
   "entries": [
     {
-      "id": "lsq-01",
-      "url": "audio/listening/lsq-01.mp3",
-      "fingerprint": "84b9cae2",
-      "estimatedMs": 5481,
-      "estimatedBytes": 43848,
-      "bytes": 54336,
-      "actualMs": 6792
+      "id": "A-01",
+      "url": "audio/listening/A-01.mp3",
+      "fingerprint": "73b7f02f",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 111360,
+      "actualMs": 13920
     },
     {
-      "id": "lsq-02",
-      "url": "audio/listening/lsq-02.mp3",
-      "fingerprint": "ed9bc81f",
-      "estimatedMs": 5481,
-      "estimatedBytes": 43848,
-      "bytes": 63360,
-      "actualMs": 7920
+      "id": "A-02",
+      "url": "audio/listening/A-02.mp3",
+      "fingerprint": "2fd1d163",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 115200,
+      "actualMs": 14400
     },
     {
-      "id": "lsq-03",
-      "url": "audio/listening/lsq-03.mp3",
-      "fingerprint": "33747326",
-      "estimatedMs": 8250,
-      "estimatedBytes": 66000,
-      "bytes": 69888,
-      "actualMs": 8736
+      "id": "A-03",
+      "url": "audio/listening/A-03.mp3",
+      "fingerprint": "61c4dd82",
+      "estimatedMs": 9981,
+      "estimatedBytes": 79848,
+      "bytes": 117312,
+      "actualMs": 14664
     },
     {
-      "id": "lsq-04",
-      "url": "audio/listening/lsq-04.mp3",
-      "fingerprint": "3b62b880",
-      "estimatedMs": 7577,
-      "estimatedBytes": 60616,
-      "bytes": 74112,
-      "actualMs": 9264
+      "id": "A-04",
+      "url": "audio/listening/A-04.mp3",
+      "fingerprint": "6548ed1c",
+      "estimatedMs": 12385,
+      "estimatedBytes": 99080,
+      "bytes": 124032,
+      "actualMs": 15504
     },
     {
-      "id": "lsq-05",
-      "url": "audio/listening/lsq-05.mp3",
-      "fingerprint": "024e0156",
-      "estimatedMs": 6404,
-      "estimatedBytes": 51232,
-      "bytes": 62400,
-      "actualMs": 7800
+      "id": "A-05",
+      "url": "audio/listening/A-05.mp3",
+      "fingerprint": "9f422c28",
+      "estimatedMs": 14231,
+      "estimatedBytes": 113848,
+      "bytes": 145728,
+      "actualMs": 18216
     },
     {
-      "id": "lsq-06",
-      "url": "audio/listening/lsq-06.mp3",
-      "fingerprint": "6770c9b6",
-      "estimatedMs": 6096,
-      "estimatedBytes": 48768,
-      "bytes": 56448,
-      "actualMs": 7056
+      "id": "A-06",
+      "url": "audio/listening/A-06.mp3",
+      "fingerprint": "891663ee",
+      "estimatedMs": 15462,
+      "estimatedBytes": 123696,
+      "bytes": 154944,
+      "actualMs": 19368
     },
     {
-      "id": "lsq-07",
-      "url": "audio/listening/lsq-07.mp3",
-      "fingerprint": "c85f06e1",
-      "estimatedMs": 8865,
-      "estimatedBytes": 70920,
-      "bytes": 74112,
-      "actualMs": 9264
+      "id": "A-07",
+      "url": "audio/listening/A-07.mp3",
+      "fingerprint": "8bf6aaff",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 114240,
+      "actualMs": 14280
     },
     {
-      "id": "lsq-08",
-      "url": "audio/listening/lsq-08.mp3",
-      "fingerprint": "2972bc37",
+      "id": "A-08",
+      "url": "audio/listening/A-08.mp3",
+      "fingerprint": "3d017d5a",
+      "estimatedMs": 10596,
+      "estimatedBytes": 84768,
+      "bytes": 113280,
+      "actualMs": 14160
+    },
+    {
+      "id": "A-09",
+      "url": "audio/listening/A-09.mp3",
+      "fingerprint": "715b8c7e",
+      "estimatedMs": 10596,
+      "estimatedBytes": 84768,
+      "bytes": 108096,
+      "actualMs": 13512
+    },
+    {
+      "id": "A-10",
+      "url": "audio/listening/A-10.mp3",
+      "fingerprint": "9e6476d5",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 116928,
+      "actualMs": 14616
+    },
+    {
+      "id": "A-11",
+      "url": "audio/listening/A-11.mp3",
+      "fingerprint": "6f5d82d7",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 115008,
+      "actualMs": 14376
+    },
+    {
+      "id": "A-12",
+      "url": "audio/listening/A-12.mp3",
+      "fingerprint": "8cab5c59",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 108288,
+      "actualMs": 13536
+    },
+    {
+      "id": "A-13",
+      "url": "audio/listening/A-13.mp3",
+      "fingerprint": "5d2bee91",
+      "estimatedMs": 9981,
+      "estimatedBytes": 79848,
+      "bytes": 106368,
+      "actualMs": 13296
+    },
+    {
+      "id": "A-14",
+      "url": "audio/listening/A-14.mp3",
+      "fingerprint": "9c4018bd",
+      "estimatedMs": 12385,
+      "estimatedBytes": 99080,
+      "bytes": 124416,
+      "actualMs": 15552
+    },
+    {
+      "id": "A-15",
+      "url": "audio/listening/A-15.mp3",
+      "fingerprint": "d6716b0e",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 111936,
+      "actualMs": 13992
+    },
+    {
+      "id": "A-16",
+      "url": "audio/listening/A-16.mp3",
+      "fingerprint": "67bc6b3b",
+      "estimatedMs": 12385,
+      "estimatedBytes": 99080,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A-17",
+      "url": "audio/listening/A-17.mp3",
+      "fingerprint": "bf4720ba",
+      "estimatedMs": 11385,
+      "estimatedBytes": 91080,
+      "bytes": 125952,
+      "actualMs": 15744
+    },
+    {
+      "id": "A-18",
+      "url": "audio/listening/A-18.mp3",
+      "fingerprint": "d274739e",
+      "estimatedMs": 14231,
+      "estimatedBytes": 113848,
+      "bytes": 136896,
+      "actualMs": 17112
+    },
+    {
+      "id": "A-19",
+      "url": "audio/listening/A-19.mp3",
+      "fingerprint": "eec40869",
+      "estimatedMs": 13615,
+      "estimatedBytes": 108920,
+      "bytes": 135168,
+      "actualMs": 16896
+    },
+    {
+      "id": "A-20",
+      "url": "audio/listening/A-20.mp3",
+      "fingerprint": "3955a6de",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A1-01",
+      "url": "audio/listening/A1-01.mp3",
+      "fingerprint": "58b45755",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 127680,
+      "actualMs": 15960
+    },
+    {
+      "id": "A1-02",
+      "url": "audio/listening/A1-02.mp3",
+      "fingerprint": "35a4ed49",
+      "estimatedMs": 12192,
+      "estimatedBytes": 97536,
+      "bytes": 108864,
+      "actualMs": 13608
+    },
+    {
+      "id": "A1-03",
+      "url": "audio/listening/A1-03.mp3",
+      "fingerprint": "33ee5036",
+      "estimatedMs": 11885,
+      "estimatedBytes": 95080,
+      "bytes": 118848,
+      "actualMs": 14856
+    },
+    {
+      "id": "A1-04",
+      "url": "audio/listening/A1-04.mp3",
+      "fingerprint": "715d5b40",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 117888,
+      "actualMs": 14736
+    },
+    {
+      "id": "A1-05",
+      "url": "audio/listening/A1-05.mp3",
+      "fingerprint": "cc91053e",
+      "estimatedMs": 12923,
+      "estimatedBytes": 103384,
+      "bytes": 121344,
+      "actualMs": 15168
+    },
+    {
+      "id": "A1-06",
+      "url": "audio/listening/A1-06.mp3",
+      "fingerprint": "548c5ccd",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 128064,
+      "actualMs": 16008
+    },
+    {
+      "id": "A1-07",
+      "url": "audio/listening/A1-07.mp3",
+      "fingerprint": "60127c64",
       "estimatedMs": 10904,
       "estimatedBytes": 87232,
-      "bytes": 103872,
-      "actualMs": 12984
+      "bytes": 107904,
+      "actualMs": 13488
     },
     {
-      "id": "lsq-09",
-      "url": "audio/listening/lsq-09.mp3",
-      "fingerprint": "6167bbfb",
-      "estimatedMs": 10404,
-      "estimatedBytes": 83232,
-      "bytes": 94848,
-      "actualMs": 11856
+      "id": "A1-08",
+      "url": "audio/listening/A1-08.mp3",
+      "fingerprint": "cfa10a7d",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 135936,
+      "actualMs": 16992
     },
     {
-      "id": "lsq-10",
-      "url": "audio/listening/lsq-10.mp3",
-      "fingerprint": "44f34ebf",
-      "estimatedMs": 8808,
-      "estimatedBytes": 70464,
-      "bytes": 89664,
-      "actualMs": 11208
+      "id": "A1-09",
+      "url": "audio/listening/A1-09.mp3",
+      "fingerprint": "2a310f67",
+      "estimatedMs": 9673,
+      "estimatedBytes": 77384,
+      "bytes": 100224,
+      "actualMs": 12528
     },
     {
-      "id": "lsq-11",
-      "url": "audio/listening/lsq-11.mp3",
-      "fingerprint": "29184ac6",
-      "estimatedMs": 43423,
-      "estimatedBytes": 347384,
-      "bytes": 406656,
-      "actualMs": 50832
+      "id": "A1-10",
+      "url": "audio/listening/A1-10.mp3",
+      "fingerprint": "866a1feb",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 121344,
+      "actualMs": 15168
     },
     {
-      "id": "lsq-12",
-      "url": "audio/listening/lsq-12.mp3",
-      "fingerprint": "a4e25db8",
-      "estimatedMs": 32308,
-      "estimatedBytes": 258464,
+      "id": "A1-11",
+      "url": "audio/listening/A1-11.mp3",
+      "fingerprint": "daad4108",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 120192,
+      "actualMs": 15024
+    },
+    {
+      "id": "A1-12",
+      "url": "audio/listening/A1-12.mp3",
+      "fingerprint": "a82838c6",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 109056,
+      "actualMs": 13632
+    },
+    {
+      "id": "A1-13",
+      "url": "audio/listening/A1-13.mp3",
+      "fingerprint": "6fdf2498",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 115392,
+      "actualMs": 14424
+    },
+    {
+      "id": "A1-14",
+      "url": "audio/listening/A1-14.mp3",
+      "fingerprint": "b0ae6b71",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 128064,
+      "actualMs": 16008
+    },
+    {
+      "id": "A1-15",
+      "url": "audio/listening/A1-15.mp3",
+      "fingerprint": "b0710269",
+      "estimatedMs": 10038,
+      "estimatedBytes": 80304,
+      "bytes": 105024,
+      "actualMs": 13128
+    },
+    {
+      "id": "A2-01",
+      "url": "audio/listening/A2-01.mp3",
+      "fingerprint": "05c73e6b",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 145728,
+      "actualMs": 18216
+    },
+    {
+      "id": "A2-02",
+      "url": "audio/listening/A2-02.mp3",
+      "fingerprint": "377f1744",
+      "estimatedMs": 17808,
+      "estimatedBytes": 142464,
+      "bytes": 192384,
+      "actualMs": 24048
+    },
+    {
+      "id": "A2-03",
+      "url": "audio/listening/A2-03.mp3",
+      "fingerprint": "d169b8b6",
+      "estimatedMs": 10346,
+      "estimatedBytes": 82768,
+      "bytes": 106368,
+      "actualMs": 13296
+    },
+    {
+      "id": "A2-04",
+      "url": "audio/listening/A2-04.mp3",
+      "fingerprint": "4b8212b9",
+      "estimatedMs": 15462,
+      "estimatedBytes": 123696,
+      "bytes": 137472,
+      "actualMs": 17184
+    },
+    {
+      "id": "A2-05",
+      "url": "audio/listening/A2-05.mp3",
+      "fingerprint": "d622932c",
+      "estimatedMs": 10846,
+      "estimatedBytes": 86768,
+      "bytes": 115392,
+      "actualMs": 14424
+    },
+    {
+      "id": "A2-06",
+      "url": "audio/listening/A2-06.mp3",
+      "fingerprint": "fe8c4c1f",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 119232,
+      "actualMs": 14904
+    },
+    {
+      "id": "A2-07",
+      "url": "audio/listening/A2-07.mp3",
+      "fingerprint": "bd6bc2e6",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 113664,
+      "actualMs": 14208
+    },
+    {
+      "id": "A2-08",
+      "url": "audio/listening/A2-08.mp3",
+      "fingerprint": "bba07b65",
+      "estimatedMs": 9365,
+      "estimatedBytes": 74920,
+      "bytes": 93888,
+      "actualMs": 11736
+    },
+    {
+      "id": "A2-09",
+      "url": "audio/listening/A2-09.mp3",
+      "fingerprint": "a94d780b",
+      "estimatedMs": 10288,
+      "estimatedBytes": 82304,
+      "bytes": 96000,
+      "actualMs": 12000
+    },
+    {
+      "id": "A2-10",
+      "url": "audio/listening/A2-10.mp3",
+      "fingerprint": "3b30bd9e",
+      "estimatedMs": 10038,
+      "estimatedBytes": 80304,
+      "bytes": 101952,
+      "actualMs": 12744
+    },
+    {
+      "id": "A2-11",
+      "url": "audio/listening/A2-11.mp3",
+      "fingerprint": "48083a80",
+      "estimatedMs": 11154,
+      "estimatedBytes": 89232,
+      "bytes": 110400,
+      "actualMs": 13800
+    },
+    {
+      "id": "A2-12",
+      "url": "audio/listening/A2-12.mp3",
+      "fingerprint": "8be502e3",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 110400,
+      "actualMs": 13800
+    },
+    {
+      "id": "A2-13",
+      "url": "audio/listening/A2-13.mp3",
+      "fingerprint": "a2c0308d",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 101568,
+      "actualMs": 12696
+    },
+    {
+      "id": "A2-14",
+      "url": "audio/listening/A2-14.mp3",
+      "fingerprint": "059adc72",
+      "estimatedMs": 13923,
+      "estimatedBytes": 111384,
+      "bytes": 125952,
+      "actualMs": 15744
+    },
+    {
+      "id": "A2-15",
+      "url": "audio/listening/A2-15.mp3",
+      "fingerprint": "c42a1a19",
+      "estimatedMs": 9365,
+      "estimatedBytes": 74920,
+      "bytes": 102528,
+      "actualMs": 12816
+    },
+    {
+      "id": "A3-01",
+      "url": "audio/listening/A3-01.mp3",
+      "fingerprint": "4954850f",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 120960,
+      "actualMs": 15120
+    },
+    {
+      "id": "A3-02",
+      "url": "audio/listening/A3-02.mp3",
+      "fingerprint": "5e14f66e",
+      "estimatedMs": 9673,
+      "estimatedBytes": 77384,
+      "bytes": 105024,
+      "actualMs": 13128
+    },
+    {
+      "id": "A3-03",
+      "url": "audio/listening/A3-03.mp3",
+      "fingerprint": "cf51c604",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 106752,
+      "actualMs": 13344
+    },
+    {
+      "id": "A3-04",
+      "url": "audio/listening/A3-04.mp3",
+      "fingerprint": "648c20ad",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A3-05",
+      "url": "audio/listening/A3-05.mp3",
+      "fingerprint": "576c49bc",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 109824,
+      "actualMs": 13728
+    },
+    {
+      "id": "A3-06",
+      "url": "audio/listening/A3-06.mp3",
+      "fingerprint": "4b5520a8",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 102144,
+      "actualMs": 12768
+    },
+    {
+      "id": "A3-07",
+      "url": "audio/listening/A3-07.mp3",
+      "fingerprint": "ccac4874",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 117312,
+      "actualMs": 14664
+    },
+    {
+      "id": "A3-08",
+      "url": "audio/listening/A3-08.mp3",
+      "fingerprint": "c1a5576a",
+      "estimatedMs": 11692,
+      "estimatedBytes": 93536,
+      "bytes": 117888,
+      "actualMs": 14736
+    },
+    {
+      "id": "A3-09",
+      "url": "audio/listening/A3-09.mp3",
+      "fingerprint": "9b1175e7",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 120000,
+      "actualMs": 15000
+    },
+    {
+      "id": "A3-10",
+      "url": "audio/listening/A3-10.mp3",
+      "fingerprint": "61bddef5",
+      "estimatedMs": 9673,
+      "estimatedBytes": 77384,
+      "bytes": 103296,
+      "actualMs": 12912
+    },
+    {
+      "id": "A3-11",
+      "url": "audio/listening/A3-11.mp3",
+      "fingerprint": "0f7708b8",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 106752,
+      "actualMs": 13344
+    },
+    {
+      "id": "A3-12",
+      "url": "audio/listening/A3-12.mp3",
+      "fingerprint": "1c9b7b36",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 122304,
+      "actualMs": 15288
+    },
+    {
+      "id": "A3-13",
+      "url": "audio/listening/A3-13.mp3",
+      "fingerprint": "b545aab7",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 125760,
+      "actualMs": 15720
+    },
+    {
+      "id": "A3-14",
+      "url": "audio/listening/A3-14.mp3",
+      "fingerprint": "1ee62bdf",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 127680,
+      "actualMs": 15960
+    },
+    {
+      "id": "A3-15",
+      "url": "audio/listening/A3-15.mp3",
+      "fingerprint": "cb4d4b22",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 123264,
+      "actualMs": 15408
+    },
+    {
+      "id": "A4-01",
+      "url": "audio/listening/A4-01.mp3",
+      "fingerprint": "2a4e638d",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 131136,
+      "actualMs": 16392
+    },
+    {
+      "id": "A4-02",
+      "url": "audio/listening/A4-02.mp3",
+      "fingerprint": "f032c5f2",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 124608,
+      "actualMs": 15576
+    },
+    {
+      "id": "A4-03",
+      "url": "audio/listening/A4-03.mp3",
+      "fingerprint": "27969027",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 107712,
+      "actualMs": 13464
+    },
+    {
+      "id": "A4-04",
+      "url": "audio/listening/A4-04.mp3",
+      "fingerprint": "6b8ffd0f",
+      "estimatedMs": 11692,
+      "estimatedBytes": 93536,
+      "bytes": 99264,
+      "actualMs": 12408
+    },
+    {
+      "id": "A4-05",
+      "url": "audio/listening/A4-05.mp3",
+      "fingerprint": "7bdfbcbe",
+      "estimatedMs": 13615,
+      "estimatedBytes": 108920,
+      "bytes": 128256,
+      "actualMs": 16032
+    },
+    {
+      "id": "A4-06",
+      "url": "audio/listening/A4-06.mp3",
+      "fingerprint": "27daf232",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 117504,
+      "actualMs": 14688
+    },
+    {
+      "id": "A4-07",
+      "url": "audio/listening/A4-07.mp3",
+      "fingerprint": "754d120e",
+      "estimatedMs": 10346,
+      "estimatedBytes": 82768,
+      "bytes": 92544,
+      "actualMs": 11568
+    },
+    {
+      "id": "A4-08",
+      "url": "audio/listening/A4-08.mp3",
+      "fingerprint": "9ed173c1",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 133632,
+      "actualMs": 16704
+    },
+    {
+      "id": "A4-09",
+      "url": "audio/listening/A4-09.mp3",
+      "fingerprint": "9ff71fd0",
+      "estimatedMs": 10654,
+      "estimatedBytes": 85232,
+      "bytes": 100608,
+      "actualMs": 12576
+    },
+    {
+      "id": "A4-10",
+      "url": "audio/listening/A4-10.mp3",
+      "fingerprint": "d36eb5a2",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 133056,
+      "actualMs": 16632
+    },
+    {
+      "id": "A4-11",
+      "url": "audio/listening/A4-11.mp3",
+      "fingerprint": "4dfd61b6",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 139008,
+      "actualMs": 17376
+    },
+    {
+      "id": "A4-12",
+      "url": "audio/listening/A4-12.mp3",
+      "fingerprint": "6c0f1868",
+      "estimatedMs": 14154,
+      "estimatedBytes": 113232,
+      "bytes": 117888,
+      "actualMs": 14736
+    },
+    {
+      "id": "A4-13",
+      "url": "audio/listening/A4-13.mp3",
+      "fingerprint": "6ec562ac",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 133056,
+      "actualMs": 16632
+    },
+    {
+      "id": "A4-14",
+      "url": "audio/listening/A4-14.mp3",
+      "fingerprint": "0b150d2c",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 109632,
+      "actualMs": 13704
+    },
+    {
+      "id": "A4-15",
+      "url": "audio/listening/A4-15.mp3",
+      "fingerprint": "f6d574ee",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 119808,
+      "actualMs": 14976
+    },
+    {
+      "id": "A5-01",
+      "url": "audio/listening/A5-01.mp3",
+      "fingerprint": "38786073",
+      "estimatedMs": 17365,
+      "estimatedBytes": 138920,
+      "bytes": 153984,
+      "actualMs": 19248
+    },
+    {
+      "id": "A5-02",
+      "url": "audio/listening/A5-02.mp3",
+      "fingerprint": "fa21c0d9",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 136320,
+      "actualMs": 17040
+    },
+    {
+      "id": "A5-03",
+      "url": "audio/listening/A5-03.mp3",
+      "fingerprint": "f041df1e",
+      "estimatedMs": 16327,
+      "estimatedBytes": 130616,
+      "bytes": 171456,
+      "actualMs": 21432
+    },
+    {
+      "id": "A5-04",
+      "url": "audio/listening/A5-04.mp3",
+      "fingerprint": "9c57b894",
+      "estimatedMs": 16635,
+      "estimatedBytes": 133080,
+      "bytes": 160704,
+      "actualMs": 20088
+    },
+    {
+      "id": "A5-05",
+      "url": "audio/listening/A5-05.mp3",
+      "fingerprint": "aff7199a",
+      "estimatedMs": 17000,
+      "estimatedBytes": 136000,
+      "bytes": 158784,
+      "actualMs": 19848
+    },
+    {
+      "id": "A5-06",
+      "url": "audio/listening/A5-06.mp3",
+      "fingerprint": "d1db0622",
+      "estimatedMs": 16308,
+      "estimatedBytes": 130464,
+      "bytes": 138240,
+      "actualMs": 17280
+    },
+    {
+      "id": "A5-07",
+      "url": "audio/listening/A5-07.mp3",
+      "fingerprint": "d767d740",
+      "estimatedMs": 16942,
+      "estimatedBytes": 135536,
+      "bytes": 176448,
+      "actualMs": 22056
+    },
+    {
+      "id": "A5-08",
+      "url": "audio/listening/A5-08.mp3",
+      "fingerprint": "71c801ac",
+      "estimatedMs": 16692,
+      "estimatedBytes": 133536,
+      "bytes": 145920,
+      "actualMs": 18240
+    },
+    {
+      "id": "A5-09",
+      "url": "audio/listening/A5-09.mp3",
+      "fingerprint": "b302b1ff",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 157056,
+      "actualMs": 19632
+    },
+    {
+      "id": "A5-10",
+      "url": "audio/listening/A5-10.mp3",
+      "fingerprint": "24721ced",
+      "estimatedMs": 17558,
+      "estimatedBytes": 140464,
+      "bytes": 174528,
+      "actualMs": 21816
+    },
+    {
+      "id": "A5-11",
+      "url": "audio/listening/A5-11.mp3",
+      "fingerprint": "1e1a8881",
+      "estimatedMs": 16942,
+      "estimatedBytes": 135536,
+      "bytes": 169344,
+      "actualMs": 21168
+    },
+    {
+      "id": "A5-12",
+      "url": "audio/listening/A5-12.mp3",
+      "fingerprint": "5f29e463",
+      "estimatedMs": 16635,
+      "estimatedBytes": 133080,
+      "bytes": 156672,
+      "actualMs": 19584
+    },
+    {
+      "id": "A5-13",
+      "url": "audio/listening/A5-13.mp3",
+      "fingerprint": "ad366761",
+      "estimatedMs": 16635,
+      "estimatedBytes": 133080,
+      "bytes": 166464,
+      "actualMs": 20808
+    },
+    {
+      "id": "A5-14",
+      "url": "audio/listening/A5-14.mp3",
+      "fingerprint": "cf927b42",
+      "estimatedMs": 16750,
+      "estimatedBytes": 134000,
+      "bytes": 138240,
+      "actualMs": 17280
+    },
+    {
+      "id": "A5-15",
+      "url": "audio/listening/A5-15.mp3",
+      "fingerprint": "780cf150",
+      "estimatedMs": 17000,
+      "estimatedBytes": 136000,
+      "bytes": 152448,
+      "actualMs": 19056
+    },
+    {
+      "id": "A6-01",
+      "url": "audio/listening/A6-01.mp3",
+      "fingerprint": "2e1b6b6a",
+      "estimatedMs": 16692,
+      "estimatedBytes": 133536,
+      "bytes": 155136,
+      "actualMs": 19392
+    },
+    {
+      "id": "A6-02",
+      "url": "audio/listening/A6-02.mp3",
+      "fingerprint": "4896d312",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 164160,
+      "actualMs": 20520
+    },
+    {
+      "id": "A6-03",
+      "url": "audio/listening/A6-03.mp3",
+      "fingerprint": "db29de57",
+      "estimatedMs": 17058,
+      "estimatedBytes": 136464,
+      "bytes": 145152,
+      "actualMs": 18144
+    },
+    {
+      "id": "A6-04",
+      "url": "audio/listening/A6-04.mp3",
+      "fingerprint": "67c6f951",
+      "estimatedMs": 17058,
+      "estimatedBytes": 136464,
+      "bytes": 158592,
+      "actualMs": 19824
+    },
+    {
+      "id": "A6-05",
+      "url": "audio/listening/A6-05.mp3",
+      "fingerprint": "1789a410",
+      "estimatedMs": 17000,
+      "estimatedBytes": 136000,
+      "bytes": 175104,
+      "actualMs": 21888
+    },
+    {
+      "id": "A6-06",
+      "url": "audio/listening/A6-06.mp3",
+      "fingerprint": "3f66b851",
+      "estimatedMs": 17000,
+      "estimatedBytes": 136000,
+      "bytes": 148416,
+      "actualMs": 18552
+    },
+    {
+      "id": "A6-07",
+      "url": "audio/listening/A6-07.mp3",
+      "fingerprint": "49d537f2",
+      "estimatedMs": 16750,
+      "estimatedBytes": 134000,
+      "bytes": 156864,
+      "actualMs": 19608
+    },
+    {
+      "id": "A6-08",
+      "url": "audio/listening/A6-08.mp3",
+      "fingerprint": "c6a4f86d",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 158784,
+      "actualMs": 19848
+    },
+    {
+      "id": "A6-09",
+      "url": "audio/listening/A6-09.mp3",
+      "fingerprint": "66d8108a",
+      "estimatedMs": 16692,
+      "estimatedBytes": 133536,
+      "bytes": 153792,
+      "actualMs": 19224
+    },
+    {
+      "id": "A6-10",
+      "url": "audio/listening/A6-10.mp3",
+      "fingerprint": "9749d92c",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 153792,
+      "actualMs": 19224
+    },
+    {
+      "id": "A6-11",
+      "url": "audio/listening/A6-11.mp3",
+      "fingerprint": "57fc0ac4",
+      "estimatedMs": 17058,
+      "estimatedBytes": 136464,
+      "bytes": 166272,
+      "actualMs": 20784
+    },
+    {
+      "id": "A6-12",
+      "url": "audio/listening/A6-12.mp3",
+      "fingerprint": "2efc318c",
+      "estimatedMs": 14538,
+      "estimatedBytes": 116304,
+      "bytes": 150144,
+      "actualMs": 18768
+    },
+    {
+      "id": "A6-13",
+      "url": "audio/listening/A6-13.mp3",
+      "fingerprint": "2c65014d",
+      "estimatedMs": 15769,
+      "estimatedBytes": 126152,
+      "bytes": 148032,
+      "actualMs": 18504
+    },
+    {
+      "id": "A6-14",
+      "url": "audio/listening/A6-14.mp3",
+      "fingerprint": "ab2bb0ac",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 140736,
+      "actualMs": 17592
+    },
+    {
+      "id": "A6-15",
+      "url": "audio/listening/A6-15.mp3",
+      "fingerprint": "9c777527",
+      "estimatedMs": 17000,
+      "estimatedBytes": 136000,
+      "bytes": 184704,
+      "actualMs": 23088
+    },
+    {
+      "id": "A7-01",
+      "url": "audio/listening/A7-01.mp3",
+      "fingerprint": "3604cb4f",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 152448,
+      "actualMs": 19056
+    },
+    {
+      "id": "A7-02",
+      "url": "audio/listening/A7-02.mp3",
+      "fingerprint": "8863a341",
+      "estimatedMs": 13923,
+      "estimatedBytes": 111384,
+      "bytes": 137856,
+      "actualMs": 17232
+    },
+    {
+      "id": "A7-03",
+      "url": "audio/listening/A7-03.mp3",
+      "fingerprint": "371c650a",
+      "estimatedMs": 15154,
+      "estimatedBytes": 121232,
+      "bytes": 164352,
+      "actualMs": 20544
+    },
+    {
+      "id": "A7-04",
+      "url": "audio/listening/A7-04.mp3",
+      "fingerprint": "750c012f",
+      "estimatedMs": 16327,
+      "estimatedBytes": 130616,
+      "bytes": 163008,
+      "actualMs": 20376
+    },
+    {
+      "id": "A7-05",
+      "url": "audio/listening/A7-05.mp3",
+      "fingerprint": "0625aed9",
+      "estimatedMs": 14154,
+      "estimatedBytes": 113232,
+      "bytes": 146496,
+      "actualMs": 18312
+    },
+    {
+      "id": "A7-06",
+      "url": "audio/listening/A7-06.mp3",
+      "fingerprint": "6f66a8cf",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 154368,
+      "actualMs": 19296
+    },
+    {
+      "id": "A7-07",
+      "url": "audio/listening/A7-07.mp3",
+      "fingerprint": "dfc021c4",
+      "estimatedMs": 17250,
+      "estimatedBytes": 138000,
+      "bytes": 153216,
+      "actualMs": 19152
+    },
+    {
+      "id": "A7-08",
+      "url": "audio/listening/A7-08.mp3",
+      "fingerprint": "fd8332cb",
+      "estimatedMs": 17308,
+      "estimatedBytes": 138464,
+      "bytes": 173952,
+      "actualMs": 21744
+    },
+    {
+      "id": "A7-09",
+      "url": "audio/listening/A7-09.mp3",
+      "fingerprint": "271f2700",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 134016,
+      "actualMs": 16752
+    },
+    {
+      "id": "A7-10",
+      "url": "audio/listening/A7-10.mp3",
+      "fingerprint": "25bddc5d",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 123264,
+      "actualMs": 15408
+    },
+    {
+      "id": "A7-11",
+      "url": "audio/listening/A7-11.mp3",
+      "fingerprint": "03394dfd",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 126336,
+      "actualMs": 15792
+    },
+    {
+      "id": "A7-12",
+      "url": "audio/listening/A7-12.mp3",
+      "fingerprint": "2c710ca0",
+      "estimatedMs": 15769,
+      "estimatedBytes": 126152,
+      "bytes": 154560,
+      "actualMs": 19320
+    },
+    {
+      "id": "A7-13",
+      "url": "audio/listening/A7-13.mp3",
+      "fingerprint": "93edaaaa",
+      "estimatedMs": 13231,
+      "estimatedBytes": 105848,
+      "bytes": 111552,
+      "actualMs": 13944
+    },
+    {
+      "id": "A7-14",
+      "url": "audio/listening/A7-14.mp3",
+      "fingerprint": "6b4c0ac3",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 124608,
+      "actualMs": 15576
+    },
+    {
+      "id": "A7-15",
+      "url": "audio/listening/A7-15.mp3",
+      "fingerprint": "714ec2ea",
+      "estimatedMs": 17000,
+      "estimatedBytes": 136000,
+      "bytes": 160512,
+      "actualMs": 20064
+    },
+    {
+      "id": "A8-01",
+      "url": "audio/listening/A8-01.mp3",
+      "fingerprint": "33ab5d56",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 142848,
+      "actualMs": 17856
+    },
+    {
+      "id": "A8-02",
+      "url": "audio/listening/A8-02.mp3",
+      "fingerprint": "f86be876",
+      "estimatedMs": 14788,
+      "estimatedBytes": 118304,
+      "bytes": 162240,
+      "actualMs": 20280
+    },
+    {
+      "id": "A8-03",
+      "url": "audio/listening/A8-03.mp3",
+      "fingerprint": "98ec9a41",
+      "estimatedMs": 14231,
+      "estimatedBytes": 113848,
+      "bytes": 131712,
+      "actualMs": 16464
+    },
+    {
+      "id": "A8-04",
+      "url": "audio/listening/A8-04.mp3",
+      "fingerprint": "80cc50c3",
+      "estimatedMs": 16077,
+      "estimatedBytes": 128616,
+      "bytes": 159360,
+      "actualMs": 19920
+    },
+    {
+      "id": "A8-05",
+      "url": "audio/listening/A8-05.mp3",
+      "fingerprint": "77785787",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 139584,
+      "actualMs": 17448
+    },
+    {
+      "id": "A8-06",
+      "url": "audio/listening/A8-06.mp3",
+      "fingerprint": "03a3847a",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 135744,
+      "actualMs": 16968
+    },
+    {
+      "id": "A8-07",
+      "url": "audio/listening/A8-07.mp3",
+      "fingerprint": "08c2c889",
+      "estimatedMs": 14538,
+      "estimatedBytes": 116304,
+      "bytes": 142464,
+      "actualMs": 17808
+    },
+    {
+      "id": "A8-08",
+      "url": "audio/listening/A8-08.mp3",
+      "fingerprint": "b165154d",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 148800,
+      "actualMs": 18600
+    },
+    {
+      "id": "A8-09",
+      "url": "audio/listening/A8-09.mp3",
+      "fingerprint": "b93334fc",
+      "estimatedMs": 15154,
+      "estimatedBytes": 121232,
+      "bytes": 142464,
+      "actualMs": 17808
+    },
+    {
+      "id": "A8-10",
+      "url": "audio/listening/A8-10.mp3",
+      "fingerprint": "909ba468",
+      "estimatedMs": 14538,
+      "estimatedBytes": 116304,
+      "bytes": 139008,
+      "actualMs": 17376
+    },
+    {
+      "id": "A8-11",
+      "url": "audio/listening/A8-11.mp3",
+      "fingerprint": "2679a72f",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 148800,
+      "actualMs": 18600
+    },
+    {
+      "id": "A8-12",
+      "url": "audio/listening/A8-12.mp3",
+      "fingerprint": "338eeb70",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 146880,
+      "actualMs": 18360
+    },
+    {
+      "id": "A8-13",
+      "url": "audio/listening/A8-13.mp3",
+      "fingerprint": "bd97daf7",
+      "estimatedMs": 13923,
+      "estimatedBytes": 111384,
+      "bytes": 137856,
+      "actualMs": 17232
+    },
+    {
+      "id": "A8-14",
+      "url": "audio/listening/A8-14.mp3",
+      "fingerprint": "1bac8031",
+      "estimatedMs": 15154,
+      "estimatedBytes": 121232,
+      "bytes": 147648,
+      "actualMs": 18456
+    },
+    {
+      "id": "A8-15",
+      "url": "audio/listening/A8-15.mp3",
+      "fingerprint": "a77144dd",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 139584,
+      "actualMs": 17448
+    },
+    {
+      "id": "A9-01",
+      "url": "audio/listening/A9-01.mp3",
+      "fingerprint": "1673d5ad",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 147072,
+      "actualMs": 18384
+    },
+    {
+      "id": "A9-02",
+      "url": "audio/listening/A9-02.mp3",
+      "fingerprint": "0f050474",
+      "estimatedMs": 15077,
+      "estimatedBytes": 120616,
+      "bytes": 133824,
+      "actualMs": 16728
+    },
+    {
+      "id": "A9-03",
+      "url": "audio/listening/A9-03.mp3",
+      "fingerprint": "2c4eefca",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 130560,
+      "actualMs": 16320
+    },
+    {
+      "id": "A9-04",
+      "url": "audio/listening/A9-04.mp3",
+      "fingerprint": "b31e627c",
+      "estimatedMs": 16327,
+      "estimatedBytes": 130616,
+      "bytes": 162624,
+      "actualMs": 20328
+    },
+    {
+      "id": "A9-05",
+      "url": "audio/listening/A9-05.mp3",
+      "fingerprint": "224f36c9",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A9-06",
+      "url": "audio/listening/A9-06.mp3",
+      "fingerprint": "e592882e",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 114240,
+      "actualMs": 14280
+    },
+    {
+      "id": "A9-07",
+      "url": "audio/listening/A9-07.mp3",
+      "fingerprint": "13bf681f",
+      "estimatedMs": 15077,
+      "estimatedBytes": 120616,
+      "bytes": 170112,
+      "actualMs": 21264
+    },
+    {
+      "id": "A9-08",
+      "url": "audio/listening/A9-08.mp3",
+      "fingerprint": "2f35590b",
+      "estimatedMs": 15692,
+      "estimatedBytes": 125536,
+      "bytes": 155712,
+      "actualMs": 19464
+    },
+    {
+      "id": "A9-09",
+      "url": "audio/listening/A9-09.mp3",
+      "fingerprint": "112dd81c",
+      "estimatedMs": 14231,
+      "estimatedBytes": 113848,
+      "bytes": 146880,
+      "actualMs": 18360
+    },
+    {
+      "id": "A9-10",
+      "url": "audio/listening/A9-10.mp3",
+      "fingerprint": "c374a8f0",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 153984,
+      "actualMs": 19248
+    },
+    {
+      "id": "A9-11",
+      "url": "audio/listening/A9-11.mp3",
+      "fingerprint": "670a15b6",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 146496,
+      "actualMs": 18312
+    },
+    {
+      "id": "A9-12",
+      "url": "audio/listening/A9-12.mp3",
+      "fingerprint": "fbfb49b0",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 129408,
+      "actualMs": 16176
+    },
+    {
+      "id": "A9-13",
+      "url": "audio/listening/A9-13.mp3",
+      "fingerprint": "d91d9f15",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 153216,
+      "actualMs": 19152
+    },
+    {
+      "id": "A9-14",
+      "url": "audio/listening/A9-14.mp3",
+      "fingerprint": "ab846898",
+      "estimatedMs": 12615,
+      "estimatedBytes": 100920,
+      "bytes": 126528,
+      "actualMs": 15816
+    },
+    {
+      "id": "A9-15",
+      "url": "audio/listening/A9-15.mp3",
+      "fingerprint": "ebdd3e33",
+      "estimatedMs": 12923,
+      "estimatedBytes": 103384,
+      "bytes": 141504,
+      "actualMs": 17688
+    },
+    {
+      "id": "B-01",
+      "url": "audio/listening/B-01.mp3",
+      "fingerprint": "29135477",
+      "estimatedMs": 49212,
+      "estimatedBytes": 393696,
+      "bytes": 472320,
+      "actualMs": 59040
+    },
+    {
+      "id": "B-02",
+      "url": "audio/listening/B-02.mp3",
+      "fingerprint": "4cf3b4dc",
+      "estimatedMs": 47365,
+      "estimatedBytes": 378920,
+      "bytes": 454656,
+      "actualMs": 56832
+    },
+    {
+      "id": "B-03",
+      "url": "audio/listening/B-03.mp3",
+      "fingerprint": "3e61a22d",
+      "estimatedMs": 43673,
+      "estimatedBytes": 349384,
+      "bytes": 386880,
+      "actualMs": 48360
+    },
+    {
+      "id": "B-04",
+      "url": "audio/listening/B-04.mp3",
+      "fingerprint": "e51ee6c4",
+      "estimatedMs": 45885,
+      "estimatedBytes": 367080,
+      "bytes": 427584,
+      "actualMs": 53448
+    },
+    {
+      "id": "B-05",
+      "url": "audio/listening/B-05.mp3",
+      "fingerprint": "728f7cb7",
+      "estimatedMs": 53827,
+      "estimatedBytes": 430616,
+      "bytes": 493824,
+      "actualMs": 61728
+    },
+    {
+      "id": "B-06",
+      "url": "audio/listening/B-06.mp3",
+      "fingerprint": "a72aa061",
+      "estimatedMs": 48596,
+      "estimatedBytes": 388768,
+      "bytes": 422208,
+      "actualMs": 52776
+    },
+    {
+      "id": "B-07",
+      "url": "audio/listening/B-07.mp3",
+      "fingerprint": "7ebee387",
+      "estimatedMs": 46442,
+      "estimatedBytes": 371536,
+      "bytes": 414144,
+      "actualMs": 51768
+    },
+    {
+      "id": "B-08",
+      "url": "audio/listening/B-08.mp3",
+      "fingerprint": "4030aec3",
+      "estimatedMs": 51423,
+      "estimatedBytes": 411384,
+      "bytes": 466752,
+      "actualMs": 58344
+    },
+    {
+      "id": "B2-01",
+      "url": "audio/listening/B2-01.mp3",
+      "fingerprint": "acda1543",
+      "estimatedMs": 19404,
+      "estimatedBytes": 155232,
+      "bytes": 186432,
+      "actualMs": 23304
+    },
+    {
+      "id": "B2-02",
+      "url": "audio/listening/B2-02.mp3",
+      "fingerprint": "50e4c717",
+      "estimatedMs": 17365,
+      "estimatedBytes": 138920,
+      "bytes": 166272,
+      "actualMs": 20784
+    },
+    {
+      "id": "B2-03",
+      "url": "audio/listening/B2-03.mp3",
+      "fingerprint": "6fe0dbba",
+      "estimatedMs": 17615,
+      "estimatedBytes": 140920,
+      "bytes": 168384,
+      "actualMs": 21048
+    },
+    {
+      "id": "B2-04",
+      "url": "audio/listening/B2-04.mp3",
+      "fingerprint": "afc3ac78",
+      "estimatedMs": 18846,
+      "estimatedBytes": 150768,
+      "bytes": 177984,
+      "actualMs": 22248
+    },
+    {
+      "id": "B2-05",
+      "url": "audio/listening/B2-05.mp3",
+      "fingerprint": "a12dad8d",
+      "estimatedMs": 17308,
+      "estimatedBytes": 138464,
+      "bytes": 169920,
+      "actualMs": 21240
+    },
+    {
+      "id": "B2-06",
+      "url": "audio/listening/B2-06.mp3",
+      "fingerprint": "fda9113a",
+      "estimatedMs": 18173,
+      "estimatedBytes": 145384,
+      "bytes": 188736,
+      "actualMs": 23592
+    },
+    {
+      "id": "B3-01",
+      "url": "audio/listening/B3-01.mp3",
+      "fingerprint": "de929814",
+      "estimatedMs": 48712,
+      "estimatedBytes": 389696,
+      "bytes": 433536,
+      "actualMs": 54192
+    },
+    {
+      "id": "B3-02",
+      "url": "audio/listening/B3-02.mp3",
+      "fingerprint": "41d14981",
+      "estimatedMs": 57827,
+      "estimatedBytes": 462616,
+      "bytes": 527232,
+      "actualMs": 65904
+    },
+    {
+      "id": "B3-03",
+      "url": "audio/listening/B3-03.mp3",
+      "fingerprint": "ab65c5b4",
+      "estimatedMs": 51981,
+      "estimatedBytes": 415848,
+      "bytes": 496704,
+      "actualMs": 62088
+    },
+    {
+      "id": "B3-04",
+      "url": "audio/listening/B3-04.mp3",
+      "fingerprint": "03fbe5ef",
+      "estimatedMs": 57212,
+      "estimatedBytes": 457696,
+      "bytes": 504768,
+      "actualMs": 63096
+    },
+    {
+      "id": "B3-05",
+      "url": "audio/listening/B3-05.mp3",
+      "fingerprint": "3072a735",
+      "estimatedMs": 58750,
+      "estimatedBytes": 470000,
+      "bytes": 543936,
+      "actualMs": 67992
+    },
+    {
+      "id": "B3-06",
+      "url": "audio/listening/B3-06.mp3",
+      "fingerprint": "2e308a22",
+      "estimatedMs": 55058,
+      "estimatedBytes": 440464,
+      "bytes": 493248,
+      "actualMs": 61656
+    },
+    {
+      "id": "B4-01",
+      "url": "audio/listening/B4-01.mp3",
+      "fingerprint": "a9183ce3",
+      "estimatedMs": 57635,
+      "estimatedBytes": 461080,
+      "bytes": 562752,
+      "actualMs": 70344
+    },
+    {
+      "id": "B4-02",
+      "url": "audio/listening/B4-02.mp3",
+      "fingerprint": "dd797799",
+      "estimatedMs": 56769,
+      "estimatedBytes": 454152,
+      "bytes": 506688,
+      "actualMs": 63336
+    },
+    {
+      "id": "B4-03",
+      "url": "audio/listening/B4-03.mp3",
+      "fingerprint": "59e53405",
+      "estimatedMs": 57577,
+      "estimatedBytes": 460616,
+      "bytes": 533952,
+      "actualMs": 66744
+    },
+    {
+      "id": "B4-04",
+      "url": "audio/listening/B4-04.mp3",
+      "fingerprint": "7e90001f",
+      "estimatedMs": 55981,
+      "estimatedBytes": 447848,
+      "bytes": 525120,
+      "actualMs": 65640
+    },
+    {
+      "id": "B4-05",
+      "url": "audio/listening/B4-05.mp3",
+      "fingerprint": "a160b060",
+      "estimatedMs": 58000,
+      "estimatedBytes": 464000,
+      "bytes": 532992,
+      "actualMs": 66624
+    },
+    {
+      "id": "B4-06",
+      "url": "audio/listening/B4-06.mp3",
+      "fingerprint": "0dee072c",
+      "estimatedMs": 55731,
+      "estimatedBytes": 445848,
+      "bytes": 511296,
+      "actualMs": 63912
+    },
+    {
+      "id": "B5-01",
+      "url": "audio/listening/B5-01.mp3",
+      "fingerprint": "996a0e4f",
+      "estimatedMs": 47731,
+      "estimatedBytes": 381848,
+      "bytes": 460992,
+      "actualMs": 57624
+    },
+    {
+      "id": "B5-02",
+      "url": "audio/listening/B5-02.mp3",
+      "fingerprint": "d35988bc",
+      "estimatedMs": 42808,
+      "estimatedBytes": 342464,
+      "bytes": 400512,
+      "actualMs": 50064
+    },
+    {
+      "id": "B5-03",
+      "url": "audio/listening/B5-03.mp3",
+      "fingerprint": "c87a37b2",
+      "estimatedMs": 45846,
+      "estimatedBytes": 366768,
+      "bytes": 392448,
+      "actualMs": 49056
+    },
+    {
+      "id": "B5-04",
+      "url": "audio/listening/B5-04.mp3",
+      "fingerprint": "09f19efb",
+      "estimatedMs": 53212,
+      "estimatedBytes": 425696,
+      "bytes": 461952,
+      "actualMs": 57744
+    },
+    {
+      "id": "B5-05",
+      "url": "audio/listening/B5-05.mp3",
+      "fingerprint": "1d5f1666",
+      "estimatedMs": 41635,
+      "estimatedBytes": 333080,
+      "bytes": 361344,
+      "actualMs": 45168
+    },
+    {
+      "id": "B5-06",
+      "url": "audio/listening/B5-06.mp3",
+      "fingerprint": "22374cf1",
+      "estimatedMs": 50865,
+      "estimatedBytes": 406920,
+      "bytes": 455808,
+      "actualMs": 56976
+    },
+    {
+      "id": "B5-07",
+      "url": "audio/listening/B5-07.mp3",
+      "fingerprint": "e9549fcb",
+      "estimatedMs": 42615,
+      "estimatedBytes": 340920,
+      "bytes": 394752,
+      "actualMs": 49344
+    },
+    {
+      "id": "B5-08",
+      "url": "audio/listening/B5-08.mp3",
+      "fingerprint": "6b407391",
+      "estimatedMs": 42558,
+      "estimatedBytes": 340464,
+      "bytes": 389568,
+      "actualMs": 48696
+    },
+    {
+      "id": "C-01",
+      "url": "audio/listening/C-01.mp3",
+      "fingerprint": "60df93a1",
+      "estimatedMs": 59385,
+      "estimatedBytes": 475080,
+      "bytes": 207744,
+      "actualMs": 25968
+    },
+    {
+      "id": "C-02",
+      "url": "audio/listening/C-02.mp3",
+      "fingerprint": "8b76e7ba",
+      "estimatedMs": 57538,
+      "estimatedBytes": 460304,
+      "bytes": 203904,
+      "actualMs": 25488
+    },
+    {
+      "id": "C-03",
+      "url": "audio/listening/C-03.mp3",
+      "fingerprint": "29d7c6ca",
+      "estimatedMs": 67385,
+      "estimatedBytes": 539080,
+      "bytes": 203904,
+      "actualMs": 25488
+    },
+    {
+      "id": "C-04",
+      "url": "audio/listening/C-04.mp3",
+      "fingerprint": "147bdfd0",
+      "estimatedMs": 63077,
+      "estimatedBytes": 504616,
+      "bytes": 210240,
+      "actualMs": 26280
+    },
+    {
+      "id": "C-05",
+      "url": "audio/listening/C-05.mp3",
+      "fingerprint": "62cca59e",
+      "estimatedMs": 60615,
+      "estimatedBytes": 484920,
+      "bytes": 200832,
+      "actualMs": 25104
+    },
+    {
+      "id": "C-06",
+      "url": "audio/listening/C-06.mp3",
+      "fingerprint": "8318b49a",
+      "estimatedMs": 58769,
+      "estimatedBytes": 470152,
+      "bytes": 206016,
+      "actualMs": 25752
+    },
+    {
+      "id": "C-07",
+      "url": "audio/listening/C-07.mp3",
+      "fingerprint": "a593bb90",
+      "estimatedMs": 62462,
+      "estimatedBytes": 499696,
+      "bytes": 202944,
+      "actualMs": 25368
+    },
+    {
+      "id": "C-08",
+      "url": "audio/listening/C-08.mp3",
+      "fingerprint": "ce6c9416",
+      "estimatedMs": 55692,
+      "estimatedBytes": 445536,
+      "bytes": 206592,
+      "actualMs": 25824
+    },
+    {
+      "id": "C2-01",
+      "url": "audio/listening/C2-01.mp3",
+      "fingerprint": "acb81c04",
+      "estimatedMs": 66769,
+      "estimatedBytes": 534152,
+      "bytes": 198528,
+      "actualMs": 24816
+    },
+    {
+      "id": "C2-02",
+      "url": "audio/listening/C2-02.mp3",
+      "fingerprint": "f1c9503b",
+      "estimatedMs": 60308,
+      "estimatedBytes": 482464,
+      "bytes": 197184,
+      "actualMs": 24648
+    },
+    {
+      "id": "C2-03",
+      "url": "audio/listening/C2-03.mp3",
+      "fingerprint": "8e0d266b",
+      "estimatedMs": 66769,
+      "estimatedBytes": 534152,
+      "bytes": 204096,
+      "actualMs": 25512
+    },
+    {
+      "id": "C2-04",
+      "url": "audio/listening/C2-04.mp3",
+      "fingerprint": "f9ef2de3",
+      "estimatedMs": 62769,
+      "estimatedBytes": 502152,
       "bytes": 201024,
       "actualMs": 25128
     },
     {
-      "id": "lsq-13",
-      "url": "audio/listening/lsq-13.mp3",
-      "fingerprint": "b0477a4b",
-      "estimatedMs": 40000,
-      "estimatedBytes": 320000,
+      "id": "C2-05",
+      "url": "audio/listening/C2-05.mp3",
+      "fingerprint": "640d2f01",
+      "estimatedMs": 55385,
+      "estimatedBytes": 443080,
+      "bytes": 206400,
+      "actualMs": 25800
+    },
+    {
+      "id": "C3-01",
+      "url": "audio/listening/C3-01.mp3",
+      "fingerprint": "d99f057f",
+      "estimatedMs": 58462,
+      "estimatedBytes": 467696,
+      "bytes": 205248,
+      "actualMs": 25656
+    },
+    {
+      "id": "C3-02",
+      "url": "audio/listening/C3-02.mp3",
+      "fingerprint": "05fcefd1",
+      "estimatedMs": 65846,
+      "estimatedBytes": 526768,
+      "bytes": 203904,
+      "actualMs": 25488
+    },
+    {
+      "id": "C3-03",
+      "url": "audio/listening/C3-03.mp3",
+      "fingerprint": "2c6d7531",
+      "estimatedMs": 56308,
+      "estimatedBytes": 450464,
+      "bytes": 197568,
+      "actualMs": 24696
+    },
+    {
+      "id": "C3-04",
+      "url": "audio/listening/C3-04.mp3",
+      "fingerprint": "21512e79",
+      "estimatedMs": 53846,
+      "estimatedBytes": 430768,
+      "bytes": 201600,
+      "actualMs": 25200
+    },
+    {
+      "id": "C3-05",
+      "url": "audio/listening/C3-05.mp3",
+      "fingerprint": "91d75858",
+      "estimatedMs": 64000,
+      "estimatedBytes": 512000,
+      "bytes": 198720,
+      "actualMs": 24840
+    },
+    {
+      "id": "C4-01",
+      "url": "audio/listening/C4-01.mp3",
+      "fingerprint": "1f76277e",
+      "estimatedMs": 59692,
+      "estimatedBytes": 477536,
+      "bytes": 203136,
+      "actualMs": 25392
+    },
+    {
+      "id": "C4-02",
+      "url": "audio/listening/C4-02.mp3",
+      "fingerprint": "fa9945ef",
+      "estimatedMs": 59385,
+      "estimatedBytes": 475080,
+      "bytes": 201792,
+      "actualMs": 25224
+    },
+    {
+      "id": "C4-03",
+      "url": "audio/listening/C4-03.mp3",
+      "fingerprint": "756164ba",
+      "estimatedMs": 61231,
+      "estimatedBytes": 489848,
+      "bytes": 204672,
+      "actualMs": 25584
+    },
+    {
+      "id": "C4-04",
+      "url": "audio/listening/C4-04.mp3",
+      "fingerprint": "433d00d2",
+      "estimatedMs": 62154,
+      "estimatedBytes": 497232,
+      "bytes": 201600,
+      "actualMs": 25200
+    },
+    {
+      "id": "C4-05",
+      "url": "audio/listening/C4-05.mp3",
+      "fingerprint": "222776da",
+      "estimatedMs": 59692,
+      "estimatedBytes": 477536,
+      "bytes": 198336,
+      "actualMs": 24792
+    },
+    {
+      "id": "C5-01",
+      "url": "audio/listening/C5-01.mp3",
+      "fingerprint": "72a50df2",
+      "estimatedMs": 64308,
+      "estimatedBytes": 514464,
+      "bytes": 206400,
+      "actualMs": 25800
+    },
+    {
+      "id": "C5-02",
+      "url": "audio/listening/C5-02.mp3",
+      "fingerprint": "8a9497dd",
+      "estimatedMs": 64923,
+      "estimatedBytes": 519384,
+      "bytes": 195648,
+      "actualMs": 24456
+    },
+    {
+      "id": "C5-03",
+      "url": "audio/listening/C5-03.mp3",
+      "fingerprint": "efd1c64c",
+      "estimatedMs": 66769,
+      "estimatedBytes": 534152,
+      "bytes": 196992,
+      "actualMs": 24624
+    },
+    {
+      "id": "C5-04",
+      "url": "audio/listening/C5-04.mp3",
+      "fingerprint": "1260ee4e",
+      "estimatedMs": 61538,
+      "estimatedBytes": 492304,
       "bytes": 200448,
       "actualMs": 25056
+    },
+    {
+      "id": "C5-05",
+      "url": "audio/listening/C5-05.mp3",
+      "fingerprint": "5392ddde",
+      "estimatedMs": 64308,
+      "estimatedBytes": 514464,
+      "bytes": 197952,
+      "actualMs": 24744
+    },
+    {
+      "id": "D-01",
+      "url": "audio/listening/D-01.mp3",
+      "fingerprint": "9ecffc5a",
+      "estimatedMs": 12615,
+      "estimatedBytes": 100920,
+      "bytes": 130944,
+      "actualMs": 16368
+    },
+    {
+      "id": "D-02",
+      "url": "audio/listening/D-02.mp3",
+      "fingerprint": "9a26caee",
+      "estimatedMs": 17538,
+      "estimatedBytes": 140304,
+      "bytes": 148224,
+      "actualMs": 18528
+    },
+    {
+      "id": "D-03",
+      "url": "audio/listening/D-03.mp3",
+      "fingerprint": "213fb316",
+      "estimatedMs": 22154,
+      "estimatedBytes": 177232,
+      "bytes": 181440,
+      "actualMs": 22680
+    },
+    {
+      "id": "D-04",
+      "url": "audio/listening/D-04.mp3",
+      "fingerprint": "ace0726b",
+      "estimatedMs": 18154,
+      "estimatedBytes": 145232,
+      "bytes": 162432,
+      "actualMs": 20304
+    },
+    {
+      "id": "D-05",
+      "url": "audio/listening/D-05.mp3",
+      "fingerprint": "4306f860",
+      "estimatedMs": 21846,
+      "estimatedBytes": 174768,
+      "bytes": 195648,
+      "actualMs": 24456
+    },
+    {
+      "id": "D-06",
+      "url": "audio/listening/D-06.mp3",
+      "fingerprint": "55cf86d4",
+      "estimatedMs": 20308,
+      "estimatedBytes": 162464,
+      "bytes": 180480,
+      "actualMs": 22560
+    },
+    {
+      "id": "D-07",
+      "url": "audio/listening/D-07.mp3",
+      "fingerprint": "451c7b87",
+      "estimatedMs": 18769,
+      "estimatedBytes": 150152,
+      "bytes": 159552,
+      "actualMs": 19944
+    },
+    {
+      "id": "D-08",
+      "url": "audio/listening/D-08.mp3",
+      "fingerprint": "4c08b8fa",
+      "estimatedMs": 22154,
+      "estimatedBytes": 177232,
+      "bytes": 182016,
+      "actualMs": 22752
+    },
+    {
+      "id": "D-09",
+      "url": "audio/listening/D-09.mp3",
+      "fingerprint": "4f9c41e4",
+      "estimatedMs": 19692,
+      "estimatedBytes": 157536,
+      "bytes": 150720,
+      "actualMs": 18840
+    },
+    {
+      "id": "D-10",
+      "url": "audio/listening/D-10.mp3",
+      "fingerprint": "95118dc3",
+      "estimatedMs": 16308,
+      "estimatedBytes": 130464,
+      "bytes": 133632,
+      "actualMs": 16704
+    },
+    {
+      "id": "D4-01",
+      "url": "audio/listening/D4-01.mp3",
+      "fingerprint": "beea1d20",
+      "estimatedMs": 16308,
+      "estimatedBytes": 130464,
+      "bytes": 142656,
+      "actualMs": 17832
+    },
+    {
+      "id": "D4-02",
+      "url": "audio/listening/D4-02.mp3",
+      "fingerprint": "8cb9ffbc",
+      "estimatedMs": 20615,
+      "estimatedBytes": 164920,
+      "bytes": 166272,
+      "actualMs": 20784
+    },
+    {
+      "id": "D4-03",
+      "url": "audio/listening/D4-03.mp3",
+      "fingerprint": "a721480c",
+      "estimatedMs": 20308,
+      "estimatedBytes": 162464,
+      "bytes": 190656,
+      "actualMs": 23832
+    },
+    {
+      "id": "D4-04",
+      "url": "audio/listening/D4-04.mp3",
+      "fingerprint": "78b18694",
+      "estimatedMs": 14769,
+      "estimatedBytes": 118152,
+      "bytes": 146496,
+      "actualMs": 18312
+    },
+    {
+      "id": "D4-05",
+      "url": "audio/listening/D4-05.mp3",
+      "fingerprint": "52092cb8",
+      "estimatedMs": 23077,
+      "estimatedBytes": 184616,
+      "bytes": 180864,
+      "actualMs": 22608
+    },
+    {
+      "id": "D4-06",
+      "url": "audio/listening/D4-06.mp3",
+      "fingerprint": "8fb7d53b",
+      "estimatedMs": 26462,
+      "estimatedBytes": 211696,
+      "bytes": 184320,
+      "actualMs": 23040
+    },
+    {
+      "id": "D4-07",
+      "url": "audio/listening/D4-07.mp3",
+      "fingerprint": "cc0c9817",
+      "estimatedMs": 26154,
+      "estimatedBytes": 209232,
+      "bytes": 185088,
+      "actualMs": 23136
+    },
+    {
+      "id": "D4-08",
+      "url": "audio/listening/D4-08.mp3",
+      "fingerprint": "85912c56",
+      "estimatedMs": 18769,
+      "estimatedBytes": 150152,
+      "bytes": 175296,
+      "actualMs": 21912
+    },
+    {
+      "id": "D4-09",
+      "url": "audio/listening/D4-09.mp3",
+      "fingerprint": "60f13267",
+      "estimatedMs": 21538,
+      "estimatedBytes": 172304,
+      "bytes": 183936,
+      "actualMs": 22992
+    },
+    {
+      "id": "D4-10",
+      "url": "audio/listening/D4-10.mp3",
+      "fingerprint": "dfb1a0e3",
+      "estimatedMs": 24923,
+      "estimatedBytes": 199384,
+      "bytes": 207360,
+      "actualMs": 25920
+    },
+    {
+      "id": "D5-01",
+      "url": "audio/listening/D5-01.mp3",
+      "fingerprint": "0c2626ab",
+      "estimatedMs": 24000,
+      "estimatedBytes": 192000,
+      "bytes": 183360,
+      "actualMs": 22920
+    },
+    {
+      "id": "D5-02",
+      "url": "audio/listening/D5-02.mp3",
+      "fingerprint": "254baaa4",
+      "estimatedMs": 30462,
+      "estimatedBytes": 243696,
+      "bytes": 192960,
+      "actualMs": 24120
+    },
+    {
+      "id": "D5-03",
+      "url": "audio/listening/D5-03.mp3",
+      "fingerprint": "cc9f7f28",
+      "estimatedMs": 47077,
+      "estimatedBytes": 376616,
+      "bytes": 190272,
+      "actualMs": 23784
+    },
+    {
+      "id": "D5-04",
+      "url": "audio/listening/D5-04.mp3",
+      "fingerprint": "f07ae8b4",
+      "estimatedMs": 25846,
+      "estimatedBytes": 206768,
+      "bytes": 194304,
+      "actualMs": 24288
+    },
+    {
+      "id": "D5-05",
+      "url": "audio/listening/D5-05.mp3",
+      "fingerprint": "0da15eff",
+      "estimatedMs": 18154,
+      "estimatedBytes": 145232,
+      "bytes": 156672,
+      "actualMs": 19584
+    },
+    {
+      "id": "D5-06",
+      "url": "audio/listening/D5-06.mp3",
+      "fingerprint": "5391606a",
+      "estimatedMs": 21231,
+      "estimatedBytes": 169848,
+      "bytes": 183552,
+      "actualMs": 22944
+    },
+    {
+      "id": "D5-07",
+      "url": "audio/listening/D5-07.mp3",
+      "fingerprint": "820e3311",
+      "estimatedMs": 19692,
+      "estimatedBytes": 157536,
+      "bytes": 158208,
+      "actualMs": 19776
+    },
+    {
+      "id": "D5-08",
+      "url": "audio/listening/D5-08.mp3",
+      "fingerprint": "eef95c58",
+      "estimatedMs": 26154,
+      "estimatedBytes": 209232,
+      "bytes": 190848,
+      "actualMs": 23856
+    },
+    {
+      "id": "D5-09",
+      "url": "audio/listening/D5-09.mp3",
+      "fingerprint": "ba720a78",
+      "estimatedMs": 36923,
+      "estimatedBytes": 295384,
+      "bytes": 193152,
+      "actualMs": 24144
+    },
+    {
+      "id": "D5-10",
+      "url": "audio/listening/D5-10.mp3",
+      "fingerprint": "1eb4b6cc",
+      "estimatedMs": 35077,
+      "estimatedBytes": 280616,
+      "bytes": 200064,
+      "actualMs": 25008
+    },
+    {
+      "id": "D6-01",
+      "url": "audio/listening/D6-01.mp3",
+      "fingerprint": "54b58494",
+      "estimatedMs": 42154,
+      "estimatedBytes": 337232,
+      "bytes": 199104,
+      "actualMs": 24888
+    },
+    {
+      "id": "D6-02",
+      "url": "audio/listening/D6-02.mp3",
+      "fingerprint": "97822f90",
+      "estimatedMs": 55385,
+      "estimatedBytes": 443080,
+      "bytes": 198144,
+      "actualMs": 24768
+    },
+    {
+      "id": "D6-03",
+      "url": "audio/listening/D6-03.mp3",
+      "fingerprint": "a0aa19e0",
+      "estimatedMs": 37231,
+      "estimatedBytes": 297848,
+      "bytes": 198720,
+      "actualMs": 24840
+    },
+    {
+      "id": "D6-04",
+      "url": "audio/listening/D6-04.mp3",
+      "fingerprint": "7e03a2c3",
+      "estimatedMs": 49846,
+      "estimatedBytes": 398768,
+      "bytes": 195648,
+      "actualMs": 24456
+    },
+    {
+      "id": "D6-05",
+      "url": "audio/listening/D6-05.mp3",
+      "fingerprint": "c2b61968",
+      "estimatedMs": 49846,
+      "estimatedBytes": 398768,
+      "bytes": 199488,
+      "actualMs": 24936
+    },
+    {
+      "id": "D6-06",
+      "url": "audio/listening/D6-06.mp3",
+      "fingerprint": "e287a18f",
+      "estimatedMs": 51077,
+      "estimatedBytes": 408616,
+      "bytes": 196224,
+      "actualMs": 24528
+    },
+    {
+      "id": "D6-07",
+      "url": "audio/listening/D6-07.mp3",
+      "fingerprint": "ef1df563",
+      "estimatedMs": 43077,
+      "estimatedBytes": 344616,
+      "bytes": 209280,
+      "actualMs": 26160
+    },
+    {
+      "id": "D6-08",
+      "url": "audio/listening/D6-08.mp3",
+      "fingerprint": "c6af6967",
+      "estimatedMs": 51385,
+      "estimatedBytes": 411080,
+      "bytes": 206592,
+      "actualMs": 25824
+    },
+    {
+      "id": "D6-09",
+      "url": "audio/listening/D6-09.mp3",
+      "fingerprint": "fed7b619",
+      "estimatedMs": 56308,
+      "estimatedBytes": 450464,
+      "bytes": 201024,
+      "actualMs": 25128
+    },
+    {
+      "id": "D6-10",
+      "url": "audio/listening/D6-10.mp3",
+      "fingerprint": "938b5ac4",
+      "estimatedMs": 46462,
+      "estimatedBytes": 371696,
+      "bytes": 193536,
+      "actualMs": 24192
+    },
+    {
+      "id": "A10-01",
+      "url": "audio/listening/A10-01.mp3",
+      "fingerprint": "295e406f",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 129024,
+      "actualMs": 16128
+    },
+    {
+      "id": "A10-02",
+      "url": "audio/listening/A10-02.mp3",
+      "fingerprint": "0671acf5",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 174144,
+      "actualMs": 21768
+    },
+    {
+      "id": "A10-03",
+      "url": "audio/listening/A10-03.mp3",
+      "fingerprint": "38b47bd6",
+      "estimatedMs": 16135,
+      "estimatedBytes": 129080,
+      "bytes": 145536,
+      "actualMs": 18192
+    },
+    {
+      "id": "A10-04",
+      "url": "audio/listening/A10-04.mp3",
+      "fingerprint": "8c27f40d",
+      "estimatedMs": 16135,
+      "estimatedBytes": 129080,
+      "bytes": 152256,
+      "actualMs": 19032
+    },
+    {
+      "id": "A10-05",
+      "url": "audio/listening/A10-05.mp3",
+      "fingerprint": "bc86430e",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 144768,
+      "actualMs": 18096
+    },
+    {
+      "id": "A10-06",
+      "url": "audio/listening/A10-06.mp3",
+      "fingerprint": "de75d147",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 146112,
+      "actualMs": 18264
+    },
+    {
+      "id": "A10-07",
+      "url": "audio/listening/A10-07.mp3",
+      "fingerprint": "17d38c21",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 148992,
+      "actualMs": 18624
+    },
+    {
+      "id": "A10-08",
+      "url": "audio/listening/A10-08.mp3",
+      "fingerprint": "68faf108",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 145728,
+      "actualMs": 18216
+    },
+    {
+      "id": "A10-09",
+      "url": "audio/listening/A10-09.mp3",
+      "fingerprint": "f05401ed",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 150912,
+      "actualMs": 18864
+    },
+    {
+      "id": "A10-10",
+      "url": "audio/listening/A10-10.mp3",
+      "fingerprint": "c05c0d3a",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 160512,
+      "actualMs": 20064
+    },
+    {
+      "id": "A10-11",
+      "url": "audio/listening/A10-11.mp3",
+      "fingerprint": "36842719",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 122304,
+      "actualMs": 15288
+    },
+    {
+      "id": "A10-12",
+      "url": "audio/listening/A10-12.mp3",
+      "fingerprint": "3286ea36",
+      "estimatedMs": 16135,
+      "estimatedBytes": 129080,
+      "bytes": 146880,
+      "actualMs": 18360
+    },
+    {
+      "id": "A10-13",
+      "url": "audio/listening/A10-13.mp3",
+      "fingerprint": "8fb60549",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 135360,
+      "actualMs": 16920
+    },
+    {
+      "id": "A10-14",
+      "url": "audio/listening/A10-14.mp3",
+      "fingerprint": "b72f7669",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 148224,
+      "actualMs": 18528
+    },
+    {
+      "id": "A10-15",
+      "url": "audio/listening/A10-15.mp3",
+      "fingerprint": "391ba905",
+      "estimatedMs": 16442,
+      "estimatedBytes": 131536,
+      "bytes": 157248,
+      "actualMs": 19656
+    },
+    {
+      "id": "A11-01",
+      "url": "audio/listening/A11-01.mp3",
+      "fingerprint": "938f1a72",
+      "estimatedMs": 15769,
+      "estimatedBytes": 126152,
+      "bytes": 155136,
+      "actualMs": 19392
+    },
+    {
+      "id": "A11-02",
+      "url": "audio/listening/A11-02.mp3",
+      "fingerprint": "5cb85ae0",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 153216,
+      "actualMs": 19152
+    },
+    {
+      "id": "A11-03",
+      "url": "audio/listening/A11-03.mp3",
+      "fingerprint": "0c78639f",
+      "estimatedMs": 16692,
+      "estimatedBytes": 133536,
+      "bytes": 152832,
+      "actualMs": 19104
+    },
+    {
+      "id": "A11-04",
+      "url": "audio/listening/A11-04.mp3",
+      "fingerprint": "ba6da2ad",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 148992,
+      "actualMs": 18624
+    },
+    {
+      "id": "A11-05",
+      "url": "audio/listening/A11-05.mp3",
+      "fingerprint": "845eb6a9",
+      "estimatedMs": 16019,
+      "estimatedBytes": 128152,
+      "bytes": 158208,
+      "actualMs": 19776
+    },
+    {
+      "id": "A11-06",
+      "url": "audio/listening/A11-06.mp3",
+      "fingerprint": "bfb8620c",
+      "estimatedMs": 14231,
+      "estimatedBytes": 113848,
+      "bytes": 140544,
+      "actualMs": 17568
+    },
+    {
+      "id": "A11-07",
+      "url": "audio/listening/A11-07.mp3",
+      "fingerprint": "aaa1d08a",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 143808,
+      "actualMs": 17976
+    },
+    {
+      "id": "A11-08",
+      "url": "audio/listening/A11-08.mp3",
+      "fingerprint": "7caebea3",
+      "estimatedMs": 16077,
+      "estimatedBytes": 128616,
+      "bytes": 141696,
+      "actualMs": 17712
+    },
+    {
+      "id": "A11-09",
+      "url": "audio/listening/A11-09.mp3",
+      "fingerprint": "c80a635a",
+      "estimatedMs": 15769,
+      "estimatedBytes": 126152,
+      "bytes": 145536,
+      "actualMs": 18192
+    },
+    {
+      "id": "A11-10",
+      "url": "audio/listening/A11-10.mp3",
+      "fingerprint": "a5ff76e6",
+      "estimatedMs": 17000,
+      "estimatedBytes": 136000,
+      "bytes": 169344,
+      "actualMs": 21168
+    },
+    {
+      "id": "A11-11",
+      "url": "audio/listening/A11-11.mp3",
+      "fingerprint": "ddbf123a",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 163584,
+      "actualMs": 20448
+    },
+    {
+      "id": "A11-12",
+      "url": "audio/listening/A11-12.mp3",
+      "fingerprint": "6eef4bbb",
+      "estimatedMs": 16692,
+      "estimatedBytes": 133536,
+      "bytes": 164544,
+      "actualMs": 20568
+    },
+    {
+      "id": "A11-13",
+      "url": "audio/listening/A11-13.mp3",
+      "fingerprint": "45efca92",
+      "estimatedMs": 16692,
+      "estimatedBytes": 133536,
+      "bytes": 153408,
+      "actualMs": 19176
+    },
+    {
+      "id": "A11-14",
+      "url": "audio/listening/A11-14.mp3",
+      "fingerprint": "e5a7245c",
+      "estimatedMs": 17000,
+      "estimatedBytes": 136000,
+      "bytes": 163008,
+      "actualMs": 20376
+    },
+    {
+      "id": "A11-15",
+      "url": "audio/listening/A11-15.mp3",
+      "fingerprint": "2817ab66",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 116736,
+      "actualMs": 14592
+    },
+    {
+      "id": "A12-01",
+      "url": "audio/listening/A12-01.mp3",
+      "fingerprint": "5f796650",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 133632,
+      "actualMs": 16704
+    },
+    {
+      "id": "A12-02",
+      "url": "audio/listening/A12-02.mp3",
+      "fingerprint": "4f94e1d8",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 152640,
+      "actualMs": 19080
+    },
+    {
+      "id": "A12-03",
+      "url": "audio/listening/A12-03.mp3",
+      "fingerprint": "8d5724d4",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 138240,
+      "actualMs": 17280
+    },
+    {
+      "id": "A12-04",
+      "url": "audio/listening/A12-04.mp3",
+      "fingerprint": "e1c5ff3f",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 140736,
+      "actualMs": 17592
+    },
+    {
+      "id": "A12-05",
+      "url": "audio/listening/A12-05.mp3",
+      "fingerprint": "31300b24",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 166848,
+      "actualMs": 20856
+    },
+    {
+      "id": "A12-06",
+      "url": "audio/listening/A12-06.mp3",
+      "fingerprint": "0fe96a23",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 124224,
+      "actualMs": 15528
+    },
+    {
+      "id": "A12-07",
+      "url": "audio/listening/A12-07.mp3",
+      "fingerprint": "cb2a4ed6",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 136512,
+      "actualMs": 17064
+    },
+    {
+      "id": "A12-08",
+      "url": "audio/listening/A12-08.mp3",
+      "fingerprint": "d796aa2c",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A12-09",
+      "url": "audio/listening/A12-09.mp3",
+      "fingerprint": "a109602d",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 140928,
+      "actualMs": 17616
+    },
+    {
+      "id": "A12-10",
+      "url": "audio/listening/A12-10.mp3",
+      "fingerprint": "bab73091",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 138048,
+      "actualMs": 17256
+    },
+    {
+      "id": "A12-11",
+      "url": "audio/listening/A12-11.mp3",
+      "fingerprint": "882052ec",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 145536,
+      "actualMs": 18192
+    },
+    {
+      "id": "A12-12",
+      "url": "audio/listening/A12-12.mp3",
+      "fingerprint": "00672386",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 141312,
+      "actualMs": 17664
+    },
+    {
+      "id": "A12-13",
+      "url": "audio/listening/A12-13.mp3",
+      "fingerprint": "d713a7fc",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 120192,
+      "actualMs": 15024
+    },
+    {
+      "id": "A12-14",
+      "url": "audio/listening/A12-14.mp3",
+      "fingerprint": "fcb291d3",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 127872,
+      "actualMs": 15984
+    },
+    {
+      "id": "A12-15",
+      "url": "audio/listening/A12-15.mp3",
+      "fingerprint": "926e1527",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 130944,
+      "actualMs": 16368
+    },
+    {
+      "id": "A13-01",
+      "url": "audio/listening/A13-01.mp3",
+      "fingerprint": "74494404",
+      "estimatedMs": 15462,
+      "estimatedBytes": 123696,
+      "bytes": 149760,
+      "actualMs": 18720
+    },
+    {
+      "id": "A13-02",
+      "url": "audio/listening/A13-02.mp3",
+      "fingerprint": "a3b0a2df",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 144384,
+      "actualMs": 18048
+    },
+    {
+      "id": "A13-03",
+      "url": "audio/listening/A13-03.mp3",
+      "fingerprint": "b4bcab16",
+      "estimatedMs": 16442,
+      "estimatedBytes": 131536,
+      "bytes": 147264,
+      "actualMs": 18408
+    },
+    {
+      "id": "A13-04",
+      "url": "audio/listening/A13-04.mp3",
+      "fingerprint": "7ab8ff48",
+      "estimatedMs": 15154,
+      "estimatedBytes": 121232,
+      "bytes": 156864,
+      "actualMs": 19608
+    },
+    {
+      "id": "A13-05",
+      "url": "audio/listening/A13-05.mp3",
+      "fingerprint": "cf2c35c3",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 147456,
+      "actualMs": 18432
+    },
+    {
+      "id": "A13-06",
+      "url": "audio/listening/A13-06.mp3",
+      "fingerprint": "bc5588bd",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 134784,
+      "actualMs": 16848
+    },
+    {
+      "id": "A13-07",
+      "url": "audio/listening/A13-07.mp3",
+      "fingerprint": "07f77687",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 115968,
+      "actualMs": 14496
+    },
+    {
+      "id": "A13-08",
+      "url": "audio/listening/A13-08.mp3",
+      "fingerprint": "d65b8f71",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 112320,
+      "actualMs": 14040
+    },
+    {
+      "id": "A13-09",
+      "url": "audio/listening/A13-09.mp3",
+      "fingerprint": "97d5787f",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 133056,
+      "actualMs": 16632
+    },
+    {
+      "id": "A13-10",
+      "url": "audio/listening/A13-10.mp3",
+      "fingerprint": "3cad20bd",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 114048,
+      "actualMs": 14256
+    },
+    {
+      "id": "A13-11",
+      "url": "audio/listening/A13-11.mp3",
+      "fingerprint": "17e9c86b",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 118080,
+      "actualMs": 14760
+    },
+    {
+      "id": "A13-12",
+      "url": "audio/listening/A13-12.mp3",
+      "fingerprint": "234f9de0",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 136896,
+      "actualMs": 17112
+    },
+    {
+      "id": "A13-13",
+      "url": "audio/listening/A13-13.mp3",
+      "fingerprint": "d08d4e3e",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 130560,
+      "actualMs": 16320
+    },
+    {
+      "id": "A13-14",
+      "url": "audio/listening/A13-14.mp3",
+      "fingerprint": "d8bc5840",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 121152,
+      "actualMs": 15144
+    },
+    {
+      "id": "A13-15",
+      "url": "audio/listening/A13-15.mp3",
+      "fingerprint": "4e6e6afd",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 141312,
+      "actualMs": 17664
+    },
+    {
+      "id": "A14-01",
+      "url": "audio/listening/A14-01.mp3",
+      "fingerprint": "e2bbbc29",
+      "estimatedMs": 17058,
+      "estimatedBytes": 136464,
+      "bytes": 160896,
+      "actualMs": 20112
+    },
+    {
+      "id": "A14-02",
+      "url": "audio/listening/A14-02.mp3",
+      "fingerprint": "5a0db8d2",
+      "estimatedMs": 14462,
+      "estimatedBytes": 115696,
+      "bytes": 131328,
+      "actualMs": 16416
+    },
+    {
+      "id": "A14-03",
+      "url": "audio/listening/A14-03.mp3",
+      "fingerprint": "e73af7ab",
+      "estimatedMs": 16750,
+      "estimatedBytes": 134000,
+      "bytes": 151872,
+      "actualMs": 18984
+    },
+    {
+      "id": "A14-04",
+      "url": "audio/listening/A14-04.mp3",
+      "fingerprint": "6298831b",
+      "estimatedMs": 16135,
+      "estimatedBytes": 129080,
+      "bytes": 147648,
+      "actualMs": 18456
+    },
+    {
+      "id": "A14-05",
+      "url": "audio/listening/A14-05.mp3",
+      "fingerprint": "14be45bd",
+      "estimatedMs": 16442,
+      "estimatedBytes": 131536,
+      "bytes": 145536,
+      "actualMs": 18192
+    },
+    {
+      "id": "A14-06",
+      "url": "audio/listening/A14-06.mp3",
+      "fingerprint": "a3f7116e",
+      "estimatedMs": 16442,
+      "estimatedBytes": 131536,
+      "bytes": 156096,
+      "actualMs": 19512
+    },
+    {
+      "id": "A14-07",
+      "url": "audio/listening/A14-07.mp3",
+      "fingerprint": "50cefb64",
+      "estimatedMs": 17058,
+      "estimatedBytes": 136464,
+      "bytes": 167616,
+      "actualMs": 20952
+    },
+    {
+      "id": "A14-08",
+      "url": "audio/listening/A14-08.mp3",
+      "fingerprint": "0b1e5cf5",
+      "estimatedMs": 17058,
+      "estimatedBytes": 136464,
+      "bytes": 152832,
+      "actualMs": 19104
+    },
+    {
+      "id": "A14-09",
+      "url": "audio/listening/A14-09.mp3",
+      "fingerprint": "aeff6ae8",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 162432,
+      "actualMs": 20304
+    },
+    {
+      "id": "A14-10",
+      "url": "audio/listening/A14-10.mp3",
+      "fingerprint": "0676b3d6",
+      "estimatedMs": 17058,
+      "estimatedBytes": 136464,
+      "bytes": 149568,
+      "actualMs": 18696
+    },
+    {
+      "id": "A14-11",
+      "url": "audio/listening/A14-11.mp3",
+      "fingerprint": "1ecc6361",
+      "estimatedMs": 16615,
+      "estimatedBytes": 132920,
+      "bytes": 142848,
+      "actualMs": 17856
+    },
+    {
+      "id": "A14-12",
+      "url": "audio/listening/A14-12.mp3",
+      "fingerprint": "aa7cff1f",
+      "estimatedMs": 16135,
+      "estimatedBytes": 129080,
+      "bytes": 151104,
+      "actualMs": 18888
+    },
+    {
+      "id": "A14-13",
+      "url": "audio/listening/A14-13.mp3",
+      "fingerprint": "adbdf3d3",
+      "estimatedMs": 17058,
+      "estimatedBytes": 136464,
+      "bytes": 155328,
+      "actualMs": 19416
+    },
+    {
+      "id": "A14-14",
+      "url": "audio/listening/A14-14.mp3",
+      "fingerprint": "f8af6507",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 132480,
+      "actualMs": 16560
+    },
+    {
+      "id": "A14-15",
+      "url": "audio/listening/A14-15.mp3",
+      "fingerprint": "de9b9e39",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 152640,
+      "actualMs": 19080
+    },
+    {
+      "id": "A15-01",
+      "url": "audio/listening/A15-01.mp3",
+      "fingerprint": "dfeaaed8",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 119232,
+      "actualMs": 14904
+    },
+    {
+      "id": "A15-02",
+      "url": "audio/listening/A15-02.mp3",
+      "fingerprint": "3ec46dd5",
+      "estimatedMs": 13231,
+      "estimatedBytes": 105848,
+      "bytes": 123648,
+      "actualMs": 15456
+    },
+    {
+      "id": "A15-03",
+      "url": "audio/listening/A15-03.mp3",
+      "fingerprint": "ecf5f377",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 142464,
+      "actualMs": 17808
+    },
+    {
+      "id": "A15-04",
+      "url": "audio/listening/A15-04.mp3",
+      "fingerprint": "b0cc6095",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 118848,
+      "actualMs": 14856
+    },
+    {
+      "id": "A15-05",
+      "url": "audio/listening/A15-05.mp3",
+      "fingerprint": "e773d67c",
+      "estimatedMs": 13231,
+      "estimatedBytes": 105848,
+      "bytes": 136704,
+      "actualMs": 17088
+    },
+    {
+      "id": "A15-06",
+      "url": "audio/listening/A15-06.mp3",
+      "fingerprint": "451e33b8",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 137280,
+      "actualMs": 17160
+    },
+    {
+      "id": "A15-07",
+      "url": "audio/listening/A15-07.mp3",
+      "fingerprint": "ef35869c",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 119040,
+      "actualMs": 14880
+    },
+    {
+      "id": "A15-08",
+      "url": "audio/listening/A15-08.mp3",
+      "fingerprint": "c2d11675",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A15-09",
+      "url": "audio/listening/A15-09.mp3",
+      "fingerprint": "646a0e21",
+      "estimatedMs": 14154,
+      "estimatedBytes": 113232,
+      "bytes": 137280,
+      "actualMs": 17160
+    },
+    {
+      "id": "A15-10",
+      "url": "audio/listening/A15-10.mp3",
+      "fingerprint": "93dd8e50",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 133248,
+      "actualMs": 16656
+    },
+    {
+      "id": "A15-11",
+      "url": "audio/listening/A15-11.mp3",
+      "fingerprint": "a699c818",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 115968,
+      "actualMs": 14496
+    },
+    {
+      "id": "A15-12",
+      "url": "audio/listening/A15-12.mp3",
+      "fingerprint": "dc3a8505",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 145344,
+      "actualMs": 18168
+    },
+    {
+      "id": "A15-13",
+      "url": "audio/listening/A15-13.mp3",
+      "fingerprint": "61771c90",
+      "estimatedMs": 14788,
+      "estimatedBytes": 118304,
+      "bytes": 166272,
+      "actualMs": 20784
+    },
+    {
+      "id": "A15-14",
+      "url": "audio/listening/A15-14.mp3",
+      "fingerprint": "ba8f7fdb",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 142080,
+      "actualMs": 17760
+    },
+    {
+      "id": "A15-15",
+      "url": "audio/listening/A15-15.mp3",
+      "fingerprint": "30e04662",
+      "estimatedMs": 14846,
+      "estimatedBytes": 118768,
+      "bytes": 138432,
+      "actualMs": 17304
+    },
+    {
+      "id": "A16-01",
+      "url": "audio/listening/A16-01.mp3",
+      "fingerprint": "c07c759b",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 132480,
+      "actualMs": 16560
+    },
+    {
+      "id": "A16-02",
+      "url": "audio/listening/A16-02.mp3",
+      "fingerprint": "936db67a",
+      "estimatedMs": 10904,
+      "estimatedBytes": 87232,
+      "bytes": 118656,
+      "actualMs": 14832
+    },
+    {
+      "id": "A16-03",
+      "url": "audio/listening/A16-03.mp3",
+      "fingerprint": "7d062236",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 144000,
+      "actualMs": 18000
+    },
+    {
+      "id": "A16-04",
+      "url": "audio/listening/A16-04.mp3",
+      "fingerprint": "5d2798db",
+      "estimatedMs": 17308,
+      "estimatedBytes": 138464,
+      "bytes": 171264,
+      "actualMs": 21408
+    },
+    {
+      "id": "A16-05",
+      "url": "audio/listening/A16-05.mp3",
+      "fingerprint": "9fa8da45",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 136704,
+      "actualMs": 17088
+    },
+    {
+      "id": "A16-06",
+      "url": "audio/listening/A16-06.mp3",
+      "fingerprint": "cec2bd38",
+      "estimatedMs": 16442,
+      "estimatedBytes": 131536,
+      "bytes": 151296,
+      "actualMs": 18912
+    },
+    {
+      "id": "A16-07",
+      "url": "audio/listening/A16-07.mp3",
+      "fingerprint": "5a1e5813",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 139392,
+      "actualMs": 17424
+    },
+    {
+      "id": "A16-08",
+      "url": "audio/listening/A16-08.mp3",
+      "fingerprint": "1268df0b",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 138048,
+      "actualMs": 17256
+    },
+    {
+      "id": "A16-09",
+      "url": "audio/listening/A16-09.mp3",
+      "fingerprint": "590bf1b6",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 138816,
+      "actualMs": 17352
+    },
+    {
+      "id": "A16-10",
+      "url": "audio/listening/A16-10.mp3",
+      "fingerprint": "93a36359",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 160704,
+      "actualMs": 20088
+    },
+    {
+      "id": "A16-11",
+      "url": "audio/listening/A16-11.mp3",
+      "fingerprint": "238ad79f",
+      "estimatedMs": 16135,
+      "estimatedBytes": 129080,
+      "bytes": 154560,
+      "actualMs": 19320
+    },
+    {
+      "id": "A16-12",
+      "url": "audio/listening/A16-12.mp3",
+      "fingerprint": "7651bb94",
+      "estimatedMs": 16135,
+      "estimatedBytes": 129080,
+      "bytes": 143616,
+      "actualMs": 17952
+    },
+    {
+      "id": "A16-13",
+      "url": "audio/listening/A16-13.mp3",
+      "fingerprint": "9d4642b1",
+      "estimatedMs": 16135,
+      "estimatedBytes": 129080,
+      "bytes": 130944,
+      "actualMs": 16368
+    },
+    {
+      "id": "A16-14",
+      "url": "audio/listening/A16-14.mp3",
+      "fingerprint": "f3c57809",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 137088,
+      "actualMs": 17136
+    },
+    {
+      "id": "A16-15",
+      "url": "audio/listening/A16-15.mp3",
+      "fingerprint": "892f89f8",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 151104,
+      "actualMs": 18888
+    },
+    {
+      "id": "A17-01",
+      "url": "audio/listening/A17-01.mp3",
+      "fingerprint": "71c745a8",
+      "estimatedMs": 14231,
+      "estimatedBytes": 113848,
+      "bytes": 143232,
+      "actualMs": 17904
+    },
+    {
+      "id": "A17-02",
+      "url": "audio/listening/A17-02.mp3",
+      "fingerprint": "d6371406",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 128448,
+      "actualMs": 16056
+    },
+    {
+      "id": "A17-03",
+      "url": "audio/listening/A17-03.mp3",
+      "fingerprint": "3810ab9e",
+      "estimatedMs": 12692,
+      "estimatedBytes": 101536,
+      "bytes": 138432,
+      "actualMs": 17304
+    },
+    {
+      "id": "A17-04",
+      "url": "audio/listening/A17-04.mp3",
+      "fingerprint": "60e17d75",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 133248,
+      "actualMs": 16656
+    },
+    {
+      "id": "A17-05",
+      "url": "audio/listening/A17-05.mp3",
+      "fingerprint": "8094ac7a",
+      "estimatedMs": 16385,
+      "estimatedBytes": 131080,
+      "bytes": 162624,
+      "actualMs": 20328
+    },
+    {
+      "id": "A17-06",
+      "url": "audio/listening/A17-06.mp3",
+      "fingerprint": "44d3024c",
+      "estimatedMs": 14769,
+      "estimatedBytes": 118152,
+      "bytes": 126336,
+      "actualMs": 15792
+    },
+    {
+      "id": "A17-07",
+      "url": "audio/listening/A17-07.mp3",
+      "fingerprint": "c899180a",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 139008,
+      "actualMs": 17376
+    },
+    {
+      "id": "A17-08",
+      "url": "audio/listening/A17-08.mp3",
+      "fingerprint": "d7f1a38c",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 138432,
+      "actualMs": 17304
+    },
+    {
+      "id": "A17-09",
+      "url": "audio/listening/A17-09.mp3",
+      "fingerprint": "80bc6be7",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 139968,
+      "actualMs": 17496
+    },
+    {
+      "id": "A17-10",
+      "url": "audio/listening/A17-10.mp3",
+      "fingerprint": "cc247d0f",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 139584,
+      "actualMs": 17448
+    },
+    {
+      "id": "A17-11",
+      "url": "audio/listening/A17-11.mp3",
+      "fingerprint": "8cd4ff7e",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 143808,
+      "actualMs": 17976
+    },
+    {
+      "id": "A17-12",
+      "url": "audio/listening/A17-12.mp3",
+      "fingerprint": "8883b85e",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 127680,
+      "actualMs": 15960
+    },
+    {
+      "id": "A17-13",
+      "url": "audio/listening/A17-13.mp3",
+      "fingerprint": "7f558fd7",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 138624,
+      "actualMs": 17328
+    },
+    {
+      "id": "A17-14",
+      "url": "audio/listening/A17-14.mp3",
+      "fingerprint": "95b432d2",
+      "estimatedMs": 13846,
+      "estimatedBytes": 110768,
+      "bytes": 133632,
+      "actualMs": 16704
+    },
+    {
+      "id": "A17-15",
+      "url": "audio/listening/A17-15.mp3",
+      "fingerprint": "0efbd60d",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 138624,
+      "actualMs": 17328
+    },
+    {
+      "id": "A18-01",
+      "url": "audio/listening/A18-01.mp3",
+      "fingerprint": "63b633e0",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 124224,
+      "actualMs": 15528
+    },
+    {
+      "id": "A18-02",
+      "url": "audio/listening/A18-02.mp3",
+      "fingerprint": "dc0be9c1",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 137280,
+      "actualMs": 17160
+    },
+    {
+      "id": "A18-03",
+      "url": "audio/listening/A18-03.mp3",
+      "fingerprint": "338e92c7",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 144192,
+      "actualMs": 18024
+    },
+    {
+      "id": "A18-04",
+      "url": "audio/listening/A18-04.mp3",
+      "fingerprint": "1d559941",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 128640,
+      "actualMs": 16080
+    },
+    {
+      "id": "A18-05",
+      "url": "audio/listening/A18-05.mp3",
+      "fingerprint": "c4925ab1",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 130944,
+      "actualMs": 16368
+    },
+    {
+      "id": "A18-06",
+      "url": "audio/listening/A18-06.mp3",
+      "fingerprint": "7ef5956b",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A18-07",
+      "url": "audio/listening/A18-07.mp3",
+      "fingerprint": "8587c544",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 127872,
+      "actualMs": 15984
+    },
+    {
+      "id": "A18-08",
+      "url": "audio/listening/A18-08.mp3",
+      "fingerprint": "53696d07",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 108480,
+      "actualMs": 13560
+    },
+    {
+      "id": "A18-09",
+      "url": "audio/listening/A18-09.mp3",
+      "fingerprint": "14a4be3d",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 113472,
+      "actualMs": 14184
+    },
+    {
+      "id": "A18-10",
+      "url": "audio/listening/A18-10.mp3",
+      "fingerprint": "80ac19d0",
+      "estimatedMs": 15519,
+      "estimatedBytes": 124152,
+      "bytes": 129984,
+      "actualMs": 16248
+    },
+    {
+      "id": "A18-11",
+      "url": "audio/listening/A18-11.mp3",
+      "fingerprint": "b43e4002",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 104832,
+      "actualMs": 13104
+    },
+    {
+      "id": "A18-12",
+      "url": "audio/listening/A18-12.mp3",
+      "fingerprint": "a26f21b8",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 123264,
+      "actualMs": 15408
+    },
+    {
+      "id": "A18-13",
+      "url": "audio/listening/A18-13.mp3",
+      "fingerprint": "8d7eb7e6",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 125952,
+      "actualMs": 15744
+    },
+    {
+      "id": "A18-14",
+      "url": "audio/listening/A18-14.mp3",
+      "fingerprint": "52fe8351",
+      "estimatedMs": 10904,
+      "estimatedBytes": 87232,
+      "bytes": 109632,
+      "actualMs": 13704
+    },
+    {
+      "id": "A18-15",
+      "url": "audio/listening/A18-15.mp3",
+      "fingerprint": "1f4beb63",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 124800,
+      "actualMs": 15600
+    },
+    {
+      "id": "A19-01",
+      "url": "audio/listening/A19-01.mp3",
+      "fingerprint": "0042cc26",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 139392,
+      "actualMs": 17424
+    },
+    {
+      "id": "A19-02",
+      "url": "audio/listening/A19-02.mp3",
+      "fingerprint": "cda004a1",
+      "estimatedMs": 16135,
+      "estimatedBytes": 129080,
+      "bytes": 153792,
+      "actualMs": 19224
+    },
+    {
+      "id": "A19-03",
+      "url": "audio/listening/A19-03.mp3",
+      "fingerprint": "3583247f",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 134592,
+      "actualMs": 16824
+    },
+    {
+      "id": "A19-04",
+      "url": "audio/listening/A19-04.mp3",
+      "fingerprint": "2a067a7b",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 114624,
+      "actualMs": 14328
+    },
+    {
+      "id": "A19-05",
+      "url": "audio/listening/A19-05.mp3",
+      "fingerprint": "d9d9fc93",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 117696,
+      "actualMs": 14712
+    },
+    {
+      "id": "A19-06",
+      "url": "audio/listening/A19-06.mp3",
+      "fingerprint": "b8836aa9",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 148224,
+      "actualMs": 18528
+    },
+    {
+      "id": "A19-07",
+      "url": "audio/listening/A19-07.mp3",
+      "fingerprint": "28220773",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 112704,
+      "actualMs": 14088
+    },
+    {
+      "id": "A19-08",
+      "url": "audio/listening/A19-08.mp3",
+      "fingerprint": "24f53b11",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 123072,
+      "actualMs": 15384
+    },
+    {
+      "id": "A19-09",
+      "url": "audio/listening/A19-09.mp3",
+      "fingerprint": "a9046550",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 119424,
+      "actualMs": 14928
+    },
+    {
+      "id": "A19-10",
+      "url": "audio/listening/A19-10.mp3",
+      "fingerprint": "1f340b1b",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 124416,
+      "actualMs": 15552
+    },
+    {
+      "id": "A19-11",
+      "url": "audio/listening/A19-11.mp3",
+      "fingerprint": "7506fc16",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 119424,
+      "actualMs": 14928
+    },
+    {
+      "id": "A19-12",
+      "url": "audio/listening/A19-12.mp3",
+      "fingerprint": "6d3f1b98",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 111552,
+      "actualMs": 13944
+    },
+    {
+      "id": "A19-13",
+      "url": "audio/listening/A19-13.mp3",
+      "fingerprint": "a38d7098",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 126528,
+      "actualMs": 15816
+    },
+    {
+      "id": "A19-14",
+      "url": "audio/listening/A19-14.mp3",
+      "fingerprint": "b249f95f",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 137856,
+      "actualMs": 17232
+    },
+    {
+      "id": "A19-15",
+      "url": "audio/listening/A19-15.mp3",
+      "fingerprint": "41ef1dac",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 128832,
+      "actualMs": 16104
+    },
+    {
+      "id": "A20-01",
+      "url": "audio/listening/A20-01.mp3",
+      "fingerprint": "6c43d960",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 121728,
+      "actualMs": 15216
+    },
+    {
+      "id": "A20-02",
+      "url": "audio/listening/A20-02.mp3",
+      "fingerprint": "11db37b0",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 138048,
+      "actualMs": 17256
+    },
+    {
+      "id": "A20-03",
+      "url": "audio/listening/A20-03.mp3",
+      "fingerprint": "ad0a73db",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 118464,
+      "actualMs": 14808
+    },
+    {
+      "id": "A20-04",
+      "url": "audio/listening/A20-04.mp3",
+      "fingerprint": "f20b655f",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 119616,
+      "actualMs": 14952
+    },
+    {
+      "id": "A20-05",
+      "url": "audio/listening/A20-05.mp3",
+      "fingerprint": "85fa54cf",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 111552,
+      "actualMs": 13944
+    },
+    {
+      "id": "A20-06",
+      "url": "audio/listening/A20-06.mp3",
+      "fingerprint": "5d623b33",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 124608,
+      "actualMs": 15576
+    },
+    {
+      "id": "A20-07",
+      "url": "audio/listening/A20-07.mp3",
+      "fingerprint": "e9a34bb0",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 123648,
+      "actualMs": 15456
+    },
+    {
+      "id": "A20-08",
+      "url": "audio/listening/A20-08.mp3",
+      "fingerprint": "42ff4223",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 161472,
+      "actualMs": 20184
+    },
+    {
+      "id": "A20-09",
+      "url": "audio/listening/A20-09.mp3",
+      "fingerprint": "e5d1f699",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 112704,
+      "actualMs": 14088
+    },
+    {
+      "id": "A20-10",
+      "url": "audio/listening/A20-10.mp3",
+      "fingerprint": "2f63f27c",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 121920,
+      "actualMs": 15240
+    },
+    {
+      "id": "A20-11",
+      "url": "audio/listening/A20-11.mp3",
+      "fingerprint": "6bce2951",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 134016,
+      "actualMs": 16752
+    },
+    {
+      "id": "A20-12",
+      "url": "audio/listening/A20-12.mp3",
+      "fingerprint": "01c03fff",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 129216,
+      "actualMs": 16152
+    },
+    {
+      "id": "A20-13",
+      "url": "audio/listening/A20-13.mp3",
+      "fingerprint": "923f88e3",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 123648,
+      "actualMs": 15456
+    },
+    {
+      "id": "A20-14",
+      "url": "audio/listening/A20-14.mp3",
+      "fingerprint": "7a779a31",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 117696,
+      "actualMs": 14712
+    },
+    {
+      "id": "A20-15",
+      "url": "audio/listening/A20-15.mp3",
+      "fingerprint": "c1a28051",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 129792,
+      "actualMs": 16224
+    },
+    {
+      "id": "A21-01",
+      "url": "audio/listening/A21-01.mp3",
+      "fingerprint": "43e91e56",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 118080,
+      "actualMs": 14760
+    },
+    {
+      "id": "A21-02",
+      "url": "audio/listening/A21-02.mp3",
+      "fingerprint": "b52bef8c",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 119808,
+      "actualMs": 14976
+    },
+    {
+      "id": "A21-03",
+      "url": "audio/listening/A21-03.mp3",
+      "fingerprint": "5438558f",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 131904,
+      "actualMs": 16488
+    },
+    {
+      "id": "A21-04",
+      "url": "audio/listening/A21-04.mp3",
+      "fingerprint": "75797a22",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 111360,
+      "actualMs": 13920
+    },
+    {
+      "id": "A21-05",
+      "url": "audio/listening/A21-05.mp3",
+      "fingerprint": "c060657c",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 128064,
+      "actualMs": 16008
+    },
+    {
+      "id": "A21-06",
+      "url": "audio/listening/A21-06.mp3",
+      "fingerprint": "a862eb52",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 110592,
+      "actualMs": 13824
+    },
+    {
+      "id": "A21-07",
+      "url": "audio/listening/A21-07.mp3",
+      "fingerprint": "fc5e5945",
+      "estimatedMs": 10904,
+      "estimatedBytes": 87232,
+      "bytes": 108288,
+      "actualMs": 13536
+    },
+    {
+      "id": "A21-08",
+      "url": "audio/listening/A21-08.mp3",
+      "fingerprint": "e1e31199",
+      "estimatedMs": 10904,
+      "estimatedBytes": 87232,
+      "bytes": 115392,
+      "actualMs": 14424
+    },
+    {
+      "id": "A21-09",
+      "url": "audio/listening/A21-09.mp3",
+      "fingerprint": "93ae2c10",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 112320,
+      "actualMs": 14040
+    },
+    {
+      "id": "A21-10",
+      "url": "audio/listening/A21-10.mp3",
+      "fingerprint": "59a2ae43",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 122112,
+      "actualMs": 15264
+    },
+    {
+      "id": "A21-11",
+      "url": "audio/listening/A21-11.mp3",
+      "fingerprint": "7deb4aa4",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A21-12",
+      "url": "audio/listening/A21-12.mp3",
+      "fingerprint": "11bafc71",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 107328,
+      "actualMs": 13416
+    },
+    {
+      "id": "A21-13",
+      "url": "audio/listening/A21-13.mp3",
+      "fingerprint": "40b60c1d",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 124224,
+      "actualMs": 15528
+    },
+    {
+      "id": "A21-14",
+      "url": "audio/listening/A21-14.mp3",
+      "fingerprint": "6879fb40",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 124224,
+      "actualMs": 15528
+    },
+    {
+      "id": "A21-15",
+      "url": "audio/listening/A21-15.mp3",
+      "fingerprint": "26fbf4d9",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 126528,
+      "actualMs": 15816
+    },
+    {
+      "id": "A22-01",
+      "url": "audio/listening/A22-01.mp3",
+      "fingerprint": "82047566",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 126528,
+      "actualMs": 15816
+    },
+    {
+      "id": "A22-02",
+      "url": "audio/listening/A22-02.mp3",
+      "fingerprint": "23ca231f",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 122112,
+      "actualMs": 15264
+    },
+    {
+      "id": "A22-03",
+      "url": "audio/listening/A22-03.mp3",
+      "fingerprint": "97c96d57",
+      "estimatedMs": 9058,
+      "estimatedBytes": 72464,
+      "bytes": 102144,
+      "actualMs": 12768
+    },
+    {
+      "id": "A22-04",
+      "url": "audio/listening/A22-04.mp3",
+      "fingerprint": "be6c6edd",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 121920,
+      "actualMs": 15240
+    },
+    {
+      "id": "A22-05",
+      "url": "audio/listening/A22-05.mp3",
+      "fingerprint": "421f08e4",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A22-06",
+      "url": "audio/listening/A22-06.mp3",
+      "fingerprint": "d7f55dd8",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 134784,
+      "actualMs": 16848
+    },
+    {
+      "id": "A22-07",
+      "url": "audio/listening/A22-07.mp3",
+      "fingerprint": "be760cfe",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 111360,
+      "actualMs": 13920
+    },
+    {
+      "id": "A22-08",
+      "url": "audio/listening/A22-08.mp3",
+      "fingerprint": "43e52456",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 117504,
+      "actualMs": 14688
+    },
+    {
+      "id": "A22-09",
+      "url": "audio/listening/A22-09.mp3",
+      "fingerprint": "6eedfaea",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 110016,
+      "actualMs": 13752
+    },
+    {
+      "id": "A22-10",
+      "url": "audio/listening/A22-10.mp3",
+      "fingerprint": "f0495cde",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 113664,
+      "actualMs": 14208
+    },
+    {
+      "id": "A22-11",
+      "url": "audio/listening/A22-11.mp3",
+      "fingerprint": "cf6da94a",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 114816,
+      "actualMs": 14352
+    },
+    {
+      "id": "A22-12",
+      "url": "audio/listening/A22-12.mp3",
+      "fingerprint": "75280633",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 135936,
+      "actualMs": 16992
+    },
+    {
+      "id": "A22-13",
+      "url": "audio/listening/A22-13.mp3",
+      "fingerprint": "01345643",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 120384,
+      "actualMs": 15048
+    },
+    {
+      "id": "A22-14",
+      "url": "audio/listening/A22-14.mp3",
+      "fingerprint": "ee53ac2a",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 113664,
+      "actualMs": 14208
+    },
+    {
+      "id": "A22-15",
+      "url": "audio/listening/A22-15.mp3",
+      "fingerprint": "337756af",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 105024,
+      "actualMs": 13128
+    },
+    {
+      "id": "A23-01",
+      "url": "audio/listening/A23-01.mp3",
+      "fingerprint": "370f74fe",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 131136,
+      "actualMs": 16392
+    },
+    {
+      "id": "A23-02",
+      "url": "audio/listening/A23-02.mp3",
+      "fingerprint": "8f50688e",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 133824,
+      "actualMs": 16728
+    },
+    {
+      "id": "A23-03",
+      "url": "audio/listening/A23-03.mp3",
+      "fingerprint": "5a40b6d9",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 110400,
+      "actualMs": 13800
+    },
+    {
+      "id": "A23-04",
+      "url": "audio/listening/A23-04.mp3",
+      "fingerprint": "7f149896",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 109824,
+      "actualMs": 13728
+    },
+    {
+      "id": "A23-05",
+      "url": "audio/listening/A23-05.mp3",
+      "fingerprint": "0939291d",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 116544,
+      "actualMs": 14568
+    },
+    {
+      "id": "A23-06",
+      "url": "audio/listening/A23-06.mp3",
+      "fingerprint": "3461f068",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 116352,
+      "actualMs": 14544
+    },
+    {
+      "id": "A23-07",
+      "url": "audio/listening/A23-07.mp3",
+      "fingerprint": "a9716a07",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 126144,
+      "actualMs": 15768
+    },
+    {
+      "id": "A23-08",
+      "url": "audio/listening/A23-08.mp3",
+      "fingerprint": "e2e49839",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 118656,
+      "actualMs": 14832
+    },
+    {
+      "id": "A23-09",
+      "url": "audio/listening/A23-09.mp3",
+      "fingerprint": "f2a106c4",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 120192,
+      "actualMs": 15024
+    },
+    {
+      "id": "A23-10",
+      "url": "audio/listening/A23-10.mp3",
+      "fingerprint": "bdf1ca73",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 109440,
+      "actualMs": 13680
+    },
+    {
+      "id": "A23-11",
+      "url": "audio/listening/A23-11.mp3",
+      "fingerprint": "aea40167",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 119808,
+      "actualMs": 14976
+    },
+    {
+      "id": "A23-12",
+      "url": "audio/listening/A23-12.mp3",
+      "fingerprint": "60de84e5",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 114432,
+      "actualMs": 14304
+    },
+    {
+      "id": "A23-13",
+      "url": "audio/listening/A23-13.mp3",
+      "fingerprint": "52ce57e9",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 111168,
+      "actualMs": 13896
+    },
+    {
+      "id": "A23-14",
+      "url": "audio/listening/A23-14.mp3",
+      "fingerprint": "e2023f52",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 109632,
+      "actualMs": 13704
+    },
+    {
+      "id": "A23-15",
+      "url": "audio/listening/A23-15.mp3",
+      "fingerprint": "45e4a04a",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 131136,
+      "actualMs": 16392
+    },
+    {
+      "id": "A24-01",
+      "url": "audio/listening/A24-01.mp3",
+      "fingerprint": "1bf50a86",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 130752,
+      "actualMs": 16344
+    },
+    {
+      "id": "A24-02",
+      "url": "audio/listening/A24-02.mp3",
+      "fingerprint": "60a4551a",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 116928,
+      "actualMs": 14616
+    },
+    {
+      "id": "A24-03",
+      "url": "audio/listening/A24-03.mp3",
+      "fingerprint": "afd39f3d",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 130560,
+      "actualMs": 16320
+    },
+    {
+      "id": "A24-04",
+      "url": "audio/listening/A24-04.mp3",
+      "fingerprint": "7fe4f184",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 112128,
+      "actualMs": 14016
+    },
+    {
+      "id": "A24-05",
+      "url": "audio/listening/A24-05.mp3",
+      "fingerprint": "0446ed17",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 126720,
+      "actualMs": 15840
+    },
+    {
+      "id": "A24-06",
+      "url": "audio/listening/A24-06.mp3",
+      "fingerprint": "75f53f38",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 132480,
+      "actualMs": 16560
+    },
+    {
+      "id": "A24-07",
+      "url": "audio/listening/A24-07.mp3",
+      "fingerprint": "8bda5cad",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 137472,
+      "actualMs": 17184
+    },
+    {
+      "id": "A24-08",
+      "url": "audio/listening/A24-08.mp3",
+      "fingerprint": "4af4a06b",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 135360,
+      "actualMs": 16920
+    },
+    {
+      "id": "A24-09",
+      "url": "audio/listening/A24-09.mp3",
+      "fingerprint": "7a712ba5",
+      "estimatedMs": 14904,
+      "estimatedBytes": 119232,
+      "bytes": 131520,
+      "actualMs": 16440
+    },
+    {
+      "id": "A24-10",
+      "url": "audio/listening/A24-10.mp3",
+      "fingerprint": "f3952fd9",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 118080,
+      "actualMs": 14760
+    },
+    {
+      "id": "A24-11",
+      "url": "audio/listening/A24-11.mp3",
+      "fingerprint": "ac0ada82",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 113664,
+      "actualMs": 14208
+    },
+    {
+      "id": "A24-12",
+      "url": "audio/listening/A24-12.mp3",
+      "fingerprint": "9e92a9f7",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 123072,
+      "actualMs": 15384
+    },
+    {
+      "id": "A24-13",
+      "url": "audio/listening/A24-13.mp3",
+      "fingerprint": "e10ee7cc",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 109248,
+      "actualMs": 13656
+    },
+    {
+      "id": "A24-14",
+      "url": "audio/listening/A24-14.mp3",
+      "fingerprint": "b3bf4202",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 127296,
+      "actualMs": 15912
+    },
+    {
+      "id": "A24-15",
+      "url": "audio/listening/A24-15.mp3",
+      "fingerprint": "cd37a09d",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 118272,
+      "actualMs": 14784
+    },
+    {
+      "id": "A25-01",
+      "url": "audio/listening/A25-01.mp3",
+      "fingerprint": "1a87c98d",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 136512,
+      "actualMs": 17064
+    },
+    {
+      "id": "A25-02",
+      "url": "audio/listening/A25-02.mp3",
+      "fingerprint": "b358e9d9",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 132480,
+      "actualMs": 16560
+    },
+    {
+      "id": "A25-03",
+      "url": "audio/listening/A25-03.mp3",
+      "fingerprint": "87c15f76",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 121728,
+      "actualMs": 15216
+    },
+    {
+      "id": "A25-04",
+      "url": "audio/listening/A25-04.mp3",
+      "fingerprint": "d169e472",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 124608,
+      "actualMs": 15576
+    },
+    {
+      "id": "A25-05",
+      "url": "audio/listening/A25-05.mp3",
+      "fingerprint": "124fe45b",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 128448,
+      "actualMs": 16056
+    },
+    {
+      "id": "A25-06",
+      "url": "audio/listening/A25-06.mp3",
+      "fingerprint": "b4078a89",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 114624,
+      "actualMs": 14328
+    },
+    {
+      "id": "A25-07",
+      "url": "audio/listening/A25-07.mp3",
+      "fingerprint": "cb71ada1",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 127872,
+      "actualMs": 15984
+    },
+    {
+      "id": "A25-08",
+      "url": "audio/listening/A25-08.mp3",
+      "fingerprint": "b0d68960",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 119040,
+      "actualMs": 14880
+    },
+    {
+      "id": "A25-09",
+      "url": "audio/listening/A25-09.mp3",
+      "fingerprint": "882ae86b",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 123840,
+      "actualMs": 15480
+    },
+    {
+      "id": "A25-10",
+      "url": "audio/listening/A25-10.mp3",
+      "fingerprint": "22e8ad6f",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 114432,
+      "actualMs": 14304
+    },
+    {
+      "id": "A25-11",
+      "url": "audio/listening/A25-11.mp3",
+      "fingerprint": "c113a9e9",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 124992,
+      "actualMs": 15624
+    },
+    {
+      "id": "A25-12",
+      "url": "audio/listening/A25-12.mp3",
+      "fingerprint": "9c9bcacc",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 131712,
+      "actualMs": 16464
+    },
+    {
+      "id": "A25-13",
+      "url": "audio/listening/A25-13.mp3",
+      "fingerprint": "854eeb5e",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 118656,
+      "actualMs": 14832
+    },
+    {
+      "id": "A25-14",
+      "url": "audio/listening/A25-14.mp3",
+      "fingerprint": "ef1c6aa5",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 129984,
+      "actualMs": 16248
+    },
+    {
+      "id": "A25-15",
+      "url": "audio/listening/A25-15.mp3",
+      "fingerprint": "7a86cdd1",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 137088,
+      "actualMs": 17136
+    },
+    {
+      "id": "A26-01",
+      "url": "audio/listening/A26-01.mp3",
+      "fingerprint": "19437460",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 117696,
+      "actualMs": 14712
+    },
+    {
+      "id": "A26-02",
+      "url": "audio/listening/A26-02.mp3",
+      "fingerprint": "566ddf31",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 120000,
+      "actualMs": 15000
+    },
+    {
+      "id": "A26-03",
+      "url": "audio/listening/A26-03.mp3",
+      "fingerprint": "3d23370c",
+      "estimatedMs": 11212,
+      "estimatedBytes": 89696,
+      "bytes": 113280,
+      "actualMs": 14160
+    },
+    {
+      "id": "A26-04",
+      "url": "audio/listening/A26-04.mp3",
+      "fingerprint": "b7068b45",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 123456,
+      "actualMs": 15432
+    },
+    {
+      "id": "A26-05",
+      "url": "audio/listening/A26-05.mp3",
+      "fingerprint": "ff3b1b4c",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 114048,
+      "actualMs": 14256
+    },
+    {
+      "id": "A26-06",
+      "url": "audio/listening/A26-06.mp3",
+      "fingerprint": "c98fa084",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 115968,
+      "actualMs": 14496
+    },
+    {
+      "id": "A26-07",
+      "url": "audio/listening/A26-07.mp3",
+      "fingerprint": "8e0fc914",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 129024,
+      "actualMs": 16128
+    },
+    {
+      "id": "A26-08",
+      "url": "audio/listening/A26-08.mp3",
+      "fingerprint": "b12844c3",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 120384,
+      "actualMs": 15048
+    },
+    {
+      "id": "A26-09",
+      "url": "audio/listening/A26-09.mp3",
+      "fingerprint": "7d7c3ef5",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 125952,
+      "actualMs": 15744
+    },
+    {
+      "id": "A26-10",
+      "url": "audio/listening/A26-10.mp3",
+      "fingerprint": "ee3be1b5",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 122496,
+      "actualMs": 15312
+    },
+    {
+      "id": "A26-11",
+      "url": "audio/listening/A26-11.mp3",
+      "fingerprint": "9c156ede",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 130560,
+      "actualMs": 16320
+    },
+    {
+      "id": "A26-12",
+      "url": "audio/listening/A26-12.mp3",
+      "fingerprint": "2ec6fbeb",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 119424,
+      "actualMs": 14928
+    },
+    {
+      "id": "A26-13",
+      "url": "audio/listening/A26-13.mp3",
+      "fingerprint": "ad457e61",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 131520,
+      "actualMs": 16440
+    },
+    {
+      "id": "A26-14",
+      "url": "audio/listening/A26-14.mp3",
+      "fingerprint": "e8f9bc27",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 119424,
+      "actualMs": 14928
+    },
+    {
+      "id": "A26-15",
+      "url": "audio/listening/A26-15.mp3",
+      "fingerprint": "2927ecbf",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 118848,
+      "actualMs": 14856
+    },
+    {
+      "id": "A27-01",
+      "url": "audio/listening/A27-01.mp3",
+      "fingerprint": "4c93d020",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 124800,
+      "actualMs": 15600
+    },
+    {
+      "id": "A27-02",
+      "url": "audio/listening/A27-02.mp3",
+      "fingerprint": "947845d1",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 117504,
+      "actualMs": 14688
+    },
+    {
+      "id": "A27-03",
+      "url": "audio/listening/A27-03.mp3",
+      "fingerprint": "dab33d65",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 112512,
+      "actualMs": 14064
+    },
+    {
+      "id": "A27-04",
+      "url": "audio/listening/A27-04.mp3",
+      "fingerprint": "1fbd991b",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A27-05",
+      "url": "audio/listening/A27-05.mp3",
+      "fingerprint": "b99c8641",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 120192,
+      "actualMs": 15024
+    },
+    {
+      "id": "A27-06",
+      "url": "audio/listening/A27-06.mp3",
+      "fingerprint": "2e214b98",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 130560,
+      "actualMs": 16320
+    },
+    {
+      "id": "A27-07",
+      "url": "audio/listening/A27-07.mp3",
+      "fingerprint": "aaacdc90",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 104448,
+      "actualMs": 13056
+    },
+    {
+      "id": "A27-08",
+      "url": "audio/listening/A27-08.mp3",
+      "fingerprint": "1def6376",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 122496,
+      "actualMs": 15312
+    },
+    {
+      "id": "A27-09",
+      "url": "audio/listening/A27-09.mp3",
+      "fingerprint": "8d79e778",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 122880,
+      "actualMs": 15360
+    },
+    {
+      "id": "A27-10",
+      "url": "audio/listening/A27-10.mp3",
+      "fingerprint": "756e95fb",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 121728,
+      "actualMs": 15216
+    },
+    {
+      "id": "A27-11",
+      "url": "audio/listening/A27-11.mp3",
+      "fingerprint": "ea0c728b",
+      "estimatedMs": 13058,
+      "estimatedBytes": 104464,
+      "bytes": 122496,
+      "actualMs": 15312
+    },
+    {
+      "id": "A27-12",
+      "url": "audio/listening/A27-12.mp3",
+      "fingerprint": "c714e2d2",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 123456,
+      "actualMs": 15432
+    },
+    {
+      "id": "A27-13",
+      "url": "audio/listening/A27-13.mp3",
+      "fingerprint": "6cf6864f",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 126912,
+      "actualMs": 15864
+    },
+    {
+      "id": "A27-14",
+      "url": "audio/listening/A27-14.mp3",
+      "fingerprint": "1c73ec3c",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 130560,
+      "actualMs": 16320
+    },
+    {
+      "id": "A27-15",
+      "url": "audio/listening/A27-15.mp3",
+      "fingerprint": "02971314",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 134400,
+      "actualMs": 16800
+    },
+    {
+      "id": "A28-01",
+      "url": "audio/listening/A28-01.mp3",
+      "fingerprint": "eccf4400",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 134208,
+      "actualMs": 16776
+    },
+    {
+      "id": "A28-02",
+      "url": "audio/listening/A28-02.mp3",
+      "fingerprint": "cc834f62",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 132288,
+      "actualMs": 16536
+    },
+    {
+      "id": "A28-03",
+      "url": "audio/listening/A28-03.mp3",
+      "fingerprint": "bbf7d47a",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 121536,
+      "actualMs": 15192
+    },
+    {
+      "id": "A28-04",
+      "url": "audio/listening/A28-04.mp3",
+      "fingerprint": "40f7b92b",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 112704,
+      "actualMs": 14088
+    },
+    {
+      "id": "A28-05",
+      "url": "audio/listening/A28-05.mp3",
+      "fingerprint": "7d04f7f3",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 132672,
+      "actualMs": 16584
+    },
+    {
+      "id": "A28-06",
+      "url": "audio/listening/A28-06.mp3",
+      "fingerprint": "ffd39cdf",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 108096,
+      "actualMs": 13512
+    },
+    {
+      "id": "A28-07",
+      "url": "audio/listening/A28-07.mp3",
+      "fingerprint": "1e96d4eb",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 114624,
+      "actualMs": 14328
+    },
+    {
+      "id": "A28-08",
+      "url": "audio/listening/A28-08.mp3",
+      "fingerprint": "583c5c6d",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 119040,
+      "actualMs": 14880
+    },
+    {
+      "id": "A28-09",
+      "url": "audio/listening/A28-09.mp3",
+      "fingerprint": "44bbba6c",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 130560,
+      "actualMs": 16320
+    },
+    {
+      "id": "A28-10",
+      "url": "audio/listening/A28-10.mp3",
+      "fingerprint": "27d10c13",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 139584,
+      "actualMs": 17448
+    },
+    {
+      "id": "A28-11",
+      "url": "audio/listening/A28-11.mp3",
+      "fingerprint": "22d2bd95",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 118656,
+      "actualMs": 14832
+    },
+    {
+      "id": "A28-12",
+      "url": "audio/listening/A28-12.mp3",
+      "fingerprint": "ee5d72bc",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 114624,
+      "actualMs": 14328
+    },
+    {
+      "id": "A28-13",
+      "url": "audio/listening/A28-13.mp3",
+      "fingerprint": "3bbd09c1",
+      "estimatedMs": 12135,
+      "estimatedBytes": 97080,
+      "bytes": 118848,
+      "actualMs": 14856
+    },
+    {
+      "id": "A28-14",
+      "url": "audio/listening/A28-14.mp3",
+      "fingerprint": "a07c3937",
+      "estimatedMs": 11519,
+      "estimatedBytes": 92152,
+      "bytes": 108864,
+      "actualMs": 13608
+    },
+    {
+      "id": "A28-15",
+      "url": "audio/listening/A28-15.mp3",
+      "fingerprint": "fce20be5",
+      "estimatedMs": 12442,
+      "estimatedBytes": 99536,
+      "bytes": 124800,
+      "actualMs": 15600
+    },
+    {
+      "id": "A29-01",
+      "url": "audio/listening/A29-01.mp3",
+      "fingerprint": "8c8969b3",
+      "estimatedMs": 12385,
+      "estimatedBytes": 99080,
+      "bytes": 122112,
+      "actualMs": 15264
+    },
+    {
+      "id": "A29-02",
+      "url": "audio/listening/A29-02.mp3",
+      "fingerprint": "b1f8b1c1",
+      "estimatedMs": 13365,
+      "estimatedBytes": 106920,
+      "bytes": 132864,
+      "actualMs": 16608
+    },
+    {
+      "id": "A29-03",
+      "url": "audio/listening/A29-03.mp3",
+      "fingerprint": "fcc8deb8",
+      "estimatedMs": 15096,
+      "estimatedBytes": 120768,
+      "bytes": 158784,
+      "actualMs": 19848
+    },
+    {
+      "id": "A29-04",
+      "url": "audio/listening/A29-04.mp3",
+      "fingerprint": "90d63482",
+      "estimatedMs": 15404,
+      "estimatedBytes": 123232,
+      "bytes": 160896,
+      "actualMs": 20112
+    },
+    {
+      "id": "A29-05",
+      "url": "audio/listening/A29-05.mp3",
+      "fingerprint": "0323ae2c",
+      "estimatedMs": 15712,
+      "estimatedBytes": 125696,
+      "bytes": 155712,
+      "actualMs": 19464
+    },
+    {
+      "id": "A29-06",
+      "url": "audio/listening/A29-06.mp3",
+      "fingerprint": "1bed998e",
+      "estimatedMs": 16635,
+      "estimatedBytes": 133080,
+      "bytes": 169152,
+      "actualMs": 21144
+    },
+    {
+      "id": "A29-07",
+      "url": "audio/listening/A29-07.mp3",
+      "fingerprint": "17ece150",
+      "estimatedMs": 17000,
+      "estimatedBytes": 136000,
+      "bytes": 172224,
+      "actualMs": 21528
+    },
+    {
+      "id": "A29-08",
+      "url": "audio/listening/A29-08.mp3",
+      "fingerprint": "6299a898",
+      "estimatedMs": 16019,
+      "estimatedBytes": 128152,
+      "bytes": 158784,
+      "actualMs": 19848
+    },
+    {
+      "id": "A29-09",
+      "url": "audio/listening/A29-09.mp3",
+      "fingerprint": "be137dd3",
+      "estimatedMs": 14788,
+      "estimatedBytes": 118304,
+      "bytes": 153600,
+      "actualMs": 19200
+    },
+    {
+      "id": "A29-10",
+      "url": "audio/listening/A29-10.mp3",
+      "fingerprint": "6efa4552",
+      "estimatedMs": 16635,
+      "estimatedBytes": 133080,
+      "bytes": 164160,
+      "actualMs": 20520
+    },
+    {
+      "id": "A29-11",
+      "url": "audio/listening/A29-11.mp3",
+      "fingerprint": "d7633cba",
+      "estimatedMs": 16019,
+      "estimatedBytes": 128152,
+      "bytes": 163008,
+      "actualMs": 20376
+    },
+    {
+      "id": "A29-12",
+      "url": "audio/listening/A29-12.mp3",
+      "fingerprint": "dbb8afb9",
+      "estimatedMs": 16635,
+      "estimatedBytes": 133080,
+      "bytes": 169536,
+      "actualMs": 21192
+    },
+    {
+      "id": "A29-13",
+      "url": "audio/listening/A29-13.mp3",
+      "fingerprint": "ab58b01c",
+      "estimatedMs": 16635,
+      "estimatedBytes": 133080,
+      "bytes": 149184,
+      "actualMs": 18648
+    },
+    {
+      "id": "A29-14",
+      "url": "audio/listening/A29-14.mp3",
+      "fingerprint": "16a0616d",
+      "estimatedMs": 15096,
+      "estimatedBytes": 120768,
+      "bytes": 147840,
+      "actualMs": 18480
+    },
+    {
+      "id": "A29-15",
+      "url": "audio/listening/A29-15.mp3",
+      "fingerprint": "6960125b",
+      "estimatedMs": 16327,
+      "estimatedBytes": 130616,
+      "bytes": 153216,
+      "actualMs": 19152
+    },
+    {
+      "id": "A30-01",
+      "url": "audio/listening/A30-01.mp3",
+      "fingerprint": "f5a7b8db",
+      "estimatedMs": 16019,
+      "estimatedBytes": 128152,
+      "bytes": 169728,
+      "actualMs": 21216
+    },
+    {
+      "id": "A30-02",
+      "url": "audio/listening/A30-02.mp3",
+      "fingerprint": "f91c0e93",
+      "estimatedMs": 15712,
+      "estimatedBytes": 125696,
+      "bytes": 153600,
+      "actualMs": 19200
+    },
+    {
+      "id": "A30-03",
+      "url": "audio/listening/A30-03.mp3",
+      "fingerprint": "3b2c1a70",
+      "estimatedMs": 13250,
+      "estimatedBytes": 106000,
+      "bytes": 143616,
+      "actualMs": 17952
+    },
+    {
+      "id": "A30-04",
+      "url": "audio/listening/A30-04.mp3",
+      "fingerprint": "ba98fdeb",
+      "estimatedMs": 16019,
+      "estimatedBytes": 128152,
+      "bytes": 173184,
+      "actualMs": 21648
+    },
+    {
+      "id": "A30-05",
+      "url": "audio/listening/A30-05.mp3",
+      "fingerprint": "633563f4",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 118848,
+      "actualMs": 14856
+    },
+    {
+      "id": "A30-06",
+      "url": "audio/listening/A30-06.mp3",
+      "fingerprint": "f195a813",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 136128,
+      "actualMs": 17016
+    },
+    {
+      "id": "A30-07",
+      "url": "audio/listening/A30-07.mp3",
+      "fingerprint": "645d2d58",
+      "estimatedMs": 16327,
+      "estimatedBytes": 130616,
+      "bytes": 160512,
+      "actualMs": 20064
+    },
+    {
+      "id": "A30-08",
+      "url": "audio/listening/A30-08.mp3",
+      "fingerprint": "ebdb7c95",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 113088,
+      "actualMs": 14136
+    },
+    {
+      "id": "A30-09",
+      "url": "audio/listening/A30-09.mp3",
+      "fingerprint": "3bad2e78",
+      "estimatedMs": 16327,
+      "estimatedBytes": 130616,
+      "bytes": 158208,
+      "actualMs": 19776
+    },
+    {
+      "id": "A30-10",
+      "url": "audio/listening/A30-10.mp3",
+      "fingerprint": "b7625c96",
+      "estimatedMs": 12750,
+      "estimatedBytes": 102000,
+      "bytes": 118656,
+      "actualMs": 14832
+    },
+    {
+      "id": "A30-11",
+      "url": "audio/listening/A30-11.mp3",
+      "fingerprint": "e8cdee28",
+      "estimatedMs": 15712,
+      "estimatedBytes": 125696,
+      "bytes": 167424,
+      "actualMs": 20928
+    },
+    {
+      "id": "A30-12",
+      "url": "audio/listening/A30-12.mp3",
+      "fingerprint": "da12a67f",
+      "estimatedMs": 13981,
+      "estimatedBytes": 111848,
+      "bytes": 114240,
+      "actualMs": 14280
+    },
+    {
+      "id": "A30-13",
+      "url": "audio/listening/A30-13.mp3",
+      "fingerprint": "34a1fa04",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 122112,
+      "actualMs": 15264
+    },
+    {
+      "id": "A30-14",
+      "url": "audio/listening/A30-14.mp3",
+      "fingerprint": "8b31e8c6",
+      "estimatedMs": 13865,
+      "estimatedBytes": 110920,
+      "bytes": 151104,
+      "actualMs": 18888
+    },
+    {
+      "id": "A30-15",
+      "url": "audio/listening/A30-15.mp3",
+      "fingerprint": "796b63ca",
+      "estimatedMs": 16942,
+      "estimatedBytes": 135536,
+      "bytes": 170880,
+      "actualMs": 21360
+    },
+    {
+      "id": "A31-01",
+      "url": "audio/listening/A31-01.mp3",
+      "fingerprint": "e3d98f09",
+      "estimatedMs": 16019,
+      "estimatedBytes": 128152,
+      "bytes": 153984,
+      "actualMs": 19248
+    },
+    {
+      "id": "A31-02",
+      "url": "audio/listening/A31-02.mp3",
+      "fingerprint": "62950d15",
+      "estimatedMs": 15712,
+      "estimatedBytes": 125696,
+      "bytes": 155712,
+      "actualMs": 19464
+    },
+    {
+      "id": "A31-03",
+      "url": "audio/listening/A31-03.mp3",
+      "fingerprint": "08f2bdb9",
+      "estimatedMs": 16019,
+      "estimatedBytes": 128152,
+      "bytes": 169344,
+      "actualMs": 21168
+    },
+    {
+      "id": "A31-04",
+      "url": "audio/listening/A31-04.mp3",
+      "fingerprint": "5522ebf4",
+      "estimatedMs": 16327,
+      "estimatedBytes": 130616,
+      "bytes": 163392,
+      "actualMs": 20424
+    },
+    {
+      "id": "A31-05",
+      "url": "audio/listening/A31-05.mp3",
+      "fingerprint": "64e65ada",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 153600,
+      "actualMs": 19200
+    },
+    {
+      "id": "A31-06",
+      "url": "audio/listening/A31-06.mp3",
+      "fingerprint": "4e5503d4",
+      "estimatedMs": 15712,
+      "estimatedBytes": 125696,
+      "bytes": 161472,
+      "actualMs": 20184
+    },
+    {
+      "id": "A31-07",
+      "url": "audio/listening/A31-07.mp3",
+      "fingerprint": "282d3c10",
+      "estimatedMs": 16442,
+      "estimatedBytes": 131536,
+      "bytes": 158592,
+      "actualMs": 19824
+    },
+    {
+      "id": "A31-08",
+      "url": "audio/listening/A31-08.mp3",
+      "fingerprint": "12530a9a",
+      "estimatedMs": 15404,
+      "estimatedBytes": 123232,
+      "bytes": 155136,
+      "actualMs": 19392
+    },
+    {
+      "id": "A31-09",
+      "url": "audio/listening/A31-09.mp3",
+      "fingerprint": "8a8af8b4",
+      "estimatedMs": 16635,
+      "estimatedBytes": 133080,
+      "bytes": 163584,
+      "actualMs": 20448
+    },
+    {
+      "id": "A31-10",
+      "url": "audio/listening/A31-10.mp3",
+      "fingerprint": "9a18e3f2",
+      "estimatedMs": 15404,
+      "estimatedBytes": 123232,
+      "bytes": 155136,
+      "actualMs": 19392
+    },
+    {
+      "id": "A31-11",
+      "url": "audio/listening/A31-11.mp3",
+      "fingerprint": "a56289ea",
+      "estimatedMs": 15827,
+      "estimatedBytes": 126616,
+      "bytes": 145728,
+      "actualMs": 18216
+    },
+    {
+      "id": "A31-12",
+      "url": "audio/listening/A31-12.mp3",
+      "fingerprint": "248df994",
+      "estimatedMs": 16019,
+      "estimatedBytes": 128152,
+      "bytes": 158784,
+      "actualMs": 19848
+    },
+    {
+      "id": "A31-13",
+      "url": "audio/listening/A31-13.mp3",
+      "fingerprint": "1c01d160",
+      "estimatedMs": 14481,
+      "estimatedBytes": 115848,
+      "bytes": 150336,
+      "actualMs": 18792
+    },
+    {
+      "id": "A31-14",
+      "url": "audio/listening/A31-14.mp3",
+      "fingerprint": "7fe4af07",
+      "estimatedMs": 16942,
+      "estimatedBytes": 135536,
+      "bytes": 161088,
+      "actualMs": 20136
+    },
+    {
+      "id": "A31-15",
+      "url": "audio/listening/A31-15.mp3",
+      "fingerprint": "1bf9c9e5",
+      "estimatedMs": 15712,
+      "estimatedBytes": 125696,
+      "bytes": 155328,
+      "actualMs": 19416
+    },
+    {
+      "id": "A32-01",
+      "url": "audio/listening/A32-01.mp3",
+      "fingerprint": "762573d5",
+      "estimatedMs": 14596,
+      "estimatedBytes": 116768,
+      "bytes": 133440,
+      "actualMs": 16680
+    },
+    {
+      "id": "A32-02",
+      "url": "audio/listening/A32-02.mp3",
+      "fingerprint": "8836731f",
+      "estimatedMs": 15712,
+      "estimatedBytes": 125696,
+      "bytes": 154560,
+      "actualMs": 19320
+    },
+    {
+      "id": "A32-03",
+      "url": "audio/listening/A32-03.mp3",
+      "fingerprint": "49eec22d",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 132288,
+      "actualMs": 16536
+    },
+    {
+      "id": "A32-04",
+      "url": "audio/listening/A32-04.mp3",
+      "fingerprint": "550e32ff",
+      "estimatedMs": 13865,
+      "estimatedBytes": 110920,
+      "bytes": 141312,
+      "actualMs": 17664
+    },
+    {
+      "id": "A32-05",
+      "url": "audio/listening/A32-05.mp3",
+      "fingerprint": "8601fcbe",
+      "estimatedMs": 16942,
+      "estimatedBytes": 135536,
+      "bytes": 163968,
+      "actualMs": 20496
+    },
+    {
+      "id": "A32-06",
+      "url": "audio/listening/A32-06.mp3",
+      "fingerprint": "b0cb8c93",
+      "estimatedMs": 15404,
+      "estimatedBytes": 123232,
+      "bytes": 171072,
+      "actualMs": 21384
+    },
+    {
+      "id": "A32-07",
+      "url": "audio/listening/A32-07.mp3",
+      "fingerprint": "7d22d76d",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 124032,
+      "actualMs": 15504
+    },
+    {
+      "id": "A32-08",
+      "url": "audio/listening/A32-08.mp3",
+      "fingerprint": "e139a742",
+      "estimatedMs": 16327,
+      "estimatedBytes": 130616,
+      "bytes": 162432,
+      "actualMs": 20304
+    },
+    {
+      "id": "A32-09",
+      "url": "audio/listening/A32-09.mp3",
+      "fingerprint": "87643857",
+      "estimatedMs": 14288,
+      "estimatedBytes": 114304,
+      "bytes": 125184,
+      "actualMs": 15648
+    },
+    {
+      "id": "A32-10",
+      "url": "audio/listening/A32-10.mp3",
+      "fingerprint": "c9abe9d7",
+      "estimatedMs": 16327,
+      "estimatedBytes": 130616,
+      "bytes": 166656,
+      "actualMs": 20832
+    },
+    {
+      "id": "A32-11",
+      "url": "audio/listening/A32-11.mp3",
+      "fingerprint": "c01944a1",
+      "estimatedMs": 11827,
+      "estimatedBytes": 94616,
+      "bytes": 117312,
+      "actualMs": 14664
+    },
+    {
+      "id": "A32-12",
+      "url": "audio/listening/A32-12.mp3",
+      "fingerprint": "3d0c96bd",
+      "estimatedMs": 13673,
+      "estimatedBytes": 109384,
+      "bytes": 118272,
+      "actualMs": 14784
+    },
+    {
+      "id": "A32-13",
+      "url": "audio/listening/A32-13.mp3",
+      "fingerprint": "f966da4a",
+      "estimatedMs": 15096,
+      "estimatedBytes": 120768,
+      "bytes": 146112,
+      "actualMs": 18264
+    },
+    {
+      "id": "A32-14",
+      "url": "audio/listening/A32-14.mp3",
+      "fingerprint": "d5245b4a",
+      "estimatedMs": 14481,
+      "estimatedBytes": 115848,
+      "bytes": 157248,
+      "actualMs": 19656
+    },
+    {
+      "id": "A32-15",
+      "url": "audio/listening/A32-15.mp3",
+      "fingerprint": "11600cd0",
+      "estimatedMs": 15212,
+      "estimatedBytes": 121696,
+      "bytes": 142080,
+      "actualMs": 17760
+    },
+    {
+      "id": "B6-01",
+      "url": "audio/listening/B6-01.mp3",
+      "fingerprint": "57b90325",
+      "estimatedMs": 49942,
+      "estimatedBytes": 399536,
+      "bytes": 428928,
+      "actualMs": 53616
+    },
+    {
+      "id": "B6-02",
+      "url": "audio/listening/B6-02.mp3",
+      "fingerprint": "51534042",
+      "estimatedMs": 48462,
+      "estimatedBytes": 387696,
+      "bytes": 494016,
+      "actualMs": 61752
+    },
+    {
+      "id": "B6-03",
+      "url": "audio/listening/B6-03.mp3",
+      "fingerprint": "9efef4b2",
+      "estimatedMs": 53077,
+      "estimatedBytes": 424616,
+      "bytes": 500352,
+      "actualMs": 62544
+    },
+    {
+      "id": "B6-04",
+      "url": "audio/listening/B6-04.mp3",
+      "fingerprint": "8c6e3e6f",
+      "estimatedMs": 49750,
+      "estimatedBytes": 398000,
+      "bytes": 407232,
+      "actualMs": 50904
+    },
+    {
+      "id": "B6-05",
+      "url": "audio/listening/B6-05.mp3",
+      "fingerprint": "d00b7c1d",
+      "estimatedMs": 45135,
+      "estimatedBytes": 361080,
+      "bytes": 417216,
+      "actualMs": 52152
+    },
+    {
+      "id": "B6-06",
+      "url": "audio/listening/B6-06.mp3",
+      "fingerprint": "6b5ddd2a",
+      "estimatedMs": 52096,
+      "estimatedBytes": 416768,
+      "bytes": 482496,
+      "actualMs": 60312
+    },
+    {
+      "id": "B6-07",
+      "url": "audio/listening/B6-07.mp3",
+      "fingerprint": "59a7ec7a",
+      "estimatedMs": 38115,
+      "estimatedBytes": 304920,
+      "bytes": 360384,
+      "actualMs": 45048
+    },
+    {
+      "id": "B6-08",
+      "url": "audio/listening/B6-08.mp3",
+      "fingerprint": "f4917f38",
+      "estimatedMs": 43288,
+      "estimatedBytes": 346304,
+      "bytes": 390912,
+      "actualMs": 48864
+    },
+    {
+      "id": "B7-01",
+      "url": "audio/listening/B7-01.mp3",
+      "fingerprint": "9749fc32",
+      "estimatedMs": 54000,
+      "estimatedBytes": 432000,
+      "bytes": 453504,
+      "actualMs": 56688
+    },
+    {
+      "id": "B7-02",
+      "url": "audio/listening/B7-02.mp3",
+      "fingerprint": "b9ae8812",
+      "estimatedMs": 51231,
+      "estimatedBytes": 409848,
+      "bytes": 446400,
+      "actualMs": 55800
+    },
+    {
+      "id": "B7-03",
+      "url": "audio/listening/B7-03.mp3",
+      "fingerprint": "82e7bedc",
+      "estimatedMs": 42423,
+      "estimatedBytes": 339384,
+      "bytes": 386688,
+      "actualMs": 48336
+    },
+    {
+      "id": "B7-04",
+      "url": "audio/listening/B7-04.mp3",
+      "fingerprint": "8e07361d",
+      "estimatedMs": 42673,
+      "estimatedBytes": 341384,
+      "bytes": 391872,
+      "actualMs": 48984
+    },
+    {
+      "id": "B7-05",
+      "url": "audio/listening/B7-05.mp3",
+      "fingerprint": "4213aaa6",
+      "estimatedMs": 41327,
+      "estimatedBytes": 330616,
+      "bytes": 378432,
+      "actualMs": 47304
+    },
+    {
+      "id": "B7-06",
+      "url": "audio/listening/B7-06.mp3",
+      "fingerprint": "8839595e",
+      "estimatedMs": 41442,
+      "estimatedBytes": 331536,
+      "bytes": 389568,
+      "actualMs": 48696
+    },
+    {
+      "id": "B7-07",
+      "url": "audio/listening/B7-07.mp3",
+      "fingerprint": "501ed348",
+      "estimatedMs": 42673,
+      "estimatedBytes": 341384,
+      "bytes": 388224,
+      "actualMs": 48528
+    },
+    {
+      "id": "B7-08",
+      "url": "audio/listening/B7-08.mp3",
+      "fingerprint": "c7d3165a",
+      "estimatedMs": 43596,
+      "estimatedBytes": 348768,
+      "bytes": 399936,
+      "actualMs": 49992
+    },
+    {
+      "id": "C6-01",
+      "url": "audio/listening/C6-01.mp3",
+      "fingerprint": "9396a839",
+      "estimatedMs": 65846,
+      "estimatedBytes": 526768,
+      "bytes": 196800,
+      "actualMs": 24600
+    },
+    {
+      "id": "C6-02",
+      "url": "audio/listening/C6-02.mp3",
+      "fingerprint": "5539b7e0",
+      "estimatedMs": 65231,
+      "estimatedBytes": 521848,
+      "bytes": 211008,
+      "actualMs": 26376
+    },
+    {
+      "id": "C6-03",
+      "url": "audio/listening/C6-03.mp3",
+      "fingerprint": "b568bf46",
+      "estimatedMs": 66769,
+      "estimatedBytes": 534152,
+      "bytes": 204480,
+      "actualMs": 25560
+    },
+    {
+      "id": "C6-04",
+      "url": "audio/listening/C6-04.mp3",
+      "fingerprint": "ebeb3339",
+      "estimatedMs": 64615,
+      "estimatedBytes": 516920,
+      "bytes": 208128,
+      "actualMs": 26016
+    },
+    {
+      "id": "C6-05",
+      "url": "audio/listening/C6-05.mp3",
+      "fingerprint": "88a3995c",
+      "estimatedMs": 59385,
+      "estimatedBytes": 475080,
+      "bytes": 199104,
+      "actualMs": 24888
+    },
+    {
+      "id": "C6-06",
+      "url": "audio/listening/C6-06.mp3",
+      "fingerprint": "19097443",
+      "estimatedMs": 62154,
+      "estimatedBytes": 497232,
+      "bytes": 209472,
+      "actualMs": 26184
+    },
+    {
+      "id": "C7-01",
+      "url": "audio/listening/C7-01.mp3",
+      "fingerprint": "8e7c2453",
+      "estimatedMs": 62462,
+      "estimatedBytes": 499696,
+      "bytes": 198144,
+      "actualMs": 24768
+    },
+    {
+      "id": "C7-02",
+      "url": "audio/listening/C7-02.mp3",
+      "fingerprint": "93387a3e",
+      "estimatedMs": 64000,
+      "estimatedBytes": 512000,
+      "bytes": 202560,
+      "actualMs": 25320
+    },
+    {
+      "id": "C7-03",
+      "url": "audio/listening/C7-03.mp3",
+      "fingerprint": "e85ccc9f",
+      "estimatedMs": 64923,
+      "estimatedBytes": 519384,
+      "bytes": 194496,
+      "actualMs": 24312
+    },
+    {
+      "id": "C7-04",
+      "url": "audio/listening/C7-04.mp3",
+      "fingerprint": "21d03088",
+      "estimatedMs": 58769,
+      "estimatedBytes": 470152,
+      "bytes": 200448,
+      "actualMs": 25056
+    },
+    {
+      "id": "C7-05",
+      "url": "audio/listening/C7-05.mp3",
+      "fingerprint": "f827875d",
+      "estimatedMs": 57538,
+      "estimatedBytes": 460304,
+      "bytes": 198336,
+      "actualMs": 24792
+    },
+    {
+      "id": "C7-06",
+      "url": "audio/listening/C7-06.mp3",
+      "fingerprint": "7b5038fc",
+      "estimatedMs": 64923,
+      "estimatedBytes": 519384,
+      "bytes": 198528,
+      "actualMs": 24816
+    },
+    {
+      "id": "C8-01",
+      "url": "audio/listening/C8-01.mp3",
+      "fingerprint": "4192e3b7",
+      "estimatedMs": 64308,
+      "estimatedBytes": 514464,
+      "bytes": 208128,
+      "actualMs": 26016
+    },
+    {
+      "id": "C8-02",
+      "url": "audio/listening/C8-02.mp3",
+      "fingerprint": "fce00e0b",
+      "estimatedMs": 59692,
+      "estimatedBytes": 477536,
+      "bytes": 203904,
+      "actualMs": 25488
+    },
+    {
+      "id": "C8-03",
+      "url": "audio/listening/C8-03.mp3",
+      "fingerprint": "a67f6b06",
+      "estimatedMs": 56308,
+      "estimatedBytes": 450464,
+      "bytes": 199680,
+      "actualMs": 24960
+    },
+    {
+      "id": "C8-04",
+      "url": "audio/listening/C8-04.mp3",
+      "fingerprint": "5bf9e449",
+      "estimatedMs": 55692,
+      "estimatedBytes": 445536,
+      "bytes": 202368,
+      "actualMs": 25296
+    },
+    {
+      "id": "C8-05",
+      "url": "audio/listening/C8-05.mp3",
+      "fingerprint": "bc138074",
+      "estimatedMs": 56923,
+      "estimatedBytes": 455384,
+      "bytes": 199488,
+      "actualMs": 24936
+    },
+    {
+      "id": "C8-06",
+      "url": "audio/listening/C8-06.mp3",
+      "fingerprint": "8f44e2e3",
+      "estimatedMs": 60923,
+      "estimatedBytes": 487384,
+      "bytes": 200064,
+      "actualMs": 25008
+    },
+    {
+      "id": "C9-01",
+      "url": "audio/listening/C9-01.mp3",
+      "fingerprint": "d3c6c240",
+      "estimatedMs": 66462,
+      "estimatedBytes": 531696,
+      "bytes": 197760,
+      "actualMs": 24720
+    },
+    {
+      "id": "C9-02",
+      "url": "audio/listening/C9-02.mp3",
+      "fingerprint": "2ccf1522",
+      "estimatedMs": 59692,
+      "estimatedBytes": 477536,
+      "bytes": 203904,
+      "actualMs": 25488
+    },
+    {
+      "id": "C9-03",
+      "url": "audio/listening/C9-03.mp3",
+      "fingerprint": "f9bb9102",
+      "estimatedMs": 60923,
+      "estimatedBytes": 487384,
+      "bytes": 192960,
+      "actualMs": 24120
+    },
+    {
+      "id": "C9-04",
+      "url": "audio/listening/C9-04.mp3",
+      "fingerprint": "737d892f",
+      "estimatedMs": 61846,
+      "estimatedBytes": 494768,
+      "bytes": 209856,
+      "actualMs": 26232
+    },
+    {
+      "id": "C9-05",
+      "url": "audio/listening/C9-05.mp3",
+      "fingerprint": "be637dda",
+      "estimatedMs": 54462,
+      "estimatedBytes": 435696,
+      "bytes": 194880,
+      "actualMs": 24360
+    },
+    {
+      "id": "C9-06",
+      "url": "audio/listening/C9-06.mp3",
+      "fingerprint": "a6643c7d",
+      "estimatedMs": 60923,
+      "estimatedBytes": 487384,
+      "bytes": 200640,
+      "actualMs": 25080
+    },
+    {
+      "id": "D7-01",
+      "url": "audio/listening/D7-01.mp3",
+      "fingerprint": "1b8d2b06",
+      "estimatedMs": 53846,
+      "estimatedBytes": 430768,
+      "bytes": 199872,
+      "actualMs": 24984
+    },
+    {
+      "id": "D7-02",
+      "url": "audio/listening/D7-02.mp3",
+      "fingerprint": "e7636d81",
+      "estimatedMs": 60000,
+      "estimatedBytes": 480000,
+      "bytes": 200256,
+      "actualMs": 25032
+    },
+    {
+      "id": "D7-03",
+      "url": "audio/listening/D7-03.mp3",
+      "fingerprint": "9079039d",
+      "estimatedMs": 60923,
+      "estimatedBytes": 487384,
+      "bytes": 213888,
+      "actualMs": 26736
+    },
+    {
+      "id": "D7-04",
+      "url": "audio/listening/D7-04.mp3",
+      "fingerprint": "d5a4eb0e",
+      "estimatedMs": 54462,
+      "estimatedBytes": 435696,
+      "bytes": 208704,
+      "actualMs": 26088
+    },
+    {
+      "id": "D7-05",
+      "url": "audio/listening/D7-05.mp3",
+      "fingerprint": "c4123607",
+      "estimatedMs": 52308,
+      "estimatedBytes": 418464,
+      "bytes": 204672,
+      "actualMs": 25584
+    },
+    {
+      "id": "D7-06",
+      "url": "audio/listening/D7-06.mp3",
+      "fingerprint": "5b88d81a",
+      "estimatedMs": 61538,
+      "estimatedBytes": 492304,
+      "bytes": 196608,
+      "actualMs": 24576
+    },
+    {
+      "id": "D7-07",
+      "url": "audio/listening/D7-07.mp3",
+      "fingerprint": "21479f39",
+      "estimatedMs": 44615,
+      "estimatedBytes": 356920,
+      "bytes": 204864,
+      "actualMs": 25608
+    },
+    {
+      "id": "D7-08",
+      "url": "audio/listening/D7-08.mp3",
+      "fingerprint": "c3a56b42",
+      "estimatedMs": 52923,
+      "estimatedBytes": 423384,
+      "bytes": 199104,
+      "actualMs": 24888
+    },
+    {
+      "id": "D7-09",
+      "url": "audio/listening/D7-09.mp3",
+      "fingerprint": "23371834",
+      "estimatedMs": 54769,
+      "estimatedBytes": 438152,
+      "bytes": 197760,
+      "actualMs": 24720
+    },
+    {
+      "id": "D7-10",
+      "url": "audio/listening/D7-10.mp3",
+      "fingerprint": "98a3494d",
+      "estimatedMs": 60308,
+      "estimatedBytes": 482464,
+      "bytes": 205056,
+      "actualMs": 25632
     }
   ]
 }

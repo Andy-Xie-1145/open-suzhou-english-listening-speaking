@@ -15,6 +15,10 @@
 import { toQaTask, scoreQa, drawQaPair, type QaTask, type QaResult, type RawQa } from '../suzhou/qa-section.ts';
 import { disclaimerBlock } from '../suzhou/disclaimer.ts';
 import type { RecorderPort, AsrPort } from '../suzhou/recorder-bridge.ts';
+import {
+  resolveDoc, canRecord as canRecordWith, asrReady as asrReadyWith,
+  bannerBlock, asrBlock, manualBlock, scoreHead, dimsBlock, limitsDetails,
+} from './suzhou-section-kit.ts';
 
 export type QaPhase =
   | 'idle'
@@ -42,7 +46,9 @@ export interface QaDeps {
   recorder?: RecorderPort | null;
   asr?: AsrPort | null;
   seed?: number;
-}export interface QaState {
+}
+
+export interface QaState {
   items: QaItemState[];
   /** 当前聚焦的题号 0/1 */
   active: number;
@@ -127,14 +133,6 @@ export function toQaScoreView(result: QaResult): QaScoreView {
     advice: result.advice.slice(),
   };
 }
-function resolveDoc(mount: Element): Document {
-  const owner = mount.ownerDocument as Document | undefined;
-  const g = typeof document === 'undefined' ? undefined : document;
-  const found: Document | undefined = owner ?? g;
-  if (found === undefined) throw new Error('需要 DOM 环境');
-  return found;
-}
-
 export interface QaApp {
   state(): QaState;
   view(): Element | null;
@@ -153,16 +151,13 @@ export function mountSuzhouQa(mount: Element, deps: QaDeps): QaApp {
   let viewEl: Element | null = null;
 
   function canRecord(): boolean {
-    const r = deps.recorder;
-    if (!r) return false;
-    try { return r.canRecord(); } catch { return false; }
+    return canRecordWith(deps.recorder);
   }
 
   function asrReady(): boolean {
-    const a = deps.asr;
-    if (!a) return false;
-    try { return a.ready(); } catch { return false; }
+    return asrReadyWith(deps.asr);
   }
+
   function renderOne(doc2: Document, idx: number): HTMLElement {
     const it = state.items[idx];
     const box = doc2.createElement('div');
@@ -230,24 +225,13 @@ export function mountSuzhouQa(mount: Element, deps: QaDeps): QaApp {
     box.appendChild(ctrl);
 
     if (it.phase === 'manual' || !recordable) {
-      const wrap = doc2.createElement('div');
-      wrap.className = 'sz-manual';
-      const lab = doc2.createElement('label');
-      lab.textContent = '手动输入你的回答：';
-      const ta = doc2.createElement('textarea');
-      ta.className = 'sz-textarea';
-      ta.rows = 5;
-      ta.value = it.text;
-      ta.addEventListener('input', function () { it.text = ta.value; });
-      const go = doc2.createElement('button');
-      go.type = 'button';
-      go.className = 'sz-btn';
-      go.textContent = '按我的回答评分（近似）';
-      go.addEventListener('click', function () { app.submitText(ta.value); });
-      wrap.appendChild(lab);
-      wrap.appendChild(ta);
-      wrap.appendChild(go);
-      box.appendChild(wrap);
+      box.appendChild(manualBlock(doc2, {
+        label: '手动输入你的回答：',
+        submitLabel: '按我的回答评分（近似）',
+        initial: it.text,
+        onInput: function (v) { it.text = v; },
+        onSubmit: function (v) { app.submitText(v); },
+      }));
     }
 
     return box;
@@ -261,21 +245,7 @@ export function mountSuzhouQa(mount: Element, deps: QaDeps): QaApp {
     const pane = doc2.createElement('section');
     pane.className = 'sz-score';
 
-    const head = doc2.createElement('div');
-    head.className = 'sz-score-head';
-    const num = doc2.createElement('strong');
-    num.className = 'sz-score-num';
-    num.textContent = String(view.value);
-    const lab = doc2.createElement('span');
-    lab.className = 'sz-score-label';
-    lab.textContent = view.label;
-    const badge = doc2.createElement('span');
-    badge.className = 'sz-badge';
-    badge.textContent = view.badge;
-    head.appendChild(num);
-    head.appendChild(lab);
-    head.appendChild(badge);
-    pane.appendChild(head);
+    pane.appendChild(scoreHead(doc2, view));
 
     const resp = doc2.createElement('p');
     resp.className = view.responded ? 'sz-gate ok' : 'sz-gate bad';
@@ -313,35 +283,7 @@ export function mountSuzhouQa(mount: Element, deps: QaDeps): QaApp {
       kpBox.appendChild(row);
     }
     pane.appendChild(kpBox);
-    const dims = doc2.createElement('div');
-    dims.className = 'sz-dims';
-    for (const d of view.dimensions) {
-      const row = doc2.createElement('div');
-      row.className = 'sz-dim';
-      const top = doc2.createElement('div');
-      top.className = 'sz-dim-top';
-      const n1 = doc2.createElement('span');
-      n1.textContent = d.label;
-      const v1 = doc2.createElement('span');
-      v1.className = 'sz-dim-val';
-      v1.textContent = d.valueText;
-      top.appendChild(n1);
-      top.appendChild(v1);
-      const bar = doc2.createElement('div');
-      bar.className = 'sz-bar';
-      const fill = doc2.createElement('div');
-      fill.className = 'sz-bar-fill';
-      fill.style.width = d.percent + '%';
-      bar.appendChild(fill);
-      const nt = doc2.createElement('div');
-      nt.className = 'sz-dim-note';
-      nt.textContent = d.note;
-      row.appendChild(top);
-      row.appendChild(bar);
-      row.appendChild(nt);
-      dims.appendChild(row);
-    }
-    pane.appendChild(dims);
+    pane.appendChild(dimsBlock(doc2, view.dimensions));
 
     if (view.advice.length > 0) {
       const ul = doc2.createElement('ul');
@@ -354,36 +296,14 @@ export function mountSuzhouQa(mount: Element, deps: QaDeps): QaApp {
       pane.appendChild(ul);
     }
 
-    const lim = doc2.createElement('details');
-    lim.className = 'sz-limits';
-    const sum = doc2.createElement('summary');
-    sum.textContent = '本工具做不到的事';
-    lim.appendChild(sum);
-    const ul2 = doc2.createElement('ul');
-    const d2 = disclaimerBlock();
-    for (const p of d2.paragraphs) {
-      const li = doc2.createElement('li');
-      li.textContent = p;
-      ul2.appendChild(li);
-    }
-    for (const l of d2.limits) {
-      const li = doc2.createElement('li');
-      li.textContent = l;
-      ul2.appendChild(li);
-    }
-    lim.appendChild(ul2);
-    pane.appendChild(lim);
+    pane.appendChild(limitsDetails(doc2));
 
     return pane;
   }
   function render(): void {
     while (mount.firstChild) mount.removeChild(mount.firstChild);
 
-    const banner = doc.createElement('div');
-    banner.className = 'sz-banner';
-    banner.setAttribute('role', 'note');
-    banner.textContent = disclaimerBlock().banner;
-    mount.appendChild(banner);
+    mount.appendChild(bannerBlock(doc));
 
     const h = doc.createElement('h2');
     h.textContent = '情景问答（苏州中考题型 · 近似模拟）';
@@ -405,27 +325,12 @@ export function mountSuzhouQa(mount: Element, deps: QaDeps): QaApp {
 
     // ASR 模型加载（只在能录音且未就绪时出现）
     if (canRecord() && deps.asr && !asrReady()) {
-      const ab = doc.createElement('div');
-      ab.className = 'sz-asr';
-      const msg = doc.createElement('p');
-      msg.className = 'sz-asr-msg';
-      try {
-        msg.textContent = deps.asr.status().message;
-      } catch {
-        msg.textContent = '语音转写未加载。';
-      }
-      ab.appendChild(msg);
-      const bl = doc.createElement('button');
-      bl.type = 'button';
-      bl.className = 'sz-btn sz-btn-sm';
-      bl.textContent = '加载语音转写模型';
-      bl.addEventListener('click', function () { void app.loadAsr(); });
-      ab.appendChild(bl);
-      const alt = doc.createElement('p');
-      alt.className = 'sz-hint';
-      alt.textContent = '不加载也可以：手动输入，评估结果完全相同。';
-      ab.appendChild(alt);
-      mount.appendChild(ab);
+      mount.appendChild(asrBlock(doc, {
+        asr: deps.asr,
+        onLoad: function () { void app.loadAsr(); },
+        altText: '不加载也可以：手动输入，评估结果完全相同。',
+        buttonLabel: '加载语音转写模型',
+      }));
     }
 
     // 两题分别渲染，各自独立出分

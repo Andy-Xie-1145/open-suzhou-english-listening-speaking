@@ -13,6 +13,10 @@
 
 import { scoreTopic, toTopicTask, type RawTopic, type TopicTask, type TopicResult } from '../suzhou/topic-section.ts';
 import { disclaimerBlock } from '../suzhou/disclaimer.ts';
+import {
+  resolveDoc, canRecord as canRecordWith, asrReady as asrReadyWith,
+  bannerBlock, asrBlock, manualBlock, scoreHead, dimsBlock, limitsDetails,
+} from './suzhou-section-kit.ts';
 import type { RecorderPort, AsrPort } from '../suzhou/recorder-bridge.ts';
 
 export type TopicPhase =
@@ -101,13 +105,6 @@ export function toTopicScoreView(task: TopicTask, result: TopicResult): TopicSco
   };
 }
 /* ------------------------------------------------------------------ * * 装配 * ------------------------------------------------------------------ */
-function resolveDoc(mount: Element): Document {
-  const owner = mount.ownerDocument as Document | undefined;
-  const g = typeof document === 'undefined' ? undefined : document;
-  const found: Document | undefined = owner ?? g;
-  if (found === undefined) throw new Error('需要 DOM 环境');
-  return found;
-}
 export interface TopicApp {
   state(): TopicState;
   view(): Element | null;
@@ -122,32 +119,14 @@ export function mountSuzhouTopic(mount: Element, deps: TopicDeps): TopicApp {
   let state = initialTopicState(deps.topics, deps.topicIndex);
   let viewEl: Element | null = null;
   function canRecord(): boolean {
-    const r = deps.recorder;
-    if (!r) return false;
-    try {
- return r.canRecord();
- }
- catch {
- return false;
- }
+    return canRecordWith(deps.recorder);
   }
   function asrReady(): boolean {
-    const a = deps.asr;
-    if (!a) return false;
-    try {
- return a.ready();
- }
- catch {
- return false;
- }
+    return asrReadyWith(deps.asr);
   }
   function render(): void {    while (mount.firstChild) mount.removeChild(mount.firstChild);
 
-    const banner = doc.createElement('div');
-    banner.className = 'sz-banner';
-    banner.setAttribute('role', 'note');
-    banner.textContent = disclaimerBlock().banner;
-    mount.appendChild(banner);
+    mount.appendChild(bannerBlock(doc));
 
     if (state.error) {
       const e0 = doc.createElement('p');
@@ -220,70 +199,31 @@ export function mountSuzhouTopic(mount: Element, deps: TopicDeps): TopicApp {
     }
     mount.appendChild(ctrl);
     if (recordable && deps.asr && !asrReady()) {
-      const ab = doc.createElement('div');
-      ab.className = 'sz-asr';
-      const msg = doc.createElement('p');
-      msg.className = 'sz-asr-msg';
-      try {
-        msg.textContent = deps.asr.status().message;
-      } catch {
-        msg.textContent = '语音转写未加载。';
-      }
-      ab.appendChild(msg);
-      const bl = doc.createElement('button');
-      bl.type = 'button';
-      bl.className = 'sz-btn sz-btn-sm';
-      bl.textContent = state.phase === 'loading-asr' ? '加载中…' : '加载语音转写模型';
-      bl.disabled = state.phase === 'loading-asr';
-      bl.addEventListener('click', function () { void app.loadAsr(); });
-      ab.appendChild(bl);
-      const alt = doc.createElement('p');
-      alt.className = 'sz-hint';
-      alt.textContent = '不加载也可以：直接在下方手动输入，评估结果完全相同。';
-      ab.appendChild(alt);
-      mount.appendChild(ab);
+      mount.appendChild(asrBlock(doc, {
+        asr: deps.asr,
+        onLoad: function () { void app.loadAsr(); },
+        altText: '不加载也可以：直接在下方手动输入，评估结果完全相同。',
+        buttonLabel: state.phase === 'loading-asr' ? '加载中…' : '加载语音转写模型',
+        buttonDisabled: state.phase === 'loading-asr',
+      }));
     }
 
     if (state.phase === 'manual' || !recordable) {
-      const wrap = doc.createElement('div');
-      wrap.className = 'sz-manual';
-      const lab = doc.createElement('label');
-      lab.textContent = '手动输入你说的内容：';
-      const ta = doc.createElement('textarea');
-      ta.className = 'sz-textarea';
-      ta.rows = 6;
-      ta.value = state.manualText;
-      ta.addEventListener('input', function () { state.manualText = ta.value; });
-      const go = doc.createElement('button');
-      go.type = 'button';
-      go.className = 'sz-btn';
-      go.textContent = '按我的表达评分（近似）';
-      go.addEventListener('click', function () { app.submitText(ta.value); });
-      wrap.appendChild(lab);
-      wrap.appendChild(ta);
-      wrap.appendChild(go);
-      mount.appendChild(wrap);
+      mount.appendChild(manualBlock(doc, {
+        label: '手动输入你说的内容：',
+        submitLabel: '按我的表达评分（近似）',
+        initial: state.manualText,
+        rows: 6,
+        onInput: function (v) { state.manualText = v; },
+        onSubmit: function (v) { app.submitText(v); },
+      }));
     }
     if (state.result) {
       const view = toTopicScoreView(task, state.result);
       const pane = doc.createElement('section');
       pane.className = 'sz-score';
 
-      const head2 = doc.createElement('div');
-      head2.className = 'sz-score-head';
-      const num = doc.createElement('strong');
-      num.className = 'sz-score-num';
-      num.textContent = String(view.value);
-      const lab2 = doc.createElement('span');
-      lab2.className = 'sz-score-label';
-      lab2.textContent = view.label;
-      const badge = doc.createElement('span');
-      badge.className = 'sz-badge';
-      badge.textContent = view.badge;
-      head2.appendChild(num);
-      head2.appendChild(lab2);
-      head2.appendChild(badge);
-      pane.appendChild(head2);
+      pane.appendChild(scoreHead(doc, view));
 
       const gate = doc.createElement('p');
       gate.className = view.passed ? 'sz-gate ok' : 'sz-gate bad';
@@ -297,35 +237,7 @@ export function mountSuzhouTopic(mount: Element, deps: TopicDeps): TopicApp {
         pane.appendChild(d1);
       }
 
-      const dims = doc.createElement('div');
-      dims.className = 'sz-dims';
-      for (const d2 of view.dimensions) {
-        const row = doc.createElement('div');
-        row.className = 'sz-dim';
-        const top = doc.createElement('div');
-        top.className = 'sz-dim-top';
-        const n1 = doc.createElement('span');
-        n1.textContent = d2.label;
-        const v1 = doc.createElement('span');
-        v1.className = 'sz-dim-val';
-        v1.textContent = d2.valueText;
-        top.appendChild(n1);
-        top.appendChild(v1);
-        const bar = doc.createElement('div');
-        bar.className = 'sz-bar';
-        const fill = doc.createElement('div');
-        fill.className = 'sz-bar-fill';
-        fill.style.width = d2.percent + '%';
-        bar.appendChild(fill);
-        const nt = doc.createElement('div');
-        nt.className = 'sz-dim-note';
-        nt.textContent = d2.note;
-        row.appendChild(top);
-        row.appendChild(bar);
-        row.appendChild(nt);
-        dims.appendChild(row);
-      }
-      pane.appendChild(dims);
+      pane.appendChild(dimsBlock(doc, view.dimensions));
       if (view.advice.length > 0) {
         const ul1 = doc.createElement('ul');
         ul1.className = 'sz-feedback';

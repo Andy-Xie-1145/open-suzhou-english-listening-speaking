@@ -23,7 +23,11 @@ export interface SelfCheckHost {
   asr: SelfCheckDeps['asr'];
 }
 
-export function mountSelfCheck(doc: Document, host: SelfCheckHost): HTMLElement {
+export function mountSelfCheck(
+  doc: Document,
+  host: SelfCheckHost,
+  onReport?: (report: SelfCheckReport) => void,
+): HTMLElement {
   const root = doc.createElement('section');
   root.className = 'sz-selfcheck';
 
@@ -122,6 +126,7 @@ export function mountSelfCheck(doc: Document, host: SelfCheckHost): HTMLElement 
       },
     ).then(function (report: SelfCheckReport) {
       renderReport(report);
+      if (onReport) onReport(report);
     }).catch(function (e: unknown) {
       // 自检本身抛异常也不能让页面崩
       const err = doc.createElement('div');
@@ -132,6 +137,7 @@ export function mountSelfCheck(doc: Document, host: SelfCheckHost): HTMLElement 
       out.appendChild(err);
       const fallback = buildReport([]);
       renderReport(fallback);
+      if (onReport) onReport(fallback);
     }).finally(function () {
       running = false;
       btn.disabled = false;
