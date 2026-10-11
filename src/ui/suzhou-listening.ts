@@ -6,10 +6,14 @@
  * ⚠️ 本界面的每一个数字都带「近似模拟」标识，不得移除。
  * 见 spec/suzhou-listening-speaking.spec.md 第 0 节。
  *
- * 流程：听前浏览 → 播放 2 遍 → 作答 → 下一段。
+ * 流程：听前浏览（5 秒 × n）→ 播放 2 遍 → 作答（5 秒 × n）→ 自动进入下一段。
+ *
+ * 没有任何「下一段 / 跳过」按钮：每一步都有倒计时，归零自动前进。
+ * n = 本段小题数，本段所有小题同时展示。
  *
  * 音频来自**构建期渲染**的静态 mp3/wav（见 scripts/build-listening-audio.ts），
- * 浏览器不加载任何 TTS 模型。开考前一次性预取完，考试中只剩播放。
+ * 浏览器不加载任何 TTS 模型。音频必须在加载页全部下完并注入 cache 进来；
+ * 考试中不再发起任何网络请求。
  */
 
 import {
@@ -21,7 +25,6 @@ import {
   chooseAnswer,
   settle,
   totalPoints,
-  previewFor,
   phaseDuration,
   prefetchAudio,
   PLAY_TIMES,
@@ -70,11 +73,10 @@ export interface ListeningView {
   questions: QuestionView[];
   /** 播放阶段显示「第几遍」 */
   playLabel: string;
-  /** 剩余作答时间 */
+  /** 本阶段倒计时（毫秒）。播放阶段音频时长未知时为 -1，界面显示占位 */
   remainingMs: number;
-  /** 作答阶段可以点「下一段」 */
-  canNext: boolean;
-  showNext: boolean;
+  /** 本阶段总时长（毫秒）；未知为 -1 */
+  totalMs: number;
   audioUrl: string;
   /** 音频没下下来时的提示 */
   audioMissing: boolean;
@@ -91,17 +93,27 @@ export function numberQuestions(steps: readonly ListeningStep[]): Map<string, nu
 }
 
 function stageOf(phase: ListeningPhase, step: ListeningStep): { title: string; hint: string } {
+  const n = step.questions.length;
   if (phase === 'preview') {
-    return { title: '听前浏览', hint: '先看题目，马上开始播放。' };
+    return { title: '听前浏览', hint: '请利用 ' + (5 * n) + ' 秒阅读本段 ' + n + ' 道题，倒计时结束后自动播放。' };
   }
   if (phase === 'playing') {
-    return { title: '正在播放', hint: '仔细听，材料会播放 ' + PLAY_TIMES + ' 遍。' };
+    return { title: '正在播放', hint: '仔细听，材料共播放 ' + PLAY_TIMES + ' 遍。' };
   }
   if (phase === 'answering') {
-    const n = step.questions.length;
-    return { title: '作答', hint: n > 1 ? '这段有 ' + n + ' 道题，都要选。' : '选出最合适的一个。' };
+    return {
+      title: '作答',
+      hint: (n > 1 ? '本段共 ' + n + ' 道题，' : '') + '请在 ' + (5 * n) + ' 秒内选完，倒计时结束后自动进入下一段。',
+    };
   }
   return { title: '听力结束', hint: '' };
+}
+
+/** 本阶段还剩多少毫秒；播放阶段音频未知时返回 -1 */
+function remainingOf(s: ListeningSession, phaseElapsedMs: number, audioMs: number): { remaining: number; total: number } {
+  const total = phaseDuration(s, audioMs);
+  if (s.phase === 'playing' && total <= 0) return { remaining: -1, total: -1 };
+  return { remaining: Math.max(0, total - phaseElapsedMs), total: total };
 }
 
 export function toView(
@@ -124,8 +136,7 @@ export function toView(
       questions: [],
       playLabel: '',
       remainingMs: 0,
-      canNext: false,
-      showNext: false,
+      totalMs: 0,
       audioUrl: '',
       audioMissing: false,
     };
@@ -133,6 +144,7 @@ export function toView(
 
   const nums = numberQuestions(s.steps);
   const stage = stageOf(s.phase, step);
+  const clock = remainingOf(s, phaseElapsedMs, audioMs);
 
   return {
     phase: s.phase,
@@ -152,9 +164,8 @@ export function toView(
       };
     }),
     playLabel: s.phase === 'playing' ? '第 ' + Math.min(PLAY_TIMES, s.plays + 1) + ' / ' + PLAY_TIMES + ' 遍' : '',
-    remainingMs: s.phase === 'answering' ? Math.max(0, step.budgetMs - phaseElapsedMs) : 0,
-    canNext: s.phase === 'answering',
-    showNext: s.phase === 'answering' || s.phase === 'playing',
+    remainingMs: clock.remaining,
+    totalMs: clock.total,
     audioUrl: step.audioUrl,
     audioMissing: !audioReady,
   };
@@ -213,6 +224,8 @@ export interface SuzhouListeningDeps {
   /** 音频格式，与构建期产物一致 */
   ext?: string;
   fetchImpl?: FetchLike;
+  /** 加载页已预取好的音频缓存。给了就不再发任何请求 —— 考试中不允许加载 */
+  cache?: AudioCache | null;
   player?: PlayerPort | null;
   onFinish?: (outcome: ListeningOutcome) => void;
 }
@@ -242,6 +255,17 @@ function fmt(ms: number): string {
   return String(Math.floor(t / 60)).padStart(2, '0') + ':' + String(t % 60).padStart(2, '0');
 }
 
+/** 倒计时文案。每个阶段都强制显示，归零即自动前进 */
+function countdownText(v: ListeningView): string {
+  if (v.phase === 'done' || v.phase === 'idle') return '';
+  if (v.remainingMs < 0) return '准备播放…';
+  const s = Math.ceil(v.remainingMs / 1000);
+  if (v.phase === 'preview') return '浏览倒计时 ' + s + ' 秒';
+  if (v.phase === 'playing') return '播放结束倒计时 ' + fmt(v.remainingMs);
+  if (v.phase === 'answering') return '作答倒计时 ' + s + ' 秒';
+  return '';
+}
+
 export interface SuzhouListeningApp {
   /** 根元素。主界面重绘会清空挂载点，需要时用这个把它接回去 */
   el(): HTMLElement;
@@ -249,7 +273,6 @@ export interface SuzhouListeningApp {
   outcome(): ListeningView | null;
   start(): Promise<void>;
   pick(questionId: string, label: string): void;
-  next(): void;
   stop(): void;
   destroy(): void;
 }
@@ -277,13 +300,11 @@ export function mountSuzhouListening(
   const playLabel = el('p', 'lz__play', '');
   const audioBox = el('div', 'lz__audio');
   const list = el('ol', 'lz__questions');
-  const nav = el('div', 'lz__nav');
-  const nextBtn = btn('lz__next', '下一段');
+  const cd = el('p', 'lz__countdown', '');
   const warn = el('p', 'lz__warn', '');
 
   head.appendChild(sec);
   head.appendChild(prog);
-  nav.appendChild(nextBtn);
   audioBox.appendChild(playLabel);
   root.appendChild(banner);
   root.appendChild(head);
@@ -291,8 +312,8 @@ export function mountSuzhouListening(
   root.appendChild(hint);
   root.appendChild(audioBox);
   root.appendChild(list);
+  root.appendChild(cd);
   root.appendChild(warn);
-  root.appendChild(nav);
   container.appendChild(root);
 
   if (typeof Audio !== 'undefined') audio = new Audio();
@@ -316,11 +337,10 @@ export function mountSuzhouListening(
     stage.textContent = v.stageTitle;
     hint.textContent = v.stageHint;
     playLabel.textContent = v.playLabel;
-    nextBtn.style.display = v.canNext ? '' : 'none';
-    nextBtn.textContent = v.phase === 'answering' ? '下一段' : '跳过播放';
+    cd.textContent = countdownText(v);
 
     warn.textContent = v.audioMissing
-      ? '这段的音频没能预先加载，正在重试……若一直没有声音，请检查网络后点「跳过播放」。'
+      ? '这段的音频没有预先加载成功。请退出本场考试并重新进加载页。'
       : '';
 
     list.textContent = '';
@@ -373,13 +393,19 @@ export function mountSuzhouListening(
   }
 
   async function start(): Promise<void> {
-    const urls = steps.map(function (s) { return s.audioUrl; });
-    const doFetch: FetchLike = deps.fetchImpl
-      || (async function (u: string) {
-        const r = await fetch(u);
-        return { ok: r.ok, status: r.status, blob: async () => r.blob() as unknown as BlobLike };
-      });
-    cache = await prefetchAudio(urls, doFetch, undefined, function (u) { return u; });
+    if (deps.cache) {
+      // 正路：加载页已经把全部音频下完并注入。考试中一个请求都不发。
+      cache = deps.cache;
+    } else {
+      // 兜底（测试 / 未走加载页直接挂载）：现场预取
+      const urls = steps.map(function (s) { return s.audioUrl; });
+      const doFetch: FetchLike = deps.fetchImpl
+        || (async function (u: string) {
+          const r = await fetch(u);
+          return { ok: r.ok, status: r.status, blob: async () => r.blob() as unknown as BlobLike };
+        });
+      cache = await prefetchAudio(urls, doFetch, undefined, function (u) { return u; });
+    }
     startTimer();
     render();
   }
@@ -389,28 +415,13 @@ export function mountSuzhouListening(
     render();
   }
 
-  function next(): void {
-    const forced = advance(session, elapsed(), audioMs(), true);
-    if (forced.phase !== session.phase) {
-      session = forced;
-      phaseStart = Date.now();
-      if (audio) audio.pause();
-      if (session.phase === 'done') return finish();
-    } else if (session.phase === 'playing') {
-      // 播放中点「跳过播放」：直接进作答
-      session = { ...session, phase: 'answering' };
-      phaseStart = Date.now();
-    }
-    render();
-  }
-
   function finish(): void {
     finished = view();
     const o = settle(session);
     stage.textContent = '听力测试结束';
     hint.textContent = '本部分作答完毕，交卷后统一出分。';
     playLabel.textContent = '';
-    nextBtn.style.display = 'none';
+    cd.textContent = '';
     list.textContent = '';
     const score = el('p', 'lz__score', '近似分 ' + totalPoints(o) + ' / 20　（' + BADGE + '）');
     root.appendChild(score);
@@ -419,7 +430,6 @@ export function mountSuzhouListening(
     if (deps.onFinish) deps.onFinish(o);
   }
 
-  nextBtn.addEventListener('click', next);
   render();
 
   return {
@@ -428,7 +438,6 @@ export function mountSuzhouListening(
     outcome: function () { return finished; },
     start: start,
     pick: pick,
-    next: next,
     stop: function () {
       if (timer) clearInterval(timer);
       timer = null;

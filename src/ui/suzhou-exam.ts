@@ -18,10 +18,14 @@
  */
 
 import { dealPaper, dealNextPaper, type PaperBank, type SuzhouPaper } from '../suzhou/paper.ts';
+import {
+  resolveDoc, canRecord as canRecordWith, asrReady as asrReadyWith,
+  bannerBlock, manualBlock,
+} from './suzhou-section-kit.ts';
 import { disclaimerBlock } from '../suzhou/disclaimer.ts';
 import { SPEAKING_WEIGHTS, SPEAKING_MINUTES, LISTENING_MINUTES, QA_COUNT } from '../suzhou/paper.ts';
 import { mountSuzhouListening, type SuzhouListeningApp } from './suzhou-listening.ts';
-import { totalPoints, type ListeningOutcome } from '../suzhou/listening-session.ts';
+import { totalPoints, type ListeningOutcome, type AudioCache } from '../suzhou/listening-session.ts';
 import {
   initialSpeaking,
   startRecording as speakStart,
@@ -55,6 +59,8 @@ export interface ExamDeps {
   scoreTopic?: (text: string, task: any, durationMs?: number) => number | null;
   /** 默认 seed；不传则用日期生成，保证每天换一套卷 */
   seed?: number;
+  /** 加载页已预取完的听力音频。考试中一个请求都不发，全靠它 */
+  audioCache?: AudioCache | null;
 }
 
 export interface ExamState {
@@ -133,14 +139,6 @@ export function activeTask(state: ExamState): { kind: SectionKind; title: string
     raw: p.topic.task,
   };
 }
-function resolveDoc(mount: Element): Document {
-  const owner = mount.ownerDocument as Document | undefined;
-  const g = typeof document === 'undefined' ? undefined : document;
-  const found: Document | undefined = owner ?? g;
-  if (found === undefined) throw new Error('需要 DOM 环境');
-  return found;
-}
-
 function fmtMs(ms: number): string {
   const total = Math.max(0, Math.round(ms / 1000));
   const m = Math.floor(total / 60);
@@ -176,13 +174,9 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
   let lzApp: SuzhouListeningApp | null = null;
   let lzSeed = -1;
   // 口语总倒计时；听力部分不计入
-  let timer: ReturnType<typeof setInterval> | null = null;
-  let examEndsAt = 0;
 
   function canRecord(): boolean {
-    const r = deps.recorder;
-    if (!r) return false;
-    try { return r.canRecord(); } catch { return false; }
+    return canRecordWith(deps.recorder);
   }
 
   /** 按题型分发评分回调 */
@@ -195,16 +189,10 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
   }
 
   function asrReady(): boolean {
-    const a = deps.asr;
-    if (!a) return false;
-    try { return a.ready(); } catch { return false; }
+    return asrReadyWith(deps.asr);
   }
   function renderBanner(): HTMLElement {
-    const b = doc.createElement('div');
-    b.className = 'sz-banner';
-    b.setAttribute('role', 'note');
-    b.textContent = disclaimerBlock().banner;
-    return b;
+    return bannerBlock(doc);
   }
 
   /** 分数展示：标签 + 徽标 + 声明，缺一不可 */
@@ -297,13 +285,15 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
       + ' / 话题 ' + fmtMs(paper.speakingMs * SPEAKING_WEIGHTS.topic);
     mount.appendChild(info);
 
-    // 换卷按钮
-    const nextBtn = doc.createElement('button');
-    nextBtn.type = 'button';
-    nextBtn.className = 'sz-btn sz-btn-sm';
-    nextBtn.textContent = '换一套卷';
-    nextBtn.addEventListener('click', function () { app.nextPaper(); });
-    mount.appendChild(nextBtn);
+    // 换卷按钮：听力进行中不给换 —— 换卷意味着重新下载音频，考试中禁止加载
+    if (state.part === 'speaking') {
+      const nextBtn = doc.createElement('button');
+      nextBtn.type = 'button';
+      nextBtn.className = 'sz-btn sz-btn-sm';
+      nextBtn.textContent = '换一套卷';
+      nextBtn.addEventListener('click', function () { app.nextPaper(); });
+      mount.appendChild(nextBtn);
+    }
 
     // ---- 听力部分：独立界面，渲染在口语之前 ----
     if (state.part === 'listening') {
@@ -316,6 +306,7 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
         mount.appendChild(host);
         lzApp = mountSuzhouListening(host, {
           listening: paper.listening,
+          cache: deps.audioCache ?? null,
           onFinish: function (o) {
             state.listeningOutcome = o;
             state.part = 'speaking';
@@ -443,26 +434,16 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
       pane.appendChild(ctrl);
 
       // 手动输入：所有降级路径的兜底，也是默认路径
-      const wrap = doc.createElement('div');
-      wrap.className = 'sz-manual';
-      const lab = doc.createElement('label');
-      lab.textContent = st === 'recorded'
-        ? '录音已保存在内存里，交卷后统一转写评分。也可以直接手写：'
-        : '写下你说的内容（也可以直接手写）：';
-      const ta = doc.createElement('textarea');
-      ta.className = 'sz-textarea';
-      ta.rows = 5;
-      ta.value = state.speaking.text[cur.kind];
-      ta.addEventListener('input', function () { state.speaking = speakSetText(state.speaking, cur.kind, ta.value); });
-      const go = doc.createElement('button');
-      go.type = 'button';
-      go.className = 'sz-btn';
-      go.textContent = '评分（近似）';
-      go.addEventListener('click', function () { app.submitText(ta.value); });
-      wrap.appendChild(lab);
-      wrap.appendChild(ta);
-      wrap.appendChild(go);
-      pane.appendChild(wrap);
+      pane.appendChild(manualBlock(doc, {
+        label: st === 'recorded'
+          ? '录音已保存在内存里，交卷后统一转写评分。也可以直接手写：'
+          : '写下你说的内容（也可以直接手写）：',
+        submitLabel: '评分（近似）',
+        initial: state.speaking.text[cur.kind],
+        rows: 5,
+        onInput: function (v) { state.speaking = speakSetText(state.speaking, cur.kind, v); },
+        onSubmit: function (v) { app.submitText(v); },
+      }));
 
       const sc = renderScore(cur.kind);
       if (sc) pane.appendChild(sc);
@@ -599,7 +580,6 @@ export function mountSuzhouExam(mount: Element, deps: ExamDeps): ExamApp {
 
     destroy: function () {
       if (lzApp) { lzApp.destroy(); lzApp = null; }
-      if (timer) clearInterval(timer);
       while (mount.firstChild) mount.removeChild(mount.firstChild);
       viewEl = null;
     },

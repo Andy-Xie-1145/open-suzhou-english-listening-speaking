@@ -22,14 +22,16 @@ import {
   prefetchAudio,
   phaseDuration,
   previewFor,
+  answerFor,
   PREVIEW_MS,
+  PER_QUESTION_MS,
   PLAY_TIMES,
   PLAY_GAP_MS,
-  MIN_BUDGET_MS,
   type ListeningStep,
   type ListeningSession,
 } from '../src/suzhou/listening-session.ts';
 import { createListeningBank } from '../src/suzhou/listening-bank.ts';
+import { buildListeningMaterials } from '../src/suzhou/bank-import.ts';
 import { dealPaper, LISTENING_MINUTES, type PaperBank } from '../src/suzhou/paper.ts';
 
 let pass = 0;
@@ -39,7 +41,7 @@ function check(name: string, cond: boolean, detail: string = ''): void {
   else { fail++; console.log('  FAIL  ' + name + (detail ? '  -> ' + detail : '')); }
 }
 
-const bank = createListeningBank(JSON.parse(readFileSync('data/listening-materials.json', 'utf8')));
+const bank = createListeningBank(buildListeningMaterials(JSON.parse(readFileSync('data/bank/items.json','utf8'))));
 function makeBank() {
   return {
     readings: [{ id: 'rd-1', textbook: '九上', text: 'A passage. '.repeat(6), wordCount: 90, difficulty: 1, positionSource: '2026 省通知' }],
@@ -57,23 +59,36 @@ const steps = buildSteps(paper.listening);
 /* ---------- 1. 步骤构建 ---------- */
 console.log('\n[1] 步骤构建');
 check('13 组步骤', steps.length === 13, String(steps.length));
-check('第一节 10 组在前面', steps.slice(0, 10).every(function (s) { return s.section === 0; }));
-check('第二节 3 组在后面', steps.slice(10).every(function (s) { return s.section === 1; }));
+check('第一节 11 组在前面', steps.slice(0, 11).every(function (s) { return s.section === 0; }));
+check('第二节 2 组在后面', steps.slice(11).every(function (s) { return s.section === 1; }) && steps.slice(11).length === 2);
 check('下标连续', steps.map(function (s) { return s.index; }).join(',') === '0,1,2,3,4,5,6,7,8,9,10,11,12');
 check('每组至少 1 题', steps.every(function (s) { return s.questions.length >= 1; }));
 check('总计 20 小题', steps.reduce(function (a, s) { return a + s.questions.length; }, 0) === 20);
 check('音频 URL 指向构建期产物', steps.every(function (s) { return s.audioUrl.startsWith('audio/listening/'); }));
 check('URL 唯一（材料不重复）', new Set(steps.map(function (s) { return s.audioUrl; })).size === 13);
 check('每组都有台词全文供复盘', steps.every(function (s) { return s.scriptText.length > 0; }));
-check('每组预算不低于下限', steps.every(function (s) { return s.budgetMs >= MIN_BUDGET_MS; }));
+check('每组预算字段仍为正（仅展示用）', steps.every(function (s) { return s.budgetMs > 0; }));
 check('audioUrlsOf 与步骤一致', JSON.stringify(audioUrlsOf(paper.listening)) === JSON.stringify(steps.map(function (s) { return s.audioUrl; })));
 
-/* ---------- 2. 听前浏览 ---------- */
-console.log('\n[2] 听前浏览');
+/* ---------- 2. 5 秒 × 题数（定稿规则） ---------- */
+console.log('\n[2] 5 秒 × 题数');
+check('单位时长 5 秒', PER_QUESTION_MS === 5000 && PREVIEW_MS === 5000);
+const q1 = steps[0];
+check('单题段浏览 = 5 秒', previewFor(q1) === 5000, String(previewFor(q1)));
+check('单题段作答 = 5 秒', answerFor(q1) === 5000, String(answerFor(q1)));
+const q3 = steps[11];
+check('第二节首段是 3 题段', q3.questions.length === 3, String(q3.questions.length));
+check('3 题段浏览 = 15 秒', previewFor(q3) === 15_000, String(previewFor(q3)));
+check('3 题段作答 = 15 秒', answerFor(q3) === 15_000, String(answerFor(q3)));
+const q5 = steps[12];
+check('末段是 5 题段', q5.questions.length === 5, String(q5.questions.length));
+check('5 题段浏览/作答各 = 25 秒', previewFor(q5) === 25_000 && answerFor(q5) === 25_000,
+  previewFor(q5) + '/' + answerFor(q5));
+check('全部段满足 5 秒 × 题数', steps.every(function (s) {
+  return previewFor(s) === 5000 * s.questions.length && answerFor(s) === 5000 * s.questions.length;
+}));
 const longStep: ListeningStep = { ...steps[0], budgetMs: 600_000 };
-check('浏览时长不超过上限', previewFor(longStep) <= 20_000, String(previewFor(longStep)));
-check('浏览时长不为负', previewFor(steps[0]) >= 0, String(previewFor(steps[0])));
-check('5 秒是默认值基准', PREVIEW_MS === 5000);
+check('预算字段不影响浏览时长', previewFor(longStep) === 5000, String(previewFor(longStep)));
 
 /* ---------- 3. 状态机 ---------- */
 console.log('\n[3] 状态机');
@@ -101,13 +116,13 @@ check('音频时长未知时 playing 不自退', advance(s2, 999_999, 0).phase =
 const withPlay = markPlayFinished(markPlayFinished(initialSession(steps)));
 check('播放计数封顶在 PLAY_TIMES', withPlay.plays === PLAY_TIMES, String(withPlay.plays));
 
-const budget = currentStep(s)!.budgetMs;
-const stillHere = advance(s, budget - 1);
-check('作答未用完预算不跳组', stillHere.cursor === 0, String(stillHere.cursor));
+const ansDur = answerFor(currentStep(s)!);
+const stillHere = advance(s, ansDur - 1);
+check('作答倒计时未归零不跳组', stillHere.cursor === 0, String(stillHere.cursor));
 const forced = advance(s, 0, 0, true);
-check('学生点「下一段」立即进下一组', forced.cursor === 1 && forced.phase === 'preview', forced.cursor + '/' + forced.phase);
-const byTime = advance(s, budget);
-check('预算用完自动进下一组', byTime.cursor === 1 && byTime.phase === 'preview', byTime.cursor + '/' + byTime.phase);
+check('force 仍可立即进下一组（兼容旧接口）', forced.cursor === 1 && forced.phase === 'preview', forced.cursor + '/' + forced.phase);
+const byTime = advance(s, ansDur);
+check('作答倒计时归零强制进下一组', byTime.cursor === 1 && byTime.phase === 'preview', byTime.cursor + '/' + byTime.phase);
 
 check('空卷直接 done', initialSession([]).phase === 'done');
 check('done 态不可再推进', advance(initialSession([]), 1000).phase === 'done');
@@ -120,7 +135,7 @@ while (cur.phase !== 'done' && guard++ < 1000) {
   const amt = 6000;
   if (cur.phase === 'preview') cur = advance(cur, phaseDuration(cur, amt), amt);
   else if (cur.phase === 'playing') cur = advance(cur, phaseDuration(cur, amt), amt);
-  else cur = advance(cur, currentStep(cur)!.budgetMs, amt);
+  else cur = advance(cur, answerFor(currentStep(cur)!), amt);
 }
 check('能走完整卷并收尾', cur.phase === 'done', cur.phase + ' after ' + guard + ' 步');
 check('不会死循环', guard < 1000, String(guard));
@@ -158,8 +173,8 @@ const perfect = (function () {
 const op = settle(perfect);
 check('全对得两个大题各 10 分', op.points.dialogue === 10 && op.points.passage === 10, JSON.stringify(op.points));
 check('合计 20 分', totalPoints(op) === 20, String(totalPoints(op)));
-check('计数正确', op.correct.dialogue === 10 && op.correct.passage === 10, JSON.stringify(op.correct));
-check('总数 10 + 10', op.total.dialogue === 10 && op.total.passage === 10, JSON.stringify(op.total));
+check('计数正确', op.correct.dialogue === 12 && op.correct.passage === 8, JSON.stringify(op.correct));
+check('总数 12 + 8', op.total.dialogue === 12 && op.total.passage === 8, JSON.stringify(op.total));
 check('无漏答', op.unanswered.length === 0);
 check('明细 20 条', op.detail.length === 20, String(op.detail.length));
 check('明细带原文供复盘', op.detail.every(function (d) { return d.scriptText.length > 0; }));

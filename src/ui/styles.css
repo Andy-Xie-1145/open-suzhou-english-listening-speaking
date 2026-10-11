@@ -836,9 +836,114 @@ button, input, select, textarea {
 .lz__optbtn:hover { border-color: var(--primary); }
 .lz__opt.is-on .lz__optbtn { border-color: var(--primary); background: var(--info-bg); color: var(--info-fg); font-weight: 600; }
 .lz__warn { margin: 0; font-size: 12px; color: var(--warn-fg); background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 5px; padding: 6px 10px; }
-.lz__nav { display: flex; justify-content: flex-end; }
-.lz__next { padding: 8px 20px; font-size: 14px; border: 1px solid var(--primary); border-radius: 6px; background: var(--primary); color: var(--primary-fg); cursor: pointer; }
+/* 倒计时：每个阶段都强制显示，归零自动前进；没有「下一段」按钮 */
+.lz__countdown { margin: 10px 0 0; padding: 10px 14px; font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; text-align: center; background: var(--bg-sunken); border: 1px solid var(--border); border-radius: 8px; letter-spacing: 0.05em; }
 .lz__score { margin: 10px 0 0; padding: 10px 14px; font-size: 16px; font-weight: 700; background: var(--bg-sunken); border-radius: 6px; }
 .sz-submitbar { margin: 14px 0 6px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; background: var(--bg-sunken); border-radius: 8px; }
 .sz-submitbar .sz-btn { align-self: flex-start; }
 .sz-tab.is-recorded { border-color: var(--warn-border); background: var(--warn-bg); color: var(--warn-fg); }
+
+/* ============ 视觉重构：首页 + 加载门禁 + 现代化 ============ */
+:root {
+  --bg: #f4f6fb;
+  --bg-elevated: #ffffff;
+  --bg-sunken: #e9edf5;
+  --fg: #101828;
+  --fg-muted: #475467;
+  --border: #dfe4ee;
+  --primary: #4f46e5;
+  --primary-fg: #ffffff;
+  --primary-soft: #eef0fe;
+  --radius: 16px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 8px 24px rgba(16, 24, 40, 0.08);
+  --font: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+}
+html[data-theme="dark"] {
+  --bg: #0b1220;
+  --bg-elevated: #131c2e;
+  --bg-sunken: #1b2740;
+  --fg: #e7ecf5;
+  --fg-muted: #9aa7bd;
+  --border: #263450;
+  --primary: #818cf8;
+  --primary-fg: #0b1220;
+  --primary-soft: #1e2a52;
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --bg: #0b1220;
+    --bg-elevated: #131c2e;
+    --bg-sunken: #1b2740;
+    --fg: #e7ecf5;
+    --fg-muted: #9aa7bd;
+    --border: #263450;
+    --primary: #818cf8;
+    --primary-fg: #0b1220;
+    --primary-soft: #1e2a52;
+  }
+}
+body { font-family: var(--font); background: var(--bg); color: var(--fg); line-height: 1.6; }
+#app { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
+.sz-banner { border-radius: var(--radius); padding: 10px 16px; background: var(--primary-soft); color: var(--fg); font-size: 13px; border: 1px solid var(--border); }
+.sz-btn { border-radius: 10px; padding: 10px 18px; font-weight: 600; transition: transform 0.08s ease, box-shadow 0.15s ease; }
+.sz-btn:not(:disabled):hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.sz-score, .sz-task, .sz-manual, .sz-asr, .sz-selfcheck { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+.sz-score-num { font-size: 40px; font-weight: 800; color: var(--primary); }
+.sz-badge { border-radius: 999px; padding: 2px 10px; background: var(--primary-soft); color: var(--primary); font-size: 12px; font-weight: 700; }
+.sz-bar { height: 10px; background: var(--bg-sunken); border-radius: 999px; overflow: hidden; }
+.sz-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--primary), #a5b4fc); transition: width 0.4s ease; }
+h1, h2 { letter-spacing: 0.02em; }
+
+/* 首页 */
+.home { text-align: center; padding: 64px 16px 48px; }
+.home-title { font-size: 32px; font-weight: 800; margin: 0 0 12px; }
+.home-sub { color: var(--fg-muted); margin: 0 auto 32px; max-width: 560px; }
+.home-start { font-size: 18px; padding: 14px 40px; border-radius: 999px; }
+.home-byok { margin: 32px auto 0; max-width: 560px; text-align: left; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; }
+.home-byok summary { cursor: pointer; font-weight: 600; }
+.home-byok-panel { margin-top: 12px; }
+
+/* 加载页 */
+.loading { max-width: 640px; margin: 0 auto; padding: 32px 16px; }
+.loading-title { text-align: center; font-size: 24px; font-weight: 800; margin-bottom: 24px; }
+.loading-steps { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 10px; }
+.loading-step { display: flex; align-items: center; gap: 10px; background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; }
+.loading-mark { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; background: var(--bg-sunken); color: var(--fg-muted); flex: none; }
+.loading-step.done .loading-mark { background: #dcfce7; color: #166534; }
+.loading-step.failed .loading-mark { background: #fee2e2; color: #991b1b; }
+.loading-step.warn .loading-mark { background: #fef9c3; color: #854d0e; }
+.loading-step.running .loading-mark { background: var(--primary-soft); color: var(--primary); }
+.loading-name { font-weight: 600; }
+.loading-detail { margin-left: auto; color: var(--fg-muted); font-size: 13px; text-align: right; }
+.loading-bar { margin: 12px 0 20px; }
+.loading-enter { width: 100%; }
+.loading-override { margin-top: 10px; width: 100%; }
+.loading-selfcheck { margin-top: 20px; }
+
+/* ============ 修复：按钮与硬编码白底在深色下的可读性 ============ */
+.sz-btn {
+  background: var(--primary);
+  color: var(--primary-fg);
+  border: 1px solid transparent;
+}
+.sz-btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+.sz-btn-sm { font-size: 13px; padding: 6px 12px; }
+.sz-select, .sz-textarea {
+  background: var(--bg-elevated);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.sz-text { background: var(--bg-sunken); color: var(--fg); border-left-color: var(--border); }
+.sz-hint-box { background: var(--bg-sunken); color: var(--fg); border-radius: 8px; }
+.sz-handler, .sz-qa-cat, .sz-stats { color: var(--fg-muted); }
+.sz-disclaimer, .sz-limits, .sz-score-label, .sz-dim-note, .sz-src-note { color: var(--fg-muted); }
+.sz-banner { color: var(--fg); }
+.sz-score { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+.sz-task { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+.sz-qa-item { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin-bottom: 16px; }
+.sz-qa-q { color: var(--fg); font-weight: 600; }

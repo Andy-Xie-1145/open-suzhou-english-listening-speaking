@@ -5,9 +5,14 @@
  *
  * ## 流程（每组材料重复）
  *
- *     听前浏览 → 播放第 1 遍 → 间隔 → 播放第 2 遍 → 作答 → 下一组
+ *     听前浏览 → 播放第 1 遍 → 间隔 → 播放第 2 遍 → 作答 → 自动进入下一组
  *
- * 播放 2 遍、听前浏览 5 秒，都是**未经证实的格式假设**，见 listening-spec.ts 文件头。
+ * 时间规则（2026-10 定稿，用户拍板）：
+ *   - 每小题固定 5 秒：听前浏览 = 5 秒 × n，作答 = 5 秒 × n（n = 本段小题数）。
+ *     单题段即 5 秒；2/3/5 题段即 10/15/25 秒。
+ *   - 作答倒计时归零后**强制**进入下一组，没有「下一段」按钮。
+ *
+ * 播放 2 遍仍是未经证实的格式假设，见 listening-spec.ts 文件头。
  * 常量集中在下方，改格式只改这里。
  *
  * ## 为什么音频必须先下完
@@ -29,8 +34,8 @@ import { audioUrl, AUDIO_EXT } from './listening-audio.ts';
  * 一、格式假设常量
  * ------------------------------------------------------------------ */
 
-/** 听前浏览时长。格式未经证实 */
-export const PREVIEW_MS = 5_000;
+/** 每小题的浏览/作答单位时长：5 秒 × 小题数 */
+export const PER_QUESTION_MS = 5_000;
 
 /** 两遍之间的停顿 */
 export const PLAY_GAP_MS = 1_000;
@@ -38,13 +43,17 @@ export const PLAY_GAP_MS = 1_000;
 /** 材料播几遍。格式未经证实 */
 export const PLAY_TIMES = 2;
 
-export const MAX_PREVIEW_MS = 20_000;
-export const MAX_PLAYS = 3;
-export const MIN_BUDGET_MS = 30_000;
+/** 兼容旧名：浏览单位时长 */
+export const PREVIEW_MS = PER_QUESTION_MS;
 
-/** 开考前浏览时长必须占本组预算的一定比例，否则 5 秒会把短材料挤掉 */
+/** 本组听前浏览总时长 = 5 秒 × 小题数 */
 export function previewFor(step: ListeningStep): number {
-  return Math.max(0, Math.min(MAX_PREVIEW_MS, Math.floor(step.budgetMs * 0.15)));
+  return PER_QUESTION_MS * Math.max(1, step.questions.length);
+}
+
+/** 本组作答总时长 = 5 秒 × 小题数。归零即强制进下一组 */
+export function answerFor(step: ListeningStep): number {
+  return PER_QUESTION_MS * Math.max(1, step.questions.length);
 }
 
 /* ------------------------------------------------------------------ *
@@ -60,6 +69,7 @@ export interface ListeningStep {
   /** 构建期渲染的音频相对路径 */
   audioUrl: string;
   questions: ListeningQuestion[];
+  /** 组卷预算，仅作展示；考试计时用 previewFor / answerFor（5 秒 × 题数） */
   budgetMs: number;
   /** 台词全文，仅用于考后复盘 */
   scriptText: string;
@@ -78,7 +88,7 @@ export function toStep(
     title: group.material.title || group.material.id,
     audioUrl: audioUrl(group.material.id, ext),
     questions: group.questions.slice(),
-    budgetMs: Math.max(MIN_BUDGET_MS, Math.round(group.budgetMs)),
+    budgetMs: Math.max(0, Math.round(group.budgetMs)),
     scriptText: group.material.script
       .map(function (u) { return u.text; })
       .join(' '),
@@ -150,6 +160,10 @@ export function phaseDuration(s: ListeningSession, audioMs: number): number {
     if (audioMs <= 0) return 0;
     return PLAY_TIMES * audioMs + (PLAY_TIMES - 1) * PLAY_GAP_MS;
   }
+  if (s.phase === 'answering') {
+    const step = currentStep(s);
+    return step ? answerFor(step) : 0;
+  }
   return 0;
 }
 
@@ -184,8 +198,8 @@ export function advance(
     return { ...s, phase: 'answering' };
   }
 
-  // answering
-  if (force || elapsedMs >= step.budgetMs) {
+  // answering：倒计时归零即强制进入下一组（force 参数保留兼容，已无按钮触发）
+  if (force || elapsedMs >= answerFor(step)) {
     if (s.cursor + 1 >= s.steps.length) {
       return { ...s, phase: 'done' };
     }

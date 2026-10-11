@@ -1,34 +1,31 @@
 /**
- * 应用入口 —— 「打开即出一份完整卷」
+ * 应用入口 —— 首页 → 加载门禁 → 完整模考
  *
  * 许可：AGPL-3.0-only
- *
- * 架构约束（ARCHITECTURE.md 第 1 节）：
- *  - 零服务端：不发起任何业务网络请求
- *  - 音频默认不出浏览器：录音数据仅在内存流转。启用云端 ASR 时会离开设备，
- *    且必须由用户显式选择（见 ARCHITECTURE §1.2 与 src/engine/asr-provider.ts）
- *  - 优雅降级：无麦克风或无 ASR 时退化为手动输入，评估结果完全相同
  *
  * ⚠️ 输出的所有数字都是近似模拟，不是考场评分。见 spec 第 0 节。
  */
 
-import { loadTheme, applyTheme } from './ui/app.ts';
+import { loadTheme, applyTheme } from './ui/theme.ts';
+import { mountHome } from './ui/home.ts';
+import { mountLoading } from './ui/loading.ts';
 import { mountSuzhouExam } from './ui/suzhou-exam.ts';
-import { mountSelfCheck } from './ui/selfcheck-ui.ts';
 import { createEngineRecorder, createEngineAsr } from './suzhou/recorder-bridge.ts';
-import { initModelSource, activeSource } from './engine/model-source.ts';
+import { initModelSource } from './engine/model-source.ts';
 import { scoreReading } from './suzhou/reading-section.ts';
-import { scoreQa } from './suzhou/qa-section.ts';
+import { scoreQa, toQaTask } from './suzhou/qa-section.ts';
 import { scoreTopic } from './suzhou/topic-section.ts';
-import { toQaTask } from './suzhou/qa-section.ts';
+import { defaultSeed } from './ui/suzhou-exam.ts';
 import type { PaperBank } from './suzhou/paper.ts';
+import { loadConfig as loadByokConfig } from './ui/byok.ts';
+import { loadPrefs, savePrefs } from './engine/capabilities.ts';
+import { providerById } from './engine/llm.ts';
 
 import readingsJson from '../data/readings.json' with { type: 'json' };
-import qaJson from '../data/qa.json' with { type: 'json' };
-import qaKwJson from '../data/qa-keywords.json' with { type: 'json' };
-import topicsJson from '../data/topics.json' with { type: 'json' };
-import listeningJson from '../data/listening-materials.json' with { type: 'json' };
+import bankItemsJson from '../data/bank/items.json' with { type: 'json' };
 import { createListeningBank } from './suzhou/listening-bank.ts';
+import { buildListeningMaterials, mapQaItem, mapTopicItem } from './suzhou/bank-import.ts';
+
 function arr(v: any, key: string): any[] {
   if (Array.isArray(v)) return v;
   return (v && Array.isArray(v[key]) ? v[key] : []) as any[];
@@ -46,31 +43,14 @@ function buildBank(): PaperBank {
       positionSource: r.positionSource,
     };
   });
-  const kws = qaKwJson as unknown as Record<string, string[][]>;
-  const qa = arr(qaJson, 'qa').map(function (r: any) {
-    return {
-      id: r.id,
-      category: r.category,
-      question: r.question,
-      keyPoints: r.keyPoints,
-      enKeywords: kws[r.id] ?? [],
-      difficulty: r.difficulty,
-    };
-  });
-  const topics = arr(topicsJson, 'topics').map(function (t: any) {
-    return {
-      id: t.id,
-      name: t.name,
-      hint: t.hint,
-      keywords: t.keywords,
-      sampleAnswer: t.sampleAnswer,
-      keyExpressions: t.keyExpressions ?? [],
-    };
-  });
+  const items = bankItemsJson as any[];
+  const qa = items.filter((it) => it.type === 'speaking.qa').map(mapQaItem);
+  const topics = items.filter((it) => it.type === 'speaking.topic').map(mapTopicItem);
   // 听力题库走自己的 schema（按组大小分池），校验失败在这里就抛，不留到考场上
-  const listening = createListeningBank(listeningJson);
+  const listening = createListeningBank(buildListeningMaterials(items));
   return { readings: readings, qa: qa, topics: topics, listening: listening };
 }
+
 function bootstrap() {
   const mount = document.getElementById('app');
   if (!mount) {
@@ -79,112 +59,91 @@ function bootstrap() {
   }
   applyTheme(loadTheme());
 
-  // 模型源切到国内可达地址。huggingface.co 的 DNS 在大陆被投毒，
-  // 默认配置会直接失败，必须在加载任何模型之前改掉。
+  // index.html 里的静态 loading 占位要去掉
+  while (mount.firstChild) mount.removeChild(mount.firstChild);
+
+  // 模型源切到国内可达地址，必须在加载任何模型之前改掉。
   const src = initModelSource();
   console.info('模型源：' + src.name + '（' + src.host + '）');
 
   const bank = buildBank();
   const recorder = createEngineRecorder();
   const asr = createEngineAsr();
-  const kws = qaKwJson as unknown as Record<string, string[][]>;
-  // 主界面：打开即出一份完整卷（朗读 1 + 情景问答 2 + 话题简述 1）
-  const examHost = document.createElement('div');
-  mount.appendChild(examHost);
+  const seed = defaultSeed();
 
-  let paper: any = null;
-  let paperRef = { current: null as any };
+  // BYOK（本地面板配置）→ 引擎 prefs，让 engine.analyze 真能拿到 key。
+  // byok 的 'google' 对应 llm 的 'gemini'，其余同名。
+  function syncByok(): void {
+    const cfg = loadByokConfig();
+    const pid = cfg.providerId === 'google' ? 'gemini' : cfg.providerId;
+    const spec = providerById(pid);
+    const cur = loadPrefs().llm;
+    savePrefs({
+      llm: {
+        ...cur,
+        enabled: true,
+        provider: spec.id,
+        apiKey: cfg.apiKey,
+        baseUrl: spec.baseUrl,
+        model: cfg.model || spec.model,
+      },
+    });
+  }
+  syncByok();
 
-  mountSuzhouExam(examHost, {
-    bank: bank,
-    recorder: recorder,
-    asr: asr,
-    // 评分回调：按当前卷的题目取对应规则
-    scoreReading: function (text: string, durationMs?: number) {
-      const p = paperRef.current;
-      if (!p) return null;
-      const task = {
-        id: p.reading.task.id,
-        textbook: p.reading.task.textbook,
-        book: '',
-        title: '',
-        text: p.reading.task.text,
-        wordCount: p.reading.task.wordCount,
-        difficulty: p.reading.task.difficulty,
-        positionSource: p.reading.task.positionSource,
-      };
-      return scoreReading({ reference: task.text, spoken: text, durationMs: durationMs }).approximateScore;
-    },
-    scoreQa: function (text: string, order: number, durationMs?: number) {
-      const p = paperRef.current;
-      if (!p) return null;
-      const item = p.qa[order];
-      if (!item) return null;
-      try {
-        const t = toQaTask(item.task, item.task.enKeywords);
-        return scoreQa({ transcript: text, task: t, durationMs: durationMs }).approximateScore;
-      } catch {
-        return null;
-      }
-    },
-    scoreTopic: function (text: string, durationMs?: number) {
-      const p = paperRef.current;
-      if (!p) return null;
-      const t = p.topic.task;
-      const task = {
-        id: t.id,
-        displayText: t.name,
-        hint: t.hint,
-        profile: { name: t.name, hint: t.hint, keywords: t.keywords },
-        keyExpressions: t.keyExpressions ?? [],
-        sampleAnswer: t.sampleAnswer ?? [],
-      };
-      return scoreTopic({ transcript: text, task: task, durationMs: durationMs }).approximateScore;
+  const homeEl = mountHome(document, {
+    onByokChange: function () { syncByok(); },
+    onStart: function () {
+      homeEl.remove();
+      const loadingEl = mountLoading(document, {
+        bank: bank,
+        recorder: recorder,
+        asr: asr,
+        seed: seed,
+        onReady: function (audioCache) {
+          loadingEl.remove();
+          const examHost = document.createElement('div');
+          mount.appendChild(examHost);
+          mountSuzhouExam(examHost, {
+            bank: bank,
+            recorder: recorder,
+            asr: asr,
+            seed: seed,
+            audioCache: audioCache,
+            scoreReading: function (text: string, task: any, durationMs?: number) {
+              if (!task || !task.text) return null;
+              return scoreReading({ reference: task.text, spoken: text, durationMs: durationMs }).approximateScore;
+            },
+            scoreQa: function (text: string, task: any, durationMs?: number) {
+              if (!task || !task.enKeywords) return null;
+              try {
+                const t = toQaTask(task, task.enKeywords);
+                return scoreQa({ transcript: text, task: t, durationMs: durationMs }).approximateScore;
+              } catch {
+                return null;
+              }
+            },
+            scoreTopic: function (text: string, task: any, durationMs?: number) {
+              if (!task || !task.name) return null;
+              const t = {
+                id: task.id,
+                displayText: task.name,
+                hint: task.hint,
+                profile: { name: task.name, hint: task.hint, keywords: task.keywords ?? [] },
+                keyExpressions: task.keyExpressions ?? [],
+                sampleAnswer: task.sampleAnswer ?? [],
+              };
+              return scoreTopic({ transcript: text, task: t, durationMs: durationMs }).approximateScore;
+            },
+          });
+        },
+      });
+      mount.appendChild(loadingEl);
     },
   });
-
-  // 出卷后回填引用，供评分回调取题
-  paper = true;
-  const origPush = mountSelfCheck;
-  void origPush;
-  void paper;
-  // 评分回调：直接拿到当前卷的题目数据，无需外部引用
-  mountSuzhouExam(examHost, {
-    bank: bank,
-    recorder: recorder,
-    asr: asr,
-    scoreReading: function (text: string, task: any, durationMs?: number) {
-      if (!task || !task.text) return null;
-      return scoreReading({ reference: task.text, spoken: text, durationMs: durationMs }).approximateScore;
-    },
-    scoreQa: function (text: string, task: any, durationMs?: number) {
-      if (!task || !task.enKeywords) return null;
-      try {
-        const t = toQaTask(task, task.enKeywords);
-        return scoreQa({ transcript: text, task: t, durationMs: durationMs }).approximateScore;
-      } catch {
-        return null;
-      }
-    },
-    scoreTopic: function (text: string, task: any, durationMs?: number) {
-      if (!task || !task.name) return null;
-      const t = {
-        id: task.id,
-        displayText: task.name,
-        hint: task.hint,
-        profile: { name: task.name, hint: task.hint, keywords: task.keywords ?? [] },
-        keyExpressions: task.keyExpressions ?? [],
-        sampleAnswer: task.sampleAnswer ?? [],
-      };
-      return scoreTopic({ transcript: text, task: t, durationMs: durationMs }).approximateScore;
-    },
-  });
-
-  // 真机自检
-  mount.appendChild(mountSelfCheck(document, { recorder: recorder, asr: asr }));
+  mount.appendChild(homeEl);
 }
 
-/** 只在浏览器环境启动；Node 下 import 本文件应无副作用 */
 function isBrowser(): boolean {
   return typeof document !== 'undefined' && typeof window !== 'undefined';
 }
