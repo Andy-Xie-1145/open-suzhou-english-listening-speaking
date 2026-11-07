@@ -1,0 +1,522 @@
+[
+  {
+    "id": "d92e9afa-4c9b-4818-bc8f-07a009faee36",
+    "short_id": "d92e9afa",
+    "project_id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+    "project_name": "openels",
+    "environment": "production",
+    "url": "https://d92e9afa.openels.pages.dev",
+    "created_on": "2026-11-07T21:22:04.64779Z",
+    "modified_on": "2026-11-07T21:22:05.886897Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": null,
+      "ended_on": "2026-11-07T21:22:05.886897Z",
+      "status": "success"
+    },
+    "deployment_trigger": {
+      "type": "ad_hoc",
+      "metadata": {
+        "branch": "master",
+        "commit_hash": "9a10296ecf2ed4163cc50d189f0200fef663fe1f",
+        "commit_message": "gitignore 补全：undefined/、voices/、*.tmp 等工作区临时物",
+        "commit_dirty": true
+      }
+    },
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-11-07T21:22:04.64779Z",
+        "ended_on": null,
+        "status": "active"
+      },
+      {
+        "name": "initialize",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "build",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-11-07T21:22:05.886897Z",
+        "status": "success"
+      }
+    ],
+    "build_config": {
+      "build_command": null,
+      "destination_dir": "dist",
+      "build_caching": null,
+      "root_dir": null,
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "env_vars": {},
+    "compatibility_date": "2026-10-01",
+    "compatibility_flags": [],
+    "build_image_major_version": 3,
+    "usage_model": null,
+    "aliases": [
+      "https://openels.bbroot.com"
+    ],
+    "is_skipped": false,
+    "production_branch": "master",
+    "uses_functions": false
+  },
+  {
+    "id": "772f0dad-6c69-4d15-a10c-63cda83382a3",
+    "short_id": "772f0dad",
+    "project_id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+    "project_name": "openels",
+    "environment": "production",
+    "url": "https://772f0dad.openels.pages.dev",
+    "created_on": "2026-10-11T20:00:42.063308Z",
+    "modified_on": "2026-10-11T20:00:44.050589Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": null,
+      "ended_on": "2026-10-11T20:00:44.050589Z",
+      "status": "success"
+    },
+    "deployment_trigger": {
+      "type": "ad_hoc",
+      "metadata": {
+        "branch": "master",
+        "commit_hash": "240ee7bcd78790e00369c2fb6f4223d9788e2b56",
+        "commit_message": "同步工作区：UI 重写、新题库、新音频全部纳入版本控制",
+        "commit_dirty": true
+      }
+    },
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-11T20:00:42.063308Z",
+        "ended_on": null,
+        "status": "active"
+      },
+      {
+        "name": "initialize",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "build",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-10-11T20:00:44.050589Z",
+        "status": "success"
+      }
+    ],
+    "build_config": {
+      "build_command": null,
+      "destination_dir": "dist",
+      "build_caching": null,
+      "root_dir": null,
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "env_vars": {},
+    "compatibility_date": "2026-10-01",
+    "compatibility_flags": [],
+    "build_image_major_version": 3,
+    "usage_model": null,
+    "aliases": null,
+    "is_skipped": false,
+    "production_branch": "master",
+    "uses_functions": false
+  },
+  {
+    "id": "46ef177e-bb9f-4108-bd84-edf68dce4d0f",
+    "short_id": "46ef177e",
+    "project_id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+    "project_name": "openels",
+    "environment": "production",
+    "url": "https://46ef177e.openels.pages.dev",
+    "created_on": "2026-10-05T19:43:33.011477Z",
+    "modified_on": "2026-10-05T19:43:34.463893Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": null,
+      "ended_on": "2026-10-05T19:43:34.463893Z",
+      "status": "success"
+    },
+    "deployment_trigger": {
+      "type": "ad_hoc",
+      "metadata": {
+        "branch": "master",
+        "commit_hash": "663d571b487384ba0d4fbc02e9593f3b42f5e5ac",
+        "commit_message": "新增 .gitattributes：强制 LF。\r\n\r\n本机 core.autocrlf=true，导致 git checkout 会把 LF 文件落成 CRLF。\r\n刚才恢复 D7 时实测：checkout 得到 14464 字节（应为 14232），\r\n差值 232 = 恰好等于行数，即每行多一个 CR。\r\n\r\n这不是小事：本项目的锚链机制就是逐字节 MD5，\r\n任何人 clone 下来，每个文件的 MD5 都会与报\n\n[commit_message truncated]",
+        "commit_dirty": true
+      }
+    },
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-05T19:43:33.011477Z",
+        "ended_on": null,
+        "status": "active"
+      },
+      {
+        "name": "initialize",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "build",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-10-05T19:43:34.463893Z",
+        "status": "success"
+      }
+    ],
+    "build_config": {
+      "build_command": null,
+      "destination_dir": "dist",
+      "build_caching": null,
+      "root_dir": null,
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "env_vars": {},
+    "compatibility_date": "2026-10-01",
+    "compatibility_flags": [],
+    "build_image_major_version": 3,
+    "usage_model": null,
+    "aliases": null,
+    "is_skipped": false,
+    "production_branch": "master",
+    "uses_functions": false
+  },
+  {
+    "id": "5c4bb3e8-b2f3-4a25-9da3-65cde24de2db",
+    "short_id": "5c4bb3e8",
+    "project_id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+    "project_name": "openels",
+    "environment": "production",
+    "url": "https://5c4bb3e8.openels.pages.dev",
+    "created_on": "2026-10-05T17:11:23.592744Z",
+    "modified_on": "2026-10-05T17:11:25.284502Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": null,
+      "ended_on": "2026-10-05T17:11:25.284502Z",
+      "status": "success"
+    },
+    "deployment_trigger": {
+      "type": "ad_hoc",
+      "metadata": {
+        "branch": "master",
+        "commit_hash": "663d571b487384ba0d4fbc02e9593f3b42f5e5ac",
+        "commit_message": "新增 .gitattributes：强制 LF。\r\n\r\n本机 core.autocrlf=true，导致 git checkout 会把 LF 文件落成 CRLF。\r\n刚才恢复 D7 时实测：checkout 得到 14464 字节（应为 14232），\r\n差值 232 = 恰好等于行数，即每行多一个 CR。\r\n\r\n这不是小事：本项目的锚链机制就是逐字节 MD5，\r\n任何人 clone 下来，每个文件的 MD5 都会与报\n\n[commit_message truncated]",
+        "commit_dirty": true
+      }
+    },
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-05T17:11:23.592744Z",
+        "ended_on": null,
+        "status": "active"
+      },
+      {
+        "name": "initialize",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "build",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-10-05T17:11:25.284502Z",
+        "status": "success"
+      }
+    ],
+    "build_config": {
+      "build_command": null,
+      "destination_dir": "dist",
+      "build_caching": null,
+      "root_dir": null,
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "env_vars": {},
+    "compatibility_date": "2026-10-01",
+    "compatibility_flags": [],
+    "build_image_major_version": 3,
+    "usage_model": null,
+    "aliases": null,
+    "is_skipped": false,
+    "production_branch": "master",
+    "uses_functions": false
+  },
+  {
+    "id": "8d499006-9330-47cc-a84d-2898638aa375",
+    "short_id": "8d499006",
+    "project_id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+    "project_name": "openels",
+    "environment": "production",
+    "url": "https://8d499006.openels.pages.dev",
+    "created_on": "2026-10-05T11:09:44.797532Z",
+    "modified_on": "2026-10-05T11:09:46.48029Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": null,
+      "ended_on": "2026-10-05T11:09:46.48029Z",
+      "status": "success"
+    },
+    "deployment_trigger": {
+      "type": "ad_hoc",
+      "metadata": {
+        "branch": "master",
+        "commit_hash": "663d571b487384ba0d4fbc02e9593f3b42f5e5ac",
+        "commit_message": "新增 .gitattributes：强制 LF。\r\n\r\n本机 core.autocrlf=true，导致 git checkout 会把 LF 文件落成 CRLF。\r\n刚才恢复 D7 时实测：checkout 得到 14464 字节（应为 14232），\r\n差值 232 = 恰好等于行数，即每行多一个 CR。\r\n\r\n这不是小事：本项目的锚链机制就是逐字节 MD5，\r\n任何人 clone 下来，每个文件的 MD5 都会与报\n\n[commit_message truncated]",
+        "commit_dirty": true
+      }
+    },
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-05T11:09:44.797532Z",
+        "ended_on": null,
+        "status": "active"
+      },
+      {
+        "name": "initialize",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "build",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-10-05T11:09:46.48029Z",
+        "status": "success"
+      }
+    ],
+    "build_config": {
+      "build_command": null,
+      "destination_dir": "dist",
+      "build_caching": null,
+      "root_dir": null,
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "env_vars": {},
+    "compatibility_date": "2026-10-01",
+    "compatibility_flags": [],
+    "build_image_major_version": 3,
+    "usage_model": null,
+    "aliases": null,
+    "is_skipped": false,
+    "production_branch": "master",
+    "uses_functions": false
+  },
+  {
+    "id": "f4ed29b7-ce63-4399-ba51-6200a93e3871",
+    "short_id": "f4ed29b7",
+    "project_id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+    "project_name": "openels",
+    "environment": "production",
+    "url": "https://f4ed29b7.openels.pages.dev",
+    "created_on": "2026-10-04T13:59:36.136302Z",
+    "modified_on": "2026-10-04T13:59:37.407576Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": null,
+      "ended_on": "2026-10-04T13:59:37.407576Z",
+      "status": "success"
+    },
+    "deployment_trigger": {
+      "type": "ad_hoc",
+      "metadata": {
+        "branch": "master",
+        "commit_hash": "5e7d50ff330aa2dc235d9167e42aa6c690c9c3d7",
+        "commit_message": "chore: 排除模型缓存与题库流水线中间产物",
+        "commit_dirty": true
+      }
+    },
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-04T13:59:36.136302Z",
+        "ended_on": null,
+        "status": "active"
+      },
+      {
+        "name": "initialize",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "build",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-10-04T13:59:37.407576Z",
+        "status": "success"
+      }
+    ],
+    "build_config": {
+      "build_command": null,
+      "destination_dir": "dist",
+      "build_caching": null,
+      "root_dir": null,
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "env_vars": {},
+    "compatibility_date": "2026-10-01",
+    "compatibility_flags": [],
+    "build_image_major_version": 3,
+    "usage_model": null,
+    "aliases": null,
+    "is_skipped": false,
+    "production_branch": "master",
+    "uses_functions": false
+  },
+  {
+    "id": "6649e3f3-cae4-4a7c-8939-253a0c8e1baf",
+    "short_id": "6649e3f3",
+    "project_id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+    "project_name": "openels",
+    "environment": "production",
+    "url": "https://6649e3f3.openels.pages.dev",
+    "created_on": "2026-10-04T13:52:04.223379Z",
+    "modified_on": "2026-10-04T13:52:06.057812Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": null,
+      "ended_on": "2026-10-04T13:52:06.057812Z",
+      "status": "success"
+    },
+    "deployment_trigger": {
+      "type": "ad_hoc",
+      "metadata": {
+        "branch": "master",
+        "commit_hash": "5e7d50ff330aa2dc235d9167e42aa6c690c9c3d7",
+        "commit_message": "chore: 排除模型缓存与题库流水线中间产物",
+        "commit_dirty": true
+      }
+    },
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-04T13:52:04.223379Z",
+        "ended_on": null,
+        "status": "active"
+      },
+      {
+        "name": "initialize",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "build",
+        "started_on": null,
+        "ended_on": null,
+        "status": "idle"
+      },
+      {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-10-04T13:52:06.057812Z",
+        "status": "success"
+      }
+    ],
+    "build_config": {
+      "build_command": null,
+      "destination_dir": "dist",
+      "build_caching": null,
+      "root_dir": null,
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "env_vars": {},
+    "compatibility_date": "2026-10-01",
+    "compatibility_flags": [],
+    "build_image_major_version": 3,
+    "usage_model": "bundled",
+    "aliases": null,
+    "is_skipped": false,
+    "production_branch": "master",
+    "uses_functions": true
+  }
+]

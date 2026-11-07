@@ -1,0 +1,199 @@
+{
+  "result": {
+    "id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+    "name": "openels",
+    "subdomain": "openels.pages.dev",
+    "domains": [
+      "openels.pages.dev",
+      "openels.bbroot.com"
+    ],
+    "build_config": {
+      "destination_dir": "dist",
+      "web_analytics_tag": null,
+      "web_analytics_token": null
+    },
+    "deployment_configs": {
+      "preview": {
+        "env_vars": null,
+        "fail_open": true,
+        "always_use_latest_compatibility_date": false,
+        "compatibility_date": "2026-10-04",
+        "compatibility_flags": [],
+        "build_image_major_version": 3,
+        "usage_model": "standard"
+      },
+      "production": {
+        "env_vars": null,
+        "fail_open": true,
+        "always_use_latest_compatibility_date": false,
+        "compatibility_date": "2026-10-01",
+        "compatibility_flags": [],
+        "build_image_major_version": 3,
+        "usage_model": "standard",
+        "wrangler_config_hash": "5cba28c2fac5901fa901bad6e9a40edd1ed11e3898f9d503bc3462c968dd98bb"
+      }
+    },
+    "latest_deployment": {
+      "id": "d92e9afa-4c9b-4818-bc8f-07a009faee36",
+      "short_id": "d92e9afa",
+      "project_id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+      "project_name": "openels",
+      "environment": "production",
+      "url": "https://d92e9afa.openels.pages.dev",
+      "created_on": "2026-11-07T21:22:04.64779Z",
+      "modified_on": "2026-11-07T21:22:05.886897Z",
+      "latest_stage": {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-11-07T21:22:05.886897Z",
+        "status": "success"
+      },
+      "deployment_trigger": {
+        "type": "ad_hoc",
+        "metadata": {
+          "branch": "master",
+          "commit_hash": "9a10296ecf2ed4163cc50d189f0200fef663fe1f",
+          "commit_message": "gitignore 补全：undefined/、voices/、*.tmp 等工作区临时物",
+          "commit_dirty": true
+        }
+      },
+      "stages": [
+        {
+          "name": "queued",
+          "started_on": "2026-11-07T21:22:04.64779Z",
+          "ended_on": null,
+          "status": "active"
+        },
+        {
+          "name": "initialize",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "clone_repo",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "build",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "deploy",
+          "started_on": null,
+          "ended_on": "2026-11-07T21:22:05.886897Z",
+          "status": "success"
+        }
+      ],
+      "build_config": {
+        "build_command": null,
+        "destination_dir": "dist",
+        "build_caching": null,
+        "root_dir": null,
+        "web_analytics_tag": null,
+        "web_analytics_token": null
+      },
+      "env_vars": {},
+      "compatibility_date": "2026-10-01",
+      "compatibility_flags": [],
+      "build_image_major_version": 3,
+      "usage_model": null,
+      "aliases": [
+        "https://openels.bbroot.com"
+      ],
+      "is_skipped": false,
+      "production_branch": "master",
+      "uses_functions": false
+    },
+    "canonical_deployment": {
+      "id": "d92e9afa-4c9b-4818-bc8f-07a009faee36",
+      "short_id": "d92e9afa",
+      "project_id": "4899c789-71f4-4ded-a0e1-6d915c78f1de",
+      "project_name": "openels",
+      "environment": "production",
+      "url": "https://d92e9afa.openels.pages.dev",
+      "created_on": "2026-11-07T21:22:04.64779Z",
+      "modified_on": "2026-11-07T21:22:05.886897Z",
+      "latest_stage": {
+        "name": "deploy",
+        "started_on": null,
+        "ended_on": "2026-11-07T21:22:05.886897Z",
+        "status": "success"
+      },
+      "deployment_trigger": {
+        "type": "ad_hoc",
+        "metadata": {
+          "branch": "master",
+          "commit_hash": "9a10296ecf2ed4163cc50d189f0200fef663fe1f",
+          "commit_message": "gitignore 补全：undefined/、voices/、*.tmp 等工作区临时物",
+          "commit_dirty": true
+        }
+      },
+      "stages": [
+        {
+          "name": "queued",
+          "started_on": "2026-11-07T21:22:04.64779Z",
+          "ended_on": null,
+          "status": "active"
+        },
+        {
+          "name": "initialize",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "clone_repo",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "build",
+          "started_on": null,
+          "ended_on": null,
+          "status": "idle"
+        },
+        {
+          "name": "deploy",
+          "started_on": null,
+          "ended_on": "2026-11-07T21:22:05.886897Z",
+          "status": "success"
+        }
+      ],
+      "build_config": {
+        "build_command": null,
+        "destination_dir": "dist",
+        "build_caching": null,
+        "root_dir": null,
+        "web_analytics_tag": null,
+        "web_analytics_token": null
+      },
+      "env_vars": {},
+      "compatibility_date": "2026-10-01",
+      "compatibility_flags": [],
+      "build_image_major_version": 3,
+      "usage_model": null,
+      "aliases": [
+        "https://openels.bbroot.com"
+      ],
+      "is_skipped": false,
+      "production_branch": "master",
+      "uses_functions": false
+    },
+    "created_on": "2026-10-04T13:50:56.472417Z",
+    "production_branch": "master",
+    "production_script_name": "pages-worker--20462553-production",
+    "preview_script_name": "pages-worker--20462553-preview",
+    "uses_functions": false,
+    "framework": "",
+    "framework_version": ""
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}
